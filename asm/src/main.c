@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/10 17:43:57 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/10 19:10:25 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 void	init_champ(t_asm *champ)
 {
+	static t_header	header;
+
 	champ->sfile = NULL;
-	champ->name = NULL;
-	champ->comment = NULL;
+	champ->header = &header;
+	ft_bzero(champ->header->prog_name, PROG_NAME_LENGTH + 1);
+	ft_bzero(champ->header->comment, COMMENT_LENGTH + 1);
 }
 
 t_asm	*get_champ(void)
@@ -36,8 +39,10 @@ int		main(int argc, char **argv)
 	if (!(filename = check_args(argc, argv)))
 		display_usage(argv[0]);
 	store_sfile(filename, &champ->sfile);
+	if (parser(champ))
+		exit_fail();
 	if (argc == 3)
-		display_sfile(champ->sfile);
+		display_champ(champ);
 	free_asm();
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 15:39:16 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/10 17:41:00 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/10 18:06:35 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	free_sfile(t_sfile *sfile)
 	}
 }
 
-void	free_asm(void)
+void		free_asm(void)
 {
 	t_asm	*champ;
 
@@ -33,7 +33,7 @@ void	free_asm(void)
 	free_sfile(champ->sfile);
 }
 
-void	exit_fail(void)
+void		exit_fail(void)
 {
 	free_asm();
 	exit(EXIT_FAILURE);

@@ -6,14 +6,14 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:46:27 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/10 17:42:42 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/10 19:45:34 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
 /*
-** adds one line to the stored sfile without comments
+** adds one line to the stored sfile
 */
 
 void		store_line(t_sfile **sfile, char *line)
@@ -30,7 +30,7 @@ void		store_line(t_sfile **sfile, char *line)
 		*sfile = new;
 	else
 		tmp->next = new;
-	if (!(new->line = dup_to_char(line, COMMENT_CHAR)))
+	if (!(new->line = ft_strdup(line)))
 		exit_fail();
 }
 
@@ -40,7 +40,7 @@ static int	open_file(char *filename)
 
 	if ((fd = open(filename, O_RDONLY)) == -1)
 	{
-		ft_printf("'%s': %s\n", filename, strerror(errno));
+		perror("open");
 		exit(EXIT_FAILURE);
 	}
 	return (fd);
@@ -54,17 +54,22 @@ int			store_sfile(char *filename, t_sfile **sfile)
 {
 	int		fd;
 	char	*line;
+	char	*tmp;
 
 	line = NULL;
 	fd = open_file(filename);
 	while (get_next_line(fd, &line) == 1)
 	{
-		store_line(sfile, line);
+		if (!(tmp = dup_to_char(line, COMMENT_CHAR)))
+			exit_fail();
 		ft_strdel(&line);
+		if (tmp[0])
+			store_line(sfile, tmp);
+		ft_strdel(&tmp);
 	}
 	if (close(fd) == -1)
 	{
-		ft_printf("'%d': %s\n", fd, strerror(errno));
+		perror("close");
 		exit_fail();
 	}
 	return (0);

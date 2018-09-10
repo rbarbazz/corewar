@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/09/10 17:27:05 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/09/10 17:53:11 by rbarbazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = asm
 
 SRC_PATH = src
 
-SRC_NAME =	main.c store_sfile.c display.c clear.c option.c
+SRC_NAME =	main.c store_sfile.c display.c clear.c option.c parser.c
 
 OBJ_PATH = obj
 
