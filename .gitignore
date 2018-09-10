@@ -1,3 +1,3 @@
 *.o
 libft.a
-asm
+asm/asm
