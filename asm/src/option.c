@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear.c                                            :+:      :+:    :+:   */
+/*   option.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/10 15:39:16 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/10 17:41:00 by rbarbazz         ###   ########.fr       */
+/*   Created: 2018/09/10 17:26:47 by rbarbazz          #+#    #+#             */
+/*   Updated: 2018/09/10 17:28:23 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static void	free_sfile(t_sfile *sfile)
+int	check_file_extension(char *filename)
 {
-	t_sfile	*tmp;
+	int	len;
 
-	while (sfile)
-	{
-		tmp = sfile;
-		sfile = sfile->next;
-		ft_strdel(&tmp->line);
-		ft_memdel((void**)&tmp);
-	}
+	len = ft_strlen(filename);
+	if (filename[len - 2] == '.' && filename[len - 1] == 's')
+		return (0);
+	return (1);
 }
 
-void	free_asm(void)
+char	*check_args(int argc, char **argv)
 {
-	t_asm	*champ;
-
-	champ = get_champ();
-	free_sfile(champ->sfile);
-}
-
-void	exit_fail(void)
-{
-	free_asm();
-	exit(EXIT_FAILURE);
+	if (argc < 2 || argc > 3)
+		return (NULL);
+	if (argc == 3 && ft_strcmp(argv[1], "-a") != 0)
+		return (NULL);
+	if (check_file_extension(argv[argc - 1]))
+		return (NULL);
+	return (argv[argc - 1]);
 }
