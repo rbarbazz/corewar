@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/11 12:52:06 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/11 16:23:37 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	init_champ(t_asm *champ)
 	champ->header = &header;
 	ft_bzero(champ->header->prog_name, PROG_NAME_LENGTH + 1);
 	ft_bzero(champ->header->comment, COMMENT_LENGTH + 1);
-	champ->line_nb = 1;
+	champ->line = 1;
+	champ->col = 1;
+	champ->i = 1;
 }
 
 t_asm	*get_champ(void)

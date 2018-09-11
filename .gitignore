@@ -1,3 +1,4 @@
 *.o
 libft.a
 asm/asm
+asm/asm.dSYM
