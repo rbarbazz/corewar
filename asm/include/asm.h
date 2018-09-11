@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/10 19:19:01 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/11 11:07:51 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,11 @@ typedef struct		s_header
   char				comment[COMMENT_LENGTH + 1];
 }					t_header;
 
-typedef struct		s_sfile
-{
-	char			*line;
-	struct s_sfile	*next;
-}					t_sfile;
-
 typedef struct		s_asm
 {
-	t_sfile			*sfile;
+	char			*sfile;
 	t_header		*header;
+	int				line_nb;
 }					t_asm;
 
 t_asm	*get_champ(void);
@@ -67,7 +62,7 @@ char	*check_args(int argc, char **argv);
 ** parsing
 */
 
-int		store_sfile(char *filename, t_sfile **sfile);
+int		store_sfile(char *filename, char **sfile);
 int		parser(t_asm *champ);
 
 /*
@@ -76,6 +71,7 @@ int		parser(t_asm *champ);
 
 void	display_champ(t_asm *champ);
 void	display_usage(char *prog_name);
+void	display_error_parse(void);
 
 /*
 ** clear
