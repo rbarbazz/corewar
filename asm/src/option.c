@@ -6,13 +6,13 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 17:26:47 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/10 17:28:23 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/11 18:33:49 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int	check_file_extension(char *filename)
+int		check_file_extension(char *filename)
 {
 	int	len;
 
