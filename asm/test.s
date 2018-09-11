@@ -1,18 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.name                      "zork"
+				.nae                       "zork"
 .comment "I'M ALIIIIVE"    #yeeeet
 
 #

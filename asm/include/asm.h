@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/11 16:23:30 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/11 16:46:09 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ char	*check_args(int argc, char **argv);
 
 char	*store_sfile(char *filename);
 int		parser(t_asm *champ);
+void	skip_non_print(t_asm *champ);
+void	move_index(t_asm *champ);
 
 /*
 ** display
