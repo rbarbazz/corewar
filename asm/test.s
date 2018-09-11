@@ -1,5 +1,5 @@
 .name"zork"
-.comment "I'M ALIIIIVE"
+.comment "I'M ALIIIIVE"    #yeeeet
 
 l2:
 	sti r1, %:live, %1

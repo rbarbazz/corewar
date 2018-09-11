@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/11 11:07:56 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/11 12:52:06 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		main(int argc, char **argv)
 	init_champ(champ);
 	if (!(filename = check_args(argc, argv)))
 		display_usage(argv[0]);
-	store_sfile(filename, &champ->sfile);
+	champ->sfile = store_sfile(filename);
 	if (parser(champ))
 		exit_fail();
 	if (argc == 3)

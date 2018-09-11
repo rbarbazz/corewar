@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:46:27 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/11 11:38:59 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/11 13:15:23 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@
 ** adds one line to the stored sfile
 */
 
-void		store_line(char **sfile, char *line)
+static void	store_line(char **sfile, char *line)
 {
 	char	*tmp;
 
-	if (!(tmp = dup_to_char(line, COMMENT_CHAR)))
+	if (!(line = dup_to_char(line, COMMENT_CHAR)))
 		exit_fail();
-if	if (!(*sfile = ft_strjoin(tmp, line)))
-		exit_fail();
-	ft_printf("%s\n", *sfile);
+	if (line[0])
+	{
+		if (!(tmp = strjoinchar(line, '\n')))
+			exit_fail();
+	}
 	ft_strdel(&tmp);
 }
 
@@ -44,16 +46,18 @@ static int	open_file(char *filename)
 ** stores the input sfile without comments
 */
 
-int			store_sfile(char *filename, char **sfile)
+char		*store_sfile(char *filename)
 {
 	int		fd;
 	char	*line;
+	char	*sfile;
 
 	line = NULL;
+	sfile = NULL;
 	fd = open_file(filename);
 	while (get_next_line(fd, &line) == 1)
 	{
-		store_line(sfile, line);
+		store_line(&sfile, line);
 		ft_strdel(&line);
 	}
 	if (close(fd) == -1)
@@ -61,5 +65,5 @@ int			store_sfile(char *filename, char **sfile)
 		perror("close");
 		exit_fail();
 	}
-	return (0);
+	return (sfile);
 }
