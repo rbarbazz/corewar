@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/11 19:20:19 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/12 14:26:59 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ char				*check_args(int argc, char **argv);
 char				*store_sfile(char *filename);
 int					parser(t_asm *champ);
 int					check_instruction(t_asm *champ, char *instr);
-int					check_name(t_asm *champ);
+int					check_instruction_value(t_asm *champ, int max_length,\
+char *instr, char *cmd);
 void				skip_non_print(t_asm *champ);
 void				skip_space(t_asm *champ);
 void				move_index(t_asm *champ);
@@ -83,7 +84,7 @@ void				display_champ(t_asm *champ);
 
 void				error_usage(char *prog_name);
 void				error_parse(void);
-void				error_prog_name_length(void);
+void				error_instruction_length(char *instr, int max_length);
 
 /*
 ** clear

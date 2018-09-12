@@ -6,11 +6,16 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 17:30:05 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/11 19:29:38 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/12 14:26:33 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+/*
+** check the syntax of the expected instructions
+** store them into the header
+*/
 
 int	check_instruction(t_asm *champ, char *instr)
 {
@@ -29,7 +34,13 @@ int	check_instruction(t_asm *champ, char *instr)
 	return (0);
 }
 
-int	check_name(t_asm *champ)
+/*
+** check the syntax of the expected instruction values
+** store them into the header
+*/
+
+int	check_instruction_value(t_asm *champ, int max_length, char *instr,\
+char *cmd)
 {
 	int	i;
 
@@ -42,9 +53,9 @@ int	check_name(t_asm *champ)
 	while (champ->sfile && champ->sfile[champ->i] &&\
 	champ->sfile[champ->i] != '\"')
 	{
-		if (i > PROG_NAME_LENGTH)
-			error_prog_name_length();
-		champ->header->prog_name[i] = champ->sfile[champ->i];
+		if (i > max_length)
+			error_instruction_length(cmd, max_length);
+		instr[i] = champ->sfile[champ->i];
 		i++;
 		move_index(champ);
 	}

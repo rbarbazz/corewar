@@ -1,4 +1,4 @@
-*.o
-libft.a
+**.o
+asm/asm.dSYM/**
+**.a
 asm/asm
-asm/asm.dSYM
