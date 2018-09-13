@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instructions.c                                     :+:      :+:    :+:   */
+/*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 17:30:05 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/12 14:26:33 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/13 11:29:45 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@
 ** store them into the header
 */
 
-int	check_instruction(t_asm *champ, char *instr)
+int	check_cmd(t_asm *champ, char *cmd)
 {
 	unsigned long	i;
 
 	i = 0;
 	skip_non_print(champ);
 	while (champ->sfile && champ->sfile[champ->i] &&\
-	instr[i] == champ->sfile[champ->i])
+	cmd[i] == champ->sfile[champ->i])
 	{
 		i++;
 		move_index(champ);
 	}
-	if (i != ft_strlen(instr))
+	if (i != ft_strlen(cmd))
 		return (1);
 	return (0);
 }
@@ -39,8 +39,7 @@ int	check_instruction(t_asm *champ, char *instr)
 ** store them into the header
 */
 
-int	check_instruction_value(t_asm *champ, int max_length, char *instr,\
-char *cmd)
+int	check_cmd_value(t_asm *champ, int max_length, char *cmd, char *value)
 {
 	int	i;
 
@@ -54,8 +53,8 @@ char *cmd)
 	champ->sfile[champ->i] != '\"')
 	{
 		if (i > max_length)
-			error_instruction_length(cmd, max_length);
-		instr[i] = champ->sfile[champ->i];
+			error_cmd_length(value, max_length);
+		cmd[i] = champ->sfile[champ->i];
 		i++;
 		move_index(champ);
 	}
