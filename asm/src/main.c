@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/11 18:55:24 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/13 17:29:39 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,15 @@ t_asm	*get_champ(void)
 int		main(int argc, char **argv)
 {
 	t_asm	*champ;
-	char	*filename;
 
 	champ = get_champ();
 	init_champ(champ);
-	if (!(filename = check_args(argc, argv)))
+	if (!(champ->filename = check_args(argc, argv)))
 		error_usage(argv[0]);
-	champ->sfile = store_sfile(filename);
+	champ->sfile = store_sfile(champ->filename);
 	if (parser(champ))
 		exit_fail();
-	if (argc == 3)
-		display_champ(champ);
+	write_to_cor(champ);
 	free_asm();
 	return (EXIT_SUCCESS);
 }

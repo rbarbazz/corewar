@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 17:52:53 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/13 11:29:07 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/13 14:14:03 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 static int	parse_header(t_asm *champ)
 {
-	if (check_cmd(champ, NAME_CMD_STRING) ||\
-	check_cmd_value(champ, PROG_NAME_LENGTH, champ->header->prog_name,\
-	NAME_CMD_STRING))
+	if (check_cmd(champ, NAME_CMD_STRING) || check_cmd_value(champ,\
+	PROG_NAME_LENGTH, champ->header->prog_name,	NAME_CMD_STRING))
 	{
 		error_parse();
 		return (1);
@@ -29,9 +28,8 @@ static int	parse_header(t_asm *champ)
 		return (1);
 	}
 	move_index(champ);
-	if (check_cmd(champ, COMMENT_CMD_STRING) ||\
-	check_cmd_value(champ, COMMENT_LENGTH, champ->header->comment,\
-	COMMENT_CMD_STRING))
+	if (check_cmd(champ, COMMENT_CMD_STRING) ||	check_cmd_value(champ,\
+	COMMENT_LENGTH, champ->header->comment,	COMMENT_CMD_STRING))
 	{
 		error_parse();
 		return (1);

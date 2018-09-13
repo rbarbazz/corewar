@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 18:50:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/13 11:30:01 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/13 17:51:10 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ void	error_parse(void)
 
 void	error_usage(char *prog_name)
 {
-	ft_printf("Usage: %s [-a] <sourcefile.s>\n    -a : Instead of creating a \
-.cor file, outputs a stripped and annotated version of the code to the \
-standard output\n", prog_name);
+	ft_printf("Usage: %s <sourcefile.s>\n", prog_name);
 	exit(EXIT_FAILURE);
 }
 

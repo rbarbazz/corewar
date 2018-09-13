@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/09/13 11:16:41 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/09/13 17:30:11 by rbarbazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = asm
 
 SRC_PATH = src
 
-SRC_NAME =	main.c display.c clear.c option.c error.c\
+SRC_NAME =	main.c clear.c option.c error.c cor_file.c\
 			parsing/store_sfile.c parsing/parser.c parsing/motion.c\
 			parsing/commands.c
 

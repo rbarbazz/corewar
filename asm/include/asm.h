@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/13 12:26:10 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/13 17:36:19 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,15 @@ typedef struct		s_header
 	char			comment[COMMENT_LENGTH + 1];
 }					t_header;
 
-//typedef struct		s_instr
-//{
-//	char			*label;
-//	
-
 typedef struct		s_asm
 {
+	char			*filename;
 	char			*sfile;
 	t_header		*header;
 	int				line;
 	int				col;
 	int				i;
+	int				fd;
 }					t_asm;
 
 t_asm				*get_champ(void);
@@ -77,11 +74,12 @@ void				skip_non_print(t_asm *champ);
 void				skip_space(t_asm *champ);
 void				move_index(t_asm *champ);
 
+
 /*
-** display
+** creating and writing to .cor file
 */
 
-void				display_champ(t_asm *champ);
+void				write_to_cor(t_asm *champ);
 
 /*
 ** error

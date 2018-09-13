@@ -1,21 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   cor_file.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/10 15:18:22 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/11 18:51:08 by rbarbazz         ###   ########.fr       */
+/*   Created: 2018/09/13 17:24:38 by rbarbazz          #+#    #+#             */
+/*   Updated: 2018/09/13 18:58:39 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	display_champ(t_asm *champ)
+static int	open_file(char *filename)
 {
-	ft_printf("Dumping annotated program on standard output\n");
-	ft_printf("Name : \"%s\"\n", champ->header->prog_name);
-	ft_printf("Comment : \"%s\"\n", champ->header->comment);
-//	ft_printf("%s", champ->sfile);
+	int		fd;
+	char	*tmp;
+
+	if (!(tmp = ft_strjoin(filename, ".cor")))
+		exit_fail();
+	if ((fd = open(tmp, O_WRONLY | O_TRUNC | O_CREAT, 0644)) == -1)
+	{
+		ft_strdel(&tmp);
+		perror("open");
+		exit(EXIT_FAILURE);
+	}
+	ft_strdel(&tmp);
+	return (fd);
+}
+
+
+void	write_to_cor(t_asm *champ)
+{
+	char	*tmp;
+
+	if (!(tmp = dup_to_char(champ->filename, '.')))
+		exit_fail();
+	champ->fd = open_file(tmp);
 }
