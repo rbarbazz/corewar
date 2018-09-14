@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 17:52:53 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/13 14:14:03 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/14 14:39:41 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,5 @@ int			parser(t_asm *champ)
 	if (parse_header(champ))
 		return (1);
 	skip_non_print(champ);
-//	if (parse_instructions())
 	return (0);
 }
