@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 17:24:38 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/14 16:58:56 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/14 21:18:01 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	write_to_cor(t_asm *champ)
 	if (!(tmp = dup_to_char(champ->filename, '.')))
 		exit_fail();
 	champ->fd = open_file(tmp);
-	ft_dprintf(champ->fd, "%c", '\0');
+	ft_dprintf(champ->fd, "%c", 0x00);
 	ft_dprintf(champ->fd, "%c", 0xea);
 	ft_dprintf(champ->fd, "%c", 0x83);
 	ft_dprintf(champ->fd, "%c", 0xf3);
