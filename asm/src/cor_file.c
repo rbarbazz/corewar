@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 17:24:38 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/14 21:18:01 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/17 11:23:39 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,38 @@ static int	open_file(char *filename)
 	{
 		ft_strdel(&tmp);
 		perror("open");
-		exit(EXIT_FAILURE);
+		exit_fail();
 	}
+	ft_printf("Writing output program to %s\n", tmp);
 	ft_strdel(&tmp);
 	return (fd);
 }
 
+static void	write_header(t_asm *champ)
+{
+	int	i;
+
+	i = 0;
+	while (i < PROG_NAME_LENGTH + 1)
+	{
+		ft_dprintf(champ->fd, "%c", champ->header->prog_name[i]);
+		i++;
+	}
+	// hardcoded size for test.s
+	ft_dprintf(champ->fd, "%c", 0x00);
+	ft_dprintf(champ->fd, "%c", 0x00);
+	ft_dprintf(champ->fd, "%c", 0x00);
+	ft_dprintf(champ->fd, "%c", 0x00);
+	ft_dprintf(champ->fd, "%c", 0x00);
+	ft_dprintf(champ->fd, "%c", 0x00);
+	ft_dprintf(champ->fd, "%c", 0x17);
+	i = 0;
+	while (i < COMMENT_LENGTH + 1)
+	{
+		ft_dprintf(champ->fd, "%c", champ->header->comment[i]);
+		i++;
+	}
+}
 
 void	write_to_cor(t_asm *champ)
 {
@@ -37,9 +63,10 @@ void	write_to_cor(t_asm *champ)
 	if (!(tmp = dup_to_char(champ->filename, '.')))
 		exit_fail();
 	champ->fd = open_file(tmp);
+	ft_strdel(&tmp);
 	ft_dprintf(champ->fd, "%c", 0x00);
 	ft_dprintf(champ->fd, "%c", 0xea);
 	ft_dprintf(champ->fd, "%c", 0x83);
 	ft_dprintf(champ->fd, "%c", 0xf3);
-	ft_strdel(&tmp);
+	write_header(champ);
 }

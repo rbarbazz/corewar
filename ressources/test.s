@@ -1,4 +1,4 @@
-.name  "test"
+.name  "zork"
 .comment "I'M ALIIIIVE"    #yeeeet
 
 l2:
