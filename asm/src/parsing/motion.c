@@ -6,11 +6,15 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 16:42:45 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/11 18:34:27 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/18 10:50:02 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+/*
+** moves forward on the sfile skipping all non printing char including '\n'
+*/
 
 void	skip_non_print(t_asm *champ)
 {
@@ -31,6 +35,10 @@ void	skip_non_print(t_asm *champ)
 	}
 }
 
+/*
+** moves forward on the sfile skipping all non printing char except '\n'
+*/
+
 void	skip_space(t_asm *champ)
 {
 	while (champ->sfile && champ->sfile[champ->i] &&\
@@ -45,6 +53,10 @@ void	skip_space(t_asm *champ)
 		}
 	}
 }
+
+/*
+** proceeds one char forward in the sfile, incrementing the indexes accordingly
+*/
 
 void	move_index(t_asm *champ)
 {

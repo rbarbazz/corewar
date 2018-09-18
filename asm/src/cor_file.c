@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 17:24:38 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/17 11:23:39 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/18 11:08:13 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	write_header(t_asm *champ)
 		ft_dprintf(champ->fd, "%c", champ->header->prog_name[i]);
 		i++;
 	}
-	// hardcoded size for test.s
+	/*// hardcoded size for test.s
 	ft_dprintf(champ->fd, "%c", 0x00);
 	ft_dprintf(champ->fd, "%c", 0x00);
 	ft_dprintf(champ->fd, "%c", 0x00);
@@ -53,7 +53,7 @@ static void	write_header(t_asm *champ)
 	{
 		ft_dprintf(champ->fd, "%c", champ->header->comment[i]);
 		i++;
-	}
+	}*/
 }
 
 void	write_to_cor(t_asm *champ)

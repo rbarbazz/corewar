@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:46:27 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/11 18:34:10 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/18 10:40:14 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ static void	store_line(char **sfile, char *line)
 	char	*wo_comm;
 	char	*tmp;
 
-	if (!(wo_comm = dup_to_char(line, COMMENT_CHAR)) ||\
-	!(wo_comm = strjoinchar(wo_comm, '\n')))
+	if (!(wo_comm = dup_to_char(line, COMMENT_CHAR)))
 		exit_fail();
 	if (!*sfile)
 	{
@@ -37,6 +36,8 @@ static void	store_line(char **sfile, char *line)
 		ft_strdel(&tmp);
 	}
 	ft_strdel(&wo_comm);
+	if(!(*sfile = strjoinchar(*sfile, '\n')))
+		exit_fail();
 }
 
 static int	open_file(char *filename)
