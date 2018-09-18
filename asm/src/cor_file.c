@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 17:24:38 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/18 11:08:13 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/18 19:05:51 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,17 @@ static void	write_header(t_asm *champ)
 	int	i;
 
 	i = 0;
-	while (i < PROG_NAME_LENGTH + 1)
+	ft_dprintf(champ->fd, "%c", 0x00);
+	ft_dprintf(champ->fd, "%c", 0xea);
+	ft_dprintf(champ->fd, "%c", 0x83);
+	ft_dprintf(champ->fd, "%c", 0xf3);
+	while (i < PROG_NAME_LENGTH)
 	{
 		ft_dprintf(champ->fd, "%c", champ->header->prog_name[i]);
 		i++;
 	}
-	/*// hardcoded size for test.s
+	// hardcoded size for test.s
+	ft_dprintf(champ->fd, "%c", 0x00);
 	ft_dprintf(champ->fd, "%c", 0x00);
 	ft_dprintf(champ->fd, "%c", 0x00);
 	ft_dprintf(champ->fd, "%c", 0x00);
@@ -49,11 +54,11 @@ static void	write_header(t_asm *champ)
 	ft_dprintf(champ->fd, "%c", 0x00);
 	ft_dprintf(champ->fd, "%c", 0x17);
 	i = 0;
-	while (i < COMMENT_LENGTH + 1)
+	while (i < COMMENT_LENGTH)
 	{
 		ft_dprintf(champ->fd, "%c", champ->header->comment[i]);
 		i++;
-	}*/
+	}
 }
 
 void	write_to_cor(t_asm *champ)
@@ -64,9 +69,5 @@ void	write_to_cor(t_asm *champ)
 		exit_fail();
 	champ->fd = open_file(tmp);
 	ft_strdel(&tmp);
-	ft_dprintf(champ->fd, "%c", 0x00);
-	ft_dprintf(champ->fd, "%c", 0xea);
-	ft_dprintf(champ->fd, "%c", 0x83);
-	ft_dprintf(champ->fd, "%c", 0xf3);
 	write_header(champ);
 }
