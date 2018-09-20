@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:46:27 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/18 10:40:14 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/20 18:16:20 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	store_line(char **sfile, char *line)
 		ft_strdel(&tmp);
 	}
 	ft_strdel(&wo_comm);
-	if(!(*sfile = strjoinchar(*sfile, '\n')))
+	if (!(*sfile = strjoinchar(*sfile, '\n')))
 		exit_fail();
 }
 

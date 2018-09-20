@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 17:24:38 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/18 19:05:51 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/20 16:10:55 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,38 +30,7 @@ static int	open_file(char *filename)
 	return (fd);
 }
 
-static void	write_header(t_asm *champ)
-{
-	int	i;
-
-	i = 0;
-	ft_dprintf(champ->fd, "%c", 0x00);
-	ft_dprintf(champ->fd, "%c", 0xea);
-	ft_dprintf(champ->fd, "%c", 0x83);
-	ft_dprintf(champ->fd, "%c", 0xf3);
-	while (i < PROG_NAME_LENGTH)
-	{
-		ft_dprintf(champ->fd, "%c", champ->header->prog_name[i]);
-		i++;
-	}
-	// hardcoded size for test.s
-	ft_dprintf(champ->fd, "%c", 0x00);
-	ft_dprintf(champ->fd, "%c", 0x00);
-	ft_dprintf(champ->fd, "%c", 0x00);
-	ft_dprintf(champ->fd, "%c", 0x00);
-	ft_dprintf(champ->fd, "%c", 0x00);
-	ft_dprintf(champ->fd, "%c", 0x00);
-	ft_dprintf(champ->fd, "%c", 0x00);
-	ft_dprintf(champ->fd, "%c", 0x17);
-	i = 0;
-	while (i < COMMENT_LENGTH)
-	{
-		ft_dprintf(champ->fd, "%c", champ->header->comment[i]);
-		i++;
-	}
-}
-
-void	write_to_cor(t_asm *champ)
+void		write_to_cor(t_asm *champ)
 {
 	char		*tmp;
 
@@ -70,4 +39,9 @@ void	write_to_cor(t_asm *champ)
 	champ->fd = open_file(tmp);
 	ft_strdel(&tmp);
 	write_header(champ);
+	if (close(champ->fd) == -1)
+	{
+		perror("close");
+		exit_fail();
+	}
 }

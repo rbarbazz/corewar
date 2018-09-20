@@ -2,3 +2,4 @@
 asm/asm.dSYM/**
 **.a
 asm/asm
+asm/obj
