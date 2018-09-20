@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/20 18:17:45 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/20 19:02:11 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,16 @@
 # define PROG_NAME_LENGTH	(128)
 # define COMMENT_LENGTH		(2048)
 # define COREWAR_EXEC_MAGIC	0xea83f3
+
+typedef struct		s_instr
+{
+	int				opcode;
+	int				ocp;
+	int				*param1;
+	int				*param2;
+	int				*param3;
+	struct s_instr	*next;
+}					t_instr;
 
 typedef struct		s_header
 {
