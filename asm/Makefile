@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/09/20 16:11:57 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/09/21 18:42:32 by rbarbazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,10 @@ NAME = asm
 
 SRC_PATH = src
 
-SRC_NAME =	main.c clear.c option.c error.c\
+SRC_NAME =	main.c clear.c check_argument.c store_sfile.c\
+ 			error/error_file.c error/error.c\
 			encode/cor_file.c encode/header.c\
-			parsing/store_sfile.c parsing/parser.c parsing/motion.c\
+			parsing/parser.c parsing/motion.c\
 			parsing/commands.c
 
 OBJ_PATH = obj
@@ -48,7 +49,7 @@ $(NAME): $(LIB) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) $(LIB) -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	@mkdir -p obj/parsing obj/encode
+	@mkdir -p obj/parsing obj/encode obj/error
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 norme:

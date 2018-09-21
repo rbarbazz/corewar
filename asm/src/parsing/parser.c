@@ -6,41 +6,30 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 17:52:53 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/20 18:19:14 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/21 19:17:16 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static int	parse_header(t_asm *champ)
+static void	parse_header(t_asm *champ)
 {
-	if (check_cmd(champ, NAME_CMD_STRING) || check_cmd_value(champ,\
-	PROG_NAME_LENGTH, champ->header->prog_name, NAME_CMD_STRING))
-	{
-		error_parse();
-		return (1);
-	}
+	check_cmd(champ, NAME_CMD_STRING);
+	check_cmd_value(champ, PROG_NAME_LENGTH, NAME_CMD_STRING,\
+	champ->header->prog_name);
 	skip_space(champ);
 	if (!champ->sfile || !champ->sfile[champ->i] ||\
 	champ->sfile[champ->i] != '\n')
-	{
-		error_parse();
-		return (1);
-	}
+		error_cmd_value(NAME_CMD_STRING);
 	move_index(champ);
-	if (check_cmd(champ, COMMENT_CMD_STRING) || check_cmd_value(champ,\
-	COMMENT_LENGTH, champ->header->comment, COMMENT_CMD_STRING))
-	{
-		error_parse();
-		return (1);
-	}
-	return (0);
+	check_cmd(champ, COMMENT_CMD_STRING);
+	check_cmd_value(champ, COMMENT_LENGTH, COMMENT_CMD_STRING,\
+	champ->header->comment);
 }
 
 int			parser(t_asm *champ)
 {
-	if (parse_header(champ))
-		return (1);
+	parse_header(champ);
 	skip_non_print(champ);
 	return (0);
 }

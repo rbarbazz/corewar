@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 17:30:05 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/13 11:29:45 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/21 19:08:14 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** store them into the header
 */
 
-int	check_cmd(t_asm *champ, char *cmd)
+void	check_cmd(t_asm *champ, char *cmd)
 {
 	unsigned long	i;
 
@@ -30,8 +30,7 @@ int	check_cmd(t_asm *champ, char *cmd)
 		move_index(champ);
 	}
 	if (i != ft_strlen(cmd))
-		return (1);
-	return (0);
+		error_cmd(cmd);
 }
 
 /*
@@ -39,7 +38,7 @@ int	check_cmd(t_asm *champ, char *cmd)
 ** store them into the header
 */
 
-int	check_cmd_value(t_asm *champ, int max_length, char *cmd, char *value)
+void	check_cmd_value(t_asm *champ, int max_length, char *cmd, char *value)
 {
 	int	i;
 
@@ -47,19 +46,18 @@ int	check_cmd_value(t_asm *champ, int max_length, char *cmd, char *value)
 	skip_space(champ);
 	if (!champ->sfile || !champ->sfile[champ->i] ||\
 	champ->sfile[champ->i] != '\"')
-		return (1);
+		error_cmd_value(cmd);
 	move_index(champ);
 	while (champ->sfile && champ->sfile[champ->i] &&\
 	champ->sfile[champ->i] != '\"')
 	{
 		if (i > max_length)
-			error_cmd_length(value, max_length);
-		cmd[i] = champ->sfile[champ->i];
+			error_cmd_length(cmd, max_length);
+		value[i] = champ->sfile[champ->i];
 		i++;
 		move_index(champ);
 	}
 	if (!champ->sfile || !champ->sfile[champ->i])
-		return (1);
+		error_cmd_value(cmd);
 	move_index(champ);
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/20 19:02:11 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/21 19:19:09 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@
 # define PROG_NAME_LENGTH	(128)
 # define COMMENT_LENGTH		(2048)
 # define COREWAR_EXEC_MAGIC	0xea83f3
+
+# define WRONG_USAGE 1
+# define FILE_EMPTY 2
+# define WRONG_CMD 3
+# define WRONG_CMD_VALUE 4
+# define CMD_TOO_BIG 5
+# define PARSE_ERR 6
 
 typedef struct		s_instr
 {
@@ -77,8 +84,8 @@ char				*check_args(int argc, char **argv);
 
 char				*store_sfile(char *filename);
 int					parser(t_asm *champ);
-int					check_cmd(t_asm *champ, char *cmd);
-int					check_cmd_value(t_asm *champ, int max_length, char *cmd,\
+void				check_cmd(t_asm *champ, char *cmd);
+void				check_cmd_value(t_asm *champ, int max_length, char *cmd,\
 char *value);
 void				skip_non_print(t_asm *champ);
 void				skip_space(t_asm *champ);
@@ -96,7 +103,10 @@ void				write_header(t_asm *champ);
 */
 
 void				error_usage(char *prog_name);
+void				error_empty(void);
 void				error_parse(void);
+void				error_cmd(char *cmd);
+void				error_cmd_value(char *cmd);
 void				error_cmd_length(char *cmd, int max_length);
 
 /*
