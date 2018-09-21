@@ -6,18 +6,18 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 16:07:49 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/21 17:15:20 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/21 19:44:09 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static void	add_padding(t_asm *champ, int padd)
+static void	add_padding(t_asm *champ, int padding)
 {
-	while (padd)
+	while (padding)
 	{
 		ft_dprintf(champ->fd, "%c", 0x00);
-		padd--;
+		padding--;
 	}
 }
 

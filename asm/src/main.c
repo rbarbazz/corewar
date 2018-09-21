@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/21 19:18:38 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/21 19:45:00 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,3 +49,8 @@ int		main(int argc, char **argv)
 	free_asm();
 	return (EXIT_SUCCESS);
 }
+
+/*
+** Todo :
+** [ ] find a way to dynamic print exec magic
+*/
