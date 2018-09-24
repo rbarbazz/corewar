@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/24 12:37:19 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/24 15:34:46 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct		s_asm
 	int				col;
 	int				i;
 	int				fd;
-	char			*cor_file;
+	char			cor_file[CHAMP_MAX_SIZE + 1];
 }					t_asm;
 
 t_asm				*get_champ(void);

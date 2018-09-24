@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/24 12:41:53 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/24 15:56:57 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ void	init_champ(t_asm *champ)
 	champ->line = 1;
 	champ->col = 1;
 	champ->i = 0;
-	if (!(champ->cor_file = \
-	ft_strnew(4 + PROG_NAME_LENGTH + 8 + COMMENT_LENGTH + CHAMP_MAX_SIZE)))
-	 	exit_fail();
+	ft_bzero(champ->cor_file, CHAMP_MAX_SIZE + 1);
 }
 
 t_asm	*get_champ(void)
@@ -55,6 +53,4 @@ int		main(int argc, char **argv)
 
 /*
 ** Todo :
-** [ ] find a way to dynamic print exec magic
-** [ ] parser writes into champ->cor_file then write on the actual file
 */

@@ -6,13 +6,13 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 16:07:49 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/24 12:04:22 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/24 15:54:36 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static void	add_padding(t_asm *champ, int padding)
+static void	add_padding(t_asm *champ,unsigned int padding)
 {
 	while (padding)
 	{
@@ -21,35 +21,42 @@ static void	add_padding(t_asm *champ, int padding)
 	}
 }
 
-static void	write_size(t_asm *champ)
+static void	write_uint(t_asm *champ, unsigned int dec, unsigned int len)
 {
-	add_padding(champ, 4);
-	ft_dprintf(champ->fd, "%c", 0x00);
-	ft_dprintf(champ->fd, "%c", 0x00);
-	ft_dprintf(champ->fd, "%c", 0x00);
-	ft_dprintf(champ->fd, "%c", 0x17);
+	char	size[len + 1];
+
+	while (len)
+	{
+		size[len - 1] = dec % 256;
+		dec /= 256;
+		len--;
+	}
+	size[len] = 0;
+	while (len < 4)
+	{
+		ft_dprintf(champ->fd, "%c", size[len]);
+		len++;
+	}
 }
 
-static void	write_exec_magic(t_asm *champ)
-{
-	ft_dprintf(champ->fd, "%c", 0x00);
-	ft_dprintf(champ->fd, "%c", 0xea);
-	ft_dprintf(champ->fd, "%c", 0x83);
-	ft_dprintf(champ->fd, "%c", 0xf3);
-}
+/*
+** first call to write_uint() to write COREWAR_EXEC_MAGIC
+** second call to write prog_size
+*/ 
 
 void		write_header(t_asm *champ)
 {
 	int	i;
 
 	i = 0;
-	write_exec_magic(champ);
+	write_uint(champ, champ->header->magic, 4);
 	while (i < PROG_NAME_LENGTH)
 	{
 		ft_dprintf(champ->fd, "%c", champ->header->prog_name[i]);
 		i++;
 	}
-	write_size(champ);
+	add_padding(champ, 4);
+	write_uint(champ, 23, 4);
 	i = 0;
 	while (i < COMMENT_LENGTH)
 	{
