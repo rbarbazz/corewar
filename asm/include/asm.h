@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/21 19:19:09 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/24 12:37:19 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@
 # define NAME_CMD_STRING	".name"
 # define COMMENT_CMD_STRING	".comment"
 
+#define MEM_SIZE			(4*1024)
+#define CHAMP_MAX_SIZE		(MEM_SIZE / 6)
+
 # define PROG_NAME_LENGTH	(128)
 # define COMMENT_LENGTH		(2048)
 # define COREWAR_EXEC_MAGIC	0xea83f3
@@ -39,16 +42,6 @@
 # define WRONG_CMD_VALUE 4
 # define CMD_TOO_BIG 5
 # define PARSE_ERR 6
-
-typedef struct		s_instr
-{
-	int				opcode;
-	int				ocp;
-	int				*param1;
-	int				*param2;
-	int				*param3;
-	struct s_instr	*next;
-}					t_instr;
 
 typedef struct		s_header
 {
@@ -67,6 +60,7 @@ typedef struct		s_asm
 	int				col;
 	int				i;
 	int				fd;
+	char			*cor_file;
 }					t_asm;
 
 t_asm				*get_champ(void);
