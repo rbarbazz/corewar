@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 17:52:53 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/24 15:15:35 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/24 18:19:08 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,28 @@ static void	parse_header(t_asm *champ)
 	champ->header->comment);
 }
 
+/*static int	is_label_char(char c)
+{
+	int	i;
+
+	i = 0;
+	while (LABEL_CHARS && LABEL_CHARS[i])
+	{
+		if (c == LABEL_CHARS[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+*/
+
 int			parser(t_asm *champ)
 {
 	parse_header(champ);
 	skip_non_print(champ);
+	while (!champ->sfile || !champ->sfile[champ->i])
+	{
+		move_index(champ);
+	}
 	return (0);
 }

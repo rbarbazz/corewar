@@ -6,13 +6,13 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 16:07:49 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/24 15:54:36 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/24 17:52:59 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static void	add_padding(t_asm *champ,unsigned int padding)
+static void	add_padding(t_asm *champ, unsigned int padding)
 {
 	while (padding)
 	{
@@ -41,8 +41,8 @@ static void	write_uint(t_asm *champ, unsigned int dec, unsigned int len)
 
 /*
 ** first call to write_uint() to write COREWAR_EXEC_MAGIC
-** second call to write prog_size
-*/ 
+** second call to write_uint() to write prog_size
+*/
 
 void		write_header(t_asm *champ)
 {
