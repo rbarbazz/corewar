@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/24 18:09:00 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/25 15:51:46 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # define T_REG				1
 # define T_DIR				2
 # define T_IND				4
-# define T_LAB				8
 
 # define COMMENT_CHAR 		'#'
 # define LABEL_CHAR 		':'
@@ -52,26 +51,19 @@
 # define CMD_TOO_BIG 5
 # define PARSE_ERR 6
 
-typedef struct		s_instr
+typedef struct		s_lab
 {
-	char			*label;
-	int				code;
-	int				ocp;
-	unsigned int	nb_param;
-	int				param1[5];
-	int				param2[5];
-	int				param3[5];
-	struct s_instr	*next;
-}					t_instr;
+	char			*name;
+	int				pos;
+	struct s_lab	*next;
+}					t_lab;
 
 typedef struct		s_op
 {
 	char			*name;
 	unsigned int	nb_param;
 	int				param[3];
-	int				code;
-	int				nb_cycles;
-	char			*description;
+	int				opcode;
 	int				ocp;
 	int				nb_or_address;
 }					t_op;
@@ -94,10 +86,12 @@ typedef struct		s_asm
 	int				i;
 	int				fd;
 	char			cor_file[CHAMP_MAX_SIZE + 1];
-	t_instr			*instr;
+	t_lab			*lab;
 }					t_asm;
 
 t_asm				*get_champ(void);
+
+extern				t_op	g_op_tab[17];
 
 /*
 ** check arguments
@@ -118,6 +112,7 @@ char *value);
 void				skip_non_print(t_asm *champ);
 void				skip_space(t_asm *champ);
 void				move_index(t_asm *champ);
+void				look_for_label(t_asm *champ);
 
 /*
 ** creating and writing to .cor file

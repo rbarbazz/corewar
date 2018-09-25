@@ -220,18 +220,18 @@ ERROR
 ********************************
 
 if Label
-if Symbol == :
-continue
-else
-ERROR
+	if Symbol == :
+		continue
+	else
+		ERROR
 else if Keyword
-foreach args in op_tab separated by Symbol == ,
-if Arguments get != Argument require
-ERROR
+	foreach args in op_tab separated by Symbol == ,
+	if Arguments get != Argument require
+		ERROR
+	else
+		encode
 else
-encode
-else
-ERROR
+	ERROR
 
 ********************************
 *             args             *
