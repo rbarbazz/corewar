@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/26 11:25:19 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/26 12:05:06 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct		s_lab
 
 typedef struct		s_op
 {
-	char			*name;
+	char			name[6];
 	unsigned int	nb_param;
 	int				param[3];
 	int				opcode;
