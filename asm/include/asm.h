@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/26 12:05:06 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/26 13:26:21 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void				skip_space(t_asm *champ);
 void				move_index(t_asm *champ);
 void				look_for_label(t_asm *champ);
 void				look_for_op(t_asm *champ);
+t_op				*check_name(t_asm *champ);
 
 /*
 ** creating and writing to .cor file
