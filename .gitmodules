@@ -1,3 +1,6 @@
 [submodule "asm/libft"]
 	path = asm/libft
 	url = https://github.com/rbarbazz/libft.git
+[submodule "vm/libft"]
+	path = vm/libft
+	url = https://github.com/rbarbazz/libft.git
