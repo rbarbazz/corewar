@@ -3,3 +3,5 @@ asm/asm.dSYM/**
 **.a
 asm/asm
 asm/obj
+vm/obj
+vm/corewar
