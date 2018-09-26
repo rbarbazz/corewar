@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/25 13:16:30 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/26 09:44:11 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,13 @@ void	init_champ(t_asm *champ)
 	champ->header = &header;
 	champ->header->magic = COREWAR_EXEC_MAGIC;
 	ft_bzero(champ->header->prog_name, PROG_NAME_LENGTH + 1);
+	champ->header->prog_size = 0;
 	ft_bzero(champ->header->comment, COMMENT_LENGTH + 1);
 	champ->line = 1;
 	champ->col = 1;
 	champ->i = 0;
 	ft_bzero(champ->cor_file, CHAMP_MAX_SIZE + 1);
+	champ->lab = NULL;
 }
 
 t_asm	*get_champ(void)

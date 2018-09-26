@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/09/25 14:48:33 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/09/26 11:12:58 by rbarbazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC_NAME =	main.c clear.c check_argument.c store_sfile.c op.c\
  			error/error_file.c error/error.c\
 			encode/cor_file.c encode/header.c\
 			parsing/parser.c parsing/cursor_motion.c\
-			parsing/parse_header.c parsing/parse_label.c
+			parsing/parse_header.c parsing/parse_label.c parsing/parse_op.c
 
 OBJ_PATH = obj
 

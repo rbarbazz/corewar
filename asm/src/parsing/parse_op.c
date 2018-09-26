@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear.c                                            :+:      :+:    :+:   */
+/*   parse_op.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/10 15:39:16 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/26 09:34:46 by rbarbazz         ###   ########.fr       */
+/*   Created: 2018/09/26 10:31:24 by rbarbazz          #+#    #+#             */
+/*   Updated: 2018/09/26 11:26:50 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void		free_lab(t_lab *lab)
+static void	assign_last_lab(t_asm *champ)
 {
 	t_lab	*tmp;
 
-	while (lab)
+	tmp = champ->lab;
+	while (tmp && tmp->next)
+		tmp = tmp->next;
+	tmp->pos = champ->header->prog_size;
+}
+
+void	look_for_op(t_asm *champ)
+{
+	int		pos;
+//	char	op[6];
+
+	if (skip_non_print(champ) <= 1)
+		assign_last_lab(champ);
+	pos = champ->i;
+	while (champ->sfile && champ->sfile[pos] && ft_isalpha(champ->sfile[pos]))
 	{
-		tmp = lab;
-		lab = lab->next;
-		ft_strdel(&tmp->name);
-		ft_memdel((void**)&tmp);
+		if (champ->sfile[pos] == LABEL_CHAR)
+			return ;
+		pos++;
 	}
-}
-
-void		free_asm(void)
-{
-	t_asm	*champ;
-
-	champ = get_champ();
-	if (champ->sfile)
-		ft_strdel(&champ->sfile);
-	if (champ->lab)
-		free_lab(champ->lab);
-}
-
-void		exit_fail(void)
-{
-	free_asm();
-	exit(EXIT_FAILURE);
 }

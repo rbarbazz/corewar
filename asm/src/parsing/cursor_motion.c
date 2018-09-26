@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   motion.c                                           :+:      :+:    :+:   */
+/*   cursor_motion.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 16:42:45 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/18 10:50:02 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/26 11:27:21 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 /*
 ** moves forward on the sfile skipping all non printing char including '\n'
+** returns the number of '\n'
 */
 
-void	skip_non_print(t_asm *champ)
+int		skip_non_print(t_asm *champ)
 {
+	int	ret;
+
+	ret = 0;
 	while (champ->sfile && champ->sfile[champ->i] &&\
 	!ft_isprint(champ->sfile[champ->i]))
 	{
@@ -25,6 +29,7 @@ void	skip_non_print(t_asm *champ)
 		{
 			champ->i++;
 			champ->line++;
+			ret++;
 			champ->col = 1;
 		}
 		else
@@ -33,6 +38,7 @@ void	skip_non_print(t_asm *champ)
 			champ->col++;
 		}
 	}
+	return (ret);
 }
 
 /*

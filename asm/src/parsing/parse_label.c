@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:34:47 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/25 17:51:21 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/26 11:26:09 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ static int	is_label_chars(char c)
 	return (0);
 }
 
+/*
+** save the new label with the pos -1 by default
+** will be flipped to the current prog_size if an op is linked to the label
+*/
+
 static void	add_label(t_asm *champ, char *lab_name)
 {
 	t_lab	*tmp;
@@ -36,9 +41,18 @@ static void	add_label(t_asm *champ, char *lab_name)
 		tmp = tmp->next;
 	if (!(new = (t_lab*)ft_memalloc(sizeof(t_lab))))
 		exit_fail();
-	if (!(ft_strdup(lab_name)))
+	if (!(new->name = ft_strdup(lab_name)))
 		exit_fail();
+	new->pos = -1;
+	if (!champ->lab)
+		champ->lab = new;
+	else
+		tmp->next = new;
 }
+
+/*
+** get the label's name and leave the cursor right after LABEL_CHAR
+*/
 
 static void	get_label(t_asm *champ, int pos)
 {
@@ -54,11 +68,7 @@ static void	get_label(t_asm *champ, int pos)
 	lab_name[i] = '\0';
 	add_label(champ, lab_name);
 	move_index(champ);
-	skip_space(champ);
-	if (!champ->sfile || !champ->sfile[champ->i] ||\
-	champ->sfile[champ->i] != '\n')
-		error_parse();
-	move_index(champ);
+	ft_printf("Label %s\n", lab_name);
 }
 
 /*
@@ -70,6 +80,7 @@ void		look_for_label(t_asm *champ)
 {
 	int	pos;
 
+	skip_non_print(champ);
 	pos = champ->i;
 	while (champ->sfile && champ->sfile[pos] &&\
 	is_label_chars(champ->sfile[pos]))

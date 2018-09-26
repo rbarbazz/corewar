@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/25 15:51:46 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/26 11:25:19 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,11 @@ int					parser(t_asm *champ);
 void				check_cmd(t_asm *champ, char *cmd);
 void				check_cmd_value(t_asm *champ, int max_length, char *cmd,\
 char *value);
-void				skip_non_print(t_asm *champ);
+int					skip_non_print(t_asm *champ);
 void				skip_space(t_asm *champ);
 void				move_index(t_asm *champ);
 void				look_for_label(t_asm *champ);
+void				look_for_op(t_asm *champ);
 
 /*
 ** creating and writing to .cor file

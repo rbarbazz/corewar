@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 17:52:53 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/25 15:52:48 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/26 11:13:41 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			parser(t_asm *champ)
 	while (champ->sfile && champ->sfile[champ->i])
 	{
 		look_for_label(champ);
-		move_index(champ);
+		look_for_op(champ);
 	}
 	return (0);
 }
