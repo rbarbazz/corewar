@@ -22,12 +22,12 @@ void	check_cmd(t_asm *champ, char *cmd)
 	unsigned long	i;
 
 	i = 0;
-	skip_non_print(champ);
+	skip_non_print();
 	while (champ->sfile && champ->sfile[champ->i] &&\
 	cmd[i] == champ->sfile[champ->i])
 	{
 		i++;
-		move_index(champ);
+		move_index();
 	}
 	if (i != ft_strlen(cmd))
 		error_cmd(cmd);
@@ -43,11 +43,11 @@ void	check_cmd_value(t_asm *champ, int max_length, char *cmd, char *value)
 	int	i;
 
 	i = 0;
-	skip_space(champ);
+	skip_space();
 	if (!champ->sfile || !champ->sfile[champ->i] ||\
 	champ->sfile[champ->i] != '\"')
 		error_cmd_value(cmd);
-	move_index(champ);
+	move_index();
 	while (champ->sfile && champ->sfile[champ->i] &&\
 	champ->sfile[champ->i] != '\"')
 	{
@@ -55,9 +55,9 @@ void	check_cmd_value(t_asm *champ, int max_length, char *cmd, char *value)
 			error_cmd_length(cmd, max_length);
 		value[i] = champ->sfile[champ->i];
 		i++;
-		move_index(champ);
+		move_index();
 	}
 	if (!champ->sfile || !champ->sfile[champ->i])
 		error_cmd_value(cmd);
-	move_index(champ);
+	move_index();
 }
