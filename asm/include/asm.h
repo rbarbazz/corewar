@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/26 13:26:21 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/26 16:55:18 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct		s_op
 	unsigned int	nb_param;
 	int				param[3];
 	int				opcode;
-	int				ocp;
+	int				has_ocp;
 	int				nb_or_address;
 }					t_op;
 
@@ -91,7 +91,7 @@ typedef struct		s_asm
 
 t_asm				*get_champ(void);
 
-extern				t_op	g_op_tab[17];
+extern				t_op	g_op_tab[16];
 
 /*
 ** check arguments
@@ -109,12 +109,13 @@ int					parser(t_asm *champ);
 void				check_cmd(t_asm *champ, char *cmd);
 void				check_cmd_value(t_asm *champ, int max_length, char *cmd,\
 char *value);
-int					skip_non_print(t_asm *champ);
-void				skip_space(t_asm *champ);
-void				move_index(t_asm *champ);
+int					skip_non_print(void);
+void				skip_space(void);
+void				move_index(void);
 void				look_for_label(t_asm *champ);
 void				look_for_op(t_asm *champ);
 t_op				*check_name(t_asm *champ);
+void				check_op_param(t_asm *champ, t_op *op);
 
 /*
 ** creating and writing to .cor file

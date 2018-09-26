@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:34:47 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/26 11:26:09 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/26 16:05:43 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	add_label(t_asm *champ, char *lab_name)
 		champ->lab = new;
 	else
 		tmp->next = new;
+	ft_printf("Label %s pos %d\n", new->name, new->pos);
 }
 
 /*
@@ -60,15 +61,15 @@ static void	get_label(t_asm *champ, int pos)
 	int		i;
 
 	i = 0;
-	while (champ->sfile && champ->sfile[champ->i] && champ->sfile[champ->i] != LABEL_CHAR)
+	while (champ->sfile && champ->sfile[champ->i] &&\
+	champ->sfile[champ->i] != LABEL_CHAR)
 	{
 		lab_name[i++] = champ->sfile[champ->i];
-		move_index(champ);
+		move_index();
 	}
 	lab_name[i] = '\0';
 	add_label(champ, lab_name);
-	move_index(champ);
-	ft_printf("Label %s\n", lab_name);
+	move_index();
 }
 
 /*
@@ -80,7 +81,7 @@ void		look_for_label(t_asm *champ)
 {
 	int	pos;
 
-	skip_non_print(champ);
+	skip_non_print();
 	pos = champ->i;
 	while (champ->sfile && champ->sfile[pos] &&\
 	is_label_chars(champ->sfile[pos]))
