@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/26 16:46:55 by msamak           ###   ########.fr       */
+/*   Updated: 2018/09/26 17:04:58 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,25 @@ t_global	*get_global(void)
 	return (&info);
 }
 
+int			print_map(t_global *info)
+{
+	int i;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		ft_printf("%d", info->map[i]);
+		i++;
+	}
+	return (0);
+}
+
 int		main(void)
 {
 	t_global	*info;
 
 	info = get_global();
 	ft_printf("Bienvenue dans CoreWar\n");
+	print_map(info);
 	return (0);
 }
