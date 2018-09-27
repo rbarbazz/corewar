@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/09/26 13:30:41 by msamak           ###   ########.fr        #
+#    Updated: 2018/09/27 17:38:20 by msamak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME = corewar
 
 SRC_PATH = src
 
-SRC_NAME =	main.c
+SRC_NAME =	main.c \
+			debug.c \
+			exit_functions.c \
 
 OBJ_PATH = obj
 
