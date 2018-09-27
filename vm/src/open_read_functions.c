@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 18:45:44 by msamak            #+#    #+#             */
-/*   Updated: 2018/09/27 18:51:35 by msamak           ###   ########.fr       */
+/*   Updated: 2018/09/27 18:55:14 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*read_file(int fd, char *filename)
 	{
 		ft_strdel(&file);
 		perror(filename);
-		exit_corewar(FILE_READ_ERROR);
+		exit_corewar(READ_FILE_ERROR);
 	}
 	if (ret == 0)
 	{

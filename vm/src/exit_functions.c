@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:32:26 by msamak            #+#    #+#             */
-/*   Updated: 2018/09/27 18:16:02 by msamak           ###   ########.fr       */
+/*   Updated: 2018/09/27 18:55:09 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void		exit_corewar(int error_code)
 		ft_printf("Champion can't be empty\n");
 		exit(FILE_EMPTY);
 	}
-	if (error_code == FILE_READ_ERROR)
-		exit(FILE_READ_ERROR);
+	if (error_code == READ_FILE_ERROR)
+		exit(READ_FILE_ERROR);
 }

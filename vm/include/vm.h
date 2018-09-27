@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/09/27 18:49:30 by msamak           ###   ########.fr       */
+/*   Updated: 2018/09/27 18:54:17 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 # define TOO_MANY_ARGS 1
 # define FILE_EMPTY 2
-# define FILE_READ_ERROR 3
+# define READ_FILE_ERROR 3
 # define MALLOC_ERROR 4
 
 # define FILE_LEN_MAX PROG_NAME_LENGTH + COMMENT_LENGTH + CHAMP_MAX_SIZE + 12
