@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 16:07:49 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/27 15:31:35 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/27 16:08:23 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		write_header(t_asm *champ)
 		i++;
 	}
 	add_padding(champ, 4);
-	write_uint(champ, 23, 4);
+	write_uint(champ, champ->header->prog_size, 4);
 	i = 0;
 	while (i < COMMENT_LENGTH)
 	{

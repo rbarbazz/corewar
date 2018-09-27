@@ -6,58 +6,67 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 16:09:57 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/27 15:21:45 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/27 18:14:13 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-/*static int	check_reg(t_asm *champ, t_op *op, int curr_param)
+static void	add_to_ocp(t_asm *champ, int code, int curr_param)
 {
-	int		i;
-	int		reg;
-	char	nb[3];
-
-	ft_bzero(nb, 3);
-	i = 0;
-	reg = 0;
-	if (champ->sfile && champ->sfile[champ->i] && champ->sfile[champ->i] == 'r')
-	{
-		while (champ->sfile && champ->sfile[champ->i] &&\
-		ft_isdigit(champ->sfile[champ->i]) && i < 2)
-		{
-			nb[i++] = champ->sfile[champ->i];
-			move_index();
-		}
-		if ((reg = ft_atoi(nb)) > REG_NUMBER || reg < 1)
-			error_parse();
-		else
-			add_param(op, reg)
-
-	}
-	return (0);
+	if (!champ->op->has_ocp)
+		return ;
+	if (curr_param == 0)
+		code = code << 2;
+	if (curr_param == 1)
+		code = code << 4;
+	if (curr_param == 2)
+		code = code << 6;
+	champ->cor_file[champ->curr_ocp] = champ->cor_file[champ->curr_ocp] | code;
 }
+
+/*
+** check if the param type passed as param matches with the expected type
+*/
+
+void		check_param_type(t_arg_type type, t_op *op, int curr_param)
+{
+	int	i;
+
+	i = 0;
+	while (i < 17 && !ft_strequ(g_op_tab[i].name, op->name))
+	 	i++;
+	if (g_op_tab[i].param[curr_param] == (g_op_tab[i].param[curr_param] | type))
+		return ;
+	else
+		error_parse();
+}
+
+/*
+** check if the params found match with how many and which are expected
+** adds the params to the cor_file buffer and makes the opcode
+*/
 
 void	check_op_param(t_asm *champ, t_op *op)
 {
-	int curr_param;
+	int	curr_param;
 
 	curr_param = 0;
+	if (op->has_ocp)
+		champ->curr_ocp = champ->header->prog_size++;
 	while (curr_param < op->nb_param)
 	{
 		skip_space();
-		if (!check_reg(champ, champ->op, curr_param))
-		{}
-		else if //check direct(champ->sfile && champ->sfile[champ->i] == DIRECT_CHAR)
+		if (check_reg(champ, champ->op, curr_param))
+			add_to_ocp(champ, REG_CODE, curr_param);
+		/*else if //check direct(champ->sfile && champ->sfile[champ->i] == DIRECT_CHAR)
 		{}
 		else if //check indirect
 		{}
 		else
 		{} //error_parse
 		if (curr_param + 1 < op->nb_param)
-		{} // check SEPARATOR_CHAR
+		{} // check SEPARATOR_CHAR*/
 		curr_param++;
 	}
-	//check that params match with what is expected(type of params)
-	//make ocp if needed and update flag
-}*/
+}
