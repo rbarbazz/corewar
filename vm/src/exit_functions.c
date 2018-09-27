@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:32:26 by msamak            #+#    #+#             */
-/*   Updated: 2018/09/27 18:55:09 by msamak           ###   ########.fr       */
+/*   Updated: 2018/09/27 19:09:16 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,9 @@ void		exit_corewar(int error_code)
 	}
 	if (error_code == READ_FILE_ERROR)
 		exit(READ_FILE_ERROR);
+	if (error_code == MALLOC_ERROR)
+	{
+		ft_printf("Malloc : Error - [Protected]");
+		exit(MALLOC_ERROR);
+	}
 }

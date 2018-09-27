@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/09/27 18:54:17 by msamak           ###   ########.fr       */
+/*   Updated: 2018/09/27 19:03:56 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct			s_process
 
 typedef struct			s_player
 {
+	int					player;
 	char				*name;
 	char				*comment;
 }						t_player;
