@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/26 16:55:18 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/27 15:31:23 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 
 # define MEM_SIZE			(4*1024)
 # define CHAMP_MAX_SIZE		(MEM_SIZE / 6)
+# define REG_NUMBER			16
 
 # define PROG_NAME_LENGTH	(128)
 # define COMMENT_LENGTH		(2048)
@@ -61,7 +62,7 @@ typedef struct		s_lab
 typedef struct		s_op
 {
 	char			name[6];
-	unsigned int	nb_param;
+	int				nb_param;
 	int				param[3];
 	int				opcode;
 	int				has_ocp;
@@ -87,6 +88,8 @@ typedef struct		s_asm
 	int				fd;
 	char			cor_file[CHAMP_MAX_SIZE + 1];
 	t_lab			*lab;
+	t_op			*op;
+	int				curr_ocp;
 }					t_asm;
 
 t_asm				*get_champ(void);
@@ -114,7 +117,7 @@ void				skip_space(void);
 void				move_index(void);
 void				look_for_label(t_asm *champ);
 void				look_for_op(t_asm *champ);
-t_op				*check_name(t_asm *champ);
+int					check_op_name(t_asm *champ);
 void				check_op_param(t_asm *champ, t_op *op);
 
 /*
