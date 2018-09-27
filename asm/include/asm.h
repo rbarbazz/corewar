@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/27 15:31:23 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/27 17:33:08 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 # define T_REG				1
 # define T_DIR				2
 # define T_IND				4
+
+# define REG_CODE			1
+# define DIR_CODE			2
+# define IND_CODE			3
 
 # define COMMENT_CHAR 		'#'
 # define LABEL_CHAR 		':'
@@ -51,6 +55,8 @@
 # define WRONG_CMD_VALUE 4
 # define CMD_TOO_BIG 5
 # define PARSE_ERR 6
+
+typedef char		t_arg_type;
 
 typedef struct		s_lab
 {
@@ -89,7 +95,7 @@ typedef struct		s_asm
 	char			cor_file[CHAMP_MAX_SIZE + 1];
 	t_lab			*lab;
 	t_op			*op;
-	int				curr_ocp;
+	unsigned int	curr_ocp;
 }					t_asm;
 
 t_asm				*get_champ(void);
@@ -119,6 +125,8 @@ void				look_for_label(t_asm *champ);
 void				look_for_op(t_asm *champ);
 int					check_op_name(t_asm *champ);
 void				check_op_param(t_asm *champ, t_op *op);
+void				check_param_type(t_arg_type type, t_op *op, int curr_param);
+int					check_reg(t_asm *champ, t_op *op, int curr_param);
 
 /*
 ** creating and writing to .cor file

@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 10:31:24 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/27 15:22:22 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/27 18:02:33 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ void		look_for_op(t_asm *champ)
 		return ;
 	if (check_op_name(champ))
 		return ;
-	//check_op_param(champ, champ->op);
+	check_op_param(champ, champ->op);
 	assign_last_lab(champ);
-	ft_printf("%s\n", champ->cor_file);
-	ft_printf("op : '%s' nb param : %d opcode : %d nb or address : %d\n", champ->op->name, champ->op->nb_param, champ->op->opcode, champ->op->nb_or_address);
+	skip_non_print();
 }

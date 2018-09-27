@@ -6,7 +6,7 @@
 /*   By: zaz <zaz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/09/27 14:19:57 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/27 17:32:33 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 /*#define IND_SIZE				2
 #define REG_SIZE				4
 #define DIR_SIZE				REG_SIZE
-*/
+
 
 # define REG_CODE				1
 # define DIR_CODE				2
 # define IND_CODE				3
-
+*/
 
 #define MAX_ARGS_NUMBER			4
 #define MAX_PLAYERS				4
@@ -52,7 +52,7 @@
 **
 */
 
-typedef char	t_arg_type;
+//typedef char	t_arg_type;
 
 /*#define T_REG					1
 #define T_DIR					2
