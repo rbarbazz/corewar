@@ -6,12 +6,17 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/09/27 19:03:56 by msamak           ###   ########.fr       */
+/*   Updated: 2018/09/27 19:10:51 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VM_H
 # define VM_H
+
+/*
+** Library Included
+*/
+
 # include "../libft/include/libft.h"
 # include "op.h"
 # include <sys/types.h>
