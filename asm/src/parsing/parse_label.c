@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:34:47 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/26 16:05:43 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/27 18:31:14 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static void	add_label(t_asm *champ, char *lab_name)
 		champ->lab = new;
 	else
 		tmp->next = new;
-	ft_printf("Label %s pos %d\n", new->name, new->pos);
 }
 
 /*

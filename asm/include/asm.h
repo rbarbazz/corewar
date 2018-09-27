@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/27 17:33:08 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/27 19:20:24 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,44 +19,66 @@
 # include <fcntl.h>
 # include <stdio.h>
 
+/*
+** size in byte of each param type
+*/
+
 # define IND_SIZE			2
 # define REG_SIZE			4
 # define DIR_SIZE			REG_SIZE
+
+/*
+** param type number
+*/
+
+typedef char		t_arg_type;
 
 # define T_REG				1
 # define T_DIR				2
 # define T_IND				4
 
+/*
+** param type ocp coresponding code
+*/
+
 # define REG_CODE			1
 # define DIR_CODE			2
 # define IND_CODE			3
+
+/*
+** parsing values
+*/
 
 # define COMMENT_CHAR 		'#'
 # define LABEL_CHAR 		':'
 # define DIRECT_CHAR		'%'
 # define SEPARATOR_CHAR		','
-
 # define LABEL_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789"
-
 # define NAME_CMD_STRING	".name"
 # define COMMENT_CMD_STRING	".comment"
+
+/*
+** sizes
+*/
 
 # define MEM_SIZE			(4*1024)
 # define CHAMP_MAX_SIZE		(MEM_SIZE / 6)
 # define REG_NUMBER			16
-
 # define PROG_NAME_LENGTH	(128)
 # define COMMENT_LENGTH		(2048)
+
+/*
+** error codes
+*/
+
+# define WRONG_USAGE 		1
+# define FILE_EMPTY 		2
+# define WRONG_CMD 			3
+# define WRONG_CMD_VALUE 	4
+# define CMD_TOO_BIG 		5
+# define PARSE_ERR 			6
+
 # define COREWAR_EXEC_MAGIC	0xea83f3
-
-# define WRONG_USAGE 1
-# define FILE_EMPTY 2
-# define WRONG_CMD 3
-# define WRONG_CMD_VALUE 4
-# define CMD_TOO_BIG 5
-# define PARSE_ERR 6
-
-typedef char		t_arg_type;
 
 typedef struct		s_lab
 {
@@ -103,7 +125,7 @@ t_asm				*get_champ(void);
 extern				t_op	g_op_tab[16];
 
 /*
-** check arguments
+** first error handling : check arguments and arguments syntax
 */
 
 int					check_file_extension(char *filename);
@@ -118,25 +140,32 @@ int					parser(t_asm *champ);
 void				check_cmd(t_asm *champ, char *cmd);
 void				check_cmd_value(t_asm *champ, int max_length, char *cmd,\
 char *value);
-int					skip_non_print(void);
-void				skip_space(void);
-void				move_index(void);
 void				look_for_label(t_asm *champ);
 void				look_for_op(t_asm *champ);
 int					check_op_name(t_asm *champ);
 void				check_op_param(t_asm *champ, t_op *op);
 void				check_param_type(t_arg_type type, t_op *op, int curr_param);
 int					check_reg(t_asm *champ, t_op *op, int curr_param);
+int					check_dir(t_asm *champ, t_op *op, int curr_param);
+
+/*
+** cursor motion during the parsing to provide relevant error messages
+*/
+
+int					skip_non_print(void);
+void				skip_space(void);
+void				move_index(void);
 
 /*
 ** creating and writing to .cor file
 */
 
 void				write_to_cor(t_asm *champ);
+int					dec_to_hex(int dec);
 void				write_header(t_asm *champ);
 
 /*
-** error
+** error handling
 */
 
 void				error_usage(char *prog_name);
@@ -147,7 +176,7 @@ void				error_cmd_value(char *cmd);
 void				error_cmd_length(char *cmd, int max_length);
 
 /*
-** clear
+** memory clearing and exit
 */
 
 void				free_asm(void);
