@@ -6,23 +6,11 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 17:24:38 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/27 19:03:51 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/29 17:30:57 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
-int			dec_to_hex(int dec)
-{
-	char	*res;
-	int		ret;
-
-	if (!(res = ft_itoa(dec, 16, 0)))
-		exit_fail();
-	ret = atoi(res);
-	ft_strdel(&res);
-	return (ret);
-}
 
 static int	open_file(char *filename)
 {

@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 10:31:24 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/27 18:02:33 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/29 16:07:22 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,38 @@ void		init_op(t_asm *champ)
 }
 
 /*
-** assign current prog_size to the previous label
+** in case there is no instruction after a label, remove the last label
 */
 
-static void	assign_last_lab(t_asm *champ)
+static void	remove_last_lab(t_asm *champ)
 {
 	t_lab	*tmp;
 
 	tmp = champ->lab;
 	while (tmp && tmp->next)
 		tmp = tmp->next;
-	tmp->pos = champ->header->prog_size;
+	if (tmp)
+	{
+		if (tmp->prev)
+			tmp->prev->next = NULL;
+		ft_strdel(&tmp->name);
+		ft_memdel((void**)&tmp);
+	}
+}
+
+/*
+** assign current prog_size to the previous label
+*/
+
+static void	assign_last_lab(t_asm *champ, int pos)
+{
+	t_lab	*tmp;
+
+	tmp = champ->lab;
+	while (tmp && tmp->next)
+		tmp = tmp->next;
+	if (tmp->pos != -1)
+		tmp->pos = pos;
 }
 
 /*
@@ -44,14 +65,19 @@ static void	assign_last_lab(t_asm *champ)
 void		look_for_op(t_asm *champ)
 {
 	static t_op	op;
+	int			pos;
 
 	champ->op = &op;
 	init_op(champ);
+	pos = champ->header->prog_size;
 	if (skip_non_print() > 1)
+	{
+		remove_last_lab(champ);
 		return ;
+	}
 	if (check_op_name(champ))
 		return ;
 	check_op_param(champ, champ->op);
-	assign_last_lab(champ);
+	assign_last_lab(champ, pos);
 	skip_non_print();
 }
