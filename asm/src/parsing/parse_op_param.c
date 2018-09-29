@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 16:09:57 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/29 17:42:27 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/30 00:25:13 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void		check_op_param(t_asm *champ, t_op *op)
 			add_to_ocp(champ, REG_CODE, curr_param);
 		else if (check_dir(champ, champ->op, curr_param))
 			add_to_ocp(champ, DIR_CODE, curr_param);
-	//	else if (check_ind(champ, champ->op, curr_param))
-	//		add_to_ocp(champ, IND_CODE, curr_param);
+		else if (check_ind(champ, champ->op, curr_param))
+			add_to_ocp(champ, IND_CODE, curr_param);
 		else
 			error_parse();
 		if (curr_param + 1 < op->nb_param)

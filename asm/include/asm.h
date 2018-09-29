@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/29 17:30:59 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/30 00:25:06 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ void				check_op_param(t_asm *champ, t_op *op);
 void				check_param_type(t_arg_type type, t_op *op, int curr_param);
 int					check_reg(t_asm *champ, t_op *op, int curr_param);
 int					check_dir(t_asm *champ, t_op *op, int curr_param);
+int					check_ind(t_asm *champ, t_op *op, int curr_param);
 
 /*
 ** cursor motion during the parsing to provide relevant error messages
