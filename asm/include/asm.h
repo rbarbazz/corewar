@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/27 19:20:24 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/29 17:30:59 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct		s_lab
 {
 	char			*name;
 	int				pos;
+	struct s_lab	*prev;
 	struct s_lab	*next;
 }					t_lab;
 
@@ -161,7 +162,6 @@ void				move_index(void);
 */
 
 void				write_to_cor(t_asm *champ);
-int					dec_to_hex(int dec);
 void				write_header(t_asm *champ);
 
 /*
@@ -174,6 +174,7 @@ void				error_parse(void);
 void				error_cmd(char *cmd);
 void				error_cmd_value(char *cmd);
 void				error_cmd_length(char *cmd, int max_length);
+void				error_overflow(void);
 
 /*
 ** memory clearing and exit

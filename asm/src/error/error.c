@@ -6,11 +6,17 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 18:50:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/21 19:19:31 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/09/29 17:08:23 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+void	error_overflow(void)
+{
+	ft_printf("Overflow value");
+	error_parse();
+}	
 
 void	error_parse(void)
 {
