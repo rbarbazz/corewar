@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 00:17:42 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/30 00:27:34 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/01 00:02:15 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void	convert_ushort(t_asm *champ, unsigned short dec)
 {
-	char			size[5];
+	char			size[3];
 	unsigned int	len;
 
-	len = 4;
+	len = 2;
 	while (len)
 	{
 		size[len - 1] = dec % 256;
@@ -25,7 +25,7 @@ static void	convert_ushort(t_asm *champ, unsigned short dec)
 		len--;
 	}
 	size[len] = 0;
-	while (len < 4)
+	while (len < 2)
 		champ->cor_file[champ->header->prog_size++] = size[len++];
 }
 
@@ -44,13 +44,13 @@ static int	get_indirect_value(t_asm *champ)
 		nb[i++] = champ->sfile[champ->i];
 		move_index();
 	}
-	if (atoull(nb) > (unsigned long long)UINT_MAX)
+	if (atoull(nb) > (unsigned long long)USHRT_MAX)
 		error_overflow();
  	else if (i < 1)
 		error_parse();
 	else
 	{
-		convert_ushort(champ, (unsigned int)atoull(nb));
+		convert_ushort(champ, (unsigned short)atoull(nb));
 		return (1);
 	}
 	return (0);
@@ -60,7 +60,7 @@ int			check_ind(t_asm *champ, t_op *op, int curr_param)
 {
 	if (get_indirect_value(champ))
 	{
-		check_param_type(T_DIR, op, curr_param);
+		check_param_type(T_IND, op, curr_param);
 		return (1);
 	}
 	return (0);
