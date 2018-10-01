@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/01 17:12:40 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/01 17:59:11 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef char				t_arg_type;
 typedef struct				s_lab_pos
 {
 	char					*name;
-	unsigned int			pos;
+	int						pos;
 	int						size;
 	int						col;
 	int						line;
@@ -106,7 +106,7 @@ typedef struct				s_lab_pos
 typedef struct				s_lab
 {
 	char					*name;
-	int						pos;
+	long					pos;
 	struct s_lab			*prev;
 	struct s_lab			*next;
 }							t_lab;
