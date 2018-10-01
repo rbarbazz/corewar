@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 17:52:53 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/27 17:48:58 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/01 17:12:49 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int			parser(t_asm *champ)
 		look_for_label(champ);
 		look_for_op(champ);
 	}
+	check_label_pos(champ);
 	return (0);
 }

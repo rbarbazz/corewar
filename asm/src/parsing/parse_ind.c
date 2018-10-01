@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 00:17:42 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/01 15:18:01 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/01 16:41:22 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,13 @@ int		check_ind(t_asm *champ, t_op *op, int curr_param)
 {
 	long res;
 
-	if (!get_label_pos(champ))
+	if (!get_label_pos(champ, 2))
 	{
 		res = get_whole_value(champ);
 		convert_ushort(champ, (unsigned short)res);
 	}
+	else
+		convert_ushort(champ, 0);
 	check_param_type(T_IND, op, curr_param);
 	return (1);
 }
