@@ -6,13 +6,13 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 10:31:24 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/29 16:07:22 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/01 11:05:24 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void		init_op(t_asm *champ)
+static void	init_op(t_asm *champ)
 {
 	ft_bzero(champ->op->name, 6);
 	champ->op->nb_param = 0;
