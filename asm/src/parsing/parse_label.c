@@ -6,13 +6,13 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:34:47 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/29 16:38:14 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/01 11:30:49 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static int	is_label_chars(char c)
+int	is_label_chars(char c)
 {
 	int	i;
 
@@ -51,6 +51,10 @@ static void	add_label(t_asm *champ, char *lab_name)
 	new->prev = tmp;
 }
 
+/*
+** returns 1 if the label already exists
+*/
+
 static int	check_lab_exist(t_asm *champ, char *lab_name)
 {
 	t_lab *tmp;
@@ -76,6 +80,7 @@ static void	get_label(t_asm *champ, int pos)
 	int		i;
 
 	i = 0;
+	ft_bzero(lab_name, pos - champ->i + 1);
 	while (champ->sfile && champ->sfile[champ->i] &&\
 	champ->sfile[champ->i] != LABEL_CHAR)
 	{

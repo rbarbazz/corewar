@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/30 00:25:06 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/01 12:04:40 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,46 +80,57 @@ typedef char		t_arg_type;
 
 # define COREWAR_EXEC_MAGIC	0xea83f3
 
-typedef struct		s_lab
+typedef struct			s_lab_pos
 {
-	char			*name;
-	int				pos;
-	struct s_lab	*prev;
-	struct s_lab	*next;
-}					t_lab;
+	char				*name;
+	int					pos;
+	int					col;
+	int					line;
+	struct s_lab_pos	*next;
+}						t_lab_pos;
 
-typedef struct		s_op
-{
-	char			name[6];
-	int				nb_param;
-	int				param[3];
-	int				opcode;
-	int				has_ocp;
-	int				nb_or_address;
-}					t_op;
 
-typedef struct		s_header
+typedef struct			s_lab
 {
-	unsigned int	magic;
-	char			prog_name[PROG_NAME_LENGTH + 1];
-	unsigned int	prog_size;
-	char			comment[COMMENT_LENGTH + 1];
-}					t_header;
+	char				*name;
+	int					pos;
+	struct s_lab		*prev;
+	struct s_lab		*next;
+}						t_lab;
 
-typedef struct		s_asm
+typedef struct			s_op
 {
-	char			*filename;
-	char			*sfile;
-	t_header		*header;
-	int				line;
-	int				col;
-	int				i;
-	int				fd;
-	char			cor_file[CHAMP_MAX_SIZE + 1];
-	t_lab			*lab;
-	t_op			*op;
-	unsigned int	curr_ocp;
-}					t_asm;
+	char				name[6];
+	int					nb_param;
+	int					param[3];
+	int					opcode;
+	int					has_ocp;
+	int					nb_or_address;
+}						t_op;
+
+typedef struct			s_header
+{
+	unsigned int		magic;
+	char				prog_name[PROG_NAME_LENGTH + 1];
+	unsigned int		prog_size;
+	char				comment[COMMENT_LENGTH + 1];
+}						t_header;
+
+typedef struct			s_asm
+{
+	char				*filename;
+	char				*sfile;
+	t_header			*header;
+	int					line;
+	int					col;
+	int					i;
+	int					fd;
+	char				cor_file[CHAMP_MAX_SIZE + 1];
+	t_lab				*lab;
+	t_lab_pos			*lab_pos;
+	t_op				*op;
+	unsigned int		curr_ocp;
+}						t_asm;
 
 t_asm				*get_champ(void);
 
@@ -142,6 +153,7 @@ void				check_cmd(t_asm *champ, char *cmd);
 void				check_cmd_value(t_asm *champ, int max_length, char *cmd,\
 char *value);
 void				look_for_label(t_asm *champ);
+int					is_label_chars(char c);
 void				look_for_op(t_asm *champ);
 int					check_op_name(t_asm *champ);
 void				check_op_param(t_asm *champ, t_op *op);
@@ -149,6 +161,15 @@ void				check_param_type(t_arg_type type, t_op *op, int curr_param);
 int					check_reg(t_asm *champ, t_op *op, int curr_param);
 int					check_dir(t_asm *champ, t_op *op, int curr_param);
 int					check_ind(t_asm *champ, t_op *op, int curr_param);
+int					get_label_pos(t_asm *champ);
+
+/*
+** splitting ints into bytes
+*/
+
+void				convert_uint(t_asm *champ, unsigned int dec);
+void				convert_ushort(t_asm *champ, unsigned short dec);
+void				write_uint(t_asm *champ, unsigned int dec);
 
 /*
 ** cursor motion during the parsing to provide relevant error messages
