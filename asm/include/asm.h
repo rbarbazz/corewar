@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/01 12:04:40 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/01 15:23:14 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 # include <stdio.h>
 
 /*
+** *****************************************************************************
 ** size in byte of each param type
+** *****************************************************************************
 */
 
 # define IND_SIZE			2
@@ -28,17 +30,21 @@
 # define DIR_SIZE			REG_SIZE
 
 /*
+** *****************************************************************************
 ** param type number
+** *****************************************************************************
 */
 
-typedef char		t_arg_type;
+typedef char				t_arg_type;
 
 # define T_REG				1
 # define T_DIR				2
 # define T_IND				4
 
 /*
+** *****************************************************************************
 ** param type ocp coresponding code
+** *****************************************************************************
 */
 
 # define REG_CODE			1
@@ -46,7 +52,9 @@ typedef char		t_arg_type;
 # define IND_CODE			3
 
 /*
+** *****************************************************************************
 ** parsing values
+** *****************************************************************************
 */
 
 # define COMMENT_CHAR 		'#'
@@ -58,7 +66,9 @@ typedef char		t_arg_type;
 # define COMMENT_CMD_STRING	".comment"
 
 /*
+** *****************************************************************************
 ** sizes
+** *****************************************************************************
 */
 
 # define MEM_SIZE			(4*1024)
@@ -68,7 +78,9 @@ typedef char		t_arg_type;
 # define COMMENT_LENGTH		(2048)
 
 /*
+** *****************************************************************************
 ** error codes
+** *****************************************************************************
 */
 
 # define WRONG_USAGE 		1
@@ -80,129 +92,143 @@ typedef char		t_arg_type;
 
 # define COREWAR_EXEC_MAGIC	0xea83f3
 
-typedef struct			s_lab_pos
+typedef struct				s_lab_pos
 {
-	char				*name;
-	int					pos;
-	int					col;
-	int					line;
-	struct s_lab_pos	*next;
-}						t_lab_pos;
+	char					*name;
+	int						pos;
+	int						col;
+	int						line;
+	struct s_lab_pos		*next;
+}							t_lab_pos;
 
-
-typedef struct			s_lab
+typedef struct				s_lab
 {
-	char				*name;
-	int					pos;
-	struct s_lab		*prev;
-	struct s_lab		*next;
-}						t_lab;
+	char					*name;
+	int						pos;
+	struct s_lab			*prev;
+	struct s_lab			*next;
+}							t_lab;
 
-typedef struct			s_op
+typedef struct				s_op
 {
-	char				name[6];
-	int					nb_param;
-	int					param[3];
-	int					opcode;
-	int					has_ocp;
-	int					nb_or_address;
-}						t_op;
+	char					name[6];
+	int						nb_param;
+	int						param[3];
+	int						opcode;
+	int						has_ocp;
+	int						nb_or_address;
+}							t_op;
 
-typedef struct			s_header
+typedef struct				s_header
 {
-	unsigned int		magic;
-	char				prog_name[PROG_NAME_LENGTH + 1];
-	unsigned int		prog_size;
-	char				comment[COMMENT_LENGTH + 1];
-}						t_header;
+	unsigned int			magic;
+	char					prog_name[PROG_NAME_LENGTH + 1];
+	unsigned int			prog_size;
+	char					comment[COMMENT_LENGTH + 1];
+}							t_header;
 
-typedef struct			s_asm
+typedef struct				s_asm
 {
-	char				*filename;
-	char				*sfile;
-	t_header			*header;
-	int					line;
-	int					col;
-	int					i;
-	int					fd;
-	char				cor_file[CHAMP_MAX_SIZE + 1];
-	t_lab				*lab;
-	t_lab_pos			*lab_pos;
-	t_op				*op;
-	unsigned int		curr_ocp;
-}						t_asm;
+	char					*filename;
+	char					*sfile;
+	t_header				*header;
+	int						line;
+	int						col;
+	int						i;
+	int						fd;
+	char					cor_file[CHAMP_MAX_SIZE + 1];
+	t_lab					*lab;
+	t_lab_pos				*lab_pos;
+	t_op					*op;
+	unsigned int			curr_ocp;
+}							t_asm;
 
-t_asm				*get_champ(void);
+t_asm						*get_champ(void);
 
-extern				t_op	g_op_tab[16];
+extern						t_op	g_op_tab[16];
 
 /*
+** *****************************************************************************
 ** first error handling : check arguments and arguments syntax
+** *****************************************************************************
 */
 
-int					check_file_extension(char *filename);
-char				*check_args(int argc, char **argv);
+int							check_file_extension(char *filename);
+char						*check_args(int argc, char **argv);
 
 /*
+** *****************************************************************************
 ** parsing
+** *****************************************************************************
 */
 
-char				*store_sfile(char *filename);
-int					parser(t_asm *champ);
-void				check_cmd(t_asm *champ, char *cmd);
-void				check_cmd_value(t_asm *champ, int max_length, char *cmd,\
-char *value);
-void				look_for_label(t_asm *champ);
-int					is_label_chars(char c);
-void				look_for_op(t_asm *champ);
-int					check_op_name(t_asm *champ);
-void				check_op_param(t_asm *champ, t_op *op);
-void				check_param_type(t_arg_type type, t_op *op, int curr_param);
-int					check_reg(t_asm *champ, t_op *op, int curr_param);
-int					check_dir(t_asm *champ, t_op *op, int curr_param);
-int					check_ind(t_asm *champ, t_op *op, int curr_param);
-int					get_label_pos(t_asm *champ);
+char						*store_sfile(char *filename);
+int							parser(t_asm *champ);
+void						check_cmd(t_asm *champ, char *cmd);
+void						check_cmd_value(t_asm *champ, int max_length,\
+char *cmd, char *value);
+void						look_for_label(t_asm *champ);
+int							is_label_chars(char c);
+void						look_for_op(t_asm *champ);
+int							check_op_name(t_asm *champ);
+void						check_op_param(t_asm *champ, t_op *op);
+void						check_param_type(t_arg_type type, t_op *op, \
+int curr_param);
+int							check_reg(t_asm *champ, t_op *op, int curr_param);
+int							check_dir(t_asm *champ, t_op *op, int curr_param);
+int							check_ind(t_asm *champ, t_op *op, int curr_param);
+int							get_label_pos(t_asm *champ);
+long						get_whole_value(t_asm *champ);
 
 /*
+** *****************************************************************************
 ** splitting ints into bytes
+** *****************************************************************************
 */
 
-void				convert_uint(t_asm *champ, unsigned int dec);
-void				convert_ushort(t_asm *champ, unsigned short dec);
-void				write_uint(t_asm *champ, unsigned int dec);
+void						convert_uint(t_asm *champ, unsigned int dec);
+void						convert_ushort(t_asm *champ, unsigned short dec);
+void						write_uint(t_asm *champ, unsigned int dec);
 
 /*
+** *****************************************************************************
 ** cursor motion during the parsing to provide relevant error messages
+** *****************************************************************************
 */
 
-int					skip_non_print(void);
-void				skip_space(void);
-void				move_index(void);
+int							skip_non_print(void);
+void						skip_space(void);
+void						move_index(void);
 
 /*
+** *****************************************************************************
 ** creating and writing to .cor file
+** *****************************************************************************
 */
 
-void				write_to_cor(t_asm *champ);
-void				write_header(t_asm *champ);
+void						write_to_cor(t_asm *champ);
+void						write_header(t_asm *champ);
 
 /*
+** *****************************************************************************
 ** error handling
+** *****************************************************************************
 */
 
-void				error_usage(char *prog_name);
-void				error_empty(void);
-void				error_parse(void);
-void				error_cmd(char *cmd);
-void				error_cmd_value(char *cmd);
-void				error_cmd_length(char *cmd, int max_length);
-void				error_overflow(void);
+void						error_usage(char *prog_name);
+void						error_empty(void);
+void						error_parse(void);
+void						error_cmd(char *cmd);
+void						error_cmd_value(char *cmd);
+void						error_cmd_length(char *cmd, int max_length);
 
 /*
+** *****************************************************************************
 ** memory clearing and exit
+** *****************************************************************************
 */
 
-void				free_asm(void);
-void				exit_fail(void);
+void						free_asm(void);
+void						exit_fail(void);
 
 #endif

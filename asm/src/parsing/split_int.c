@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/01 11:37:16 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/01 11:40:01 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/01 15:18:10 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,3 @@ void	write_uint(t_asm *champ, unsigned int dec)
 		len++;
 	}
 }
-
