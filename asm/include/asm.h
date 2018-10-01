@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/01 15:23:14 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/01 17:12:40 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,15 @@ typedef char				t_arg_type;
 # define WRONG_CMD_VALUE 	4
 # define CMD_TOO_BIG 		5
 # define PARSE_ERR 			6
+# define LAB_NOT_DEFINED	7
 
 # define COREWAR_EXEC_MAGIC	0xea83f3
 
 typedef struct				s_lab_pos
 {
 	char					*name;
-	int						pos;
+	unsigned int			pos;
+	int						size;
 	int						col;
 	int						line;
 	struct s_lab_pos		*next;
@@ -143,9 +145,9 @@ typedef struct				s_asm
 	unsigned int			curr_ocp;
 }							t_asm;
 
-t_asm						*get_champ(void);
-
 extern						t_op	g_op_tab[16];
+
+t_asm						*get_champ(void);
 
 /*
 ** *****************************************************************************
@@ -177,8 +179,10 @@ int curr_param);
 int							check_reg(t_asm *champ, t_op *op, int curr_param);
 int							check_dir(t_asm *champ, t_op *op, int curr_param);
 int							check_ind(t_asm *champ, t_op *op, int curr_param);
-int							get_label_pos(t_asm *champ);
+int							get_label_pos(t_asm *champ, int size);
 long						get_whole_value(t_asm *champ);
+void						check_label_pos(t_asm *champ);
+t_lab						*check_lab_exist(t_asm *champ, char *lab_name);
 
 /*
 ** *****************************************************************************
@@ -221,6 +225,7 @@ void						error_parse(void);
 void						error_cmd(char *cmd);
 void						error_cmd_value(char *cmd);
 void						error_cmd_length(char *cmd, int max_length);
+void						error_lab(t_lab_pos *lab_pos);
 
 /*
 ** *****************************************************************************

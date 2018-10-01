@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:34:47 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/01 15:17:34 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/01 16:51:56 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	add_label(t_asm *champ, char *lab_name)
 ** returns 1 if the label already exists
 */
 
-static int	check_lab_exist(t_asm *champ, char *lab_name)
+t_lab		*check_lab_exist(t_asm *champ, char *lab_name)
 {
 	t_lab *tmp;
 
@@ -63,10 +63,10 @@ static int	check_lab_exist(t_asm *champ, char *lab_name)
 	while (tmp)
 	{
 		if (ft_strequ(lab_name, tmp->name))
-			return (1);
+			return (tmp);
 		tmp = tmp->next;
 	}
-	return (0);
+	return (NULL);
 }
 
 /*
