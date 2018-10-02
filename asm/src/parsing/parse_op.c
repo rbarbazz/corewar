@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 10:31:24 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/02 18:57:06 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/02 19:24:24 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static void	remove_last_lab(t_asm *champ)
 	{
 		if (tmp->prev)
 			tmp->prev->next = NULL;
+		else
+			champ->lab = NULL;
 		ft_strdel(&tmp->name);
 		ft_memdel((void**)&tmp);
 	}
