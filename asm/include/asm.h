@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/01 17:59:11 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/02 15:43:12 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef char				t_arg_type;
 # define CMD_TOO_BIG 		5
 # define PARSE_ERR 			6
 # define LAB_NOT_DEFINED	7
+# define CHAMP_TOO_BIG		8
 
 # define COREWAR_EXEC_MAGIC	0xea83f3
 
@@ -226,6 +227,7 @@ void						error_cmd(char *cmd);
 void						error_cmd_value(char *cmd);
 void						error_cmd_length(char *cmd, int max_length);
 void						error_lab(t_lab_pos *lab_pos);
+void						error_size(void);
 
 /*
 ** *****************************************************************************

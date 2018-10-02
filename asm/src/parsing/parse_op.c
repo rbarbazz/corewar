@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 10:31:24 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/02 12:28:45 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/02 15:36:52 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,12 @@ static void	remove_last_lab(t_asm *champ)
 ** assign current prog_size to the previous label
 */
 
-static void	assign_last_lab(t_asm *champ, int pos)
+static void	assign_last_lab(int pos)
 {
 	t_lab	*tmp;
+	t_asm	*champ;
 
+	champ = get_champ();
 	tmp = champ->lab;
 	while (tmp && tmp->next)
 		tmp = tmp->next;
@@ -78,6 +80,6 @@ void		look_for_op(t_asm *champ)
 	if (check_op_name(champ))
 		return ;
 	check_op_param(champ, champ->op);
-	assign_last_lab(champ, pos);
+	assign_last_lab(pos);
 	skip_non_print();
 }

@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/01 16:28:34 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/01 17:29:21 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/02 14:08:54 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,22 @@ static void	add_label_pos(t_asm *champ, char *lab_name, int size)
 		tmp->next = new;
 }
 
-static void	get_lab_name(t_asm *champ, int pos, int size)
+static void	get_lab_pos_name(t_asm *champ, int size)
 {
-	char	lab_name[pos - champ->i + 1];
-	int		i;
+	char	*lab_name;
 
-	i = 0;
-	ft_bzero(lab_name, pos - champ->i + 1);
+	if (!(lab_name = ft_strnew(1)))
+		exit_fail();
 	while (champ->sfile && champ->sfile[champ->i] &&\
 	is_label_chars(champ->sfile[champ->i]))
 	{
-		lab_name[i++] = champ->sfile[champ->i];
+		if (!(lab_name = strjoinchar(lab_name, champ->sfile[champ->i])))
+		{
+			ft_strdel(&lab_name);
+			exit_fail();
+		}
 		move_index();
 	}
-	lab_name[i] = '\0';
 	add_label_pos(champ, lab_name, size);
 }
 
@@ -61,17 +63,11 @@ static void	get_lab_name(t_asm *champ, int pos, int size)
 
 int			get_label_pos(t_asm *champ, int size)
 {
-	int	pos;
-
-	pos = champ->i;
 	if (champ->sfile && champ->sfile[champ->i] &&\
 	champ->sfile[champ->i] == LABEL_CHAR)
 	{
 		move_index();
-		while (champ->sfile && champ->sfile[pos] &&\
-		is_label_chars(champ->sfile[pos]))
-			pos++;
-		get_lab_name(champ, pos, size);
+		get_lab_pos_name(champ, size);
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:17:39 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/27 17:59:35 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/02 15:47:31 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ int			check_reg(t_asm *champ, t_op *op, int curr_param)
 		if ((reg = ft_atoi(nb)) > REG_NUMBER || reg < 1)
 			error_parse();
 		else
+		{
 			champ->cor_file[champ->header->prog_size++] = reg;
+			if (champ->header->prog_size > CHAMP_MAX_SIZE)
+				error_size();
+		}
 		check_param_type(T_REG, op, curr_param);
 		return (1);
 	}

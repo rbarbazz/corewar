@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/01 11:37:16 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/01 17:03:58 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/02 15:45:29 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ void	convert_uint(t_asm *champ, unsigned int dec)
 		len--;
 	}
 	while (len < 4)
+	{
 		champ->cor_file[champ->header->prog_size++] = size[len++];
+		if (champ->header->prog_size > CHAMP_MAX_SIZE)
+			error_size();
+	}
 }
 
 void	convert_ushort(t_asm *champ, unsigned short dec)
@@ -43,7 +47,11 @@ void	convert_ushort(t_asm *champ, unsigned short dec)
 		len--;
 	}
 	while (len < 2)
+	{
 		champ->cor_file[champ->header->prog_size++] = size[len++];
+		if (champ->header->prog_size > CHAMP_MAX_SIZE)
+			error_size();
+	}
 }
 
 void	write_uint(t_asm *champ, unsigned int dec)

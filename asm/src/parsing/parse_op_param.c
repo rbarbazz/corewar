@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 16:09:57 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/30 00:25:13 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/02 15:46:49 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ static void	check_separator_char(t_asm *champ)
 }
 
 /*
+** *****************************************************************************
 ** apply the param code mask to the current ocp
+** *****************************************************************************
 */
 
 static void	add_to_ocp(t_asm *champ, int code, int curr_param)
@@ -39,7 +41,9 @@ static void	add_to_ocp(t_asm *champ, int code, int curr_param)
 }
 
 /*
+** *****************************************************************************
 ** check if the param type passed as param matches with the expected type
+** *****************************************************************************
 */
 
 void		check_param_type(t_arg_type type, t_op *op, int curr_param)
@@ -56,8 +60,10 @@ void		check_param_type(t_arg_type type, t_op *op, int curr_param)
 }
 
 /*
+** *****************************************************************************
 ** check if the params found match with how many and which are expected
 ** adds the params to the cor_file buffer and makes the opcode
+** *****************************************************************************
 */
 
 void		check_op_param(t_asm *champ, t_op *op)
@@ -66,7 +72,11 @@ void		check_op_param(t_asm *champ, t_op *op)
 
 	curr_param = 0;
 	if (op->has_ocp)
+	{
 		champ->curr_ocp = champ->header->prog_size++;
+		if (champ->header->prog_size > CHAMP_MAX_SIZE)
+			error_size();
+	}
 	while (curr_param < op->nb_param)
 	{
 		skip_space();

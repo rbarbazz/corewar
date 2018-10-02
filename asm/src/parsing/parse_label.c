@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:34:47 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/01 16:51:56 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/02 15:47:56 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ int			is_label_chars(char c)
 }
 
 /*
+** *****************************************************************************
 ** save the new label with the pos -1 by default
 ** will be flipped to the current prog_size if an op is linked to the label
+** *****************************************************************************
 */
 
 static void	add_label(t_asm *champ, char *lab_name)
@@ -44,7 +46,7 @@ static void	add_label(t_asm *champ, char *lab_name)
 	if (!(new->name = ft_strdup(lab_name)))
 		exit_fail();
 	new->pos = -1;
-	if (!champ->lab)
+	if (!tmp)
 		champ->lab = new;
 	else
 		tmp->next = new;
@@ -70,8 +72,10 @@ t_lab		*check_lab_exist(t_asm *champ, char *lab_name)
 }
 
 /*
+** *****************************************************************************
 ** get the label's name and leave the cursor right after LABEL_CHAR
 ** if the label already exists take the first value
+** *****************************************************************************
 */
 
 static void	get_label(t_asm *champ, int pos)
@@ -94,8 +98,10 @@ static void	get_label(t_asm *champ, int pos)
 }
 
 /*
+** *****************************************************************************
 ** save the current position, then look for a LABEL_CHAR
 ** if it doesnt find it or get to a non LABEL_CHARS then return
+** *****************************************************************************
 */
 
 void		look_for_label(t_asm *champ)
