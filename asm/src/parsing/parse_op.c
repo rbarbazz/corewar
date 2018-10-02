@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 10:31:24 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/01 17:26:59 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/02 12:28:45 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	assign_last_lab(t_asm *champ, int pos)
 	tmp = champ->lab;
 	while (tmp && tmp->next)
 		tmp = tmp->next;
-	if (tmp->pos == -1)
+	if (tmp && tmp->pos == -1)
 		tmp->pos = pos;
 }
 
