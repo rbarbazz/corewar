@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/27 18:55:13 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/02 19:11:00 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		init_global(t_global *info)
 {
 	ft_bzero(info->map, MEM_SIZE);
 	info->process = NULL;
-	ft_bzero(info->player_tab, MAX_PLAYERS);
+	info->player = NULL;
 	info->visual = 0;
 }
 
@@ -33,5 +33,6 @@ int			main(int argc, char **argv)
 
 	info = get_global();
 	check_args(info, argc, argv);
-	return (0);
+	exit_corewar(SUCCESS);
+	return (SUCCESS);
 }

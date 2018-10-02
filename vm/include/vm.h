@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/09/27 19:10:51 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/02 19:10:57 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,12 @@
 ** Error Code
 */
 
+# define SUCCESS 0
 # define TOO_MANY_ARGS 1
 # define FILE_EMPTY 2
 # define READ_FILE_ERROR 3
 # define MALLOC_ERROR 4
+# define INVALID_MAGIC 5
 
 # define FILE_LEN_MAX PROG_NAME_LENGTH + COMMENT_LENGTH + CHAMP_MAX_SIZE + 12
 
@@ -48,13 +50,15 @@ typedef struct			s_player
 	int					player;
 	char				*name;
 	char				*comment;
+	unsigned int 		command_size;
+	struct s_player		*next;
 }						t_player;
 
 typedef struct			s_global
 {
 	char				map[MEM_SIZE];
 	t_process			*process;
-	t_player			player_tab[MAX_PLAYERS];
+	t_player			*player;
 	int					visual;
 }						t_global;
 
@@ -69,7 +73,7 @@ t_global				*get_global(void);
 */
 
 int						print_map(t_global *info);
-
+int						print_player(t_global *info);
 /*
 ** Exit Functions
 */
