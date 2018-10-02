@@ -6,19 +6,22 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/01 11:41:57 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/02 17:38:36 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
 /*
+** *****************************************************************************
 ** Step by step asm :
 ** - handle format error
 ** - store the s file as a char* without comments
 ** - parse header and store it with as static variable
 ** - parse labels and instructions and store them on a char*
 ** - write the header and the rest of the file on the cor file
+** - writes the cor file to the .cor
+** *****************************************************************************
 */
 
 void	init_champ(t_asm *champ)

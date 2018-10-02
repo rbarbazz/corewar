@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 10:31:24 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/02 15:36:52 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/02 18:57:06 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ static void	init_op(t_asm *champ)
 }
 
 /*
+** *****************************************************************************
 ** in case there is no instruction after a label, remove the last label
+** *****************************************************************************
 */
 
 static void	remove_last_lab(t_asm *champ)
@@ -42,7 +44,9 @@ static void	remove_last_lab(t_asm *champ)
 }
 
 /*
+** *****************************************************************************
 ** assign current prog_size to the previous label
+** *****************************************************************************
 */
 
 static void	assign_last_lab(int pos)
@@ -59,9 +63,11 @@ static void	assign_last_lab(int pos)
 }
 
 /*
+** *****************************************************************************
 ** check if next token is an op with its parameters
 ** if there was a label on the same line of on the previous line,
 ** change its pos to the current
+** *****************************************************************************
 */
 
 void		look_for_op(t_asm *champ)
@@ -77,7 +83,7 @@ void		look_for_op(t_asm *champ)
 		remove_last_lab(champ);
 		return ;
 	}
-	if (check_op_name(champ))
+	if (!champ->sfile || !champ->sfile[champ->i] || check_op_name(champ))
 		return ;
 	check_op_param(champ, champ->op);
 	assign_last_lab(pos);

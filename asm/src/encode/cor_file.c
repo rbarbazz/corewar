@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 17:24:38 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/29 17:30:57 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/02 17:59:04 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,22 @@ static int	open_file(char *filename)
 	return (fd);
 }
 
+static char	*get_name(t_asm *champ)
+{
+	char	*res;
+
+	if (!(res = ft_strnew(ft_strlen(champ->filename) - 2)))
+		exit_fail();
+	ft_strncpy(res, champ->filename, ft_strlen(champ->filename) - 2);
+	return (res);
+}
+
 void		write_to_cor(t_asm *champ)
 {
 	char			*tmp;
 	unsigned int	i;
 
-	if (!(tmp = dup_to_char(champ->filename, '.')))
-		exit_fail();
+	tmp = get_name(champ);
 	champ->fd = open_file(tmp);
 	ft_strdel(&tmp);
 	write_header(champ);
