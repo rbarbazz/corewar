@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:25:37 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/02 15:46:04 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/02 16:08:23 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ static int	get_name(t_asm *champ, t_op *op)
 
 	pos = champ->i;
 	i = 0;
-	while (champ->sfile && champ->sfile[pos] &&\
-	champ->sfile[pos] != 9 && champ->sfile[pos] != 32)
+	while (champ->sfile && champ->sfile[pos] && ft_isalpha(champ->sfile[pos]))
 	{
 		op->name[i++] = champ->sfile[pos];
 		if (champ->sfile[pos] == LABEL_CHAR)
