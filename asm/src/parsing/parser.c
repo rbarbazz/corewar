@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 17:52:53 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/02 16:12:09 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/02 19:10:45 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int			parser(t_asm *champ)
 	{
 		look_for_label(champ);
 		look_for_op(champ);
-		//ft_printf("'%c' prog_size %u line %d col %d\n", champ->sfile[champ->i], champ->header->prog_size, champ->line, champ->col);
+		if (champ->sfile[champ->i])
+			ft_printf("'%c' prog_size %u line %d col %d\n", champ->sfile[champ->i], champ->header->prog_size, champ->line, champ->col);
 	}
 	check_label_pos(champ);
 	return (0);
