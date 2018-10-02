@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/02 19:10:57 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/02 19:30:59 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct			s_player
 	int					player;
 	char				*name;
 	char				*comment;
-	unsigned int 		command_size;
+	unsigned int		command_size;
 	struct s_player		*next;
 }						t_player;
 
@@ -94,5 +94,12 @@ char					*read_file(int fd, char *filename);
 int						check_champ(t_global *info, char *filename);
 int						check_visual(t_global *info, int argc, char **argv);
 int						check_args(t_global *info, int argc, char **argv);
+int						check_magic(char *file);
+
+/*
+** Create list of player
+*/
+
+int						init_player(t_global *info, char *file);
 
 #endif
