@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/01 16:28:34 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/02 14:08:54 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/03 16:54:19 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	add_label_pos(t_asm *champ, char *lab_name, int size)
 	new->size = size;
 	new->col = champ->col;
 	new->line = champ->line;
+	new->op_pos = champ->curr_op_pos;
 	if (!champ->lab_pos)
 		champ->lab_pos = new;
 	else
