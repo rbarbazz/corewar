@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/02 19:11:00 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/03 14:26:41 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int			main(int argc, char **argv)
 
 	info = get_global();
 	check_args(info, argc, argv);
+	print_map(info);
 	exit_corewar(SUCCESS);
 	return (SUCCESS);
 }
