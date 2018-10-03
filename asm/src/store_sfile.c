@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:46:27 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/27 18:09:06 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/03 17:28:22 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ static char	*remove_comment(char *line)
 }
 
 /*
+** *****************************************************************************
 ** adds one line to the stored sfile
+** *****************************************************************************
 */
 
 static void	store_line(char **sfile, char *line)
@@ -69,7 +71,9 @@ static int	open_file(char *filename)
 }
 
 /*
+** *****************************************************************************
 ** stores the input sfile without comments
+** *****************************************************************************
 */
 
 char		*store_sfile(char *filename)

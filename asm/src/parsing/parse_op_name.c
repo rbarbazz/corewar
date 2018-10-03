@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:25:37 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/03 16:53:29 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/03 17:26:54 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ static int	match_op(t_op *op)
 }
 
 /*
+** *****************************************************************************
 ** if find a LABEL_CHAR then return to check with function to parse label
 ** if no match with any existing op -> ERROR
+** *****************************************************************************
 */
 
 static int	get_name(t_asm *champ, t_op *op)
@@ -60,8 +62,10 @@ static int	get_name(t_asm *champ, t_op *op)
 }
 
 /*
+** *****************************************************************************
 ** if name exists and match one of the existing op,
 ** return the address to the created t_op
+** *****************************************************************************
 */
 
 int			check_op_name(t_asm *champ)
