@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:32:26 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/03 14:23:04 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/03 16:22:36 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,22 @@ void		free_player(void)
 		ft_strdel(&tmp->name);
 		ft_strdel(&tmp->comment);
 		ft_strdel(&tmp->command);
+		ft_memdel((void **)&tmp);
+		tmp = save;
+	}
+}
+
+void		free_map_list(void)
+{
+	t_global *info;
+	t_map *tmp;
+	t_map *save;
+
+	info = get_global();
+	tmp = info->map_list;
+	while (tmp)
+	{
+		save = tmp->next;
 		ft_memdel((void **)&tmp);
 		tmp = save;
 	}
@@ -61,5 +77,6 @@ void		exit_corewar(int error_code)
 		exit(COMMAND_LENGTH_NOT_CORRESPOND);
 	}
 	free_player();
+	free_map_list();
 	exit(0);
 }

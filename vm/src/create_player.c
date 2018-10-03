@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 19:26:08 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/03 14:49:55 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/03 15:43:41 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int						check_end_file(t_player *new, char *file)
 
 static int				assignate_player_position(t_global *info)
 {
-	int i;
-	t_player *tmp;
+	int			i;
+	t_player	*tmp;
 
 	i = 1;
 	tmp = info->player;
@@ -50,6 +50,7 @@ static int				assignate_player_position(t_global *info)
 		tmp->player = i++;
 		tmp = tmp->next;
 	}
+	info->player_count = i - 1;
 	return (0);
 }
 
@@ -66,13 +67,15 @@ static t_player			*assignate_value(char *file)
 		exit_corewar(MALLOC_ERROR);
 	new->command_size = tab_to_int(command_size);
 	ft_strdel(&command_size);
-	if (!(new->comment = ft_strndup(file + 12 + PROG_NAME_LENGTH, COMMENT_LENGTH)))
+	if (!(new->comment = ft_strndup(file + 12 + PROG_NAME_LENGTH, \
+		COMMENT_LENGTH)))
 		exit_corewar(MALLOC_ERROR);
-	if (!(new->command = ft_strndup(file + 16 + PROG_NAME_LENGTH + COMMENT_LENGTH, new->command_size)))
+	if (!(new->command = ft_strndup(file + 16 + PROG_NAME_LENGTH + \
+		COMMENT_LENGTH, new->command_size)))
 		exit_corewar(MALLOC_ERROR);
 	if (check_end_file(new, file) == 1)
 		exit_corewar(COMMAND_LENGTH_NOT_CORRESPOND);
-	return(new);
+	return (new);
 }
 
 int						init_player(t_global *info, char *file)
