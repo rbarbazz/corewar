@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:32:26 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/02 19:09:23 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/03 14:23:04 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void		free_player(void)
 		save = tmp->next;
 		ft_strdel(&tmp->name);
 		ft_strdel(&tmp->comment);
+		ft_strdel(&tmp->command);
 		ft_memdel((void **)&tmp);
 		tmp = save;
 	}
@@ -34,25 +35,30 @@ void		exit_corewar(int error_code)
 {
 	if (error_code == TOO_MANY_ARGS)
 	{
-		ft_printf("Too many champions\n");
+		ft_printf("[ERROR] %d : Too many champions\n", error_code);
 		exit(TOO_MANY_ARGS);
 	}
 	if (error_code == FILE_EMPTY)
 	{
-		ft_printf("Champion can't be empty\n");
+		ft_printf("[ERROR] %d : Champion can't be empty\n", error_code);
 		exit(FILE_EMPTY);
 	}
 	if (error_code == READ_FILE_ERROR)
 		exit(READ_FILE_ERROR);
 	if (error_code == MALLOC_ERROR)
 	{
-		ft_printf("Malloc : Error - [Protected]\n");
+		ft_printf("[ERROR] %d : Malloc : Error - [Protected]\n", error_code);
 		exit(MALLOC_ERROR);
 	}
 	if (error_code == INVALID_MAGIC)
 	{
-		ft_printf("Invalid COREWAR_EXEC_MAGIC\n");
+		ft_printf("[ERROR] %d : Invalid COREWAR_EXEC_MAGIC\n", error_code);
 		exit(INVALID_MAGIC);
+	}
+	if (error_code == COMMAND_LENGTH_NOT_CORRESPOND)
+	{
+		ft_printf("[ERROR] %d : code size that differ from what its header says\n", error_code);
+		exit(COMMAND_LENGTH_NOT_CORRESPOND);
 	}
 	free_player();
 	exit(0);

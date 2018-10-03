@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/02 19:30:59 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/03 14:09:15 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define READ_FILE_ERROR 3
 # define MALLOC_ERROR 4
 # define INVALID_MAGIC 5
+# define COMMAND_LENGTH_NOT_CORRESPOND 6
 
 # define FILE_LEN_MAX PROG_NAME_LENGTH + COMMENT_LENGTH + CHAMP_MAX_SIZE + 12
 
@@ -51,6 +52,7 @@ typedef struct			s_player
 	char				*name;
 	char				*comment;
 	unsigned int		command_size;
+	char				*command;
 	struct s_player		*next;
 }						t_player;
 
