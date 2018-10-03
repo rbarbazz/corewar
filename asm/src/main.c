@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/02 17:38:36 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/03 16:51:38 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	init_champ(t_asm *champ)
 	ft_bzero(champ->cor_file, CHAMP_MAX_SIZE + 1);
 	champ->lab = NULL;
 	champ->lab_pos = NULL;
+	champ->curr_ocp = 0;
+	champ->curr_op_pos = 0;
 }
 
 t_asm	*get_champ(void)

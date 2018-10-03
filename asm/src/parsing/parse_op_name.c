@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:25:37 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/02 16:08:23 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/03 16:53:29 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ int			check_op_name(t_asm *champ)
 	champ->cor_file[champ->header->prog_size++] = champ->op->opcode;
 	if (champ->header->prog_size > CHAMP_MAX_SIZE)
 		error_size();
+	champ->curr_op_pos = champ->header->prog_size - 1;
 	return (0);
 }
