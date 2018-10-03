@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/03 14:09:15 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/03 17:28:05 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define VM_H
 
 /*
+** *****************************************************************************
 ** Library Included
+** *****************************************************************************
 */
 
 # include "../libft/include/libft.h"
@@ -25,7 +27,9 @@
 # include <stdio.h>
 
 /*
+** *****************************************************************************
 ** Error Code
+** *****************************************************************************
 */
 
 # define SUCCESS 0
@@ -37,6 +41,36 @@
 # define COMMAND_LENGTH_NOT_CORRESPOND 6
 
 # define FILE_LEN_MAX PROG_NAME_LENGTH + COMMENT_LENGTH + CHAMP_MAX_SIZE + 12
+
+/*
+** *****************************************************************************
+** Color
+** *****************************************************************************
+*/
+
+# define RESET   "\033[0m"
+# define BLACK   "\033[30m"      /* Black */
+# define RED     "\033[31m"      /* Red */
+# define GREEN   "\033[32m"      /* Green */
+# define YELLOW  "\033[33m"      /* Yellow */
+# define BLUE    "\033[34m"      /* Blue */
+# define MAGENTA "\033[35m"      /* Magenta */
+# define CYAN    "\033[36m"      /* Cyan */
+# define WHITE   "\033[37m"      /* White */
+# define BOLDBLACK   "\033[1m\033[30m"      /* Bold Black */
+# define BOLDRED     "\033[1m\033[31m"      /* Bold Red */
+# define BOLDGREEN   "\033[1m\033[32m"      /* Bold Green */
+# define BOLDYELLOW  "\033[1m\033[33m"      /* Bold Yellow */
+# define BOLDBLUE    "\033[1m\033[34m"      /* Bold Blue */
+# define BOLDMAGENTA "\033[1m\033[35m"      /* Bold Magenta */
+# define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
+# define BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
+
+/*
+** *****************************************************************************
+** Structure
+** *****************************************************************************
+*/
 
 typedef struct			s_process
 {
@@ -56,41 +90,60 @@ typedef struct			s_player
 	struct s_player		*next;
 }						t_player;
 
+typedef struct			s_map
+{
+	char				c;
+	int					player;
+	struct s_map		*next;
+}						t_map;
+
 typedef struct			s_global
 {
-	char				map[MEM_SIZE];
 	t_process			*process;
 	t_player			*player;
+	int					player_count;
+	t_map				*map_list;
 	int					visual;
 }						t_global;
 
 /*
+** *****************************************************************************
 ** Get the Global Structure
+** *****************************************************************************
 */
 
 t_global				*get_global(void);
 
 /*
+** *****************************************************************************
 ** Debug Functions
+** *****************************************************************************
 */
 
 int						print_map(t_global *info);
+int						print_map_list(t_global *info);
 int						print_player(t_global *info);
 /*
+** *****************************************************************************
 ** Exit Functions
+** *****************************************************************************
 */
 
 void					exit_corewar(int error_code);
 
 /*
+** *****************************************************************************
 ** Open & Read Functions
+** *****************************************************************************
 */
 
 int						open_file(char *filename);
 char					*read_file(int fd, char *filename);
 
 /*
+** *****************************************************************************
 ** Parsing
+** *****************************************************************************
 */
 
 int						check_champ(t_global *info, char *filename);
@@ -99,7 +152,9 @@ int						check_args(t_global *info, int argc, char **argv);
 int						check_magic(char *file);
 
 /*
+** *****************************************************************************
 ** Create list of player
+** *****************************************************************************
 */
 
 int						init_player(t_global *info, char *file);
