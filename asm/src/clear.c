@@ -6,13 +6,13 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 15:39:16 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/01 17:01:09 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/03 17:03:30 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static void		free_lab_pos(t_lab_pos *lab_pos)
+static void	free_lab_pos(t_lab_pos *lab_pos)
 {
 	t_lab_pos	*tmp;
 
