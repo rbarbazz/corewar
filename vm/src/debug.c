@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:19:14 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/03 14:40:01 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/03 14:46:12 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ int			print_player(t_global *info)
 	tmp = info->player;
 	while (tmp)
 	{
-		ft_printf("%s\n", tmp->name);
-		ft_printf("%s\n", tmp->comment);
-		ft_printf("%d\n", tmp->command_size);
+		ft_printf("Player Name : %s\n", tmp->name);
+		ft_printf("Player Numero : %d\n", tmp->player);
+		ft_printf("Player Comment : %s\n", tmp->comment);
+		ft_printf("Player command size : %d\n", tmp->command_size);
 		xxd(tmp->command, tmp->command_size);
 		tmp = tmp->next;
 	}

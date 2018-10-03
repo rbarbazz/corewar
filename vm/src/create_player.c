@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 19:26:08 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/03 14:14:58 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/03 14:49:55 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,21 @@ int						check_end_file(t_player *new, char *file)
 		if (file[i] != 0)
 			return (1);
 		i++;
+	}
+	return (0);
+}
+
+static int				assignate_player_position(t_global *info)
+{
+	int i;
+	t_player *tmp;
+
+	i = 1;
+	tmp = info->player;
+	while (tmp)
+	{
+		tmp->player = i++;
+		tmp = tmp->next;
 	}
 	return (0);
 }
@@ -73,5 +88,6 @@ int						init_player(t_global *info, char *file)
 		info->player = new;
 	else
 		tmp->next = new;
+	assignate_player_position(info);
 	return (0);
 }
