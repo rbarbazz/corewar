@@ -6,15 +6,17 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 17:30:05 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/02 16:00:28 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/03 17:26:37 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
 /*
+** *****************************************************************************
 ** check the syntax of the expected instructions
 ** store them into the header
+** *****************************************************************************
 */
 
 void	check_cmd(t_asm *champ, char *cmd)
@@ -34,8 +36,10 @@ void	check_cmd(t_asm *champ, char *cmd)
 }
 
 /*
+** *****************************************************************************
 ** check the syntax of the expected instruction values
 ** store them into the header
+** *****************************************************************************
 */
 
 void	check_cmd_value(t_asm *champ, int max_length, char *cmd, char *value)

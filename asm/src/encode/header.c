@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/20 16:07:49 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/01 11:39:55 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/03 17:26:07 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ static void	add_padding(t_asm *champ, unsigned int padding)
 }
 
 /*
+** *****************************************************************************
 ** first call to write_uint() to write COREWAR_EXEC_MAGIC
 ** second call to write_uint() to write prog_size
+** *****************************************************************************
 */
 
 void		write_header(t_asm *champ)

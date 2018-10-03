@@ -6,15 +6,17 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 16:42:45 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/26 16:04:51 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/03 17:28:05 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
 /*
+** *****************************************************************************
 ** moves forward on the sfile skipping all non printing char including '\n'
 ** returns the number of '\n'
+** *****************************************************************************
 */
 
 int		skip_non_print(void)
@@ -44,7 +46,9 @@ int		skip_non_print(void)
 }
 
 /*
+** *****************************************************************************
 ** moves forward on the sfile skipping all non printing char except '\n'
+** *****************************************************************************
 */
 
 void	skip_space(void)
@@ -66,7 +70,9 @@ void	skip_space(void)
 }
 
 /*
+** *****************************************************************************
 ** proceeds one char forward in the sfile, incrementing the indexes accordingly
+** *****************************************************************************
 */
 
 void	move_index(void)
