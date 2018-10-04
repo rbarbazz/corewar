@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/09/26 13:31:37 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/10/02 19:24:34 by rbarbazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,13 @@ NAME = asm
 
 SRC_PATH = src
 
-SRC_NAME =	main.c clear.c check_argument.c store_sfile.c op.c\
- 			error/error_file.c error/error.c\
-			encode/cor_file.c encode/header.c\
-			parsing/parser.c parsing/cursor_motion.c\
-			parsing/parse_header.c parsing/parse_label.c parsing/parse_op.c\
-			parsing/parse_op_name.c
+SRC_NAME =	main.c clear.c check_argument.c store_sfile.c op.c cursor_motion.c\
+ 			error/error_file.c error/error.c error/error1.c\
+			encode/cor_file.c encode/header.c encode/split_int.c\
+			parsing/parser.c parsing/parse_header.c parsing/parse_label.c\
+			parsing/parse_op.c parsing/parse_op_name.c parsing/parse_op_param.c\
+			parsing/parse_reg.c parsing/parse_dir.c parsing/parse_ind.c\
+			parsing/parse_label_pos.c parsing/replace_label_pos.c
 
 OBJ_PATH = obj
 

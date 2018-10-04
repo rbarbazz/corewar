@@ -6,19 +6,22 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/26 09:44:11 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/03 16:51:38 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
 /*
+** *****************************************************************************
 ** Step by step asm :
 ** - handle format error
 ** - store the s file as a char* without comments
 ** - parse header and store it with as static variable
 ** - parse labels and instructions and store them on a char*
 ** - write the header and the rest of the file on the cor file
+** - writes the cor file to the .cor
+** *****************************************************************************
 */
 
 void	init_champ(t_asm *champ)
@@ -36,6 +39,9 @@ void	init_champ(t_asm *champ)
 	champ->i = 0;
 	ft_bzero(champ->cor_file, CHAMP_MAX_SIZE + 1);
 	champ->lab = NULL;
+	champ->lab_pos = NULL;
+	champ->curr_ocp = 0;
+	champ->curr_op_pos = 0;
 }
 
 t_asm	*get_champ(void)
