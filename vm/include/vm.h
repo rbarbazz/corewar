@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/04 19:41:07 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/04 22:55:38 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,13 @@ typedef struct			s_map
 	struct s_map		*next;
 }						t_map;
 
+typedef struct			s_cycle
+{
+	int					cycle;
+	int					cycle_to_die;
+	int					current_cycle;
+}						t_cycle;
+
 typedef struct			s_global
 {
 	t_process			*process;
@@ -107,6 +114,7 @@ typedef struct			s_global
 	int					player_count;
 	t_map				*map_list;
 	int					visual;
+	t_cycle				clock;
 }						t_global;
 
 /*
@@ -171,5 +179,13 @@ int						write_player_in_map(t_global *info);
 */
 
 int						init_player(t_global *info, char *file);
+
+/*
+** *****************************************************************************
+** Clock
+** *****************************************************************************
+*/
+
+int						cycle(t_global *info);
 
 #endif

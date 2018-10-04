@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/04 21:38:05 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/04 22:58:02 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,13 @@ t_global	*get_global(void)
 int			main(int argc, char **argv)
 {
 	t_global	*info;
-	int cycle;
-	int	cycle_to_die;
-	int	current_cycle;
 
 	info = get_global();
 	check_args(info, argc, argv);
 	get_list_from_map(info);
 	write_player_in_map(info);
 	ft_printf("\033[2J");
-
-	cycle = 0;
-	cycle_to_die = CYCLE_TO_DIE;
-	current_cycle = 0;
-	while (cycle_to_die > 0)
-	{
-		//print_map_list(info);
-		sleep(1/5);
-		ft_printf("\033[H");
-		ft_printf("Cycle : %d\n", cycle);
-		ft_printf("CYCLE_TO_DIE : %d\n", cycle_to_die);
-		cycle++;
-		current_cycle++;
-		if (current_cycle == cycle_to_die)
-		{
-			cycle_to_die = cycle_to_die - CYCLE_DELTA;
-			current_cycle = 0;
-		}
-		ft_printf("\033[0m");
-	}
-	endwin();
+	cycle(info);
 	exit_corewar(SUCCESS);
 	return (SUCCESS);
 }
