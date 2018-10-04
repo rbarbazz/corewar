@@ -6,11 +6,19 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 18:50:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/21 19:19:31 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/01 16:59:15 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+void	error_lab(t_lab_pos *lab_pos)
+{
+	ft_printf("Parsing error near line %d col %d : label not defined\n",\
+	lab_pos->line, lab_pos->col);
+	free_asm();
+	exit(LAB_NOT_DEFINED);
+}
 
 void	error_parse(void)
 {
