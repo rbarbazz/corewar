@@ -6,35 +6,40 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 10:31:24 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/09/26 13:31:56 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/04 21:23:23 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static void	assign_last_lab(t_asm *champ)
+static void	init_op(t_asm *champ)
 {
-	t_lab	*tmp;
-
-	tmp = champ->lab;
-	while (tmp && tmp->next)
-		tmp = tmp->next;
-	tmp->pos = champ->header->prog_size;
+	ft_bzero(champ->op->name, 6);
+	champ->op->nb_param = 0;
+	champ->op->opcode = 0;
+	champ->op->has_ocp = 0;
+	champ->op->nb_or_address = 0;
 }
 
 /*
+** *****************************************************************************
 ** check if next token is an op with its parameters
+** if there was a label on the same line of on the previous line,
+** change its pos to the current
+** *****************************************************************************
 */
 
 void		look_for_op(t_asm *champ)
 {
-	t_op	*op;
+	static t_op	op;
+	int			pos;
 
-	if (skip_non_print(champ) > 1)
+	champ->op = &op;
+	init_op(champ);
+	pos = champ->header->prog_size;
+	skip_non_print();
+	if (!champ->sfile || !champ->sfile[champ->i] || check_op_name(champ))
 		return ;
-	if (!(op = check_name(champ)))
-	 	return ;
-	ft_printf("op : %s\n", op->name);
-	assign_last_lab(champ);
-	exit(0);
+	check_op_param(champ, champ->op);
+	skip_non_print();
 }
