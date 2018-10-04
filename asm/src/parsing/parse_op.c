@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 10:31:24 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/03 15:48:03 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/04 21:23:23 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,49 +19,6 @@ static void	init_op(t_asm *champ)
 	champ->op->opcode = 0;
 	champ->op->has_ocp = 0;
 	champ->op->nb_or_address = 0;
-}
-
-/*
-** *****************************************************************************
-** in case there is no instruction after a label, remove the last label
-** *****************************************************************************
-*/
-
-static void	remove_last_lab(t_asm *champ)
-{
-	t_lab	*tmp;
-
-	tmp = champ->lab;
-	while (tmp && tmp->next)
-		tmp = tmp->next;
-	if (tmp)
-	{
-		if (tmp->prev)
-			tmp->prev->next = NULL;
-		else
-			champ->lab = NULL;
-		ft_strdel(&tmp->name);
-		ft_memdel((void**)&tmp);
-	}
-}
-
-/*
-** *****************************************************************************
-** assign current prog_size to the previous label
-** *****************************************************************************
-*/
-
-static void	assign_last_lab(int pos)
-{
-	t_lab	*tmp;
-	t_asm	*champ;
-
-	champ = get_champ();
-	tmp = champ->lab;
-	while (tmp && tmp->next)
-		tmp = tmp->next;
-	if (tmp && tmp->pos == -1)
-		tmp->pos = pos;
 }
 
 /*
@@ -80,14 +37,9 @@ void		look_for_op(t_asm *champ)
 	champ->op = &op;
 	init_op(champ);
 	pos = champ->header->prog_size;
-	if (skip_non_print() > 1)
-	{
-		remove_last_lab(champ);
-		return ;
-	}
+	skip_non_print();
 	if (!champ->sfile || !champ->sfile[champ->i] || check_op_name(champ))
 		return ;
 	check_op_param(champ, champ->op);
-	assign_last_lab(pos);
 	skip_non_print();
 }
