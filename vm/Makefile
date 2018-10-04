@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/04 19:03:28 by msamak           ###   ########.fr        #
+#    Updated: 2018/10/04 22:55:59 by msamak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC_NAME =	main.c \
 			create_player.c \
 			parsing_check_magic.c \
 			create_map.c \
+			cycle.c \
 
 OBJ_PATH = obj
 
