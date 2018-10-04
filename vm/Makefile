@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/02 19:29:05 by msamak           ###   ########.fr        #
+#    Updated: 2018/10/04 19:03:28 by msamak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC_NAME =	main.c \
 			parsing.c \
 			create_player.c \
 			parsing_check_magic.c \
+			create_map.c \
 
 OBJ_PATH = obj
 
@@ -36,6 +37,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 CC = clang
 
+NCURSE = -lncurses
+
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
@@ -48,7 +51,7 @@ $(LIB):
 	make -C libft
 
 $(NAME): $(LIB) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) $(LIB) -o $@
+	$(CC) $(NCURSE) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) $(LIB) -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir -p obj/

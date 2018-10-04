@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:19:14 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/03 17:26:45 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/04 19:45:33 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int			print_map_list(t_global *info)
 
 	tmp = info->map_list;
 	i = 1;
+	ft_printf("\033[H");
 	while (tmp)
 	{
 		if (tmp->player == 1)
@@ -31,6 +32,8 @@ int			print_map_list(t_global *info)
 			ft_printf(BOLDCYAN);
 		else
 			ft_printf("\033[0m");
+		if (tmp->current == 1)
+				ft_printf(BLUE);
 		ft_printf("%.2hhx ", tmp->c);
 		tmp = tmp->next;
 		if (i++ % 64 == 0)

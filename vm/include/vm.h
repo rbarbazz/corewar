@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/03 17:28:05 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/04 19:41:07 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <curses.h>
 
 /*
 ** *****************************************************************************
@@ -77,6 +78,7 @@ typedef struct			s_process
 	char				reg[REG_NUMBER][REG_SIZE];
 	short				pc;
 	int					carry;
+	int					postion;
 	struct s_process	*next;
 }						t_process;
 
@@ -94,6 +96,7 @@ typedef struct			s_map
 {
 	char				c;
 	int					player;
+	int					current;
 	struct s_map		*next;
 }						t_map;
 
@@ -150,6 +153,16 @@ int						check_champ(t_global *info, char *filename);
 int						check_visual(t_global *info, int argc, char **argv);
 int						check_args(t_global *info, int argc, char **argv);
 int						check_magic(char *file);
+
+/*
+** *****************************************************************************
+** Create Map
+** *****************************************************************************
+*/
+
+int						init_map(t_global *info, char c);
+int						get_list_from_map(t_global *info);
+int						write_player_in_map(t_global *info);
 
 /*
 ** *****************************************************************************
