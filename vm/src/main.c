@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/03 17:28:25 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/04 21:38:05 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,81 +27,39 @@ t_global	*get_global(void)
 	return (&info);
 }
 
-int			write_player_in_map(t_global *info)
-{
-	t_player		*tmp;
-	t_map			*tmp_map;
-	unsigned int	i;
-	int				j;
-	int				position;
-
-	tmp = info->player;
-	tmp_map = info->map_list;
-	position = (ft_sqrt(MEM_SIZE) / info->player_count) * ft_sqrt(MEM_SIZE);
-	j = 0;
-	while (tmp)
-	{
-		i = 0;
-		while (i < tmp->command_size)
-		{
-			tmp_map->c = tmp->command[i];
-			tmp_map->player = tmp->player;
-			i++;
-			j++;
-			tmp_map = tmp_map->next;
-		}
-		while (j < position)
-		{
-			tmp_map = tmp_map->next;
-			j++;
-		}
-		tmp = tmp->next;
-		position = position + (ft_sqrt(MEM_SIZE) / info->player_count) * ft_sqrt(MEM_SIZE);
-	}
-	return (0);
-}
-
-int			init_map(t_global *info, char c)
-{
-	t_map	*tmp;
-	t_map	*new;
-
-	tmp = info->map_list;
-	while (tmp && tmp->next)
-		tmp = tmp->next;
-	if (!(new = (t_map*)ft_memalloc(sizeof(t_map))))
-		exit_corewar(MALLOC_ERROR);
-	new->c = c;
-	new->player = 0;
-	if (!tmp)
-		info->map_list = new;
-	else
-		tmp->next = new;
-	return (0);
-}
-
-int			get_list_from_map(t_global *info)
-{
-	int i;
-
-	i = 0;
-	while (i < MEM_SIZE)
-	{
-		init_map(info, 0);
-		i++;
-	}
-	return (0);
-}
-
 int			main(int argc, char **argv)
 {
 	t_global	*info;
+	int cycle;
+	int	cycle_to_die;
+	int	current_cycle;
 
 	info = get_global();
 	check_args(info, argc, argv);
 	get_list_from_map(info);
 	write_player_in_map(info);
-	print_map_list(info);
+	ft_printf("\033[2J");
+
+	cycle = 0;
+	cycle_to_die = CYCLE_TO_DIE;
+	current_cycle = 0;
+	while (cycle_to_die > 0)
+	{
+		//print_map_list(info);
+		sleep(1/5);
+		ft_printf("\033[H");
+		ft_printf("Cycle : %d\n", cycle);
+		ft_printf("CYCLE_TO_DIE : %d\n", cycle_to_die);
+		cycle++;
+		current_cycle++;
+		if (current_cycle == cycle_to_die)
+		{
+			cycle_to_die = cycle_to_die - CYCLE_DELTA;
+			current_cycle = 0;
+		}
+		ft_printf("\033[0m");
+	}
+	endwin();
 	exit_corewar(SUCCESS);
 	return (SUCCESS);
 }
