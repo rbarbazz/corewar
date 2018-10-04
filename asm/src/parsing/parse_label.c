@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:34:47 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/04 18:45:05 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/04 21:22:48 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	add_label(t_asm *champ, char *lab_name)
 		exit_fail();
 	if (!(new->name = ft_strdup(lab_name)))
 		exit_fail();
-	new->pos = -1;
+	new->pos = champ->header->prog_size;
 	if (!tmp)
 		champ->lab = new;
 	else
