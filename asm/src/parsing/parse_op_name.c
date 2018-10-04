@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:25:37 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/03 17:26:54 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/04 18:44:46 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ static int	get_name(t_asm *champ, t_op *op)
 
 	pos = champ->i;
 	i = 0;
-	while (champ->sfile && champ->sfile[pos] && ft_isalpha(champ->sfile[pos]))
+	while (champ->sfile && champ->sfile[pos] && is_label_chars(champ->sfile[pos]))
 	{
 		op->name[i++] = champ->sfile[pos];
-		if (champ->sfile[pos] == LABEL_CHAR)
-			return (1);
 		pos++;
 	}
 	op->name[i] = '\0';
+	if (champ->sfile[pos] == LABEL_CHAR)
+		return (1);
 	if (!match_op(op))
 		error_parse();
 	while (champ->i < pos)
