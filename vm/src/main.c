@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/04 22:58:02 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/05 14:54:23 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ void		init_global(t_global *info)
 	info->process = NULL;
 	info->player = NULL;
 	info->visual = 0;
-	info->map_list = NULL;
+	info->map = NULL;
+	info->player_count = 0;
+	info->clock.cycle = 0;
+	info->clock.cycle_to_die = CYCLE_TO_DIE;
+	info->clock.current_cycle = 0;
 }
 
 t_global	*get_global(void)
@@ -32,11 +36,19 @@ int			main(int argc, char **argv)
 	t_global	*info;
 
 	info = get_global();
+	init_global(info);
 	check_args(info, argc, argv);
-	get_list_from_map(info);
+	create_map(info);
 	write_player_in_map(info);
+	//Debug
 	ft_printf("\033[2J");
-	cycle(info);
+	while (1)
+	{
+		if (info->visual)
+			print_map(info);
+		if (cycle(info))
+			break ;
+	}
 	exit_corewar(SUCCESS);
 	return (SUCCESS);
 }
