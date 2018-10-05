@@ -6,19 +6,20 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:31:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/05 16:58:17 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/05 18:46:04 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static void	init_reg(t_process *new)
+static void	init_reg(t_process *new, t_player *player)
 {
 	int	i;
 
 	i = 0;
 	while (i < REG_NUMBER)
 		ft_bzero(new->reg[i++], REG_SIZE);
+	new->reg[0][REG_SIZE - 1] = (char)player->player;
 }
 
 static void	add_process(t_global *info, t_player *tmp_p)
@@ -36,7 +37,7 @@ static void	add_process(t_global *info, t_player *tmp_p)
 	else
 		tmp->next = new;
 	new->prev = tmp;
-	init_reg(new);
+	init_reg(new, tmp_p);
 	new->pc = 0;
 	new->carry = 0;
 	new->position = tmp_p->start;
