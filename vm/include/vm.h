@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/05 14:31:09 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/05 15:54:45 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@
 typedef struct			s_process
 {
 	char				reg[REG_NUMBER][REG_SIZE];
-	short				pc;
+	unsigned short		pc;
 	int					carry;
 	int					position;
 	struct s_process	*next;
@@ -91,6 +91,7 @@ typedef struct			s_player
 	char				*comment;
 	unsigned int		prog_size;
 	char				*instruction;
+	int					start;
 	struct s_player		*next;
 }						t_player;
 
@@ -112,6 +113,7 @@ typedef struct			s_cycle
 typedef struct			s_global
 {
 	t_process			*process;
+	int					process_count;
 	t_player			*player;
 	int					player_count;
 	t_map				*map;
@@ -191,5 +193,13 @@ int						init_player(t_global *info, char *file);
 */
 
 int						cycle(t_global *info);
+
+/*
+** *****************************************************************************
+** Bonus
+** *****************************************************************************
+*/
+
+int						bonus(t_global *info);
 
 #endif
