@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 14:08:04 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/05 14:33:03 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/05 15:59:17 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void		write_player_in_map(t_global *info)
 	while (tmp)
 	{
 		i = 0;
+		tmp_map->current = 1;
+		tmp->start = j;
 		while (j < position)
 		{
 			i = write_one_player(tmp_map, tmp, i);

@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:19:14 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/05 13:28:22 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/05 15:33:50 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ int			print_map(t_global *info)
 		if (i++ % 64 == 0)
 			ft_printf("\n");
 	}
-	ft_printf("Cycle : %-5d\n", info->clock.cycle);
-	ft_printf("CYCLE_TO_DIE : %-5d\n", info->clock.cycle_to_die);
+	ft_printf("Cycle : %-20dProcess : %-10d\n", info->clock.cycle,\
+	info->process_count);
+	ft_printf("Cycle to Die : %-10d\n", info->clock.cycle_to_die);
 	ft_printf("\033[0m");
 	return (0);
 }

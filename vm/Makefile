@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/05 14:09:10 by msamak           ###   ########.fr        #
+#    Updated: 2018/10/05 15:22:47 by msamak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC_NAME =	main.c \
 			create_map.c \
 			cycle.c \
 			write_player.c \
+			bonus.c \
 
 OBJ_PATH = obj
 
