@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/05 15:59:25 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/05 16:57:21 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void		init_global(t_global *info)
 {
-	info->process = NULL;
+	info->process_head = NULL;
+	info->process_tail = NULL;
 	info->player = NULL;
 	info->visual = 0;
 	info->map = NULL;
@@ -35,8 +36,10 @@ t_global	*get_global(void)
 int			play(t_global *info)
 {
 	info->process_count = info->player_count;
+	create_initial_process(info);
 	while (!cycle(info))
 	{
+		check_process(info);
 		sleep(bonus(info));
 	}
 	return (0);

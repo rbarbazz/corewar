@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 19:26:08 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/05 13:50:22 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/05 16:23:24 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ static t_player			*assignate_value(char *file)
 		exit_corewar(MALLOC_ERROR);
 	if (check_end_file(new, file) == 1)
 		exit_corewar(WRONG_COMMAND_LENGTH);
+	new->last_live = 0;
+	new->curr_live = 0;
 	return (new);
 }
 
