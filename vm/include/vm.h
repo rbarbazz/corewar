@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/05 12:29:03 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/05 14:31:09 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@
 # define READ_FILE_ERROR 3
 # define MALLOC_ERROR 4
 # define INVALID_MAGIC 5
-# define COMMAND_LENGTH_NOT_CORRESPOND 6
-# define NO_ARGS 7
+# define WRONG_COMMAND_LENGTH 6
+# define NO_CHAMP 7
+# define INVALID_CLOSE_FD 8
 
 # define FILE_LEN_MAX PROG_NAME_LENGTH + COMMENT_LENGTH + CHAMP_MAX_SIZE + 12
 
@@ -79,7 +80,7 @@ typedef struct			s_process
 	char				reg[REG_NUMBER][REG_SIZE];
 	short				pc;
 	int					carry;
-	int					postion;
+	int					position;
 	struct s_process	*next;
 }						t_process;
 
@@ -88,8 +89,8 @@ typedef struct			s_player
 	int					player;
 	char				*name;
 	char				*comment;
-	unsigned int		command_size;
-	char				*command;
+	unsigned int		prog_size;
+	char				*instruction;
 	struct s_player		*next;
 }						t_player;
 
@@ -113,7 +114,7 @@ typedef struct			s_global
 	t_process			*process;
 	t_player			*player;
 	int					player_count;
-	t_map				*map_list;
+	t_map				*map;
 	int					visual;
 	t_cycle				clock;
 }						t_global;
@@ -133,7 +134,7 @@ t_global				*get_global(void);
 */
 
 int						print_map(t_global *info);
-int						print_map_list(t_global *info);
+int						print_map(t_global *info);
 int						print_player(t_global *info);
 /*
 ** *****************************************************************************
@@ -151,6 +152,8 @@ void					exit_corewar(int error_code);
 
 int						open_file(char *filename);
 char					*read_file(int fd, char *filename);
+void					close_file(int fd);
+
 
 /*
 ** *****************************************************************************
@@ -170,8 +173,8 @@ int						check_magic(char *file);
 */
 
 int						init_map(t_global *info, char c);
-int						get_list_from_map(t_global *info);
-int						write_player_in_map(t_global *info);
+int						create_map(t_global *info);
+void					write_player_in_map(t_global *info);
 
 /*
 ** *****************************************************************************

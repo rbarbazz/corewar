@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 19:26:08 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/03 15:43:41 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/05 13:50:22 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int						check_end_file(t_player *new, char *file)
 {
 	int i;
 
-	i = 16 + PROG_NAME_LENGTH + COMMENT_LENGTH + new->command_size;
+	i = 16 + PROG_NAME_LENGTH + COMMENT_LENGTH + new->prog_size;
 	while (i < FILE_LEN_MAX)
 	{
 		if (file[i] != 0)
@@ -65,16 +65,16 @@ static t_player			*assignate_value(char *file)
 		exit_corewar(MALLOC_ERROR);
 	if (!(command_size = ft_strndup(file + 8 + PROG_NAME_LENGTH, 4)))
 		exit_corewar(MALLOC_ERROR);
-	new->command_size = tab_to_int(command_size);
+	new->prog_size = tab_to_int(command_size);
 	ft_strdel(&command_size);
 	if (!(new->comment = ft_strndup(file + 12 + PROG_NAME_LENGTH, \
 		COMMENT_LENGTH)))
 		exit_corewar(MALLOC_ERROR);
-	if (!(new->command = ft_strndup(file + 16 + PROG_NAME_LENGTH + \
-		COMMENT_LENGTH, new->command_size)))
+	if (!(new->instruction = ft_strndup(file + 16 + PROG_NAME_LENGTH + \
+		COMMENT_LENGTH, new->prog_size)))
 		exit_corewar(MALLOC_ERROR);
 	if (check_end_file(new, file) == 1)
-		exit_corewar(COMMAND_LENGTH_NOT_CORRESPOND);
+		exit_corewar(WRONG_COMMAND_LENGTH);
 	return (new);
 }
 
