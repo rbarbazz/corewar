@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/04 22:55:38 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/05 12:29:03 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define MALLOC_ERROR 4
 # define INVALID_MAGIC 5
 # define COMMAND_LENGTH_NOT_CORRESPOND 6
+# define NO_ARGS 7
 
 # define FILE_LEN_MAX PROG_NAME_LENGTH + COMMENT_LENGTH + CHAMP_MAX_SIZE + 12
 

@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 18:43:40 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/03 14:43:30 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/05 12:30:31 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int		check_args(t_global *info, int argc, char **argv)
 	int i;
 
 	i = 1;
+	if (argc < 2)
+		exit_corewar(NO_ARGS);
 	check_visual(info, argc, argv);
 	if ((info->visual == 1 && argc > 6) || (info->visual == 0 && argc > 5))
 		exit_corewar(TOO_MANY_ARGS);

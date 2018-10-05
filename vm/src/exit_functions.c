@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:32:26 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/03 16:22:36 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/05 12:31:05 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ void		exit_corewar(int error_code)
 	{
 		ft_printf("[ERROR] %d : Too many champions\n", error_code);
 		exit(TOO_MANY_ARGS);
+	}
+	if (error_code == NO_ARGS)
+	{
+		ft_printf("[ERROR] %d : No argument provided\n", error_code);
+		exit(NO_ARGS);
 	}
 	if (error_code == FILE_EMPTY)
 	{
