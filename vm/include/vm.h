@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/05 15:54:45 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/05 16:57:29 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ typedef struct			s_process
 	unsigned short		pc;
 	int					carry;
 	int					position;
+	int					cycle_left;
+	struct s_process	*prev;
 	struct s_process	*next;
 }						t_process;
 
@@ -92,6 +94,8 @@ typedef struct			s_player
 	unsigned int		prog_size;
 	char				*instruction;
 	int					start;
+	int					last_live;
+	int					curr_live;
 	struct s_player		*next;
 }						t_player;
 
@@ -112,7 +116,8 @@ typedef struct			s_cycle
 
 typedef struct			s_global
 {
-	t_process			*process;
+	t_process			*process_head;
+	t_process			*process_tail;
 	int					process_count;
 	t_player			*player;
 	int					player_count;
@@ -180,11 +185,12 @@ void					write_player_in_map(t_global *info);
 
 /*
 ** *****************************************************************************
-** Create list of player
+** Create lists
 ** *****************************************************************************
 */
 
 int						init_player(t_global *info, char *file);
+void					create_initial_process(t_global *info);
 
 /*
 ** *****************************************************************************
@@ -193,6 +199,14 @@ int						init_player(t_global *info, char *file);
 */
 
 int						cycle(t_global *info);
+
+/*
+** *****************************************************************************
+** Play, send the sauce
+** *****************************************************************************
+*/
+
+void					check_process(t_global *info);
 
 /*
 ** *****************************************************************************
