@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/06 16:13:10 by msamak           ###   ########.fr        #
+#    Updated: 2018/10/06 17:42:33 by msamak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC_NAME =	main.c \
 			bonus.c\
 			op.c \
 			get_params.c \
+			update_map.c \
 
 OBJ_PATH = obj
 
