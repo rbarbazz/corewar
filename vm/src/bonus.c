@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 15:22:04 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/06 15:07:58 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/06 17:11:52 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ int			bonus(t_global *info)
 {
 	if (info->visual)
 		print_map(info);
-	return (1);
+	return (0);
 }

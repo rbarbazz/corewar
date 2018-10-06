@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:31:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/05 18:46:04 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/06 15:54:22 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void	add_process(t_global *info, t_player *tmp_p)
 		tmp->next = new;
 	new->prev = tmp;
 	init_reg(new, tmp_p);
+	new->ocp = 0;
 	new->pc = 0;
 	new->carry = 0;
 	new->position = tmp_p->start;
