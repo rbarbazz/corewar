@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/05 18:47:58 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/06 13:37:04 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,11 +145,15 @@ int						print_map(t_global *info);
 int						print_player(t_global *info);
 /*
 ** *****************************************************************************
-** Exit Functions
+** Exit and Free Functions
 ** *****************************************************************************
 */
 
 void					exit_corewar(int error_code);
+void					free_process(void);
+void					free_all(void);
+void					free_player(void);
+void					free_map(void);
 
 /*
 ** *****************************************************************************

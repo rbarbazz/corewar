@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:32:26 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/05 13:59:44 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/06 13:37:21 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,29 @@ void		free_map(void)
 	}
 }
 
+void		free_process(void)
+{
+	t_global *info;
+	t_process *tmp;
+	t_process *save;
+
+	info = get_global();
+	tmp = info->process_head;
+	while (tmp)
+	{
+		save = tmp->next;
+		ft_memdel((void **)&tmp);
+		tmp = save;
+	}
+}
+
+void		free_all(void)
+{
+	free_player();
+	free_map();
+	free_process();
+}
+
 void		exit_corewar(int error_code)
 {
 	if (error_code == TOO_MANY_ARGS)
@@ -83,7 +106,6 @@ void		exit_corewar(int error_code)
 		ft_printf("[ERROR] %d : code size that differ from what its header says\n", error_code);
 		exit(WRONG_COMMAND_LENGTH);
 	}
-	free_player();
-	free_map();
+	free_all();
 	exit(0);
 }
