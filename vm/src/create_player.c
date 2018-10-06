@@ -6,13 +6,13 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 19:26:08 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/05 16:23:24 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/06 14:16:24 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static int				tab_to_int(char *str)
+int				tab_to_int(char *str)
 {
 	int res;
 

@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 18:43:40 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/05 14:03:18 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/06 15:17:29 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		check_champ(t_global *info, char *filename)
 	fd = open_file(filename);
 	file = read_file(fd, filename);
 	//Debug
-	xxd(file, FILE_LEN_MAX);
+	//xxd(file, FILE_LEN_MAX);
 	if (check_magic(file))
 	{
 		ft_strdel(&file);
@@ -29,7 +29,7 @@ int		check_champ(t_global *info, char *filename)
 	}
 	init_player(info, file);
 	//Debug
-	print_player(info);
+	//print_player(info);
 	close_file(fd);
 	ft_strdel(&file);
 	return (0);

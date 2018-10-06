@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/05 16:47:06 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/10/06 14:03:32 by msamak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRC_NAME =	main.c \
 			cycle.c \
 			write_player.c \
 			check_process.c\
-			bonus.c
+			bonus.c\
+			op.c
 
 OBJ_PATH = obj
 
