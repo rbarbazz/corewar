@@ -6,13 +6,13 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:29:21 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/06 17:29:26 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/06 17:42:51 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int	get_cycle_from_op(int op, t_process *process)
+int			get_cycle_from_op(int op, t_process *process)
 {
 	int	i;
 
