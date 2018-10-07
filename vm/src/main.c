@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/04 21:38:05 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/07 14:56:22 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ int			main(int argc, char **argv)
 	check_args(info, argc, argv);
 	get_list_from_map(info);
 	write_player_in_map(info);
-	ft_printf("\033[2J");
-
+//	ft_printf("\033[2J");
+//--------------
+initscr();
+//--------------
 	cycle = 0;
 	cycle_to_die = CYCLE_TO_DIE;
 	current_cycle = 0;
@@ -47,9 +49,9 @@ int			main(int argc, char **argv)
 	{
 		//print_map_list(info);
 		sleep(1/5);
-		ft_printf("\033[H");
-		ft_printf("Cycle : %d\n", cycle);
-		ft_printf("CYCLE_TO_DIE : %d\n", cycle_to_die);
+//		ft_printf("\033[H");
+//		ft_printf("Cycle : %d\n", cycle);
+//		ft_printf("CYCLE_TO_DIE : %d\n", cycle_to_die);
 		cycle++;
 		current_cycle++;
 		if (current_cycle == cycle_to_die)
@@ -57,8 +59,12 @@ int			main(int argc, char **argv)
 			cycle_to_die = cycle_to_die - CYCLE_DELTA;
 			current_cycle = 0;
 		}
-		ft_printf("\033[0m");
+//		ft_printf("\033[0m");
+//--------------
+ft_visu(cycle, cycle_to_die, current_cycle);
+//--------------
 	}
+getch();
 	endwin();
 	exit_corewar(SUCCESS);
 	return (SUCCESS);

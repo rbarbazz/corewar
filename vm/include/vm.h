@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/04 19:41:07 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/07 14:58:24 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,19 @@
 # define BOLDMAGENTA "\033[1m\033[35m"      /* Bold Magenta */
 # define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
 # define BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
+
+/*
+** *****************************************************************************
+** visu
+** *****************************************************************************
+*/
+
+#define TOP_LINE 2
+#define SEP_COL (COLS / 5)
+#define INFO_START_COL 2
+#define ARENA_START_COL (SEP_COL + 2)
+#define PLAYER_LINE (TOP_LINE + 4)
+int	ft_visu(int cycle, int cycle_to_die, int current_cycle);
 
 /*
 ** *****************************************************************************
