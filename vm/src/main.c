@@ -6,24 +6,27 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/08 14:30:08 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/08 17:43:33 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void		init_global(t_global *info)
+static void	init_global(t_global *info, char *prog_name)
 {
+	info->prog_name = prog_name;
 	info->process_head = NULL;
 	info->process_tail = NULL;
-	info->player = NULL;
-	info->visual = 0;
-	info->map = NULL;
-	info->player_count = 0;
 	info->process_count = 0;
+	info->player = NULL;
+	info->player_count = 0;
+	info->map = NULL;
 	info->clock.cycle = 0;
 	info->clock.cycle_to_die = CYCLE_TO_DIE;
 	info->clock.current_cycle = 0;
+	info->clock.dump = 0;
+	info->visual = 0;
+	info->dump = 0;
 }
 
 t_global	*get_global(void)
@@ -33,29 +36,47 @@ t_global	*get_global(void)
 	return (&info);
 }
 
+/*
+** *****************************************************************************
+** where the game takes place
+** until cycle returns, the game is on
+** *****************************************************************************
+*/
+
 int			play(t_global *info)
 {
 	info->process_count = info->player_count;
 	create_initial_process(info);
+	if (!info->visual)
+		display_intro(info);
 	while (!cycle(info))
 	{
 		check_process(info);
 		update_map(info);
-		sleep(bonus(info));
+		if (info->visual)
+			print_map(info);
 	}
 	return (0);
 }
+
+/*
+** *****************************************************************************
+** 1 - check the arguments and the inputs from the user
+** 2 - create the main structure containing players, process and map
+** 3 - start the main loop with play()
+** 4 - free memory and exit
+** *****************************************************************************
+*/
 
 int			main(int argc, char **argv)
 {
 	t_global	*info;
 
 	info = get_global();
-	init_global(info);
+	init_global(info, argv[0]);
 	check_args(info, argc, argv);
 	create_map(info);
 	write_player_in_map(info);
-	ft_printf("\033[2J");
 	play(info);
 	exit_corewar(SUCCESS);
 	return (SUCCESS);

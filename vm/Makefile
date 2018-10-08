@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/08 15:02:39 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/10/08 17:45:26 by rbarbazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,15 +15,12 @@ NAME = corewar
 SRC_PATH = src
 
 SRC_NAME =	main.c \
-			play/cycle.c play/check_process.c play/get_curr_op.c\
+			play/cycle.c play/check_process.c play/get_curr_op.c play/intro.c\
 			setup/create_player.c setup/create_map.c\
 			setup/open_read_functions.c setup/create_process.c\
 			setup/check_magic.c setup/parsing.c setup/write_player.c\
 			display/debug.c display/update_map.c\
-			clear.c\
-			error.c\
-			bonus.c\
-			op.c
+			clear.c error.c op.c
 
 OBJ_PATH = obj
 

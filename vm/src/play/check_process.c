@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:29:21 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/08 14:01:15 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/08 16:23:57 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	check_process(t_global *info)
 		else
 		{
 			tmp_proc->cycle_left = -1;
+			//for now only increments position +1
 			increase_position(tmp_proc);
 			//do_op()
 		}
