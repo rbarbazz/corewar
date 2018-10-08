@@ -6,11 +6,17 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:31:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/06 15:54:22 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/08 14:06:40 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+/*
+** *****************************************************************************
+** sets all register of the process to 0 except the first one to player number
+** *****************************************************************************
+*/
 
 static void	init_reg(t_process *new, t_player *player)
 {
@@ -45,6 +51,12 @@ static void	add_process(t_global *info, t_player *tmp_p)
 	new->cycle_left = -1;
 	info->process_tail = new;
 }
+
+/*
+** *****************************************************************************
+** creates one process per player at the beginning of the program
+** *****************************************************************************
+*/
 
 void		create_initial_process(t_global *info)
 {

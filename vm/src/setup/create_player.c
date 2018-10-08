@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 19:26:08 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/06 14:16:24 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/08 10:56:32 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int				tab_to_int(char *str)
 	return (res);
 }
 
-int						check_end_file(t_player *new, char *file)
+int				check_end_file(t_player *new, char *file)
 {
 	int i;
 
@@ -38,7 +38,7 @@ int						check_end_file(t_player *new, char *file)
 	return (0);
 }
 
-static int				assignate_player_position(t_global *info)
+static int		assignate_player_position(t_global *info)
 {
 	int			i;
 	t_player	*tmp;
@@ -54,7 +54,7 @@ static int				assignate_player_position(t_global *info)
 	return (0);
 }
 
-static t_player			*assignate_value(char *file)
+static t_player	*assignate_value(char *file)
 {
 	t_player	*new;
 	char		*command_size;
@@ -80,7 +80,7 @@ static t_player			*assignate_value(char *file)
 	return (new);
 }
 
-int						init_player(t_global *info, char *file)
+int				init_player(t_global *info, char *file)
 {
 	t_player	*tmp;
 	t_player	*new;

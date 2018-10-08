@@ -6,13 +6,13 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 17:40:51 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/06 17:42:19 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/08 14:45:37 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static void 		light_map(t_global *info, int position)
+static void	light_map(t_global *info, int position)
 {
 	t_map *tmp_map;
 
@@ -25,19 +25,25 @@ static void 		light_map(t_global *info, int position)
 	tmp_map->current = 1;
 }
 
-static void 		clean_map(t_global *info)
+static void	clean_map(t_global *info)
 {
 	t_map *map;
 
 	map = info->map;
-	while(map)
+	while (map)
 	{
 		map->current = 0;
 		map = map->next;
 	}
 }
 
-void 				update_map(t_global *info)
+/*
+** *****************************************************************************
+** updates the map for the display to show the current process position
+** *****************************************************************************
+*/
+
+void		update_map(t_global *info)
 {
 	t_process *tmp_proc;
 

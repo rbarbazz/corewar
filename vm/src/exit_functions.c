@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:32:26 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/06 13:37:21 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/08 14:45:18 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void		free_player(void)
 {
-	t_global *info;
-	t_player *tmp;
-	t_player *save;
+	t_global	*info;
+	t_player	*tmp;
+	t_player	*save;
 
 	info = get_global();
 	tmp = info->player;
@@ -33,9 +33,9 @@ void		free_player(void)
 
 void		free_map(void)
 {
-	t_global *info;
-	t_map *tmp;
-	t_map *save;
+	t_global	*info;
+	t_map		*tmp;
+	t_map		*save;
 
 	info = get_global();
 	tmp = info->map;
@@ -49,9 +49,9 @@ void		free_map(void)
 
 void		free_process(void)
 {
-	t_global *info;
-	t_process *tmp;
-	t_process *save;
+	t_global	*info;
+	t_process	*tmp;
+	t_process	*save;
 
 	info = get_global();
 	tmp = info->process_head;

@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/06 17:42:43 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/08 14:30:08 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int			main(int argc, char **argv)
 	check_args(info, argc, argv);
 	create_map(info);
 	write_player_in_map(info);
-	//Debug
 	ft_printf("\033[2J");
 	play(info);
 	exit_corewar(SUCCESS);

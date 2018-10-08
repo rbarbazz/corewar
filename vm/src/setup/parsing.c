@@ -6,11 +6,17 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 18:43:40 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/06 15:17:29 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/08 14:16:17 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+/*
+** *****************************************************************************
+** checks if the file exist and is provided with the right exec magic
+** *****************************************************************************
+*/
 
 int		check_champ(t_global *info, char *filename)
 {
@@ -35,6 +41,12 @@ int		check_champ(t_global *info, char *filename)
 	return (0);
 }
 
+/*
+** *****************************************************************************
+** look for the -n option
+** *****************************************************************************
+*/
+
 int		check_visual(t_global *info, int argc, char **argv)
 {
 	int i;
@@ -51,6 +63,12 @@ int		check_visual(t_global *info, int argc, char **argv)
 	}
 	return (0);
 }
+
+/*
+** *****************************************************************************
+** check how many champions are provided and the options
+** *****************************************************************************
+*/
 
 int		check_args(t_global *info, int argc, char **argv)
 {
