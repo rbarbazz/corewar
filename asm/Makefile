@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/02 19:24:34 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/10/08 18:56:04 by rbarbazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,8 @@ fclean: clean
 	make -C libft fclean
 	rm -f $(NAME)
 
-re: fclean all
+re:
+	$(MAKE) fclean
+	$(MAKE)
 
 .PHONY: all, clean, fclean, re
