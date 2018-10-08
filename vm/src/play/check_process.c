@@ -6,13 +6,21 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:29:21 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/06 17:42:51 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/08 14:01:15 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int			get_cycle_from_op(int op, t_process *process)
+/*
+** *****************************************************************************
+** iterate on the op tab to find the coresponding opcode
+** stores the number of cycles required
+** if no match -> return -1
+** *****************************************************************************
+*/
+
+int		get_cycle_from_op(int op, t_process *process)
 {
 	int	i;
 
@@ -29,7 +37,13 @@ int			get_cycle_from_op(int op, t_process *process)
 	return (-1);
 }
 
-char		*get_value_at_position(t_map *map, int position, int size)
+/*
+** *****************************************************************************
+** gets from 1 to 4 bytes from a position on the map
+** *****************************************************************************
+*/
+
+char	*get_value_at_position(t_map *map, int position, int size)
 {
 	char	*ret;
 	int		i;
@@ -51,7 +65,13 @@ char		*get_value_at_position(t_map *map, int position, int size)
 	return (ret);
 }
 
-void		check_process(t_global *info)
+/*
+** *****************************************************************************
+** main function to manage the processes
+** *****************************************************************************
+*/
+
+void	check_process(t_global *info)
 {
 	t_process	*tmp_proc;
 

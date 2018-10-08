@@ -6,13 +6,13 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 18:17:48 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/05 14:08:21 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/08 14:02:06 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int			init_map(t_global *info, char c)
+int	init_map(t_global *info, char c)
 {
 	t_map	*tmp;
 	t_map	*new;
@@ -32,7 +32,7 @@ int			init_map(t_global *info, char c)
 	return (0);
 }
 
-int			create_map(t_global *info)
+int	create_map(t_global *info)
 {
 	int i;
 

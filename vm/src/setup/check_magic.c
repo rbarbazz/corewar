@@ -1,29 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cycle.c                                            :+:      :+:    :+:   */
+/*   check_magic.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/04 22:52:28 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/05 14:47:32 by msamak           ###   ########.fr       */
+/*   Created: 2018/10/02 19:28:20 by msamak            #+#    #+#             */
+/*   Updated: 2018/10/08 14:07:42 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int		cycle(t_global *info)
+static char	*uitoa_d(unsigned int dec)
 {
-	info->clock.cycle++;
-	info->clock.current_cycle++;
-	if (info->clock.current_cycle == info->clock.cycle_to_die)
+	char			size[5];
+	unsigned int	len;
+
+	len = 4;
+	size[len] = 0;
+	while (len)
 	{
-		info->clock.cycle_to_die = info->clock.cycle_to_die - CYCLE_DELTA;
-		if (info->clock.cycle_to_die < 0)
-			info->clock.cycle_to_die = 0;
-		info->clock.current_cycle = 0;
+		size[len - 1] = dec % 256;
+		dec /= 256;
+		len--;
 	}
-	if (info->clock.cycle_to_die <= 0)
-		return (1);
+	return (ft_strndup(size, 4));
+}
+
+int			check_magic(char *file)
+{
+	char	*exec;
+	int		i;
+
+	exec = uitoa_d(COREWAR_EXEC_MAGIC);
+	i = 0;
+	while (i < 4)
+	{
+		if (exec[i] != file[i])
+		{
+			ft_strdel(&exec);
+			return (1);
+		}
+		i++;
+	}
+	ft_strdel(&exec);
 	return (0);
 }

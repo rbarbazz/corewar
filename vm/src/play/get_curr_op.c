@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_params.c                                       :+:      :+:    :+:   */
+/*   get_curr_op.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 16:11:37 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/06 17:29:08 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/08 14:30:31 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-char get_ocp(t_global *info, t_process *process)
+char	get_ocp(t_global *info, t_process *process)
 {
 	char	*value;
 	char	ocp;
@@ -25,9 +25,15 @@ char get_ocp(t_global *info, t_process *process)
 
 void	increase_position(t_process *process)
 {
-		process->position++;
-		process->position = process->position % 4096;
+	process->position++;
+	process->position = process->position % 4096;
 }
+
+/*
+** *****************************************************************************
+** gets the current opcode and check if it is valid
+** *****************************************************************************
+*/
 
 void	get_op(t_global *info, t_process *process)
 {

@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 14:08:04 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/06 14:56:01 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/08 14:50:50 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ static int	write_one_player(t_map *map, t_player *player, unsigned int i)
 	}
 	return (i);
 }
+
+/*
+** *****************************************************************************
+** writes the player's instructions into the map
+** each at a equal distance from the others
+** *****************************************************************************
+*/
 
 void		write_player_in_map(t_global *info)
 {

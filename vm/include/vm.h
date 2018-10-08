@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/06 17:43:01 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/08 14:48:12 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,6 @@ typedef struct			s_global
 t_global				*get_global(void);
 extern					t_op	g_op_tab[16];
 
-
 /*
 ** *****************************************************************************
 ** Debug Functions
@@ -247,7 +246,6 @@ void					increase_position(t_process *process);
 */
 
 void 					update_map(t_global *info);
-
 
 /*
 ** *****************************************************************************
