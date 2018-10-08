@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 18:43:40 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/08 17:02:52 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/08 18:30:58 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	check_champ(t_global *info, char *filename)
 	fd = open_file(filename);
 	file = read_file(fd, filename);
 	//Debug
-	//xxd(file, FILE_LEN_MAX);
+	//xxd(file, FILE_LEN_MAX, 16);
 	if (check_magic(file))
 	{
 		ft_strdel(&file);

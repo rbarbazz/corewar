@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 22:52:28 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/08 17:43:48 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/08 18:36:33 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,30 @@
 
 /*
 ** *****************************************************************************
+** dump option : dumps the memory and exit
+** *****************************************************************************
+*/
+
+static void	dump_memory(t_global *info)
+{
+	char	*map;
+
+	map = map_from_list(info);
+	xxd(map, MEM_SIZE, 32);
+	ft_strdel(&map);
+	exit_corewar(SUCCESS);
+}
+
+/*
+** *****************************************************************************
 ** updates the cycle values once every cycle
 ** *****************************************************************************
 */
 
-int		cycle(t_global *info)
+int			cycle(t_global *info)
 {
-	//if (info->dump && info->clock.cycle == info->clock.dump)
-
+	if (info->dump && info->clock.cycle == info->clock.dump)
+		dump_memory(info);
 	info->clock.cycle++;
 	info->clock.current_cycle++;
 	if (info->clock.current_cycle == info->clock.cycle_to_die)

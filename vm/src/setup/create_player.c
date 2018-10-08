@@ -6,25 +6,19 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 19:26:08 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/08 10:56:32 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/08 18:08:35 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int				tab_to_int(char *str)
-{
-	int res;
+/*
+** *****************************************************************************
+** checks if the champion is too long
+** *****************************************************************************
+*/
 
-	res = 0;
-	res = res | str[3];
-	res = res | (str[2] << 8);
-	res = res | (str[1] << 16);
-	res = res | (str[0] << 24);
-	return (res);
-}
-
-int				check_end_file(t_player *new, char *file)
+static int		check_end_file(t_player *new, char *file)
 {
 	int i;
 
@@ -38,7 +32,13 @@ int				check_end_file(t_player *new, char *file)
 	return (0);
 }
 
-static int		assignate_player_position(t_global *info)
+/*
+** *****************************************************************************
+** sets the player position and increments the player count
+** *****************************************************************************
+*/
+
+static void		assignate_player_position(t_global *info)
 {
 	int			i;
 	t_player	*tmp;
@@ -51,8 +51,13 @@ static int		assignate_player_position(t_global *info)
 		tmp = tmp->next;
 	}
 	info->player_count = i - 1;
-	return (0);
 }
+
+/*
+** *****************************************************************************
+** initializes the player structure
+** *****************************************************************************
+*/
 
 static t_player	*assignate_value(char *file)
 {
@@ -79,6 +84,12 @@ static t_player	*assignate_value(char *file)
 	new->curr_live = 0;
 	return (new);
 }
+
+/*
+** *****************************************************************************
+** adds one player
+** *****************************************************************************
+*/
 
 int				init_player(t_global *info, char *file)
 {
