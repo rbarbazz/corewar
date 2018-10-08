@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_functions.c                                   :+:      :+:    :+:   */
+/*   clear.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:32:26 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/08 14:45:18 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/08 15:03:33 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,49 +63,15 @@ void		free_process(void)
 	}
 }
 
+/*
+** *****************************************************************************
+** no risk of double free as the function only frees if !NULL
+** *****************************************************************************
+*/
+
 void		free_all(void)
 {
 	free_player();
 	free_map();
 	free_process();
-}
-
-void		exit_corewar(int error_code)
-{
-	if (error_code == TOO_MANY_ARGS)
-	{
-		ft_printf("[ERROR] %d : Too many champions\n", error_code);
-		exit(TOO_MANY_ARGS);
-	}
-	if (error_code == NO_CHAMP)
-	{
-		ft_printf("[ERROR] %d : No champion provided\n", error_code);
-		exit(NO_CHAMP);
-	}
-	if (error_code == FILE_EMPTY)
-	{
-		ft_printf("[ERROR] %d : Champion can't be empty\n", error_code);
-		exit(FILE_EMPTY);
-	}
-	if (error_code == READ_FILE_ERROR)
-		exit(READ_FILE_ERROR);
-	if (error_code == INVALID_CLOSE_FD)
-		exit(INVALID_CLOSE_FD);
-	if (error_code == MALLOC_ERROR)
-	{
-		ft_printf("[ERROR] %d : Malloc : Error - [Protected]\n", error_code);
-		exit(MALLOC_ERROR);
-	}
-	if (error_code == INVALID_MAGIC)
-	{
-		ft_printf("[ERROR] %d : Invalid COREWAR_EXEC_MAGIC\n", error_code);
-		exit(INVALID_MAGIC);
-	}
-	if (error_code == WRONG_COMMAND_LENGTH)
-	{
-		ft_printf("[ERROR] %d : code size that differ from what its header says\n", error_code);
-		exit(WRONG_COMMAND_LENGTH);
-	}
-	free_all();
-	exit(0);
 }

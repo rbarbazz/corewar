@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/08 14:51:19 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/10/08 15:02:39 by rbarbazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC_NAME =	main.c \
 			setup/open_read_functions.c setup/create_process.c\
 			setup/check_magic.c setup/parsing.c setup/write_player.c\
 			display/debug.c display/update_map.c\
-			exit_functions.c \
+			clear.c\
+			error.c\
 			bonus.c\
 			op.c
 
