@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:32:26 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/03 16:22:36 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/06 13:37:21 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,49 @@ void		free_player(void)
 		save = tmp->next;
 		ft_strdel(&tmp->name);
 		ft_strdel(&tmp->comment);
-		ft_strdel(&tmp->command);
+		ft_strdel(&tmp->instruction);
 		ft_memdel((void **)&tmp);
 		tmp = save;
 	}
 }
 
-void		free_map_list(void)
+void		free_map(void)
 {
 	t_global *info;
 	t_map *tmp;
 	t_map *save;
 
 	info = get_global();
-	tmp = info->map_list;
+	tmp = info->map;
 	while (tmp)
 	{
 		save = tmp->next;
 		ft_memdel((void **)&tmp);
 		tmp = save;
 	}
+}
+
+void		free_process(void)
+{
+	t_global *info;
+	t_process *tmp;
+	t_process *save;
+
+	info = get_global();
+	tmp = info->process_head;
+	while (tmp)
+	{
+		save = tmp->next;
+		ft_memdel((void **)&tmp);
+		tmp = save;
+	}
+}
+
+void		free_all(void)
+{
+	free_player();
+	free_map();
+	free_process();
 }
 
 void		exit_corewar(int error_code)
@@ -54,6 +77,11 @@ void		exit_corewar(int error_code)
 		ft_printf("[ERROR] %d : Too many champions\n", error_code);
 		exit(TOO_MANY_ARGS);
 	}
+	if (error_code == NO_CHAMP)
+	{
+		ft_printf("[ERROR] %d : No champion provided\n", error_code);
+		exit(NO_CHAMP);
+	}
 	if (error_code == FILE_EMPTY)
 	{
 		ft_printf("[ERROR] %d : Champion can't be empty\n", error_code);
@@ -61,6 +89,8 @@ void		exit_corewar(int error_code)
 	}
 	if (error_code == READ_FILE_ERROR)
 		exit(READ_FILE_ERROR);
+	if (error_code == INVALID_CLOSE_FD)
+		exit(INVALID_CLOSE_FD);
 	if (error_code == MALLOC_ERROR)
 	{
 		ft_printf("[ERROR] %d : Malloc : Error - [Protected]\n", error_code);
@@ -71,12 +101,11 @@ void		exit_corewar(int error_code)
 		ft_printf("[ERROR] %d : Invalid COREWAR_EXEC_MAGIC\n", error_code);
 		exit(INVALID_MAGIC);
 	}
-	if (error_code == COMMAND_LENGTH_NOT_CORRESPOND)
+	if (error_code == WRONG_COMMAND_LENGTH)
 	{
 		ft_printf("[ERROR] %d : code size that differ from what its header says\n", error_code);
-		exit(COMMAND_LENGTH_NOT_CORRESPOND);
+		exit(WRONG_COMMAND_LENGTH);
 	}
-	free_player();
-	free_map_list();
+	free_all();
 	exit(0);
 }

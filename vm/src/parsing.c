@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 18:43:40 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/03 14:43:30 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/06 15:17:29 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,18 @@ int		check_champ(t_global *info, char *filename)
 
 	fd = open_file(filename);
 	file = read_file(fd, filename);
-	xxd(file, FILE_LEN_MAX);
-	if (check_magic(file) == 1)
+	//Debug
+	//xxd(file, FILE_LEN_MAX);
+	if (check_magic(file))
 	{
 		ft_strdel(&file);
-		close(fd);
+		close_file(fd);
 		exit_corewar(INVALID_MAGIC);
 	}
 	init_player(info, file);
-	print_player(info);
-	close(fd);
+	//Debug
+	//print_player(info);
+	close_file(fd);
 	ft_strdel(&file);
 	return (0);
 }
@@ -56,14 +58,15 @@ int		check_args(t_global *info, int argc, char **argv)
 
 	i = 1;
 	check_visual(info, argc, argv);
-	if ((info->visual == 1 && argc > 6) || (info->visual == 0 && argc > 5))
-		exit_corewar(TOO_MANY_ARGS);
 	while (i < argc)
 	{
 		if (!ft_strequ(argv[i], "-n"))
-			if (check_champ(info, argv[i]) == 1)
-				exit_corewar(1);
+			check_champ(info, argv[i]);
 		i++;
 	}
+	if (info->player_count > 4)
+		exit_corewar(TOO_MANY_ARGS);
+	if (info->player_count < 1)
+		exit_corewar(NO_CHAMP);
 	return (0);
 }
