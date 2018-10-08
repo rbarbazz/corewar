@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/08 15:05:44 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/08 17:43:22 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,16 @@
 ** *****************************************************************************
 */
 
-# define SUCCESS 0
-# define TOO_MANY_ARGS 1
-# define FILE_EMPTY 2
-# define READ_FILE_ERROR 3
-# define MALLOC_ERROR 4
-# define INVALID_MAGIC 5
-# define WRONG_COMMAND_LENGTH 6
-# define NO_CHAMP 7
-# define INVALID_CLOSE_FD 8
+# define SUCCESS				0
+# define TOO_MANY_ARGS			1
+# define FILE_EMPTY				2
+# define READ_FILE_ERROR		3
+# define MALLOC_ERROR			4
+# define INVALID_MAGIC			5
+# define WRONG_COMMAND_LENGTH	6
+# define NO_CHAMP				7
+# define INVALID_CLOSE_FD		8
+# define USAGE_ERROR			9
 
 # define FILE_LEN_MAX	PROG_NAME_LENGTH + COMMENT_LENGTH + CHAMP_MAX_SIZE + 12
 
@@ -121,21 +122,24 @@ typedef struct			s_map
 
 typedef struct			s_cycle
 {
-	int					cycle;
+	unsigned int		cycle;
 	int					cycle_to_die;
 	int					current_cycle;
+	unsigned int		dump;
 }						t_cycle;
 
 typedef struct			s_global
 {
+	char				*prog_name;
 	t_process			*process_head;
 	t_process			*process_tail;
 	int					process_count;
 	t_player			*player;
 	int					player_count;
 	t_map				*map;
-	int					visual;
 	t_cycle				clock;
+	int					visual;
+	int					dump;
 }						t_global;
 
 /*
@@ -150,13 +154,15 @@ extern					t_op	g_op_tab[16];
 
 /*
 ** *****************************************************************************
-** Debug Functions
+** Display
 ** *****************************************************************************
 */
 
 int						print_map(t_global *info);
 int						print_map(t_global *info);
 int						print_player(t_global *info);
+void					display_intro(t_global *info);
+
 /*
 ** *****************************************************************************
 ** Exit and Free Functions
@@ -185,8 +191,6 @@ void					close_file(int fd);
 ** *****************************************************************************
 */
 
-int						check_champ(t_global *info, char *filename);
-int						check_visual(t_global *info, int argc, char **argv);
 int						check_args(t_global *info, int argc, char **argv);
 int						check_magic(char *file);
 
@@ -247,13 +251,5 @@ void					increase_position(t_process *process);
 */
 
 void					update_map(t_global *info);
-
-/*
-** *****************************************************************************
-** Bonus
-** *****************************************************************************
-*/
-
-int						bonus(t_global *info);
 
 #endif
