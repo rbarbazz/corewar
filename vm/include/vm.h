@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/08 17:43:22 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/08 18:28:12 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,7 @@ int						cycle(t_global *info);
 ** *****************************************************************************
 */
 
+int						play(t_global *info);
 void					check_process(t_global *info);
 char					get_ocp(t_global *info, t_process *process);
 void					get_op(t_global *info, t_process *process);
@@ -241,6 +242,7 @@ int						get_cycle_from_op(int op, t_process *process);
 */
 
 int						tab_to_int(char *str);
+char					*map_from_list(t_global *info);
 void					set_current_null(t_map *map, int position);
 void					increase_position(t_process *process);
 

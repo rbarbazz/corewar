@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:29:21 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/08 16:23:57 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/08 18:01:30 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** *****************************************************************************
-** iterate on the op tab to find the coresponding opcode
+** iterates on the op tab to find the coresponding opcode
 ** stores the number of cycles required
 ** if no match -> return -1
 ** *****************************************************************************
