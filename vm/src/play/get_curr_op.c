@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 16:11:37 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/09 12:08:05 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/09 14:57:04 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	get_ocp(t_global *info, t_process *process)
 	char	*value;
 	char	ocp;
 
-	value = get_value_at_position(info->map, process->position, 1);
+	value = get_value_at_position(info->map, process->position + 1, 1);
 	ocp = value[3];
 	ft_strdel(&value);
 	return (ocp);
@@ -25,7 +25,8 @@ char	get_ocp(t_global *info, t_process *process)
 
 void	increase_position(t_process *process, int add)
 {
-	process->position += add;
+	process->pc += add;
+	process->position += process->pc;
 	process->position = process->position % MEM_SIZE;
 }
 
@@ -37,9 +38,9 @@ void	increase_position(t_process *process, int add)
 
 void	get_op(t_global *info, t_process *process)
 {
-	int		op;
-	char	*value;
-	char	ocp;
+	unsigned int	op;
+	char			*value;
+	char			ocp;
 
 	ocp = 0;
 	value = get_value_at_position(info->map, process->position, 1);

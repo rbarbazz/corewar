@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:04:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/09 12:25:42 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/09 13:40:19 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,16 @@ char	*map_from_list(t_global *info)
 ** *****************************************************************************
 */
 
-int		tab_to_int(char *str)
+unsigned int		tab_to_int(char *str)
 {
-	int res;
+	unsigned int 	res;
+	unsigned char	*str_m;
 
 	res = 0;
-	res = res | str[3];
-	res = res | (str[2] << 8);
-	res = res | (str[1] << 16);
-	res = res | (str[0] << 24);
+	str_m = (unsigned char*)str;
+	res = res | str_m[3];
+	res = res | (str_m[2] << 8);
+	res = res | (str_m[1] << 16);
+	res = res | (str_m[0] << 24);
 	return (res);
 }
