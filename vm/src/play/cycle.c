@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 22:52:28 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/08 18:36:33 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/09 08:46:44 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	dump_memory(t_global *info)
 
 int			cycle(t_global *info)
 {
-	if (info->dump && info->clock.cycle == info->clock.dump)
+	if (info->dump && !info->visual && info->clock.cycle == info->clock.dump)
 		dump_memory(info);
 	info->clock.cycle++;
 	info->clock.current_cycle++;

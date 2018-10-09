@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/08 18:28:12 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/09 12:07:46 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,12 @@ typedef struct			s_op
 
 typedef struct			s_process
 {
-	int					ocp;
 	char				reg[REG_NUMBER][REG_SIZE];
 	unsigned short		pc;
 	int					carry;
 	int					position;
 	int					cycle_left;
+	t_op				curr_op;
 	struct s_process	*prev;
 	struct s_process	*next;
 }						t_process;
@@ -233,7 +233,9 @@ char					get_ocp(t_global *info, t_process *process);
 void					get_op(t_global *info, t_process *process);
 char					*get_value_at_position(t_map *map, int position,\
 int size);
-int						get_cycle_from_op(int op, t_process *process);
+int						get_data_from_op(int op, t_process *process);
+void					get_op_param(t_global *info, t_process *process,\
+char ocp);
 
 /*
 ** *****************************************************************************
@@ -244,7 +246,7 @@ int						get_cycle_from_op(int op, t_process *process);
 int						tab_to_int(char *str);
 char					*map_from_list(t_global *info);
 void					set_current_null(t_map *map, int position);
-void					increase_position(t_process *process);
+void					increase_position(t_process *process, int add);
 
 /*
 ** *****************************************************************************

@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:29:21 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/08 18:01:30 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/09 12:08:14 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** *****************************************************************************
 */
 
-int		get_cycle_from_op(int op, t_process *process)
+int		get_data_from_op(int op, t_process *process)
 {
 	int	i;
 
@@ -29,7 +29,12 @@ int		get_cycle_from_op(int op, t_process *process)
 	{
 		if (g_op_tab[i].opcode == op)
 		{
-			process->ocp = g_op_tab[i].has_ocp;
+			ft_memcpy(process->curr_op.name, g_op_tab[i].name, 6);
+			process->curr_op.nb_param = g_op_tab[i].nb_param;
+			process->curr_op.opcode = g_op_tab[i].opcode;
+			process->curr_op.cycle = g_op_tab[i].cycle;
+			process->curr_op.has_ocp = g_op_tab[i].has_ocp;
+			process->curr_op.nb_or_address = g_op_tab[i].nb_or_address;
 			return (g_op_tab[i].cycle);
 		}
 		i++;
@@ -86,7 +91,7 @@ void	check_process(t_global *info)
 		{
 			tmp_proc->cycle_left = -1;
 			//for now only increments position +1
-			increase_position(tmp_proc);
+			increase_position(tmp_proc, 1);
 			//do_op()
 		}
 		tmp_proc = tmp_proc->prev;
