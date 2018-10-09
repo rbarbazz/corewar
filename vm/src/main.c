@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/08 13:17:42 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/09 17:26:35 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,11 @@ int			play(t_global *info)
 		check_process(info);
 		update_map(info);
 		sleep(bonus(info));
+		if (info->clock.cycle == 500)
+			break;
 	}
+	if (info->visual == 1)
+		endwin();
 	return (0);
 }
 
@@ -56,7 +60,7 @@ int			main(int argc, char **argv)
 	create_map(info);
 	write_player_in_map(info);
 	//Debug
-	ft_printf("\033[2J");
+//	ft_printf("\033[2J");
 	play(info);
 	exit_corewar(SUCCESS);
 	return (SUCCESS);

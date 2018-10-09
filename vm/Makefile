@@ -6,11 +6,11 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/08 13:19:25 by lcompagn         ###   ########.fr        #
+#    Updated: 2018/10/09 17:38:51 by lcompagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = corewar
+NAME = corewar_visu_all_in_one
 
 SRC_PATH = src
 
@@ -30,7 +30,8 @@ SRC_NAME =	main.c \
 			op.c \
 			get_params.c \
 			update_map.c \
-			visu.c
+			visu_curses_all_in_one_string.c
+#			visu_curses.c
 
 OBJ_PATH = obj
 
@@ -42,7 +43,7 @@ LDLIBS = -lft
 
 LIB = libft/libft.a
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 CC = clang
 

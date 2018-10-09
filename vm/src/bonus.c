@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 15:22:04 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/06 17:11:52 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/08 20:35:18 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int			bonus(t_global *info)
 {
 	if (info->visual)
-		print_map(info);
+		ft_visu_curses(info);
 	return (0);
 }
