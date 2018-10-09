@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:29:21 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/09 13:28:27 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/09 17:00:30 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,7 @@ void	check_process(t_global *info)
 		else
 		{
 			tmp_proc->cycle_left = -1;
-			//for now only increments position +1
-			increase_position(tmp_proc, 1);
+			tmp_proc->visu_pos = tmp_proc->curr_pos;
 			//do_op()
 		}
 		tmp_proc = tmp_proc->prev;

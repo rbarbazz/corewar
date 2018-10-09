@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 17:40:51 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/08 14:45:37 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/09 16:07:05 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void		update_map(t_global *info)
 	clean_map(info);
 	while (tmp_proc)
 	{
-		light_map(info, tmp_proc->position);
+		light_map(info, tmp_proc->visu_pos);
 		tmp_proc = tmp_proc->next;
 	}
 }

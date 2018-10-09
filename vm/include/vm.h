@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/09 15:23:12 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/09 16:45:25 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,9 @@ typedef struct			s_process
 	char				reg[REG_NUMBER][REG_SIZE];
 	unsigned short		pc;
 	int					carry;
-	int					position;
+	int					start_pos;
+	int					curr_pos;
+	int					visu_pos;
 	int					cycle_left;
 	t_op				curr_op;
 	int					valid_ocp;
@@ -236,7 +238,7 @@ char					*get_value_at_position(t_map *map, int position,\
 int size);
 int						get_data_from_op(int op, t_process *process);
 void					get_op_param(t_global *info, t_process *process,\
-char ocp);
+unsigned char ocp);
 
 /*
 ** *****************************************************************************
