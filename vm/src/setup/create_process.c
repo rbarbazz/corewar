@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:31:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/09 11:54:09 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/09 15:25:15 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	add_process(t_global *info, t_player *tmp_p)
 	new->carry = 0;
 	new->position = tmp_p->start;
 	new->cycle_left = -1;
+	new->valid_ocp = 1;
 	info->process_tail = new;
 }
 
