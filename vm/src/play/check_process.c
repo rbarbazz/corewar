@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:29:21 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/09 17:00:30 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/09 18:31:39 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,34 +40,6 @@ int		get_data_from_op(int op, t_process *process)
 		i++;
 	}
 	return (-1);
-}
-
-/*
-** *****************************************************************************
-** gets from 1 to 4 bytes from a position on the map
-** *****************************************************************************
-*/
-
-char	*get_value_at_position(t_map *map, int position, int size)
-{
-	char	*ret;
-	int		i;
-
-	if (!(ret = ft_strnew(4)))
-		exit_corewar(MALLOC_ERROR);
-	while (map && position)
-	{
-		map = map->next;
-		position--;
-	}
-	i = 3;
-	while (map && size)
-	{
-		ret[i--] = map->c;
-		map = map->next;
-		size--;
-	}
-	return (ret);
 }
 
 /*

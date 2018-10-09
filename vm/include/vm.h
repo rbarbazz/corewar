@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/09 16:45:25 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/09 18:24:46 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct			s_map
 	unsigned char		c;
 	int					player;
 	int					current;
+	struct s_map		*prev;
 	struct s_map		*next;
 }						t_map;
 
