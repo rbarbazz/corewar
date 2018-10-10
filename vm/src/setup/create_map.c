@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 18:17:48 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/08 14:02:06 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/09 18:25:01 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	init_map(t_global *info, char c)
 		info->map = new;
 	else
 		tmp->next = new;
+	new->prev = tmp;
 	return (0);
 }
 
