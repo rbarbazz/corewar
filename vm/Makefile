@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/10 16:46:32 by xperrin          ###   ########.fr        #
+#    Updated: 2018/10/10 17:26:06 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = corewar
 
 SRC_PATH = src
 
-SRC_NAME =	main.c \
+SRC_NAME =	\
 			play/cycle.c play/check_process.c play/get_curr_op.c play/intro.c\
 			play/play.c play/get_curr_param.c play/do_op.c play/kill_process.c\
 			op_functions/live.c op_functions/add.c op_functions/sub.c\
@@ -36,20 +36,23 @@ LDLIBS = -lft
 
 LIB = libft/libft.a
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra
 
 CC = clang
 
 NCURSE = -lncurses
 
 # GTK build specific variables
-GTK_SRC_NAME = gui/init.c
+GTK_SRC_NAME = gui/main_gui.c
 GTK_CPPFLAGS = $(shell pkg-config --cflags-only-I gtk+-3.0)
 GTK_LDFLAGS = $(shell pkg-config --libs --cflags gtk+-3.0)
 ifeq ($(GTK), 1)
+	NAME = corewar_gui
 	SRC_NAME += $(GTK_SRC_NAME)
 	CPPFLAGS += $(GTK_CPPFLAGS)
 	LDFLAGS += $(GTK_LDFLAGS)
+else
+	SRC_NAME += main.c
 endif
 
 OBJ_NAME = $(SRC_NAME:.c=.o)

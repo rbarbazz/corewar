@@ -6,15 +6,15 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/10 16:39:00 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/10 17:16:13 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <gtk/gtk.h>
 #include "vm.h"
 
-int		gui_init(t_global *info)
+int		main(int ac, char **av)
 {
-	(void)info;
+	ft_putendl("Insert GUI here");
 	return (0);
 }
