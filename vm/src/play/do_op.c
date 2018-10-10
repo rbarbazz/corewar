@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 11:09:15 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/10 11:35:50 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/10 15:43:38 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ void		do_op(t_global *info, t_process *process)
 
 	op_ft[0] = live;
 	/*op_ft[1] = ld;
-	op_ft[2] = st;
+	op_ft[2] = st;*/
 	op_ft[3] = add;
 	op_ft[4] = sub;
-	op_ft[5] = and;
+	/*op_ft[5] = and;
 	op_ft[6] = or;
-	op_ft[7] = xor;
+	op_ft[7] = xor;*/
 	op_ft[8] = zjmp;
-	op_ft[9] = ldi;
+	/*op_ft[9] = ldi;
 	op_ft[10] = sti;
 	op_ft[11] = fork;
 	op_ft[12] = lld;
 	op_ft[13] = lldi;
-	op_ft[14] = lfork;
-	op_ft[15] = aff;*/
+	op_ft[14] = lfork;*/
+	op_ft[15] = aff;
 	op_ft[process->curr_op.opcode - 1](info, process);
 }
