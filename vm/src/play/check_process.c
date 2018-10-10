@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:29:21 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/09 13:28:27 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/09 18:31:39 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,34 +44,6 @@ int		get_data_from_op(int op, t_process *process)
 
 /*
 ** *****************************************************************************
-** gets from 1 to 4 bytes from a position on the map
-** *****************************************************************************
-*/
-
-char	*get_value_at_position(t_map *map, int position, int size)
-{
-	char	*ret;
-	int		i;
-
-	if (!(ret = ft_strnew(4)))
-		exit_corewar(MALLOC_ERROR);
-	while (map && position)
-	{
-		map = map->next;
-		position--;
-	}
-	i = 3;
-	while (map && size)
-	{
-		ret[i--] = map->c;
-		map = map->next;
-		size--;
-	}
-	return (ret);
-}
-
-/*
-** *****************************************************************************
 ** main function to manage the processes
 ** *****************************************************************************
 */
@@ -90,8 +62,7 @@ void	check_process(t_global *info)
 		else
 		{
 			tmp_proc->cycle_left = -1;
-			//for now only increments position +1
-			increase_position(tmp_proc, 1);
+			tmp_proc->visu_pos = tmp_proc->curr_pos;
 			//do_op()
 		}
 		tmp_proc = tmp_proc->prev;
