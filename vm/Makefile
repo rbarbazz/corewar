@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/10 16:37:54 by xperrin          ###   ########.fr        #
+#    Updated: 2018/10/10 16:46:32 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ SRC_PATH = src
 
 SRC_NAME =	main.c \
 			play/cycle.c play/check_process.c play/get_curr_op.c play/intro.c\
-			play/play.c play/get_curr_param.c\
+			play/play.c play/get_curr_param.c play/do_op.c play/kill_process.c\
+			op_functions/live.c op_functions/add.c op_functions/sub.c\
+			op_functions/zjmp.c op_functions/aff.c\
 			setup/create_player.c setup/create_map.c\
 			setup/open_read_functions.c setup/create_process.c\
 			setup/check_magic.c setup/parsing.c setup/write_player.c\
@@ -41,7 +43,7 @@ CC = clang
 NCURSE = -lncurses
 
 # GTK build specific variables
-GTK_SRC_NAME = gtk/init.c
+GTK_SRC_NAME = gui/init.c
 GTK_CPPFLAGS = $(shell pkg-config --cflags-only-I gtk+-3.0)
 GTK_LDFLAGS = $(shell pkg-config --libs --cflags gtk+-3.0)
 ifeq ($(GTK), 1)
@@ -65,7 +67,7 @@ $(NAME): $(LIB) $(OBJ)
 	$(CC) $(NCURSE) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) $(LIB) -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	@mkdir -p obj/play obj/setup obj/display obj/gtk
+	@mkdir -p obj/play obj/setup obj/display obj/op_functions obj/gui
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 norme:

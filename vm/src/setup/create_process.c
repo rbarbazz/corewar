@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:31:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/09 16:05:43 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/10 14:10:42 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static void	init_reg(t_process *new, t_player *player)
 
 	i = 0;
 	while (i < REG_NUMBER)
-		ft_bzero(new->reg[i++], REG_SIZE);
-	new->reg[0][REG_SIZE - 1] = (char)player->player;
+		new->reg[i++] = 0;
+	new->reg[0] = player->player;
 }
 
 static void	add_process(t_global *info, t_player *tmp_p)
