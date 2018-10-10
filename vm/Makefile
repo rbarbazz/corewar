@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/09 11:58:19 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/10/10 16:37:54 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC_NAME =	main.c \
 			setup/check_magic.c setup/parsing.c setup/write_player.c\
 			display/debug.c display/update_map.c\
 			clear.c error.c tool.c op.c
+
 
 OBJ_PATH = obj
 
@@ -39,6 +40,16 @@ CC = clang
 
 NCURSE = -lncurses
 
+# GTK build specific variables
+GTK_SRC_NAME = gtk/init.c
+GTK_CPPFLAGS = $(shell pkg-config --cflags-only-I gtk+-3.0)
+GTK_LDFLAGS = $(shell pkg-config --libs --cflags gtk+-3.0)
+ifeq ($(GTK), 1)
+	SRC_NAME += $(GTK_SRC_NAME)
+	CPPFLAGS += $(GTK_CPPFLAGS)
+	LDFLAGS += $(GTK_LDFLAGS)
+endif
+
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
@@ -54,7 +65,7 @@ $(NAME): $(LIB) $(OBJ)
 	$(CC) $(NCURSE) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) $(LIB) -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	@mkdir -p obj/play obj/setup obj/display
+	@mkdir -p obj/play obj/setup obj/display obj/gtk
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 norme:
