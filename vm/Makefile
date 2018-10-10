@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/10 15:43:22 by msamak           ###   ########.fr        #
+#    Updated: 2018/10/10 17:23:43 by rbarbazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = corewar
 
 SRC_PATH = src
 
-SRC_NAME =	main.c \
+SRC_NAME =	main.c init.c\
 			play/cycle.c play/check_process.c play/get_curr_op.c play/intro.c\
 			play/play.c play/get_curr_param.c play/do_op.c play/kill_process.c\
 			op_functions/live.c op_functions/add.c op_functions/sub.c\
