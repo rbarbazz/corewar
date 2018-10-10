@@ -2,12 +2,12 @@
 <!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.4"/>
-  <object class="GtkAboutDialog" id="about_win">
+  <object class="GtkAboutDialog" id="about_window">
     <property name="can_focus">False</property>
     <property name="type_hint">dialog</property>
     <property name="program_name">Corewar</property>
     <property name="version">nightly</property>
-    <property name="comments" translatable="yes">Une VM corewar avec un visu graphique</property>
+    <property name="comments" translatable="yes">Une VM corewar with a GTK gui</property>
     <property name="authors">lcompagn (lcompagn@student.42.fr)
 msamak (msamak@student.42.fr)
 rbarbazz (rbarbazz@student.42.fr)
@@ -38,7 +38,7 @@ xperrin (xperrin@student.42.fr)</property>
       </object>
     </child>
   </object>
-  <object class="GtkApplicationWindow" id="main_win">
+  <object class="GtkApplicationWindow" id="main_window">
     <property name="can_focus">False</property>
     <property name="default_width">1280</property>
     <property name="default_height">768</property>
