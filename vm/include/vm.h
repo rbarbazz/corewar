@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/10 17:24:28 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/10 18:01:23 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct			s_process
 	int					cycle_left;
 	t_op				curr_op;
 	int					valid_ocp;
+	int					has_live;
 	struct s_process	*prev;
 	struct s_process	*next;
 }						t_process;
@@ -266,7 +267,7 @@ void					aff(t_global *info, t_process *process);
 unsigned int			tab_to_int(char *str);
 char					*map_from_list(t_global *info);
 void					set_current_null(t_map *map, int position);
-void					increase_position(t_process *process, int add);
+void					increase_position(t_process *process,unsigned int add);
 
 /*
 ** *****************************************************************************
