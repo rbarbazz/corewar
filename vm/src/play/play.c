@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:00:00 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/09 16:23:57 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/10 15:07:01 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	play(t_global *info)
 	create_initial_process(info);
 	if (!info->visual)
 		display_intro(info);
-	while (!cycle(info))
+	while (!cycle(info) && info->process_count)
 	{
 		check_process(info);
 		update_map(info);
