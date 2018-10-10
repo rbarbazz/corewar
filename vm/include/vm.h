@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/10 12:10:10 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/10 15:43:04 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct			s_op
 
 typedef struct			s_process
 {
-	char				reg[REG_NUMBER][REG_SIZE];
+	unsigned int		reg[REG_NUMBER];
 	unsigned short		pc;
 	int					carry;
 	int					start_pos;
@@ -178,6 +178,7 @@ void					free_process(void);
 void					free_all(void);
 void					free_player(void);
 void					free_map(void);
+void					kill_process(t_global *info, t_process *process);
 
 /*
 ** *****************************************************************************
@@ -249,6 +250,11 @@ void					do_op(t_global *info, t_process *process);
 */
 
 void					live(t_global *info, t_process *process);
+void					add(t_global *info, t_process *process);
+void					sub(t_global *info, t_process *process);
+void					zjmp(t_global *info, t_process *process);
+void					aff(t_global *info, t_process *process);
+
 
 /*
 ** *****************************************************************************
