@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/09 11:58:19 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/10/10 11:38:45 by msamak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRC_PATH = src
 
 SRC_NAME =	main.c \
 			play/cycle.c play/check_process.c play/get_curr_op.c play/intro.c\
-			play/play.c play/get_curr_param.c\
+			play/play.c play/get_curr_param.c play/do_op.c\
+			op_functions/live.c\
 			setup/create_player.c setup/create_map.c\
 			setup/open_read_functions.c setup/create_process.c\
 			setup/check_magic.c setup/parsing.c setup/write_player.c\
@@ -54,7 +55,7 @@ $(NAME): $(LIB) $(OBJ)
 	$(CC) $(NCURSE) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) $(LIB) -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	@mkdir -p obj/play obj/setup obj/display
+	@mkdir -p obj/play obj/setup obj/display obj/op_functions
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 norme:
