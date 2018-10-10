@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/10 15:43:04 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/10 17:24:28 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ typedef struct			s_process
 	unsigned int		reg[REG_NUMBER];
 	unsigned short		pc;
 	int					carry;
-	int					start_pos;
-	int					curr_pos;
-	int					visu_pos;
+	unsigned int		start_pos;
+	unsigned int		curr_pos;
+	unsigned int		visu_pos;
 	int					cycle_left;
 	t_op				curr_op;
 	int					valid_ocp;
@@ -109,7 +109,7 @@ typedef struct			s_player
 	char				*comment;
 	unsigned int		prog_size;
 	char				*instruction;
-	int					start;
+	unsigned int		start;
 	unsigned int		last_live;
 	unsigned int		curr_live;
 	struct s_player		*next;
@@ -153,6 +153,7 @@ typedef struct			s_global
 */
 
 t_global				*get_global(void);
+void					init_global(t_global *info, char *prog_name);
 
 extern					t_op	g_op_tab[16];
 
@@ -236,8 +237,8 @@ int						play(t_global *info);
 void					check_process(t_global *info);
 char					get_ocp(t_global *info, t_process *process);
 void					get_op(t_global *info, t_process *process);
-char					*get_value_at_position(t_map *map, int position,\
-int size);
+char					*get_value_at_position(t_map *map,\
+unsigned int position, int size);
 int						get_data_from_op(int op, t_process *process);
 void					get_op_param(t_global *info, t_process *process,\
 unsigned char ocp);

@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:04:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/09 18:49:18 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/10 17:11:10 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 ** *****************************************************************************
 */
 
-char			*get_value_at_position(t_map *map, int position, int size)
+char			*get_value_at_position(t_map *map, unsigned int position,\
+int size)
 {
 	char	*ret;
 	int		i;
