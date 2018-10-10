@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:31:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/10 14:10:42 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/10 18:01:37 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	add_process(t_global *info, t_player *tmp_p)
 	new->start_pos = tmp_p->start;
 	new->cycle_left = -1;
 	new->valid_ocp = 1;
+	new->has_live = 0;
 	new->curr_pos = tmp_p->start;
 	new->visu_pos = tmp_p->start;
 	info->process_tail = new;

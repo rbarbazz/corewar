@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 16:11:37 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/09 18:35:14 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/10 17:45:00 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	get_ocp(t_global *info, t_process *process)
 	return (ocp);
 }
 
-void	increase_position(t_process *process, int add)
+void	increase_position(t_process *process, unsigned int add)
 {
 	process->pc += add;
 	process->curr_pos = process->start_pos + process->pc;

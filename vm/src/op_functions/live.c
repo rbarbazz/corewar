@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:27:16 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/10 12:20:21 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/10 18:01:53 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ un joueur inconnu\n");
 	}
 	player->curr_live++;
 	player->last_live = info->clock.cycle;
+	process->has_live = 1;
 	ft_printf("un processus dit que le joueur %d(%s) est en vie\n", player->player, player->name);
 }
