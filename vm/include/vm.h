@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/09 18:24:46 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/10 12:10:10 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,8 @@ typedef struct			s_player
 	unsigned int		prog_size;
 	char				*instruction;
 	int					start;
-	int					last_live;
-	int					curr_live;
+	unsigned int		last_live;
+	unsigned int		curr_live;
 	struct s_player		*next;
 }						t_player;
 
@@ -240,6 +240,15 @@ int size);
 int						get_data_from_op(int op, t_process *process);
 void					get_op_param(t_global *info, t_process *process,\
 unsigned char ocp);
+void					do_op(t_global *info, t_process *process);
+
+/*
+** *****************************************************************************
+** Functions OP
+** *****************************************************************************
+*/
+
+void					live(t_global *info, t_process *process);
 
 /*
 ** *****************************************************************************
