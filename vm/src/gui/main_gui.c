@@ -6,12 +6,16 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/10 18:24:53 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/10 19:41:43 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 #include "gui.h"
+
+/*
+** Initialize the GTK info struct and load the glade file
+*/
 
 static int	builder_and_glad_init(t_gtkinfo *i)
 {
@@ -30,6 +34,10 @@ static int	builder_and_glad_init(t_gtkinfo *i)
 		return (1);
 }
 
+/*
+** Initialize GTK and the VM structs
+*/
+
 int			main(int ac, char **av)
 {
 	t_gtkinfo		i;
@@ -40,6 +48,7 @@ int			main(int ac, char **av)
 	i.w_m = GTK_WIDGET(gtk_builder_get_object(i.builder, MAIN_WIN));
 	i.w_a = GTK_WIDGET(gtk_builder_get_object(i.builder, ABOUT_WIN));
 	gtk_widget_show_all(i.w_m);
+	g_signal_connect(G_OBJECT(i.w_m), "destroy", (GCallback)gtk_main_quit, NULL);
 	gtk_widget_show_all(i.w_a);
 	gtk_main();
 	return (0);
