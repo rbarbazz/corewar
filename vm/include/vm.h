@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/11 17:04:43 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/11 17:44:13 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@
 */
 
 # define TOP_LINE			2
-# define PLAYER_LINE		(TOP_LINE + 4)
+# define SPEED_LINE			(TOP_LINE + 2)
+# define CYCLE_LINE			(SPEED_LINE + 2)
+# define PLAYER_LINE		(CYCLE_LINE + 4)
 # define SEP_COL			50
 # define ARENA_START_COL	(SEP_COL + 2)
 # define TOTAL_COLS			(ARENA_START_COL + (64 * 3) + 1)
@@ -161,6 +163,7 @@ typedef struct			s_global
 	t_cycle				clock;
 	int					visual;
 	int					dump;
+	int					speed;
 }						t_global;
 
 /*
