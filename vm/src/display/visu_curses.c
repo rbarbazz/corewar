@@ -6,7 +6,7 @@
 /*   By: lcompagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/07 14:54:32 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/11 17:54:47 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/11 19:52:18 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +75,35 @@ static void	ft_curses_map(t_global *info)
 
 int			ft_visu_curses(t_global *info)
 {
-	static int	first = 1;
+	static int	first = 2;
+	static int	timing = 0;
 	int			ret;
 
 	if (first)
 	{
 		if (ft_init_curses(info))
 			return (0);//Not a successfull operation, but 0 will avoid the usleep
-		first = 0;
+		first--;
 		attron(COLOR_PAIR(0 | (1 << 3)));
 		mvprintw(TOP_LINE, 2, "PAUSED");
 		attroff(COLOR_PAIR(0 | (1 << 3)));
+		timing = clock();
 	}
 	ft_curses_cycles(info);
 	ret = ft_curses_player(info);
 	ft_curses_map(info);
+	mvprintw(++ret, 2, "Processes = %d", info->process_count);
+	if (first)
+	{
+		first--;
+		mvprintw((ret = ret + 2), 2, "Cycle/sec = 0");
+	}
+	else
+	{
+		mvprintw((ret = ret + 2), 2, "Cycle/sec = %F", \
+				(double)(((double)1) / ((double)(((double)(clock() - timing)) / ((double)CLOCKS_PER_SEC)))));
+		timing = clock();
+	}
 //mvprintw(ret, 2, "Some more ?");
 	move(MSG_LINE, 4);//Try to find a better way (directly in print functions for example)
 	refresh();
