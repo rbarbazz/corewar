@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:27:16 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/11 17:42:56 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/11 18:19:26 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	live(t_global *info, t_process *process)
 	param0 = 0;
 	if (get_param_value(info, process, 0, &param0))
 		return ;
-	ft_printf("param 0 : %u\n", param0);
 	if (!(player = get_player_from_nb(info, param0)))
 	{
 		ft_dprintf(STDERR_FILENO, "un processus a essaye de faire un live pour \
