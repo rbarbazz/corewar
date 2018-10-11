@@ -73,7 +73,7 @@ xperrin (xperrin@student.42.fr)</property>
                         <property name="can_focus">False</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
-                        <signal name="activate" handler="callback_test" swapped="no"/>
+                        <signal name="activate" handler="callback_player" swapped="no"/>
                       </object>
                     </child>
                     <child>

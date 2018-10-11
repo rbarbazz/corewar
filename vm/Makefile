@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/11 16:39:14 by xperrin          ###   ########.fr        #
+#    Updated: 2018/10/11 17:06:35 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,8 @@ CC = clang
 NCURSE = -lncurses
 
 # GTK build specific variables
-GTK_SRC_NAME = gui/main_gui.c
+GTK_SRC_NAME = gui/main_gui.c\
+		gui/call_filepicker.c
 GTK_LIBS = gtk+-3.0 gmodule-2.0
 GTK_CPPFLAGS = $(shell pkg-config --cflags-only-I $(GTK_LIBS))
 GTK_LDFLAGS = $(shell pkg-config --libs --cflags $(GTK_LIBS)) -rdynamic
