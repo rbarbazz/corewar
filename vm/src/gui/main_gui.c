@@ -6,20 +6,19 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/11 14:34:17 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/11 15:00:03 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 #include "gui.h"
 
-
-void		callback_test(GtkToggleButton *tbutton, gpointer data)
+void		callback_test(GtkToggleButton *tbutton, t_gtkinfo *i)
 {
-	ft_putendl("it works!");
+	ft_putendl(i->vm->prog_name);
 }
 
-void		about_display(GtkToggleButton *tbutton, gpointer data)
+void		about_display(GtkToggleButton *tbutton, t_gtkinfo *i)
 {
 	ft_putendl("open about win using builder in data here");
 }
@@ -28,7 +27,7 @@ void		about_display(GtkToggleButton *tbutton, gpointer data)
 ** Initialize the GTK info struct and load the glade file
 */
 
-static int	builder_and_glad_init(t_gtkinfo *i)
+static int	gui_struct_init(t_gtkinfo *i)
 {
 	ft_bzero(i, sizeof(t_gtkinfo));
 	ft_bzero(&i->w, sizeof(t_gtkwin));
@@ -43,28 +42,26 @@ static int	builder_and_glad_init(t_gtkinfo *i)
 		g_error_free(i->err);
 		return (0);
 	}
-	else
-		return (1);
+	gtk_builder_connect_signals(i->builder, i);
+	i->w.m = GTK_WIDGET(gtk_builder_get_object(i->builder, MAIN_WIN));
+	i->w.a = GTK_WIDGET(gtk_builder_get_object(i->builder, ABOUT_WIN));
+	gtk_widget_show_all(i->w.m);
+	return (1);
 }
 
 /*
-** Initialize GTK and the VM structs
+** Initialize GTK and the VM
 */
 
 int			main(int ac, char **av)
 {
-	t_global	*info;
 	t_gtkinfo	i;
 
 	gtk_init(&ac, &av);
-	if (!builder_and_glad_init(&i))
+	if (!gui_struct_init(&i))
 		return (1);
-	gtk_builder_connect_signals(i.builder, NULL);
-	i.w.m = GTK_WIDGET(gtk_builder_get_object(i.builder, MAIN_WIN));
-	i.w.a = GTK_WIDGET(gtk_builder_get_object(i.builder, ABOUT_WIN));
-	gtk_widget_show_all(i.w.m);
-	info = get_global();
-	init_global(info, av[0]);
+	i.vm = get_global();
+	init_global(i.vm, av[0]);
 	gtk_main();
 	free_all();
 	return (0);
