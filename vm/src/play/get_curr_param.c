@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:30:07 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/11 13:14:55 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/11 14:23:55 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** *****************************************************************************
 ** check if param type found matches
+** type is a CODE define and need to be converted to a t_arg_type
 ** *****************************************************************************
 */
 
@@ -23,6 +24,12 @@ static void	match_param(int type, int i, t_process *process)
 	int	j;
 
 	j = 0;
+	if (type == IND_CODE)
+		type = T_IND;
+	else if (type == REG_CODE)
+		type = T_REG;
+	else if (type == DIR_CODE)
+		type = T_DIR;
 	while (j < 16)
 	{
 		if (g_op_tab[j].opcode == process->curr_op.opcode)
