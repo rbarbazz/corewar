@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/11 15:06:31 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/11 16:11:55 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct	s_gtkinfo {
 **  \___\__,_|_|_|_.__/\__,_\__|_\_\/__/
 */
 
-
 void			callback_test(GtkToggleButton *tbutton, t_gtkinfo *i);
+void			about_display(GtkToggleButton *tbutton, t_gtkinfo *i);
 
 #endif
