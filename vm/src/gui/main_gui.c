@@ -1,11 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_gui.c                                         :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
+/*   main_gui.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/10 23:21:05 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/11 14:34:17 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +17,11 @@
 void		callback_test(GtkToggleButton *tbutton, gpointer data)
 {
 	ft_putendl("it works!");
+}
+
+void		about_display(GtkToggleButton *tbutton, gpointer data)
+{
+	ft_putendl("open about win using builder in data here");
 }
 
 /*
@@ -33,7 +39,7 @@ static int	builder_and_glad_init(t_gtkinfo *i)
 	g_free(i->gladefilename);
 	if (i->err)
 	{
-		ft_putstr_fd("Error: Problem loading gladle file\n", 2);
+		ft_dprintf(2, "Error: %s\n", i->err->message);
 		g_error_free(i->err);
 		return (0);
 	}
@@ -47,7 +53,8 @@ static int	builder_and_glad_init(t_gtkinfo *i)
 
 int			main(int ac, char **av)
 {
-	t_gtkinfo		i;
+	t_global	*info;
+	t_gtkinfo	i;
 
 	gtk_init(&ac, &av);
 	if (!builder_and_glad_init(&i))
@@ -56,7 +63,9 @@ int			main(int ac, char **av)
 	i.w.m = GTK_WIDGET(gtk_builder_get_object(i.builder, MAIN_WIN));
 	i.w.a = GTK_WIDGET(gtk_builder_get_object(i.builder, ABOUT_WIN));
 	gtk_widget_show_all(i.w.m);
+	info = get_global();
+	init_global(info, av[0]);
 	gtk_main();
-	return (0);
 	free_all();
+	return (0);
 }
