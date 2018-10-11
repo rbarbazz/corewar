@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/11 17:44:13 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/11 19:34:35 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <time.h>
 
 /*
 ** *****************************************************************************
@@ -270,6 +271,8 @@ void					do_op(t_global *info, t_process *process);
 ** *****************************************************************************
 */
 
+int						get_param_value(t_global *info, t_process *process, int i, unsigned int *param);
+int						check_reg(t_global *info, t_process *process, int i);
 void					live(t_global *info, t_process *process);
 void					add(t_global *info, t_process *process);
 void					sub(t_global *info, t_process *process);
@@ -277,9 +280,7 @@ void					zjmp(t_global *info, t_process *process);
 void					aff(t_global *info, t_process *process);
 void					lfork(t_global *info, t_process *process);
 void					lld(t_global *info, t_process *process);
-
-
-
+void					lldi(t_global *info, t_process *process);
 
 /*
 ** *****************************************************************************

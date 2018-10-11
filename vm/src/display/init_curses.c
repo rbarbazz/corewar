@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 14:42:52 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/11 17:50:07 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/11 19:28:29 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	ft_init_permanent_parts(t_global *info)
 	ft_curses_drawbox();
 	clock = info->clock;
 	mvprintw(SPEED_LINE, 2, \
-	"Cycles/sec: %d", (1000000 / info->speed));
+	"Speed level: %d", info->speed);
 	line = CYCLE_LINE;
 	mvprintw(line++, 2, \
 	"Total cycles: %d", clock.cycle);
