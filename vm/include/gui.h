@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/11 16:11:55 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/11 18:37:35 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include "vm.h"
 # include <gtk/gtk.h>
+
+
+# define DIAG_CHAMP "Pick a champion"
 
 /*
 **         _         _
