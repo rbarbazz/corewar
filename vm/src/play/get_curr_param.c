@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:30:07 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/09 18:48:16 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/11 13:14:55 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	match_param(int type, int i, t_process *process)
 		{
 			if ((g_op_tab[j].param[i] | type) != g_op_tab[j].param[i])
 				process->valid_ocp = 0;
+			process->type_param[i] = type;
 		}
 		j++;
 	}
