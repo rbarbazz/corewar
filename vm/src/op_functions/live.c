@@ -6,22 +6,20 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:27:16 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/10 18:01:53 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/11 17:42:56 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static t_player *get_player_from_nb(t_global *info, t_process *process)
+static t_player *get_player_from_nb(t_global *info, unsigned int param)
 {
-	unsigned int x;
 	t_player *tmp;
 
 	tmp = info->player;
-	x = process->curr_op.param[0];
 	while (tmp)
 	{
-		if ((unsigned int)tmp->player == x)
+		if ((unsigned int)tmp->player == param)
 			break;
 		tmp = tmp->next;
 	}
@@ -30,9 +28,14 @@ static t_player *get_player_from_nb(t_global *info, t_process *process)
 
 void	live(t_global *info, t_process *process)
 {
-	t_player *player;
+	t_player		*player;
+	unsigned int	param0;
 
-	if (!(player = get_player_from_nb(info, process)))
+	param0 = 0;
+	if (get_param_value(info, process, 0, &param0))
+		return ;
+	ft_printf("param 0 : %u\n", param0);
+	if (!(player = get_player_from_nb(info, param0)))
 	{
 		ft_dprintf(STDERR_FILENO, "un processus a essaye de faire un live pour \
 un joueur inconnu\n");
@@ -41,5 +44,6 @@ un joueur inconnu\n");
 	player->curr_live++;
 	player->last_live = info->clock.cycle;
 	process->has_live = 1;
-	ft_printf("un processus dit que le joueur %d(%s) est en vie\n", player->player, player->name);
+	if (!info->visual)
+		ft_printf("un processus dit que le joueur %d(%s) est en vie\n", player->player, player->name);
 }
