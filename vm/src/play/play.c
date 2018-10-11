@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:00:00 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/10 18:26:04 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/11 16:46:57 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int			play(t_global *info)
 		check_process(info);
 		update_map(info);
 		if (info->visual)
-			print_map(info);
+			usleep(ft_visu_curses(info));
 		//Debug
 		//sleep(1);
 	}

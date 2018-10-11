@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/11 13:23:21 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/11 17:04:43 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 
 # include "../libft/include/libft.h"
 # include "op.h"
+# include <curses.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include <curses.h>
 
 /*
 ** *****************************************************************************
@@ -69,6 +69,21 @@
 # define BOLDMAGENTA	"\033[1m\033[35m"
 # define BOLDCYAN   	"\033[1m\033[36m"
 # define BOLDWHITE  	"\033[1m\033[37m"
+
+/*
+** *****************************************************************************
+** Curses
+** *****************************************************************************
+*/
+
+# define TOP_LINE			2
+# define PLAYER_LINE		(TOP_LINE + 4)
+# define SEP_COL			50
+# define ARENA_START_COL	(SEP_COL + 2)
+# define TOTAL_COLS			(ARENA_START_COL + (64 * 3) + 1)
+# define TOTAL_LINES		(64 + (2 * 2))
+# define LINES_LIM			(TOTAL_LINES + 3)
+# define MSG_LINE			(TOTAL_LINES + 2)
 
 /*
 ** *****************************************************************************
@@ -281,5 +296,15 @@ void					increase_position(t_process *process,unsigned int add);
 */
 
 void					update_map(t_global *info);
+
+/*
+** *****************************************************************************
+** Curses functions
+** *****************************************************************************
+*/
+
+int						ft_visu_curses(t_global *info);
+int						ft_init_curses(t_global *info);
+int						ft_check_screen_size(void);
 
 #endif
