@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:31:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/10 14:10:42 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/11 11:43:44 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** *****************************************************************************
 */
 
-static void	init_reg(t_process *new, t_player *player)
+static void	init_tab(t_process *new, t_player *player)
 {
 	int	i;
 
@@ -26,6 +26,9 @@ static void	init_reg(t_process *new, t_player *player)
 	while (i < REG_NUMBER)
 		new->reg[i++] = 0;
 	new->reg[0] = player->player;
+	i = 0;
+	while (i < 3)
+		new->type_param[i++] = 0;
 }
 
 static void	add_process(t_global *info, t_player *tmp_p)
@@ -43,12 +46,13 @@ static void	add_process(t_global *info, t_player *tmp_p)
 	else
 		tmp->next = new;
 	new->prev = tmp;
-	init_reg(new, tmp_p);
+	init_tab(new, tmp_p);
 	new->pc = 0;
 	new->carry = 0;
 	new->start_pos = tmp_p->start;
 	new->cycle_left = -1;
 	new->valid_ocp = 1;
+	new->has_live = 0;
 	new->curr_pos = tmp_p->start;
 	new->visu_pos = tmp_p->start;
 	info->process_tail = new;
