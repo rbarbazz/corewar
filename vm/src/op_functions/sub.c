@@ -6,35 +6,26 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 14:29:00 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/10 14:50:22 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/11 17:37:30 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static int	check_reg(t_global *info, t_process *process)
-{
-	int i;
-
-	i = 0;
-	while (i < 3)
-	{
-		if (process->curr_op.param[i] > 15)
-		{
-			ft_dprintf(STDERR_FILENO, "Registre inexistant : %u\n", process->curr_op.param[i]);
-			kill_process(info, process);
-			return (1);
-		}
-		i++;
-	}
-	return (0);
-}
-
 void		sub(t_global *info, t_process *process)
 {
-	if (check_reg(info, process))
+	unsigned int	param0;
+	unsigned int	param1;
+
+	param0 = 0;
+	param1 = 0;
+	if (get_param_value(info, process, 0, &param0))
 		return ;
-	process->reg[process->curr_op.param[2] - 1] = process->reg[process->curr_op.param[0] - 1] - process->reg[process->curr_op.param[1] - 1];
+	if (get_param_value(info, process, 1, &param1))
+		return ;
+	if (check_reg(info, process, 2))
+		return ;
+	process->reg[process->curr_op.param[2] - 1] = param0 - param1;
 	if (!(process->reg[process->curr_op.param[2] - 1]))
 		process->carry = 1;
 	else
