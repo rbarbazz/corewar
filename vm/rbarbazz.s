@@ -1,13 +1,13 @@
 .name "zork"
 .comment "I'M ALIIIIVE"    #yeeeet
 
-dab:
-st r1, r2
-add r1, r2, r2
-st r2, :dab
-dab:
-add r6, r6, r6 #carry -> 1
-zjmp %:dab
+#dab:
+
+#st r1, r2
+#add r1, r2, r2
+#st r2, :dab
+#add r6, r6, r6 #carry -> 1
+zjmp %65535
 
 
 #l2:

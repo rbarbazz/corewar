@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 16:32:33 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/12 17:25:53 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 18:32:45 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,14 @@ void	st(t_global *info, t_process *process)
 	param1 = process->curr_op.param[1];
 	if (get_param_value(info, process, 0, &param0))
 		return ;
-	param0 %= IDX_MOD;
+	ft_printf("param1 avant idx: %u\n", param1);
+	param1 %= IDX_MOD;
+	ft_printf("param0 : %u\n", param0);
+	ft_printf("param1 : %u\n", param1);
 	if (process->type_param[1] == T_REG)
 		process->reg[process->curr_op.param[1] - 1] = param0;
 	else
-		write_at_position(info->map, param1, param0);
+		write_at_position(info->map, process, param1, param0);
 	if (!(process->reg[process->curr_op.param[1] - 1]))
 		process->carry = 1;
 	else
