@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/11 17:30:48 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/12 11:45:46 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ typedef struct			s_op
 	unsigned int		param[3];
 	int					opcode;
 	int					cycle;
-	int					has_ocp;
-	int					nb_or_address;
+	char				has_ocp;
+	char				nb_or_address;
 }						t_op;
 
 typedef struct			s_process
@@ -97,9 +97,9 @@ typedef struct			s_process
 	unsigned int		visu_pos;
 	int					cycle_left;
 	t_op				curr_op;
-	int					valid_ocp;
+	char				valid_ocp;
 	unsigned int		type_param[3];
-	int					has_live;
+	char				has_live;
 	struct s_process	*prev;
 	struct s_process	*next;
 }						t_process;
@@ -121,7 +121,7 @@ typedef struct			s_map
 {
 	unsigned char		c;
 	int					player;
-	int					current;
+	char				current;
 	struct s_map		*prev;
 	struct s_map		*next;
 }						t_map;
@@ -144,8 +144,8 @@ typedef struct			s_global
 	int					player_count;
 	t_map				*map;
 	t_cycle				clock;
-	int					visual;
-	int					dump;
+	char				visual;
+	char				dump;
 }						t_global;
 
 /*

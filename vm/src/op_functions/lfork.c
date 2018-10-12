@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 10:48:58 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/11 17:20:43 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/12 12:56:25 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void		lfork(t_global *info, t_process *process)
 	if (get_param_value(info, process, 0, &param0))
 		return ;
 	new = dup_process(info, process);
-	increase_position(process, param0 - 3);
+	param0 -= process->pc;
+	increase_position(new, param0 - 3);
+	new->visu_pos = new->curr_pos;
 	info->process_count++;
 }
