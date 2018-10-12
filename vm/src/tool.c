@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:04:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/12 17:31:30 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 17:38:49 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ unsigned int buff)
 		map->c = itoaed[i++];
 		map->player = 1;
 		map = map->next;
+		if (!map)
+			map = get_global()->map;
 	}
 	ft_strdel(&itoaed);
 }
