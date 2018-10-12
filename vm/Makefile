@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/11 17:06:35 by xperrin          ###   ########.fr        #
+#    Updated: 2018/10/12 16:42:48 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC_NAME =	init.c\
 			play/play.c play/get_curr_param.c play/do_op.c play/kill_process.c\
 			op_functions/live.c op_functions/add.c op_functions/sub.c\
 			op_functions/zjmp.c op_functions/aff.c op_functions/lfork.c\
-			op_functions/lld.c\
+			op_functions/lld.c op_functions/lldi.c\
+			op_functions/get_param_value.c\
 			setup/create_player.c setup/create_map.c\
 			setup/open_read_functions.c setup/create_process.c\
 			setup/check_magic.c setup/parsing.c setup/write_player.c\
@@ -37,7 +38,7 @@ LDLIBS = -lft
 
 LIB = libft/libft.a
 
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -g -flto
 
 CC = clang
 

@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/11 19:40:43 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/12 11:55:34 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,10 @@ int			main(int ac, char **av)
 	init_global(i.vm, av[0]);
 	/* check_args(i.vm, ac, av); */
 	create_map(i.vm);
-	/* write_player_in_map(i->vm); */
 	gtk_main();
+	i.vm->visual = 1;
+	write_player_in_map(i.vm);
+	play(i.vm);
 	free_all();
 	return (0);
 }
