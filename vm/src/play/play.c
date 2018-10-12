@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:00:00 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/12 14:12:47 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 21:24:10 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	get_winner(t_global *info)
 	winner = 0;
 	while (tmp)
 	{
+		ft_printf("pnumber %d\n", tmp->player);
 		if (live <= tmp->last_live)
 		{
 			live = tmp->last_live;

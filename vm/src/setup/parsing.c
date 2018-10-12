@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 18:43:40 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 17:28:45 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 21:27:49 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** *****************************************************************************
 */
 
-static int	check_champ(t_global *info, char *filename)
+static void	check_champ(t_global *info, char *filename, char has_pnumber)
 {
 	char	*file;
 	int		fd;
@@ -31,10 +31,9 @@ static int	check_champ(t_global *info, char *filename)
 		close_file(fd);
 		exit_corewar(INVALID_MAGIC);
 	}
-	init_player(info, file);
+	init_player(info, file, has_pnumber);
 	close_file(fd);
 	ft_strdel(&file);
-	return (0);
 }
 
 /*
@@ -57,6 +56,29 @@ static int	check_dump(t_global *info, int *i, char **argv)
 		info->clock.dump = (unsigned int)nb;
 		info->dump = 1;
 		(*i)++;
+		return (1);
+	}
+	return (0);
+}
+
+/*
+** *****************************************************************************
+** look for the -n option
+** *****************************************************************************
+*/
+
+static int	check_pnumber(t_global *info, int *i, char **argv)
+{
+	long	nb;
+
+	if (ft_strequ(argv[*i], "-n"))
+	{
+		if (!argv[*i + 1] || !is_number(argv[*i + 1]))
+			exit_corewar(USAGE_ERROR);
+		if ((nb = ft_atol(argv[*i + 1])) > MEM_SIZE || nb < -MEM_SIZE)
+			exit_corewar(WRONG_PNUMBER);
+		info->next_pnumber = nb;
+		(*i) += 2;
 		return (1);
 	}
 	return (0);
@@ -92,7 +114,12 @@ int			check_args(t_global *info, int argc, char **argv)
 	while (i < argc)
 	{
 		if (!check_visual(info, argv[i]) && !check_dump(info, &i, argv))
-			check_champ(info, argv[i]);
+		{
+			if (check_pnumber(info, &i, argv))
+				check_champ(info, argv[i], 1);
+			else
+				check_champ(info, argv[i], 1);
+		}
 		i++;
 	}
 	if (info->player_count > 4)

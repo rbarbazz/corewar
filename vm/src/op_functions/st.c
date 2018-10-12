@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 16:32:33 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/12 20:22:48 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 20:57:40 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	st(t_global *info, t_process *process)
 	if (process->type_param[1] == T_REG)
 		process->reg[process->curr_op.param[1] - 1] = param0;
 	else
-		write_at_position(info->map, process, process->curr_pos + param1 - 5, param0);
+		write_at_position(info->map, process, process->curr_pos + param1 - 5,\
+param0);
 	if (!(process->reg[process->curr_op.param[1] - 1]))
 		process->carry = 1;
 	else

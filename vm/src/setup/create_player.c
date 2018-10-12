@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 19:26:08 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/08 18:08:35 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 21:23:12 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,6 @@ static int		check_end_file(t_player *new, char *file)
 		i++;
 	}
 	return (0);
-}
-
-/*
-** *****************************************************************************
-** sets the player position and increments the player count
-** *****************************************************************************
-*/
-
-static void		assignate_player_position(t_global *info)
-{
-	int			i;
-	t_player	*tmp;
-
-	i = 1;
-	tmp = info->player;
-	while (tmp)
-	{
-		tmp->player = i++;
-		tmp = tmp->next;
-	}
-	info->player_count = i - 1;
 }
 
 /*
@@ -91,7 +70,7 @@ static t_player	*assignate_value(char *file)
 ** *****************************************************************************
 */
 
-int				init_player(t_global *info, char *file)
+int				init_player(t_global *info, char *file, char has_pnumber)
 {
 	t_player	*tmp;
 	t_player	*new;
@@ -104,6 +83,10 @@ int				init_player(t_global *info, char *file)
 		info->player = new;
 	else
 		tmp->next = new;
-	assignate_player_position(info);
+	if (has_pnumber)
+		new->player = info->next_pnumber;
+	else
+		new->player = info->player_count + 1;
+	info->player_count++;
 	return (0);
 }
