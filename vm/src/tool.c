@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:04:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/12 20:19:29 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 21:37:35 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ unsigned int position, unsigned int buff)
 	int		i;
 	char	*itoaed;
 
-	ft_printf("%u\n", position);
 	if (!(itoaed = uitoa_d(buff)))
 		exit_corewar(MALLOC_ERROR);
 	position %= MEM_SIZE;
