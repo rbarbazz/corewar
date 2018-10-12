@@ -4,7 +4,8 @@
 dab:
 st r1, r2
 add r1, r2, r2
-st r2, 45
+st r2, :dab
+dab:
 add r6, r6, r6 #carry -> 1
 zjmp %:dab
 
