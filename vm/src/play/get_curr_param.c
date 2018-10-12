@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:30:07 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/11 17:55:07 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/12 20:41:03 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ static void	match_param(int type, int i, t_process *process)
 	int	j;
 
 	j = 0;
-	if (type == IND_CODE)
+	if (!type)
+	{
+		process->valid_ocp = 0;
+		return ;
+	}
+	else if (type == IND_CODE)
 		type = T_IND;
 	else if (type == REG_CODE)
 		type = T_REG;
@@ -50,16 +55,16 @@ static void	match_param(int type, int i, t_process *process)
 
 static int	parse_ocp(unsigned char ocp, int i)
 {
-	int	ret;
+	int	type;
 
-	ret = 0;
+	type = 0;
 	if (!i)
-		ret = (ocp & 192) >> 6;
+		type = (ocp & 192) >> 6;
 	else if (i == 1)
-		ret = (ocp & 48) >> 4;
+		type = (ocp & 48) >> 4;
 	else if (i == 2)
-		ret = (ocp & 12) >> 2;
-	return (ret);
+		type = (ocp & 12) >> 2;
+	return (type);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:19:14 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/10 14:23:26 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/12 20:18:19 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ int			print_map(t_global *info)
 	t_map	*tmp;
 	t_player *tmp_player;
 	int		i;
+	int		j;
 
+	j = MEM_SIZE;
 	tmp = info->map;
 	i = 1;
 	ft_printf("\033[H");
-	while (tmp)
+	while (tmp && j--)
 	{
 		if (tmp->player == 1)
 			ft_printf(RED);
