@@ -6,7 +6,7 @@
 /*   By: lcompagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/07 14:54:32 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/12 17:57:01 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/12 20:26:16 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	ft_curses_cycles(t_global *info)
 
 	clock = info->clock;
 	line = CYCLE_LINE;
+	mvprintw(SPEED_LINE, 2 + 22, "%d   ", info->speed);
 	mvprintw(line, 2 + 14, "        ");
 	mvprintw(line++, 2 + 14, "%d", clock.cycle);
 	mvprintw(line, 2 + 15, "      ");
@@ -94,6 +95,49 @@ static void	ft_more_usefull_info(t_global *info, int ret)
 		update = 50;
 }
 
+static int	ft_interpret_input(t_global *info, int key)
+{
+	if ((char)key == ' ')
+	{
+		nodelay(stdscr, FALSE);
+		return (1);
+
+	}
+	else if ((char)key == '+')
+	{
+		if (info->speed + SPEED_DELTA < SPEED_LIM_SUP)
+			info->speed += SPEED_DELTA;
+	}
+	else if ((char)key == '-')
+	{
+		if (info->speed - SPEED_DELTA > SPEED_LIM_INF)
+			info->speed -= SPEED_DELTA;
+	}
+	return (SUCCESS);
+}
+
+void		ft_get_input(t_global *info)
+{
+	static int	pause = 1;
+	int			key;
+
+	if (pause == 1)
+	{
+		attron(COLOR_PAIR(0 | (1 << 3)));
+		mvprintw(TOP_LINE, 4, "  PAUSE  ");
+		refresh();
+		pause = 0;
+		while ((char)(key = getch()) != ' ')
+			;
+		cbreak();
+		nodelay(stdscr, TRUE);
+		mvprintw(TOP_LINE, 4, " RUNNING ");
+		attroff(COLOR_PAIR(0 | (1 << 3)));
+	}
+	else
+		pause = ft_interpret_input(info, getch());
+}
+
 int			ft_visu_curses(t_global *info)
 {
 	static int	first = 1;
@@ -104,14 +148,12 @@ int			ft_visu_curses(t_global *info)
 		if (ft_init_curses(info))
 			return (0);
 		first--;
-		attron(COLOR_PAIR(0 | (1 << 3)));
-		mvprintw(TOP_LINE, 2, "PAUSED");
-		attroff(COLOR_PAIR(0 | (1 << 3)));
 	}
 	ft_curses_cycles(info);
 	ret = ft_curses_player(info);
 	ft_curses_map(info);
 	ft_more_usefull_info(info, ret);
+	ft_get_input(info);
 	refresh();
 	return (info->speed);
 }
