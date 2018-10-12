@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:47:32 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/11 17:57:01 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/12 12:17:36 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ int	get_param_value(t_global *info, t_process *process, int i, unsigned int *par
 		ft_strdel(&tmp);
 	}
 	else if (process->type_param[i] == T_DIR)
-		*param = process->curr_op.param[i];
+	{
+		if (!process->curr_op.nb_or_address)
+			*param = process->curr_op.param[i];
+		else
+			*param = process->curr_op.param[i] + process->pc;
+	}
 	return (0);
 }

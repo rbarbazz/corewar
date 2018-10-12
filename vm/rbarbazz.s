@@ -10,7 +10,7 @@
 #		and r1, %0, r1
 
 live:	live %1
-#lfork %:live
+lfork %5
 #add r1, r2, r3
 #add r1, r3, r1
 #add r1, r3, r1
