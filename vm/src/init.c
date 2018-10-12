@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:23:46 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/11 18:04:27 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/12 19:56:35 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_global(t_global *info, char *prog_name)
 	info->clock.dump = 0;
 	info->visual = 0;
 	info->dump = 0;
-	info->speed = 100;
+	info->speed = SPEED_DEF;
 }
 
 t_global	*get_global(void)

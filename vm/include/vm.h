@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 16:43:31 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/12 20:26:48 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,10 @@
 # define TOTAL_LINES		(64 + (2 * 2))
 # define LINES_LIM			(TOTAL_LINES + 3)
 # define MSG_LINE			(TOTAL_LINES + 2)
+# define SPEED_DEF			50000
+# define SPEED_DELTA		1000
+# define SPEED_LIM_INF		1
+# define SPEED_LIM_SUP		10000000
 
 /*
 ** *****************************************************************************
