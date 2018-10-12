@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:43:57 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/11 19:43:20 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/12 18:20:48 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int		load_champ(t_global *info, char *filename)
 	return (0);
 }
 
-void			callback_player(GtkMenuItem *item, t_gtkinfo *i)
+void			callback_player_load(GtkMenuItem *item, t_gtkinfo *i)
 {
 	GtkWidget				*dialog;
 	GtkFileChooserAction	action;
