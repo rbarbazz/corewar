@@ -6,11 +6,35 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:04:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/12 16:06:11 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 17:31:30 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+void			write_at_position(t_map *map, unsigned int position,\
+unsigned int buff)
+{
+	int		i;
+	char	*itoaed;
+
+	if (!(itoaed = uitoa_d(buff)))
+		exit_corewar(MALLOC_ERROR);
+	position %= MEM_SIZE;
+	while (map && position)
+	{
+		map = map->next;
+		position--;
+	}
+	i = 0;
+	while (map && i < 4)
+	{
+		map->c = itoaed[i++];
+		map->player = 1;
+		map = map->next;
+	}
+	ft_strdel(&itoaed);
+}
 
 /*
 ** *****************************************************************************

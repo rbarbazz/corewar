@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 11:09:15 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/11 15:41:09 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/12 17:05:51 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void		do_op(t_global *info, t_process *process)
 	void (*op_ft[16])(t_global*, t_process*);
 
 	op_ft[0] = live;
-	/*op_ft[1] = ld;
-	op_ft[2] = st;*/
+	op_ft[1] = ld;
+	op_ft[2] = st;
 	op_ft[3] = add;
 	op_ft[4] = sub;
 	/*op_ft[5] = and;
