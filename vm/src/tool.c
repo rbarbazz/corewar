@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:04:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/10 17:11:10 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 16:06:11 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int size)
 	char	*ret;
 	int		i;
 
+	position %= MEM_SIZE;
 	if (!(ret = ft_strnew(4)))
 		exit_corewar(MALLOC_ERROR);
 	while (map && (position + size - 1))

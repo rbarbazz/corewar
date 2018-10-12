@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 11:45:46 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 14:54:04 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,41 +89,41 @@ typedef struct			s_op
 
 typedef struct			s_process
 {
+	struct s_process	*prev;
+	struct s_process	*next;
+	t_op				curr_op;
 	unsigned int		reg[REG_NUMBER];
-	unsigned short		pc;
 	int					carry;
 	unsigned int		start_pos;
 	unsigned int		curr_pos;
 	unsigned int		visu_pos;
 	int					cycle_left;
-	t_op				curr_op;
-	char				valid_ocp;
 	unsigned int		type_param[3];
+	unsigned short		pc;
 	char				has_live;
-	struct s_process	*prev;
-	struct s_process	*next;
+	char				valid_ocp;
 }						t_process;
 
 typedef struct			s_player
 {
-	int					player;
+	struct s_player		*next;
 	char				*name;
 	char				*comment;
-	unsigned int		prog_size;
 	char				*instruction;
+	int					player;
+	unsigned int		prog_size;
 	unsigned int		start;
 	unsigned int		last_live;
 	unsigned int		curr_live;
-	struct s_player		*next;
 }						t_player;
 
 typedef struct			s_map
 {
-	unsigned char		c;
-	int					player;
-	char				current;
 	struct s_map		*prev;
 	struct s_map		*next;
+	int					player;
+	unsigned char		c;
+	char				current;
 }						t_map;
 
 typedef struct			s_cycle
@@ -136,14 +136,14 @@ typedef struct			s_cycle
 
 typedef struct			s_global
 {
-	char				*prog_name;
 	t_process			*process_head;
 	t_process			*process_tail;
-	int					process_count;
 	t_player			*player;
-	int					player_count;
 	t_map				*map;
 	t_cycle				clock;
+	char				*prog_name;
+	int					process_count;
+	int					player_count;
 	char				visual;
 	char				dump;
 }						t_global;
