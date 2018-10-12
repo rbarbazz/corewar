@@ -6,14 +6,14 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:04:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/12 17:38:49 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 18:21:22 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void			write_at_position(t_map *map, unsigned int position,\
-unsigned int buff)
+void			write_at_position(t_map *map, t_process *process, \
+unsigned int position, unsigned int buff)
 {
 	int		i;
 	char	*itoaed;
@@ -30,7 +30,7 @@ unsigned int buff)
 	while (map && i < 4)
 	{
 		map->c = itoaed[i++];
-		map->player = 1;
+		map->player = process->reg[0];
 		map = map->next;
 		if (!map)
 			map = get_global()->map;
@@ -94,7 +94,7 @@ char			*map_from_list(t_global *info)
 
 /*
 ** *****************************************************************************
-** takes a char[3] and returns an int
+** takes a char[4] and returns an int
 ** *****************************************************************************
 */
 
