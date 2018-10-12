@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 17:57:49 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/12 20:28:34 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,8 +207,7 @@ int						check_magic(char *file);
 ** *****************************************************************************
 */
 
-int						init_map(t_global *info, char c);
-int						create_map(t_global *info);
+void					create_map(t_global *info);
 void					write_player_in_map(t_global *info);
 
 /*
@@ -240,7 +239,6 @@ char					get_ocp(t_global *info, t_process *process);
 void					get_op(t_global *info, t_process *process);
 char					*get_value_at_position(t_map *map,\
 unsigned int position, int size);
-int						get_data_from_op(int op, t_process *process);
 void					get_op_param(t_global *info, t_process *process,\
 unsigned char ocp);
 void					do_op(t_global *info, t_process *process);

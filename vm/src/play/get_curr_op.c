@@ -6,13 +6,43 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 16:11:37 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 12:48:11 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 20:41:36 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-char	get_ocp(t_global *info, t_process *process)
+/*
+** *****************************************************************************
+** iterates on the op tab to find the coresponding opcode
+** stores the number of cycles required
+** if no match -> return -1
+** *****************************************************************************
+*/
+
+static int	get_data_from_op(int op, t_process *process)
+{
+	int	i;
+
+	i = 0;
+	while (i < 16)
+	{
+		if (g_op_tab[i].opcode == op)
+		{
+			ft_memcpy(process->curr_op.name, g_op_tab[i].name, 6);
+			process->curr_op.nb_param = g_op_tab[i].nb_param;
+			process->curr_op.opcode = g_op_tab[i].opcode;
+			process->curr_op.cycle = g_op_tab[i].cycle;
+			process->curr_op.has_ocp = g_op_tab[i].has_ocp;
+			process->curr_op.nb_or_address = g_op_tab[i].nb_or_address;
+			return (g_op_tab[i].cycle);
+		}
+		i++;
+	}
+	return (-1);
+}
+
+char		get_ocp(t_global *info, t_process *process)
 {
 	char			*value;
 	unsigned char	ocp;
@@ -23,7 +53,7 @@ char	get_ocp(t_global *info, t_process *process)
 	return (ocp);
 }
 
-void	increase_position(t_process *process, unsigned int add)
+void		increase_position(t_process *process, unsigned int add)
 {
 	process->pc += add;
 	process->curr_pos = process->start_pos + process->pc;
@@ -36,13 +66,14 @@ void	increase_position(t_process *process, unsigned int add)
 ** *****************************************************************************
 */
 
-void	get_op(t_global *info, t_process *process)
+void		get_op(t_global *info, t_process *process)
 {
 	unsigned int	op;
 	char			*value;
 	unsigned char	ocp;
 
 	ocp = 0;
+	process->valid_ocp = 1;
 	value = get_value_at_position(info->map, process->curr_pos, 1);
 	op = tab_to_int(value);
 	ft_strdel(&value);
