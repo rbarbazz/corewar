@@ -6,17 +6,18 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:47:32 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 12:17:36 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 16:06:36 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int	check_reg(t_global *info, t_process *process, int i)
+int	check_reg(t_global *info, t_process *process, int param)
 {
-	if (process->curr_op.param[i] > 15)
+	if (process->curr_op.param[param] > 15)
 	{
-		ft_dprintf(STDERR_FILENO, "Registre inexistant : %u\n", process->curr_op.param[i]);
+		ft_dprintf(STDERR_FILENO, "Registre inexistant : %u\n",\
+		process->curr_op.param[param]);
 		kill_process(info, process);
 		return (1);
 	}
@@ -35,7 +36,7 @@ int	get_param_value(t_global *info, t_process *process, int i, unsigned int *par
 	}
 	else if (process->type_param[i] == T_IND)
 	{
-		tmp = get_value_at_position(info->map, process->curr_op.param[i], IND_SIZE);
+		tmp = get_value_at_position(info->map, process->curr_op.param[i], 4);
 		*param = tab_to_int(tmp);
 		ft_strdel(&tmp);
 	}

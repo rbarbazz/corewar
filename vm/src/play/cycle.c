@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 22:52:28 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/10 18:41:01 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 16:17:51 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,18 @@ static void	dump_memory(t_global *info)
 static void	check_live_process(t_global *info)
 {
 	t_process	*tmp_proc;
+	t_process	*save;
 
 	tmp_proc = info->process_head;
 	while (tmp_proc)
 	{
+		if (tmp_proc->next)
+			save = tmp_proc->next;
+		else
+			save = NULL;
 		if (!tmp_proc->has_live)
 			kill_process(info, tmp_proc);
-		tmp_proc = tmp_proc->next;
+		tmp_proc = save;
 	}
 }
 
