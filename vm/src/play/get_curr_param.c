@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:30:07 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/11 14:23:55 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/11 17:55:07 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ static void	without_ocp(t_global *info, t_process *process)
 	else
 		size = 2;
 	param = get_value_at_position(info->map, process->curr_pos, size);
+	process->type_param[0] = T_DIR;
 	process->curr_op.param[0] = tab_to_int(param);
 	process->curr_op.param[1] = 0;
 	process->curr_op.param[2] = 0;
