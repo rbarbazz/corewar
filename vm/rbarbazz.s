@@ -2,14 +2,17 @@
 .comment "I'M ALIIIIVE"    #yeeeet
 
 
-#lld :dab, r1
-#aff r1
+lldi 0, %4, r6
+aff r6
+
+lld %2, r7
+aff r7
 
 #l2:
 #		sti r1, %:live, %1
 #		and r1, %0, r1
 
-live:	live %1
+#live:	live %1
 #lfork %:live
 #add r1, r2, r3
 #add r1, r3, r1

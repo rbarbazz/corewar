@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/11 19:34:35 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/12 16:43:31 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,47 +101,47 @@ typedef struct			s_op
 	unsigned int		param[3];
 	int					opcode;
 	int					cycle;
-	int					has_ocp;
-	int					nb_or_address;
+	char				has_ocp;
+	char				nb_or_address;
 }						t_op;
 
 typedef struct			s_process
 {
+	struct s_process	*prev;
+	struct s_process	*next;
+	t_op				curr_op;
 	unsigned int		reg[REG_NUMBER];
-	unsigned short		pc;
 	int					carry;
 	unsigned int		start_pos;
 	unsigned int		curr_pos;
 	unsigned int		visu_pos;
 	int					cycle_left;
-	t_op				curr_op;
-	int					valid_ocp;
 	unsigned int		type_param[3];
-	int					has_live;
-	struct s_process	*prev;
-	struct s_process	*next;
+	unsigned short		pc;
+	char				has_live;
+	char				valid_ocp;
 }						t_process;
 
 typedef struct			s_player
 {
-	int					player;
+	struct s_player		*next;
 	char				*name;
 	char				*comment;
-	unsigned int		prog_size;
 	char				*instruction;
+	int					player;
+	unsigned int		prog_size;
 	unsigned int		start;
 	unsigned int		last_live;
 	unsigned int		curr_live;
-	struct s_player		*next;
 }						t_player;
 
 typedef struct			s_map
 {
-	unsigned char		c;
-	int					player;
-	int					current;
 	struct s_map		*prev;
 	struct s_map		*next;
+	int					player;
+	unsigned char		c;
+	char				current;
 }						t_map;
 
 typedef struct			s_cycle
@@ -154,16 +154,16 @@ typedef struct			s_cycle
 
 typedef struct			s_global
 {
-	char				*prog_name;
 	t_process			*process_head;
 	t_process			*process_tail;
-	int					process_count;
 	t_player			*player;
-	int					player_count;
 	t_map				*map;
 	t_cycle				clock;
-	int					visual;
-	int					dump;
+	char				*prog_name;
+	int					process_count;
+	int					player_count;
+	char				visual;
+	char				dump;
 	int					speed;
 }						t_global;
 
