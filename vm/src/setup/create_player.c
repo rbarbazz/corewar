@@ -6,11 +6,31 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 19:26:08 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 21:23:12 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 21:34:10 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+/*
+** *****************************************************************************
+** checks if the next pnumber is available
+** *****************************************************************************
+*/
+
+static int		pnumber_available(t_global *info)
+{
+	t_player	*tmp;
+
+	tmp = info->player;
+	while (tmp)
+	{
+		if (info->next_pnumber == tmp->player)
+			exit_corewar(WRONG_PNUMBER);
+		tmp = tmp->next;
+	}
+	return (0);
+}
 
 /*
 ** *****************************************************************************
@@ -83,7 +103,7 @@ int				init_player(t_global *info, char *file, char has_pnumber)
 		info->player = new;
 	else
 		tmp->next = new;
-	if (has_pnumber)
+	if (has_pnumber && !pnumber_available(info))
 		new->player = info->next_pnumber;
 	else
 		new->player = info->player_count + 1;

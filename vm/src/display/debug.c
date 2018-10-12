@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:19:14 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 20:18:19 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 21:40:15 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int			print_map(t_global *info)
 	ft_printf("\033[H");
 	while (tmp && j--)
 	{
-		if (tmp->player == 1)
+		if (tmp->player == -1)
 			ft_printf(RED);
-		else if (tmp->player == 2)
+		else if (tmp->player == -2)
 			ft_printf(GREEN);
 		else if (tmp->player == 3)
 			ft_printf(YELLOW);
@@ -55,22 +55,5 @@ int			print_map(t_global *info)
 		tmp_player = tmp_player->next;
 	}
 	ft_printf(RESET);
-	return (0);
-}
-
-int			print_player(t_global *info)
-{
-	t_player *tmp;
-
-	tmp = info->player;
-	while (tmp)
-	{
-		ft_printf("Player Name : %s\n", tmp->name);
-		ft_printf("Player Numero : %d\n", tmp->player);
-		ft_printf("Player Comment : %s\n", tmp->comment);
-		ft_printf("Player command size : %d\n", tmp->prog_size);
-		xxd(tmp->instruction, tmp->prog_size, 16);
-		tmp = tmp->next;
-	}
 	return (0);
 }
