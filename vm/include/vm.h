@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 20:28:34 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 21:19:53 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define NO_CHAMP				7
 # define INVALID_CLOSE_FD		8
 # define USAGE_ERROR			9
+# define WRONG_PNUMBER			10
 
 # define FILE_LEN_MAX	PROG_NAME_LENGTH + COMMENT_LENGTH + CHAMP_MAX_SIZE + 12
 
@@ -144,6 +145,7 @@ typedef struct			s_global
 	char				*prog_name;
 	int					process_count;
 	int					player_count;
+	int					next_pnumber;
 	char				visual;
 	char				dump;
 }						t_global;
@@ -216,7 +218,8 @@ void					write_player_in_map(t_global *info);
 ** *****************************************************************************
 */
 
-int						init_player(t_global *info, char *file);
+int						init_player(t_global *info, char *file,\
+char has_pnumber);
 void					create_initial_process(t_global *info);
 
 /*
