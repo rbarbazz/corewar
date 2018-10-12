@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 14:54:04 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 17:31:54 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,6 @@ extern					t_op	g_op_tab[16];
 */
 
 int						print_map(t_global *info);
-int						print_map(t_global *info);
 int						print_player(t_global *info);
 void					display_intro(t_global *info);
 
@@ -252,7 +251,8 @@ void					do_op(t_global *info, t_process *process);
 ** *****************************************************************************
 */
 
-int						get_param_value(t_global *info, t_process *process, int i, unsigned int *param);
+int						get_param_value(t_global *info, t_process *process,\
+int i, unsigned int *param);
 int						check_reg(t_global *info, t_process *process, int i);
 void					live(t_global *info, t_process *process);
 void					add(t_global *info, t_process *process);
@@ -262,6 +262,8 @@ void					aff(t_global *info, t_process *process);
 void					lfork(t_global *info, t_process *process);
 void					lld(t_global *info, t_process *process);
 void					lldi(t_global *info, t_process *process);
+void					ld(t_global *info, t_process *process);
+void					st(t_global *info, t_process *process);
 
 /*
 ** *****************************************************************************
@@ -270,9 +272,12 @@ void					lldi(t_global *info, t_process *process);
 */
 
 unsigned int			tab_to_int(char *str);
+char					*uitoa_d(unsigned int dec);
 char					*map_from_list(t_global *info);
 void					set_current_null(t_map *map, int position);
 void					increase_position(t_process *process,unsigned int add);
+void					write_at_position(t_map *map, unsigned int position,\
+unsigned int buff);
 
 /*
 ** *****************************************************************************

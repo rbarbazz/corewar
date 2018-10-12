@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 18:43:40 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/08 18:30:58 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 17:28:45 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static int	check_champ(t_global *info, char *filename)
 
 	fd = open_file(filename);
 	file = read_file(fd, filename);
-	//Debug
-	//xxd(file, FILE_LEN_MAX, 16);
 	if (check_magic(file))
 	{
 		ft_strdel(&file);
@@ -34,8 +32,6 @@ static int	check_champ(t_global *info, char *filename)
 		exit_corewar(INVALID_MAGIC);
 	}
 	init_player(info, file);
-	//Debug
-	//print_player(info);
 	close_file(fd);
 	ft_strdel(&file);
 	return (0);
