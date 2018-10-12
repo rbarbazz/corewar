@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:00:00 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/12 14:09:58 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/12 14:12:47 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ int			play(t_global *info)
 		if (info->visual)
 			print_map(info);
 		//Debug
-		/* if (info->clock.current_cycle > 1005) */
-		/* 	sleep(2); */
+		//	sleep(2);
 	}
 	get_winner(info);
 	return (0);
