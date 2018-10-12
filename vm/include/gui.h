@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/11 18:37:35 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/12 18:25:32 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "vm.h"
 # include <gtk/gtk.h>
-
 
 # define DIAG_CHAMP "Pick a champion"
 
@@ -73,7 +72,18 @@ typedef struct	s_gtkinfo {
 **  \___\__,_|_|_|_.__/\__,_\__|_\_\/__/
 */
 
+/*
+** gui_main.c
+*/
 void			callback_test(GtkToggleButton *tbutton, t_gtkinfo *i);
 void			about_display(GtkToggleButton *tbutton, t_gtkinfo *i);
-
+/*
+** call_filepicker.c
+*/
+void			callback_player_load(GtkMenuItem *item, t_gtkinfo *i);
+/*
+** call_logic
+*/
+void			callback_logic_start(GtkWidget *widget, t_gtkinfo *i);
+void			callback_dbgvisu(GtkWidget *widget, t_gtkinfo *i);
 #endif
