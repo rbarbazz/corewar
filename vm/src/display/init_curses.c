@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 14:42:52 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/12 19:59:45 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/13 19:05:19 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	ft_init_permanent_parts(t_global *info)
 
 	ft_curses_drawbox();
 	clock = info->clock;
-	mvprintw(SPEED_LINE, 2, "Slow level (micro s): %d", info->speed);
+	mvprintw(SLEEP_LINE, 2, "Slow level (micro s): %d", info->sleep);
 	line = CYCLE_LINE;
 	mvprintw(line++, 2, "Total cycles: %d", clock.cycle);
 	mvprintw(line++, 2, "Current cycle: %d", clock.current_cycle);
@@ -88,6 +88,11 @@ static void ft_init_colors(void)
 	init_pair(0 | (1 << 3), COLOR_BLACK, COLOR_WHITE);
 }
 
+void		ft_print_instructions(void)
+{
+;
+}
+
 int			ft_init_curses(t_global *info)
 {
 	initscr();
@@ -106,8 +111,8 @@ int			ft_init_curses(t_global *info)
 		info->visual = 0;
 		return (1);
 	}
-	//nodelay(stdscr, TRUE);
 	curs_set(0);
+	ft_print_instructions();
 	ft_init_colors();
 	ft_init_permanent_parts(info);
 	return (SUCCESS);

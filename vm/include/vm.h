@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/13 18:25:35 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/13 19:04:34 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,25 @@
 ** *****************************************************************************
 */
 
-# define TOP_LINE			2
-# define SPEED_LINE			(TOP_LINE + 2)
-# define CYCLE_LINE			(SPEED_LINE + 2)
-# define PLAYER_LINE		(CYCLE_LINE + 4)
-# define SEP_COL			50
-# define ARENA_START_COL	(SEP_COL + 2)
-# define TOTAL_COLS			(ARENA_START_COL + (64 * 3) + 1)
-# define TOTAL_LINES		(64 + (2 * 2))
-# define LINES_LIM			(TOTAL_LINES + 3)
-# define MSG_LINE			(TOTAL_LINES + 2)
-# define SPEED_DEF			50001
-# define SPEED_DELTA		5000
-# define SPEED_LIM_INF		1
-# define SPEED_LIM_SUP		1000000
+# define TOP_LINE					2
+# define SLEEP_LINE					(TOP_LINE + 2)
+# define CYCLE_LINE					(SLEEP_LINE + 2)
+# define PLAYER_LINE				(CYCLE_LINE + 4)
+# define SEP_COL					50
+# define ARENA_START_COL			(SEP_COL + 2)
+# define TOTAL_COLS					(ARENA_START_COL + (64 * 3) + 1)
+# define TOTAL_LINES				(64 + (2 * 2))
+# define LINES_LIM					(TOTAL_LINES + 3)
+# define MSG_LINE					(TOTAL_LINES + 2)
+# define SLEEP_DEF					50001
+# define SLEEP_DELTA				5000
+# define SLEEP_LIM_INF				1
+# define SLEEP_LIM_SUP				1000000
+# define CYCLE_PER_SEC_UPDATE		50
+# define KEY_PAUSE					' '
+# define KEY_STEP					's'
+# define KEY_SLEEP_UP				'+'
+# define KEY_SLEEP_DOWN				'-'
 
 /*
 ** *****************************************************************************
@@ -168,7 +173,7 @@ typedef struct			s_global
 	int					player_count;
 	char				visual;
 	char				dump;
-	int					speed;
+	int					sleep;
 }						t_global;
 
 /*
