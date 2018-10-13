@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 20:26:48 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/13 18:25:35 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,10 @@
 # define TOTAL_LINES		(64 + (2 * 2))
 # define LINES_LIM			(TOTAL_LINES + 3)
 # define MSG_LINE			(TOTAL_LINES + 2)
-# define SPEED_DEF			50000
-# define SPEED_DELTA		1000
+# define SPEED_DEF			50001
+# define SPEED_DELTA		5000
 # define SPEED_LIM_INF		1
-# define SPEED_LIM_SUP		10000000
+# define SPEED_LIM_SUP		1000000
 
 /*
 ** *****************************************************************************
@@ -314,5 +314,6 @@ void					update_map(t_global *info);
 int						ft_visu_curses(t_global *info);
 int						ft_init_curses(t_global *info);
 int						ft_check_screen_size(void);
+void					ft_get_input(t_global *info);
 
 #endif
