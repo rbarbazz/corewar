@@ -6,7 +6,7 @@
 /*   By: lcompagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/07 14:54:32 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/12 20:26:16 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/13 18:30:31 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	ft_curses_map(t_global *info)
 	}
 }
 
-static void	ft_more_usefull_info(t_global *info, int ret)
+static void	ft_some_usefull_info(t_global *info, int ret)
 {
 	static int		update = 49;
 	static clock_t	timing = 0;
@@ -85,7 +85,8 @@ static void	ft_more_usefull_info(t_global *info, int ret)
 	}
 	else if (update == 50)
 	{
-		res = (double)(1.0 / ((double)(clock() - timing) / CLOCKS_PER_SEC));
+		res = (double)(1.0 / ((50.0 * info->speed / 1000000.0) \
+					+ ((double)(clock() - timing) / CLOCKS_PER_SEC)));
 		mvprintw((ret = ret + 2), 2, "Cycle/sec = %.2F", (res * 50.0));
 		timing = clock();
 	}
@@ -93,49 +94,6 @@ static void	ft_more_usefull_info(t_global *info, int ret)
 		update--;
 	else
 		update = 50;
-}
-
-static int	ft_interpret_input(t_global *info, int key)
-{
-	if ((char)key == ' ')
-	{
-		nodelay(stdscr, FALSE);
-		return (1);
-
-	}
-	else if ((char)key == '+')
-	{
-		if (info->speed + SPEED_DELTA < SPEED_LIM_SUP)
-			info->speed += SPEED_DELTA;
-	}
-	else if ((char)key == '-')
-	{
-		if (info->speed - SPEED_DELTA > SPEED_LIM_INF)
-			info->speed -= SPEED_DELTA;
-	}
-	return (SUCCESS);
-}
-
-void		ft_get_input(t_global *info)
-{
-	static int	pause = 1;
-	int			key;
-
-	if (pause == 1)
-	{
-		attron(COLOR_PAIR(0 | (1 << 3)));
-		mvprintw(TOP_LINE, 4, "  PAUSE  ");
-		refresh();
-		pause = 0;
-		while ((char)(key = getch()) != ' ')
-			;
-		cbreak();
-		nodelay(stdscr, TRUE);
-		mvprintw(TOP_LINE, 4, " RUNNING ");
-		attroff(COLOR_PAIR(0 | (1 << 3)));
-	}
-	else
-		pause = ft_interpret_input(info, getch());
 }
 
 int			ft_visu_curses(t_global *info)
@@ -152,7 +110,7 @@ int			ft_visu_curses(t_global *info)
 	ft_curses_cycles(info);
 	ret = ft_curses_player(info);
 	ft_curses_map(info);
-	ft_more_usefull_info(info, ret);
+	ft_some_usefull_info(info, ret);
 	ft_get_input(info);
 	refresh();
 	return (info->speed);

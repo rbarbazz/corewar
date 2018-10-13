@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/12 16:42:22 by lcompagn         ###   ########.fr        #
+#    Updated: 2018/10/13 18:03:25 by lcompagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRC_NAME =	main.c init.c\
 			setup/open_read_functions.c setup/create_process.c\
 			setup/check_magic.c setup/parsing.c setup/write_player.c\
 			display/debug.c display/update_map.c\
-			display/check_screen_size.c display/init_curses.c display/visu_curses.c\
+			display/get_inputs.c display/check_screen_size.c\
+			display/init_curses.c display/visu_curses.c\
 			clear.c error.c tool.c op.c
 
 OBJ_PATH = obj
