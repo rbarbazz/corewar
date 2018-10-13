@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/13 19:04:34 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/13 19:22:00 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@
 # define TOTAL_COLS					(ARENA_START_COL + (64 * 3) + 1)
 # define TOTAL_LINES				(64 + (2 * 2))
 # define LINES_LIM					(TOTAL_LINES + 3)
-# define MSG_LINE					(TOTAL_LINES + 2)
+# define INSTRUCTION_LINE			(TOTAL_LINES - 8)
 # define SLEEP_DEF					50001
 # define SLEEP_DELTA				5000
 # define SLEEP_LIM_INF				1
