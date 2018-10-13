@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 16:20:20 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/12 16:24:24 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 00:57:12 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		ld(t_global *info, t_process *process)
 {
-	unsigned int	param0;
+	int	param0;
 
 	param0 = 0;
 	if (get_param_value(info, process, 0, &param0))

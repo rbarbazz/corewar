@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:47:32 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 16:06:36 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 00:56:54 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_reg(t_global *info, t_process *process, int param)
 	return (0);
 }
 
-int	get_param_value(t_global *info, t_process *process, int i, unsigned int *param)
+int	get_param_value(t_global *info, t_process *process, int i, int *param)
 {
 	char	*tmp;
 

@@ -4,9 +4,12 @@
 dab:
 
 st r1, r2
+live:live %-1
 add r1, r2, r2
 st r2, :dab
+sti r1, %-665465, %46546546545
 add r6, r6, r6 #carry -> 1
+lfork %:live
 zjmp %:dab
 
 
@@ -15,7 +18,6 @@ zjmp %:dab
 #		and r1, %0, r1
 
 #live:	live %1
-#lfork %:live
 
 #add r1, r3, r1
 #add r1, r3, r1

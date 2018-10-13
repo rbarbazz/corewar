@@ -6,20 +6,20 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:27:16 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/11 18:19:26 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/14 00:58:29 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static t_player *get_player_from_nb(t_global *info, unsigned int param)
+static t_player *get_player_from_nb(t_global *info, int param)
 {
 	t_player *tmp;
 
 	tmp = info->player;
 	while (tmp)
 	{
-		if ((unsigned int)tmp->player == param)
+		if (tmp->player == param)
 			break;
 		tmp = tmp->next;
 	}
@@ -29,7 +29,7 @@ static t_player *get_player_from_nb(t_global *info, unsigned int param)
 void	live(t_global *info, t_process *process)
 {
 	t_player		*player;
-	unsigned int	param0;
+	int	param0;
 
 	param0 = 0;
 	if (get_param_value(info, process, 0, &param0))

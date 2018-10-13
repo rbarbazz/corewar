@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 16:32:33 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/12 20:57:40 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 01:09:34 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 void	st(t_global *info, t_process *process)
 {
-	unsigned int	param0;
+	int	param0;
 	short			param1;
 
 	param0 = 0;
@@ -31,6 +31,7 @@ void	st(t_global *info, t_process *process)
 	if (get_param_value(info, process, 0, &param0))
 		return ;
 	param1 %= IDX_MOD;
+	//ft_printf("st param1 %d\n", param1);
 	if (process->type_param[1] == T_REG)
 		process->reg[process->curr_op.param[1] - 1] = param0;
 	else
