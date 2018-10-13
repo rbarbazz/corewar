@@ -6,7 +6,7 @@
 /*   By: lcompagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/07 14:54:32 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/13 18:30:31 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/13 19:06:34 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_curses_cycles(t_global *info)
 
 	clock = info->clock;
 	line = CYCLE_LINE;
-	mvprintw(SPEED_LINE, 2 + 22, "%d   ", info->speed);
+	mvprintw(SLEEP_LINE, 2 + 22, "%d   ", info->sleep);
 	mvprintw(line, 2 + 14, "        ");
 	mvprintw(line++, 2 + 14, "%d", clock.cycle);
 	mvprintw(line, 2 + 15, "      ");
@@ -73,27 +73,27 @@ static void	ft_curses_map(t_global *info)
 
 static void	ft_some_usefull_info(t_global *info, int ret)
 {
-	static int		update = 49;
+	static int		update = CYCLE_PER_SEC_UPDATE;
 	static clock_t	timing = 0;
 	double			res;
 
 	mvprintw(++ret, 2, "Processes = %d", info->process_count);
+	if (update)
+		update--;
+	else
+		update = CYCLE_PER_SEC_UPDATE;
 	if (timing == 0)
 	{
 		timing = clock();
 		mvprintw((ret = ret + 2), 2, "Cycle/sec = 0");
 	}
-	else if (update == 50)
+	else if (update == CYCLE_PER_SEC_UPDATE)
 	{
-		res = (double)(1.0 / ((50.0 * info->speed / 1000000.0) \
+		res = (double)(CYCLE_PER_SEC_UPDATE / ((CYCLE_PER_SEC_UPDATE * info->sleep / 1000000.0) \
 					+ ((double)(clock() - timing) / CLOCKS_PER_SEC)));
-		mvprintw((ret = ret + 2), 2, "Cycle/sec = %.2F", (res * 50.0));
+		mvprintw((ret = ret + 2), 2, "Cycle/sec = %.1F", res);
 		timing = clock();
 	}
-	if (update)
-		update--;
-	else
-		update = 50;
 }
 
 int			ft_visu_curses(t_global *info)
@@ -113,5 +113,5 @@ int			ft_visu_curses(t_global *info)
 	ft_some_usefull_info(info, ret);
 	ft_get_input(info);
 	refresh();
-	return (info->speed);
+	return (info->sleep);
 }
