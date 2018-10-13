@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/13 18:03:33 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/13 18:34:21 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/13 18:40:15 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		ft_get_input(t_global *info)
 		attron(COLOR_PAIR(0 | (1 << 3)));
 		mvprintw(TOP_LINE, 4, "  PAUSE  ");
 		refresh();
-		while ((char)(key = getch()) != ' ' && key != 'n')
+		while ((char)(key = getch()) != ' ' && key != 's')
 			;
 		if (key == ' ')
 		{
