@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 18:43:40 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 21:27:49 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/13 11:14:33 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int			check_args(t_global *info, int argc, char **argv)
 			if (check_pnumber(info, &i, argv))
 				check_champ(info, argv[i], 1);
 			else
-				check_champ(info, argv[i], 1);
+				check_champ(info, argv[i], 0);
 		}
 		i++;
 	}
