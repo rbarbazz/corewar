@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 14:29:00 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/11 17:37:30 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/14 00:58:51 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void		sub(t_global *info, t_process *process)
 {
-	unsigned int	param0;
-	unsigned int	param1;
+	int	param0;
+	int	param1;
 
 	param0 = 0;
 	param1 = 0;

@@ -6,11 +6,17 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:04:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/12 21:37:35 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 01:08:01 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+/*
+** *****************************************************************************
+** writes 4 bytes at an absolute on the map
+** *****************************************************************************
+*/
 
 void			write_at_position(t_map *map, t_process *process, \
 unsigned int position, unsigned int buff)

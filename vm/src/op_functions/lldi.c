@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 15:24:38 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 16:07:17 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 00:58:39 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void				lldi(t_global *info, t_process *process)
 {
-	unsigned int	param0;
-	unsigned int	param1;
+	int	param0;
+	int	param1;
 	char			*value;
 
 	param0 = 0;

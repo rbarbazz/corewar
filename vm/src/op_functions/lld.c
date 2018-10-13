@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 11:37:54 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/11 17:36:01 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/14 00:58:33 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		lld(t_global *info, t_process *process)
 {
-	unsigned int	param0;
+	int	param0;
 
 	param0 = 0;
 	if (get_param_value(info, process, 0, &param0))

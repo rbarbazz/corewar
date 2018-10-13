@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 15:39:18 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 12:04:44 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 00:57:08 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		aff(t_global *info, t_process *process)
 {
-	unsigned int	param0;
+	int	param0;
 
 	param0 = 0;
 	if (get_param_value(info, process, 0, &param0))

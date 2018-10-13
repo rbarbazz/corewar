@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 21:39:36 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 01:08:00 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,16 @@
 ** Structure
 ** *****************************************************************************
 */
+
+typedef struct			s_param
+{
+	int					iparam0;
+	int					iparam1;
+	int					iparam2;
+	short				sparam0;
+	short				sparam1;
+	short				sparam2;
+}						t_param;
 
 typedef struct			s_op
 {
@@ -253,7 +263,7 @@ void					do_op(t_global *info, t_process *process);
 */
 
 int						get_param_value(t_global *info, t_process *process,\
-int i, unsigned int *param);
+int i, int *param);
 int						check_reg(t_global *info, t_process *process, int i);
 void					live(t_global *info, t_process *process);
 void					add(t_global *info, t_process *process);
@@ -265,6 +275,7 @@ void					lld(t_global *info, t_process *process);
 void					lldi(t_global *info, t_process *process);
 void					ld(t_global *info, t_process *process);
 void					st(t_global *info, t_process *process);
+void					sti(t_global *info, t_process *process);
 
 /*
 ** *****************************************************************************
