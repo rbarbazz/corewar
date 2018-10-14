@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 17:37:45 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/15 00:35:04 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct			s_process
 	unsigned int		curr_pos;
 	unsigned int		visu_pos;
 	unsigned int		op_pos;
+	unsigned int		op_pc;
 	int					cycle_left;
 	unsigned int		type_param[3];
 	unsigned short		pc;
