@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 12:29:27 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 15:22:37 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ typedef struct			s_op
 {
 	char				name[6];
 	int					nb_param;
-	unsigned int		param[3];
+	int					param[3];
 	int					opcode;
 	int					cycle;
 	char				has_ocp;
@@ -268,6 +268,7 @@ void					lldi(t_global *info, t_process *process);
 void					ld(t_global *info, t_process *process);
 void					st(t_global *info, t_process *process);
 void					sti(t_global *info, t_process *process);
+void					ldi(t_global *info, t_process *process);
 
 /*
 ** *****************************************************************************
@@ -275,7 +276,7 @@ void					sti(t_global *info, t_process *process);
 ** *****************************************************************************
 */
 
-unsigned int			tab_to_int(char *str);
+int						tab_to_int(char *str);
 char					*uitoa_d(unsigned int dec);
 char					*map_from_list(t_global *info);
 void					set_current_null(t_map *map, int position);

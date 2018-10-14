@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 11:09:15 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/13 22:57:18 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 15:36:10 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		do_op(t_global *info, t_process *process)
 	op_ft[6] = or;
 	op_ft[7] = xor;*/
 	op_ft[8] = zjmp;
-	//op_ft[9] = ldi;
+	op_ft[9] = ldi;
 	op_ft[10] = sti;
 	//op_ft[11] = fork;
 	op_ft[12] = lld;
