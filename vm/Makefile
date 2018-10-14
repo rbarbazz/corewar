@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/14 15:23:15 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/10/14 17:39:01 by rbarbazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC_NAME =	main.c init.c\
 			op_functions/zjmp.c op_functions/aff.c op_functions/lfork.c\
 			op_functions/lld.c op_functions/lldi.c op_functions/ld.c\
 			op_functions/st.c op_functions/sti.c op_functions/ldi.c\
-			op_functions/get_param_value.c\
+			op_functions/fork_vm.c op_functions/get_param_value.c\
 			setup/create_player.c setup/create_map.c\
 			setup/open_read_functions.c setup/create_process.c\
 			setup/check_magic.c setup/parsing.c setup/write_player.c\

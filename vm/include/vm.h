@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 15:22:37 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 17:37:45 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -269,6 +269,7 @@ void					ld(t_global *info, t_process *process);
 void					st(t_global *info, t_process *process);
 void					sti(t_global *info, t_process *process);
 void					ldi(t_global *info, t_process *process);
+void					fork_vm(t_global *info, t_process *process);
 
 /*
 ** *****************************************************************************
