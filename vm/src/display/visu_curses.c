@@ -6,7 +6,7 @@
 /*   By: lcompagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/07 14:54:32 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/13 19:06:34 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/14 16:54:23 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static int	ft_curses_player(t_global *info)
 static void	ft_curses_map(t_global *info)
 {
 	t_map		*map;
-	int		col;
-	int		line;
+	int			col;
+	int			line;
 
 	map = info->map;
 	line = 2;
