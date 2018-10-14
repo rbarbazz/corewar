@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/12 18:25:32 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/14 17:54:03 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 # define DIAG_CHAMP "Pick a champion"
 
 /*
-**         _         _
-** __ __ _(_)_ _  __| |_____ __ _____
-** \ V  V / | ' \/ _` / _ \ V  V (_-<
-**  \_/\_/|_|_||_\__,_\___/\_/\_//__/
+**   ___ _____ _  __  ___ _         __  __
+**  / __|_   _| |/ / / __| |_ _  _ / _|/ _|
+** | (_ | | | | ' <  \__ \  _| || |  _|  _|
+**  \___| |_| |_|\_\ |___/\__|\_,_|_| |_|
 */
 
 /*
@@ -36,17 +36,43 @@
 ** w_a:  ABOUT_WIN(about window)
 */
 
-typedef struct	s_gtkwin {
-	GtkWidget	*m;
-	GtkWidget	*a;
-}				t_gtkwin;
+typedef struct		s_gtkwin
+{
+	GtkWidget		*m;
+	GtkWidget		*a;
+}					t_gtkwin;
+
+# define MEM_TXT_VIEW "t_mem"
+
+# define BUF_MEM_TXT "buf_mem"
+# define BUF_P1_TXT "p1_name"
 
 /*
-**  _       __
-** (_)_ _  / _|___
-** | | ' \|  _/ _ \
-** |_|_||_|_| \___/
+** mem : The memory display buffer
 */
+
+typedef struct		s_gtktext
+{
+	GtkTextBuffer	*mem;
+	GtkTextBuffer	*p1_n;
+}					t_gtktext;
+
+/*
+**  ___                 ___       __
+** | _ \_ _ ___  __ _  |_ _|_ _  / _|___
+** |  _/ '_/ _ \/ _` |  | || ' \|  _/ _ \
+** |_| |_| \___/\__, | |___|_||_|_| \___/
+**              |___/
+*/
+
+/*
+** run: run or stop the VM;
+*/
+
+typedef struct		s_vm_bgl
+{
+	int				run;
+}					t_vm_bg;
 
 /*
 ** vm:				Corewar VM info
@@ -54,15 +80,20 @@ typedef struct	s_gtkwin {
 ** gladefilename:	path to corewar.glad
 ** err:				gtk error object
 **
-** t_gtkwin: windows
+** b: background process control
+** w: windows widgets
+** t: text buffers
 */
 
-typedef struct	s_gtkinfo {
+typedef struct	s_gtkinfo
+{
 	t_global	*vm;
+	t_vm_bg		b;
+	t_gtkwin	w;
+	t_gtktext	t;
 	GtkBuilder	*builder;
 	gchar		*gladefilename;
 	GError		*err;
-	t_gtkwin	w;
 }				t_gtkinfo;
 
 /*
@@ -73,6 +104,10 @@ typedef struct	s_gtkinfo {
 */
 
 /*
+** bg_loop.c
+*/
+void			*bg_loop(t_gtkinfo *i);
+/*
 ** gui_main.c
 */
 void			callback_test(GtkToggleButton *tbutton, t_gtkinfo *i);
@@ -82,7 +117,7 @@ void			about_display(GtkToggleButton *tbutton, t_gtkinfo *i);
 */
 void			callback_player_load(GtkMenuItem *item, t_gtkinfo *i);
 /*
-** call_logic
+** call_logic.c
 */
 void			callback_logic_start(GtkWidget *widget, t_gtkinfo *i);
 void			callback_dbgvisu(GtkWidget *widget, t_gtkinfo *i);
