@@ -6,16 +6,16 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 13:28:53 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/11 17:32:55 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/14 11:41:11 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void		add(t_global *info, t_process *process)
+void	add(t_global *info, t_process *process)
 {
-	unsigned int	param0;
-	unsigned int	param1;
+	int	param0;
+	int	param1;
 
 	param0 = 0;
 	param1 = 0;

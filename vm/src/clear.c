@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:32:26 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/10 14:20:38 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/12 20:16:43 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ void		free_map(void)
 	t_global	*info;
 	t_map		*tmp;
 	t_map		*save;
+	int		i;
 
+	i = MEM_SIZE;
 	info = get_global();
 	tmp = info->map;
-	while (tmp)
+	while (tmp && i--)
 	{
 		save = tmp->next;
 		ft_memdel((void **)&tmp);

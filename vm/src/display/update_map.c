@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 17:40:51 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/09 16:07:05 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/12 20:15:39 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ static void	light_map(t_global *info, int position)
 
 static void	clean_map(t_global *info)
 {
-	t_map *map;
+	t_map	*map;
+	int		i;
 
+	i = MEM_SIZE;
 	map = info->map;
-	while (map)
+	while (map && i--)
 	{
 		map->current = 0;
 		map = map->next;
