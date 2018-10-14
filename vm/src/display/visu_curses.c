@@ -6,7 +6,7 @@
 /*   By: lcompagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/07 14:54:32 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/14 16:54:23 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/14 17:38:03 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,13 @@ static void	ft_curses_map(t_global *info)
 	t_map		*map;
 	int			col;
 	int			line;
+	int			i;
 
 	map = info->map;
 	line = 2;
 	col = ARENA_START_COL;
-	while (map)
+	i = -1;
+	while (++i < MEM_SIZE)
 	{
 		attron(COLOR_PAIR(map->player | (map->current << 3)));
 		mvprintw(line, col, "%02X", 0xFF & map->c);
