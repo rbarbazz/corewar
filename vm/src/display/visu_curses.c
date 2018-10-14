@@ -6,7 +6,7 @@
 /*   By: lcompagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/07 14:54:32 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/14 17:38:03 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/14 18:05:04 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ static void	ft_curses_map(t_global *info)
 	i = -1;
 	while (++i < MEM_SIZE)
 	{
-		attron(COLOR_PAIR(map->player | (map->current << 3)));
+		attron(COLOR_PAIR(map->pnumber | (map->current << 3)));
 		mvprintw(line, col, "%02X", 0xFF & map->c);
-		attroff(COLOR_PAIR(map->player | (map->current << 3)));
+		attroff(COLOR_PAIR(map->pnumber | (map->current << 3)));
 		col = col + 3;
 		if (col > (TOTAL_COLS - 4))
 		{
@@ -93,7 +93,7 @@ static void	ft_some_usefull_info(t_global *info, int ret)
 	{
 		res = (double)(CYCLE_PER_SEC_UPDATE / ((CYCLE_PER_SEC_UPDATE * info->sleep / 1000000.0) \
 					+ ((double)(clock() - timing) / CLOCKS_PER_SEC)));
-		mvprintw((ret = ret + 2), 2, "Cycle/sec = %.1F", res);
+		mvprintw((ret = ret + 2), 2, "Cycle/sec = %.1F   ", res);
 		timing = clock();
 	}
 }
