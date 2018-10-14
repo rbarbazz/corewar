@@ -220,7 +220,7 @@ xperrin (xperrin@student.42.fr)</property>
                 <property name="propagate_natural_width">True</property>
                 <property name="propagate_natural_height">True</property>
                 <child>
-                  <object class="GtkTextView" id="c_mem">
+                  <object class="GtkTextView" id="t_mem">
                     <property name="width_request">100</property>
                     <property name="height_request">80</property>
                     <property name="visible">True</property>
@@ -285,24 +285,6 @@ xperrin (xperrin@student.42.fr)</property>
                                         <property name="width">2</property>
                                       </packing>
                                     </child>
-                                    <child>
-                                      <placeholder/>
-                                    </child>
-                                    <child>
-                                      <placeholder/>
-                                    </child>
-                                    <child>
-                                      <placeholder/>
-                                    </child>
-                                    <child>
-                                      <placeholder/>
-                                    </child>
-                                    <child>
-                                      <placeholder/>
-                                    </child>
-                                    <child>
-                                      <placeholder/>
-                                    </child>
                                   </object>
                                 </child>
                                 <child type="label">
@@ -357,21 +339,23 @@ xperrin (xperrin@student.42.fr)</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkFixed">
+                          <object class="GtkGrid">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <child>
-                              <object class="GtkRadioButton" id="o_dbgvisu">
-                                <property name="label" translatable="yes">dbg_visu</property>
-                                <property name="width_request">67</property>
-                                <property name="height_request">20</property>
+                              <object class="GtkCheckButton" id="o_dbgvisu">
+                                <property name="label" translatable="yes">Term debug visu</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
-                                <property name="active">True</property>
                                 <property name="draw_indicator">True</property>
-                                <signal name="pressed" handler="callback_dbgvisu" swapped="no"/>
+                                <signal name="toggled" handler="callback_dbgvisu" swapped="no"/>
                               </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">0</property>
+                                <property name="width">3</property>
+                              </packing>
                             </child>
                           </object>
                         </child>
