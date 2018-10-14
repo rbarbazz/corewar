@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 16:57:37 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/14 17:44:07 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define NO_CHAMP				7
 # define INVALID_CLOSE_FD		8
 # define USAGE_ERROR			9
+# define WRONG_PNUMBER			10
 
 # define FILE_LEN_MAX	PROG_NAME_LENGTH + COMMENT_LENGTH + CHAMP_MAX_SIZE + 12
 
@@ -107,7 +108,7 @@ typedef struct			s_op
 {
 	char				name[6];
 	int					nb_param;
-	unsigned int		param[3];
+	int					param[3];
 	int					opcode;
 	int					cycle;
 	char				has_ocp;
@@ -119,11 +120,12 @@ typedef struct			s_process
 	struct s_process	*prev;
 	struct s_process	*next;
 	t_op				curr_op;
-	unsigned int		reg[REG_NUMBER];
+	int					reg[REG_NUMBER];
 	int					carry;
 	unsigned int		start_pos;
 	unsigned int		curr_pos;
 	unsigned int		visu_pos;
+	unsigned int		op_pos;
 	int					cycle_left;
 	unsigned int		type_param[3];
 	unsigned short		pc;
@@ -137,6 +139,7 @@ typedef struct			s_player
 	char				*name;
 	char				*comment;
 	char				*instruction;
+	int					pnumber;
 	int					player;
 	unsigned int		prog_size;
 	unsigned int		start;
@@ -148,7 +151,7 @@ typedef struct			s_map
 {
 	struct s_map		*prev;
 	struct s_map		*next;
-	int					player;
+	int					pnumber;
 	unsigned char		c;
 	char				current;
 }						t_map;
@@ -171,6 +174,7 @@ typedef struct			s_global
 	char				*prog_name;
 	int					process_count;
 	int					player_count;
+	int					next_pnumber;
 	char				visual;
 	char				dump;
 	int					sleep;
@@ -193,7 +197,6 @@ extern					t_op	g_op_tab[16];
 ** *****************************************************************************
 */
 
-int						print_map(t_global *info);
 int						print_map(t_global *info);
 int						print_player(t_global *info);
 void					display_intro(t_global *info);
@@ -236,8 +239,7 @@ int						check_magic(char *file);
 ** *****************************************************************************
 */
 
-int						init_map(t_global *info, char c);
-int						create_map(t_global *info);
+void					create_map(t_global *info);
 void					write_player_in_map(t_global *info);
 
 /*
@@ -246,7 +248,8 @@ void					write_player_in_map(t_global *info);
 ** *****************************************************************************
 */
 
-int						init_player(t_global *info, char *file);
+int						init_player(t_global *info, char *file,\
+char has_pnumber);
 void					create_initial_process(t_global *info);
 
 /*
@@ -269,7 +272,6 @@ char					get_ocp(t_global *info, t_process *process);
 void					get_op(t_global *info, t_process *process);
 char					*get_value_at_position(t_map *map,\
 unsigned int position, int size);
-int						get_data_from_op(int op, t_process *process);
 void					get_op_param(t_global *info, t_process *process,\
 unsigned char ocp);
 void					do_op(t_global *info, t_process *process);
@@ -280,7 +282,8 @@ void					do_op(t_global *info, t_process *process);
 ** *****************************************************************************
 */
 
-int						get_param_value(t_global *info, t_process *process, int i, unsigned int *param);
+int						get_param_value(t_global *info, t_process *process,\
+int i, int *param);
 int						check_reg(t_global *info, t_process *process, int i);
 void					live(t_global *info, t_process *process);
 void					add(t_global *info, t_process *process);
@@ -290,6 +293,10 @@ void					aff(t_global *info, t_process *process);
 void					lfork(t_global *info, t_process *process);
 void					lld(t_global *info, t_process *process);
 void					lldi(t_global *info, t_process *process);
+void					ld(t_global *info, t_process *process);
+void					st(t_global *info, t_process *process);
+void					sti(t_global *info, t_process *process);
+void					ldi(t_global *info, t_process *process);
 
 /*
 ** *****************************************************************************
@@ -297,10 +304,13 @@ void					lldi(t_global *info, t_process *process);
 ** *****************************************************************************
 */
 
-unsigned int			tab_to_int(char *str);
+int						tab_to_int(char *str);
+char					*uitoa_d(unsigned int dec);
 char					*map_from_list(t_global *info);
 void					set_current_null(t_map *map, int position);
 void					increase_position(t_process *process,unsigned int add);
+void					write_at_position(t_map *map, t_process *process, \
+unsigned int position, unsigned int buff);
 
 /*
 ** *****************************************************************************
