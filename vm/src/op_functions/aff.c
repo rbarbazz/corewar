@@ -6,13 +6,13 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 15:39:18 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 00:57:08 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 11:41:18 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void		aff(t_global *info, t_process *process)
+void	aff(t_global *info, t_process *process)
 {
 	int	param0;
 

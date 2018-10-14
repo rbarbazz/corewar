@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:27:16 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/14 00:58:29 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 12:34:06 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ static t_player *get_player_from_nb(t_global *info, int param)
 	tmp = info->player;
 	while (tmp)
 	{
-		if (tmp->player == param)
+		if (tmp->pnumber == param)
 			break;
 		tmp = tmp->next;
 	}
 	return (tmp);
 }
 
-void	live(t_global *info, t_process *process)
+void			live(t_global *info, t_process *process)
 {
-	t_player		*player;
-	int	param0;
+	t_player	*player;
+	int			param0;
 
 	param0 = 0;
 	if (get_param_value(info, process, 0, &param0))

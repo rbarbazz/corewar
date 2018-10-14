@@ -3,14 +3,17 @@
 
 dab:
 
-st r1, r2
+#st r1, r2
 live:live %-1
 add r1, r2, r2
-st r2, :dab
-sti r1, %-665465, %46546546545
-add r6, r6, r6 #carry -> 1
-lfork %:live
-zjmp %:dab
+aff r2
+ld 9879871, r3
+aff r3
+#st r2, :dab
+#sti r1, %65, %46546546545
+#add r6, r6, r6 #carry -> 1
+lfork %50
+#zjmp %:dab
 
 
 #l2:
