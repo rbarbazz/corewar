@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:19:14 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/13 22:05:54 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 12:29:37 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int			print_map(t_global *info)
 	ft_printf("\033[H");
 	while (tmp && j--)
 	{
-		if (tmp->player == -1)
+		if (tmp->pnumber == -1)
 			ft_printf(RED);
-		else if (tmp->player == -2)
+		else if (tmp->pnumber == -2)
 			ft_printf(GREEN);
-		else if (tmp->player == -3)
+		else if (tmp->pnumber == -3)
 			ft_printf(YELLOW);
-		else if (tmp->player == -4)
+		else if (tmp->pnumber == -4)
 			ft_printf(CYAN);
 		else
 			ft_printf(RESET);

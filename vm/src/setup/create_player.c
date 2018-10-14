@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 19:26:08 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 21:34:10 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 12:32:38 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int		pnumber_available(t_global *info)
 	tmp = info->player;
 	while (tmp)
 	{
-		if (info->next_pnumber == tmp->player)
+		if (info->next_pnumber == tmp->pnumber)
 			exit_corewar(WRONG_PNUMBER);
 		tmp = tmp->next;
 	}
@@ -104,9 +104,10 @@ int				init_player(t_global *info, char *file, char has_pnumber)
 	else
 		tmp->next = new;
 	if (has_pnumber && !pnumber_available(info))
-		new->player = info->next_pnumber;
+		new->pnumber = info->next_pnumber;
 	else
-		new->player = info->player_count + 1;
+		new->pnumber = info->player_count + 1;
+	new->player = info->player_count + 1;
 	info->player_count++;
 	return (0);
 }

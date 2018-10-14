@@ -6,13 +6,13 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 16:20:20 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/14 00:57:12 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 11:43:21 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void		ld(t_global *info, t_process *process)
+void	ld(t_global *info, t_process *process)
 {
 	int	param0;
 

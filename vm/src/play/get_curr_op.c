@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 16:11:37 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 20:41:36 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 11:20:06 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void		get_op(t_global *info, t_process *process)
 
 	ocp = 0;
 	process->valid_ocp = 1;
+	process->op_pos = process->curr_pos;
 	value = get_value_at_position(info->map, process->curr_pos, 1);
 	op = tab_to_int(value);
 	ft_strdel(&value);

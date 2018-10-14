@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 18:17:48 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 20:13:51 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 12:30:39 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	init_map(t_global *info)
 	if (!(new = (t_map*)ft_memalloc(sizeof(t_map))))
 		exit_corewar(MALLOC_ERROR);
 	new->c = 0;
-	new->player = 0;
+	new->pnumber = 0;
 	new->current = 0;
 	if (!tmp)
 		info->map = new;

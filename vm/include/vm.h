@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 01:08:00 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 12:29:27 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,6 @@
 ** *****************************************************************************
 */
 
-typedef struct			s_param
-{
-	int					iparam0;
-	int					iparam1;
-	int					iparam2;
-	short				sparam0;
-	short				sparam1;
-	short				sparam2;
-}						t_param;
-
 typedef struct			s_op
 {
 	char				name[6];
@@ -103,11 +93,12 @@ typedef struct			s_process
 	struct s_process	*prev;
 	struct s_process	*next;
 	t_op				curr_op;
-	unsigned int		reg[REG_NUMBER];
+	int					reg[REG_NUMBER];
 	int					carry;
 	unsigned int		start_pos;
 	unsigned int		curr_pos;
 	unsigned int		visu_pos;
+	unsigned int		op_pos;
 	int					cycle_left;
 	unsigned int		type_param[3];
 	unsigned short		pc;
@@ -121,6 +112,7 @@ typedef struct			s_player
 	char				*name;
 	char				*comment;
 	char				*instruction;
+	int					pnumber;
 	int					player;
 	unsigned int		prog_size;
 	unsigned int		start;
@@ -132,7 +124,7 @@ typedef struct			s_map
 {
 	struct s_map		*prev;
 	struct s_map		*next;
-	int					player;
+	int					pnumber;
 	unsigned char		c;
 	char				current;
 }						t_map;

@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:04:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/14 01:08:01 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 12:32:05 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ unsigned int position, unsigned int buff)
 	while (map && i < 4)
 	{
 		map->c = itoaed[i++];
-		map->player = process->reg[0];
+		map->pnumber = process->reg[0];
 		map = map->next;
 	}
 	ft_strdel(&itoaed);
