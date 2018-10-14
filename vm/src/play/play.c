@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:00:00 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/12 16:44:28 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/14 16:56:48 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ static void	get_winner(t_global *info)
 		}
 		tmp = tmp->next;
 	}
-	ft_printf("le joueur %d(%s) a gagne\n", winner->player, winner->name);
+	if (info->visual)
+		ft_exit_curses(winner);
+	else
+		ft_printf("le joueur %d(%s) a gagne\n", winner->player, winner->name);
 }
 
 /*

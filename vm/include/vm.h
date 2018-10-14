@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/13 19:22:00 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/14 16:57:37 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -316,9 +316,10 @@ void					update_map(t_global *info);
 ** *****************************************************************************
 */
 
-int						ft_visu_curses(t_global *info);
-int						ft_init_curses(t_global *info);
 int						ft_check_screen_size(void);
+int						ft_init_curses(t_global *info);
+int						ft_visu_curses(t_global *info);
+void					ft_exit_curses(t_player *winner);
 void					ft_get_input(t_global *info);
 
 #endif
