@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/13 22:37:46 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/14 16:24:13 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 17:57:37 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	sti(t_global *info, t_process *process)
 {
+	if (info || process) 
+	{;}
+	/*
 	int	param1;
 	int	param2;
 
@@ -30,5 +33,6 @@ void	sti(t_global *info, t_process *process)
 	ft_printf("pc %d\n", process->pc - get_size_param(process));
 	ft_printf("pos %d\n", (param1 + param2));
 	ft_printf("res %d\n", ((param1 + param2) % IDX_MOD) + process->pc - get_size_param(process));
-	write_at_position(info->map, process, ((param1 + param2) % IDX_MOD) + process->pc - get_size_param(process), iparam0);
+	write_at_position(info->map, process, ((param1 + param2) % IDX_MOD) + process->pc - get_size_param(process), param0);
+	*/
 }
