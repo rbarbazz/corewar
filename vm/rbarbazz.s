@@ -1,8 +1,7 @@
 .name "zork"
 .comment "I'M ALIIIIVE"    #yeeeet
 
-dab:
-
+fork %782951
 st r1, r2
 st r2, 55654654654654
 live:live %-1
@@ -14,12 +13,12 @@ lld %-9, r4
 aff r4
 lldi %-3, %3, r5
 aff r5
+dab:
 ldi -65498775, %-1649845456210, r7
 aff r7
 #st r2, :dab
-#sti r1, %65, %46546546545
+ sti r1, %5, %10
 #add r6, r6, r6 #carry -> 1
-lfork %50
 #zjmp %:dab
 
 
