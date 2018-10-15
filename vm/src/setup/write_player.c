@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 14:08:04 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/08 14:50:50 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 12:31:45 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	write_one_player(t_map *map, t_player *player, unsigned int i)
 	if (i < player->prog_size)
 	{
 		map->c = player->instruction[i];
-		map->player = player->player;
+		map->pnumber = player->pnumber;
 		i++;
 	}
 	return (i);

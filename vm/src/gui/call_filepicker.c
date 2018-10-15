@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:43:57 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/12 18:20:48 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/15 17:43:52 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int		load_champ(t_global *info, char *filename)
 		close_file(fd);
 		exit_corewar(INVALID_MAGIC);
 	}
-	init_player(info, file);
+	init_player(info, file, 0);
 	print_player(info);
 	close_file(fd);
 	return (0);

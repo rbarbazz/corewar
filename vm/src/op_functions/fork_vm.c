@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lfork.c                                            :+:      :+:    :+:   */
+/*   fork_vm.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 10:48:58 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 18:08:30 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/15 00:33:18 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_process	*dup_process(t_global *info, t_process *process)
 	return (new);
 }
 
-void		lfork(t_global *info, t_process *process)
+void		fork_vm(t_global *info, t_process *process)
 {
 	t_process	*new;
 	int			param0;
@@ -47,10 +47,13 @@ void		lfork(t_global *info, t_process *process)
 	param0 = 0;
 	if (get_param_value(info, process, 0, &param0))
 		return ;
+	param0 %= IDX_MOD;
+	if ((param0/IDX_MOD) % 2 == 0)
+		param0 = param0 + IDX_MOD + IDX_MOD + IDX_MOD;
 	new = dup_process(info, process);
-	ft_printf("lfork:");
+	ft_printf("fork:");
 	ft_printf("param 0 : %d\n", param0);
-	ft_printf("param 0 + start_pos: %d\n", param0 + process->start_pos);
+	ft_printf("param 0 %% IDX_MOD %d\n", param0 );
 	info->process_count++;
 	increase_position(new, param0);
 	new->visu_pos = new->curr_pos;

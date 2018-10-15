@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 14:53:16 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 12:58:10 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 23:09:11 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 void		zjmp(t_global *info, t_process *process)
 {
-	unsigned int	param0;
+	int	param0;
 
 	param0 = 0;
 	if (get_param_value(info, process, 0, &param0))
