@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 17:44:07 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/15 14:00:23 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,15 +88,15 @@
 # define TOTAL_LINES				(64 + (2 * 2))
 # define LINES_LIM					(TOTAL_LINES + 3)
 # define INSTRUCTION_LINE			(TOTAL_LINES - 8)
-# define SLEEP_DEF					50001
+# define SLEEP_DEF					50000
 # define SLEEP_DELTA				5000
-# define SLEEP_LIM_INF				1
+# define SLEEP_LIM_INF				0
 # define SLEEP_LIM_SUP				1000000
 # define CYCLE_PER_SEC_UPDATE		50
 # define KEY_PAUSE					' '
 # define KEY_STEP					's'
-# define KEY_SLEEP_UP				'+'
-# define KEY_SLEEP_DOWN				'-'
+# define KEY_SLEEP_UP				'-'
+# define KEY_SLEEP_DOWN				'+'
 
 /*
 ** *****************************************************************************
@@ -331,5 +331,6 @@ int						ft_init_curses(t_global *info);
 int						ft_visu_curses(t_global *info);
 void					ft_exit_curses(t_player *winner);
 void					ft_get_input(t_global *info);
+void					ft_print_instructions(void);
 
 #endif

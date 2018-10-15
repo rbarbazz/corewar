@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 14:42:52 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/13 19:24:32 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/15 13:50:07 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	ft_perma_player(t_global *info)
 {
 	t_player	*player;
-	int		i;
+	int			i;
 
 	player = info->player;
 	i = 1;
@@ -72,7 +72,7 @@ static void	ft_init_permanent_parts(t_global *info)
 	ft_perma_player(info);
 }
 
-static void ft_init_colors(void)
+static void	ft_init_colors(void)
 {
 	start_color();
 	use_default_colors();
@@ -86,17 +86,6 @@ static void ft_init_colors(void)
 	init_pair(3 | (1 << 3), COLOR_BLACK, COLOR_YELLOW);
 	init_pair(4 | (1 << 3), COLOR_BLACK, COLOR_MAGENTA);
 	init_pair(0 | (1 << 3), COLOR_BLACK, COLOR_WHITE);
-}
-
-void		ft_print_instructions(void)
-{
-	attron(A_UNDERLINE);
-	mvprintw(INSTRUCTION_LINE, 2, "Usage");
-	attroff(A_UNDERLINE);
-	mvprintw(INSTRUCTION_LINE + 1, 2, "\t- (Un)pause :\t[Space]");
-	mvprintw(INSTRUCTION_LINE + 2, 2, "\t- Next step :\t[%c]", KEY_STEP);
-	mvprintw(INSTRUCTION_LINE + 3, 2, "\t- Faster :\t[%c]", KEY_SLEEP_DOWN);
-	mvprintw(INSTRUCTION_LINE + 4, 2, "\t- Slower :\t[%c]", KEY_SLEEP_UP);
 }
 
 int			ft_init_curses(t_global *info)

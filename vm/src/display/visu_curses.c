@@ -6,7 +6,7 @@
 /*   By: lcompagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/07 14:54:32 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/14 18:05:04 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/15 13:57:08 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	ft_curses_cycles(t_global *info)
 static int	ft_curses_player(t_global *info)
 {
 	t_player	*player;
-	int		i;
+	int			i;
 
 	player = info->player;
 	i = 1;
@@ -91,8 +91,9 @@ static void	ft_some_usefull_info(t_global *info, int ret)
 	}
 	else if (update == CYCLE_PER_SEC_UPDATE)
 	{
-		res = (double)(CYCLE_PER_SEC_UPDATE / ((CYCLE_PER_SEC_UPDATE * info->sleep / 1000000.0) \
+		res = (double)(1.0 / ((CYCLE_PER_SEC_UPDATE * info->sleep / 1000000.0) \
 					+ ((double)(clock() - timing) / CLOCKS_PER_SEC)));
+		res = (double)(CYCLE_PER_SEC_UPDATE * res);
 		mvprintw((ret = ret + 2), 2, "Cycle/sec = %.1F   ", res);
 		timing = clock();
 	}
