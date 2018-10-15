@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:47:32 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 16:06:36 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 11:50:11 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,15 @@ int	check_reg(t_global *info, t_process *process, int param)
 	return (0);
 }
 
-int	get_param_value(t_global *info, t_process *process, int i, unsigned int *param)
+/*
+** *****************************************************************************
+** case REG : gets the value in a reg (4 bytes)
+** case IND : gets the value at the position specified from op_pos (4 bytes)
+** case DIR : gets the value as it is (4 bytes)
+** *****************************************************************************
+*/
+
+int	get_param_value(t_global *info, t_process *process, int i, int *param)
 {
 	char	*tmp;
 
@@ -36,16 +44,12 @@ int	get_param_value(t_global *info, t_process *process, int i, unsigned int *par
 	}
 	else if (process->type_param[i] == T_IND)
 	{
-		tmp = get_value_at_position(info->map, process->curr_op.param[i], 4);
+		tmp = get_value_at_position(info->map, process->op_pos +\
+		process->curr_op.param[i], 4);
 		*param = tab_to_int(tmp);
 		ft_strdel(&tmp);
 	}
 	else if (process->type_param[i] == T_DIR)
-	{
-		if (!process->curr_op.nb_or_address)
-			*param = process->curr_op.param[i];
-		else
-			*param = process->curr_op.param[i] + process->pc;
-	}
+		*param = process->curr_op.param[i];
 	return (0);
 }

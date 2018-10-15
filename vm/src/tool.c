@@ -6,11 +6,41 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:04:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/12 16:06:11 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 15:20:55 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+/*
+** *****************************************************************************
+** writes 4 bytes at an absolute on the map
+** *****************************************************************************
+*/
+
+void			write_at_position(t_map *map, t_process *process, \
+unsigned int position, unsigned int buff)
+{
+	int		i;
+	char	*itoaed;
+
+	if (!(itoaed = uitoa_d(buff)))
+		exit_corewar(MALLOC_ERROR);
+	position %= MEM_SIZE;
+	while (map && position)
+	{
+		map = map->next;
+		position--;
+	}
+	i = 0;
+	while (map && i < 4)
+	{
+		map->c = itoaed[i++];
+		map->pnumber = process->reg[0];
+		map = map->next;
+	}
+	ft_strdel(&itoaed);
+}
 
 /*
 ** *****************************************************************************
@@ -55,7 +85,7 @@ char			*map_from_list(t_global *info)
 	int		i;
 
 	tmp_m = info->map;
-	if (!(map = ft_strnew(4096)))
+	if (!(map = ft_strnew(MEM_SIZE)))
 		exit_corewar(MALLOC_ERROR);
 	i = 0;
 	while (map && i < MEM_SIZE && tmp_m)
@@ -68,20 +98,18 @@ char			*map_from_list(t_global *info)
 
 /*
 ** *****************************************************************************
-** takes a char[3] and returns an int
+** takes a char[4] and returns an int
 ** *****************************************************************************
 */
 
-unsigned int	tab_to_int(char *str)
+int	tab_to_int(char *str)
 {
-	unsigned int	res;
-	unsigned char	*str_m;
+	int		res;
 
 	res = 0;
-	str_m = (unsigned char*)str;
-	res = res | str_m[3];
-	res = res | (str_m[2] << 8);
-	res = res | (str_m[1] << 16);
-	res = res | (str_m[0] << 24);
+	res = 0xFF & (res | str[3]);
+	res = 0xFFFF & (res | (str[2] << 8));
+	res = 0xFFFFFF & (res | (str[1] << 16));
+	res = res | (str[0] << 24);
 	return (res);
 }

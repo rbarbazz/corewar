@@ -6,16 +6,22 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 14:29:00 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/11 17:37:30 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/14 20:38:58 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+/*
+** *****************************************************************************
+** subs value in p0 by value in p1 and store in p2
+** *****************************************************************************
+*/
+
 void		sub(t_global *info, t_process *process)
 {
-	unsigned int	param0;
-	unsigned int	param1;
+	int	param0;
+	int	param1;
 
 	param0 = 0;
 	param1 = 0;
@@ -25,6 +31,7 @@ void		sub(t_global *info, t_process *process)
 		return ;
 	if (check_reg(info, process, 2))
 		return ;
+	ft_printf("	sub r%d - r%d -> r%d\n", process->curr_op.param[0], process->curr_op.param[1], process->curr_op.param[2]);
 	process->reg[process->curr_op.param[2] - 1] = param0 - param1;
 	if (!(process->reg[process->curr_op.param[2] - 1]))
 		process->carry = 1;
