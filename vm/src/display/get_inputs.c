@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/13 18:03:33 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/13 19:08:37 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/15 14:04:42 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@ static int	ft_interpret_input_switch_pause(t_global *info, int key)
 	{
 		nodelay(stdscr, FALSE);
 		return (1);
-
 	}
 	else if ((char)key == KEY_SLEEP_UP)
 	{
 		if (info->sleep + SLEEP_DELTA < SLEEP_LIM_SUP)
-			info->sleep += SLEEP_DELTA;
+			info->sleep += (info->sleep < SLEEP_DELTA) ?
+				SLEEP_DELTA / 10 : SLEEP_DELTA;
 	}
 	else if ((char)key == KEY_SLEEP_DOWN)
-		if (info->sleep - SLEEP_DELTA >= SLEEP_LIM_INF)
-			info->sleep -= SLEEP_DELTA;
+		if (info->sleep - (SLEEP_DELTA / 10) >= SLEEP_LIM_INF)
+			info->sleep -= (info->sleep <= SLEEP_DELTA) ?
+				SLEEP_DELTA / 10 : SLEEP_DELTA;
 	return (0);
 }
 
