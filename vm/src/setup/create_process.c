@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:31:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/16 15:59:32 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 16:46:27 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_process	*dup_process(t_global *info, t_process *process)
 	new->curr_op = process->curr_op;
 	ft_memcpy(new->reg, process->reg, REG_NUMBER * sizeof(int));
 	new->carry = process->carry;
-	new->process_nb = info->process_count + 1;
+	new->process_nb = info->process_tail->process_nb + 1;
 	new->start_pos = process->start_pos;
 	new->curr_pos = process->curr_pos;
 	new->visu_pos = process->visu_pos;
