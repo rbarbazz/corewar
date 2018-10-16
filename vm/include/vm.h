@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/16 14:32:37 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 16:21:45 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@
 # define KEY_STEP					's'
 # define KEY_SLEEP_UP				'-'
 # define KEY_SLEEP_DOWN				'+'
+# define RESIZE_SIGNAL				410
 
 /*
 ** *****************************************************************************
@@ -334,10 +335,12 @@ void					update_map(t_global *info);
 
 int						ft_check_screen_size(void);
 int						ft_init_curses(t_global *info);
+void					ft_init_permanent_parts(t_global *info);
+void					ft_print_instructions(void);
 int						ft_visu_curses(t_global *info);
+void					ft_curses_map(t_global *info);
 void					ft_exit_curses(t_player *winner);
 void					ft_get_input(t_global *info);
-void					ft_print_instructions(void);
 int						get_p_id(t_global *info, int pnum);
 
 #endif

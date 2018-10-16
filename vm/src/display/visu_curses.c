@@ -6,7 +6,7 @@
 /*   By: lcompagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/07 14:54:32 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/16 14:35:04 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/16 16:23:16 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,32 +45,6 @@ static int	ft_curses_player(t_global *info)
 		i++;
 	}
 	return (PLAYER_LINE + (4 * (i - 1)));
-}
-
-static void	ft_curses_map(t_global *info)
-{
-	t_map		*map;
-	int			col;
-	int			line;
-	int			i;
-
-	map = info->map;
-	line = 2;
-	col = ARENA_START_COL;
-	i = -1;
-	while (++i < MEM_SIZE)
-	{
-		attron(COLOR_PAIR(get_p_id(info, map->pnumber) | (map->current << 3)));
-		mvprintw(line, col, "%02X", 0xFF & map->c);
-		attroff(COLOR_PAIR(get_p_id(info, map->pnumber) | (map->current << 3)));
-		col = col + 3;
-		if (col > (TOTAL_COLS - 4))
-		{
-			col = ARENA_START_COL;
-			line++;
-		}
-		map = map->next;
-	}
 }
 
 static void	ft_some_usefull_info(t_global *info, int ret)
