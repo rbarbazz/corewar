@@ -14,9 +14,16 @@ st r8, r12
 st r12, -98888500
 ld 982, r9 #load what st previously stored
 sti r8, 0, %50
+sti r8, %-45, %50
+sti r8, %50, %-25852225125151
+sti r8, 0, %50
 add r6, r6, r6 # carry 1
 zjmp %3
-lld 0, r9
+lld -1, r9
+lld -4, r1
+lld -80455415151515165, r2
+lld -10, r3
+lld -588888, r4
 st r9, r12
 st r12, -98888500
 #ldi 2, %0, r4
