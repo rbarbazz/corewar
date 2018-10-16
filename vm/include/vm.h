@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/15 00:35:04 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 14:35:12 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -334,5 +334,6 @@ int						ft_visu_curses(t_global *info);
 void					ft_exit_curses(t_player *winner);
 void					ft_get_input(t_global *info);
 void					ft_print_instructions(void);
+int						get_p_id(t_global *info, int pnum);
 
 #endif

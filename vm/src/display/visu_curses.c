@@ -6,7 +6,7 @@
 /*   By: lcompagn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/07 14:54:32 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/15 13:57:08 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/16 14:35:04 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ static void	ft_curses_map(t_global *info)
 	i = -1;
 	while (++i < MEM_SIZE)
 	{
-		attron(COLOR_PAIR(map->pnumber | (map->current << 3)));
+		attron(COLOR_PAIR(get_p_id(info, map->pnumber) | (map->current << 3)));
 		mvprintw(line, col, "%02X", 0xFF & map->c);
-		attroff(COLOR_PAIR(map->pnumber | (map->current << 3)));
+		attroff(COLOR_PAIR(get_p_id(info, map->pnumber) | (map->current << 3)));
 		col = col + 3;
 		if (col > (TOTAL_COLS - 4))
 		{
