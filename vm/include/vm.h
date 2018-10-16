@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/16 14:32:37 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 15:59:15 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,6 +256,7 @@ void					write_player_in_map(t_global *info);
 int						init_player(t_global *info, char *file,\
 char has_pnumber);
 void					create_initial_process(t_global *info);
+t_process				*dup_process(t_global *info, t_process *process);
 
 /*
 ** *****************************************************************************
