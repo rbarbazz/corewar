@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visu_curses.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lcompagn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/07 14:54:32 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/16 16:23:16 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/16 18:50:45 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	ft_curses_player(t_global *info)
 	t_player	*player;
 	int			i;
 
-	player = info->player;
+	player = info->player_head;
 	i = 1;
 	while (player)
 	{

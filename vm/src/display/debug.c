@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:19:14 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 12:29:37 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 18:49:21 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int			print_map(t_global *info)
 	ft_printf("Cycle : %-20dProcess : %-10d\n", info->clock.cycle,\
 	info->process_count);
 	ft_printf("Cycle to Die : %-10d\n", info->clock.cycle_to_die);
-	tmp_player = info->player;
+	tmp_player = info->player_head;
 	while (tmp_player)
 	{
 		ft_printf("Player : %s\n", tmp_player->name);

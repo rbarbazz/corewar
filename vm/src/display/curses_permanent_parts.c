@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 16:23:28 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/16 16:24:18 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/16 18:50:28 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_perma_player(t_global *info)
 	t_player	*player;
 	int			i;
 
-	player = info->player;
+	player = info->player_head;
 	i = 1;
 	while (player)
 	{

@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/16 15:59:15 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 18:46:07 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ typedef struct			s_process
 typedef struct			s_player
 {
 	struct s_player		*next;
+	struct s_player		*prev;
 	char				*name;
 	char				*comment;
 	char				*instruction;
@@ -173,7 +174,8 @@ typedef struct			s_global
 {
 	t_process			*process_head;
 	t_process			*process_tail;
-	t_player			*player;
+	t_player			*player_head;
+	t_player			*player_tail;
 	t_map				*map;
 	t_cycle				clock;
 	char				*prog_name;

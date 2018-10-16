@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 22:52:28 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/16 14:59:04 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 18:48:00 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	reset_live(t_global *info)
 	t_player	*tmp;
 	t_process	*tmp_proc;
 
-	tmp = info->player;
+	tmp = info->player_head;
 	tmp_proc = info->process_head;
 	while (tmp)
 	{

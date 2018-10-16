@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:00:00 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/16 15:49:04 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 18:46:09 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	get_winner(t_global *info)
 	unsigned int	live;
 	t_player		*winner;
 
-	tmp = info->player;
+	tmp = info->player_tail;
 	live = 0;
 	winner = 0;
 	while (tmp)
@@ -36,7 +36,7 @@ static void	get_winner(t_global *info)
 			live = tmp->last_live;
 			winner = tmp;
 		}
-		tmp = tmp->next;
+		tmp = tmp->prev;
 	}
 	if (info->visual)
 		ft_exit_curses(winner);

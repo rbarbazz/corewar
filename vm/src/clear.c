@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:32:26 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 20:16:43 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 18:50:06 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		free_player(void)
 	t_player	*save;
 
 	info = get_global();
-	tmp = info->player;
+	tmp = info->player_head;
 	while (tmp)
 	{
 		save = tmp->next;
