@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 10:48:58 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/16 13:00:51 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 14:03:30 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static t_process	*dup_process(t_global *info, t_process *process)
 	new->valid_ocp = process->valid_ocp;
 	ft_bzero(new->type_param, 3 * sizeof(int));
 	new->has_live = process->has_live;
+	new->process_nb = info->process_count + 1;
 	new->next = NULL;
 	new->prev = tmp;
 	tmp->next = new;
@@ -51,7 +52,8 @@ void		fork_vm(t_global *info, t_process *process)
 	if ((param0/IDX_MOD) % 2 == 0)
 		param0 = param0 + IDX_MOD + IDX_MOD + IDX_MOD;
 	new = dup_process(info, process);
-	ft_printf("	fork %d (%d)\n", process->curr_op.param[0], param0);
+	if (info->debug)
+		ft_printf("P	%d |	fork %d (%d)\n", process->process_nb, process->curr_op.param[0], param0);
 	info->process_count++;
 	increase_position(new, param0);
 	new->visu_pos = new->curr_pos;

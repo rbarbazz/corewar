@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/15 00:35:04 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 14:32:37 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ typedef struct			s_process
 	t_op				curr_op;
 	int					reg[REG_NUMBER];
 	int					carry;
+	int					process_nb;
 	unsigned int		start_pos;
 	unsigned int		curr_pos;
 	unsigned int		visu_pos;
@@ -163,6 +164,8 @@ typedef struct			s_cycle
 	int					cycle_to_die;
 	int					current_cycle;
 	unsigned int		dump;
+	int					curr_live;
+	char				checks;
 }						t_cycle;
 
 typedef struct			s_global
@@ -177,6 +180,7 @@ typedef struct			s_global
 	int					player_count;
 	int					next_pnumber;
 	char				visual;
+	char				debug;
 	char				dump;
 	int					sleep;
 }						t_global;

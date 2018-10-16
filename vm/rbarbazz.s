@@ -2,11 +2,12 @@
 .comment "I'M ALIIIIVE"    #yeeeet
 
 start:
+st r1, 5
+live %-1
 add r1, r2, r3
 aff r3
 sub r3, r1, r5
 aff r5
-live %-1
 ld :start, r8
 aff r8
 st r8, r12
