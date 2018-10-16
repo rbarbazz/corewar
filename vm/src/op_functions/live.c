@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:27:16 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/14 20:40:18 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 14:33:53 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ void			live(t_global *info, t_process *process)
 	param0 = 0;
 	if (get_param_value(info, process, 0, &param0))
 		return ;
-	ft_printf("	live %d\n", param0);
+	if (info->debug)
+		ft_printf("P	%d |	live %d\n", process->process_nb, param0);
+	info->clock.curr_live++;
 	if (!(player = get_player_from_nb(info, param0)))
 	{
 		if (!info->visual)
