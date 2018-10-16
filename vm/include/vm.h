@@ -21,11 +21,12 @@
 
 # include "../libft/include/libft.h"
 # include "op.h"
+# include <curses.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include <curses.h>
+# include <time.h>
 
 /*
 ** *****************************************************************************
@@ -70,6 +71,32 @@
 # define BOLDMAGENTA	"\033[1m\033[35m"
 # define BOLDCYAN   	"\033[1m\033[36m"
 # define BOLDWHITE  	"\033[1m\033[37m"
+
+/*
+** *****************************************************************************
+** Curses
+** *****************************************************************************
+*/
+
+# define TOP_LINE					2
+# define SLEEP_LINE					(TOP_LINE + 2)
+# define CYCLE_LINE					(SLEEP_LINE + 2)
+# define PLAYER_LINE				(CYCLE_LINE + 4)
+# define SEP_COL					50
+# define ARENA_START_COL			(SEP_COL + 2)
+# define TOTAL_COLS					(ARENA_START_COL + (64 * 3) + 1)
+# define TOTAL_LINES				(64 + (2 * 2))
+# define LINES_LIM					(TOTAL_LINES + 3)
+# define INSTRUCTION_LINE			(TOTAL_LINES - 8)
+# define SLEEP_DEF					50000
+# define SLEEP_DELTA				5000
+# define SLEEP_LIM_INF				0
+# define SLEEP_LIM_SUP				1000000
+# define CYCLE_PER_SEC_UPDATE		50
+# define KEY_PAUSE					' '
+# define KEY_STEP					's'
+# define KEY_SLEEP_UP				'-'
+# define KEY_SLEEP_DOWN				'+'
 
 /*
 ** *****************************************************************************
@@ -151,6 +178,7 @@ typedef struct			s_global
 	int					next_pnumber;
 	char				visual;
 	char				dump;
+	int					sleep;
 }						t_global;
 
 /*
@@ -293,5 +321,18 @@ unsigned int position, unsigned int buff);
 */
 
 void					update_map(t_global *info);
+
+/*
+** *****************************************************************************
+** Curses functions
+** *****************************************************************************
+*/
+
+int						ft_check_screen_size(void);
+int						ft_init_curses(t_global *info);
+int						ft_visu_curses(t_global *info);
+void					ft_exit_curses(t_player *winner);
+void					ft_get_input(t_global *info);
+void					ft_print_instructions(void);
 
 #endif

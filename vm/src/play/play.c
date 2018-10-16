@@ -38,7 +38,10 @@ static void	get_winner(t_global *info)
 		}
 		tmp = tmp->next;
 	}
-	ft_printf("le joueur %d(%s) a gagne\n", winner->player, winner->name);
+	if (info->visual)
+		ft_exit_curses(winner);
+	else
+		ft_printf("le joueur %d(%s) a gagne\n", winner->player, winner->name);
 }
 
 /*
@@ -59,7 +62,7 @@ int			play(t_global *info)
 		check_process(info);
 		update_map(info);
 		if (info->visual)
-			print_map(info);
+			usleep(ft_visu_curses(info));
 		//Debug
 		//	usleep(500);
 	}

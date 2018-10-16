@@ -26,6 +26,9 @@ SRC_NAME =	main.c init.c\
 			setup/open_read_functions.c setup/create_process.c\
 			setup/check_magic.c setup/parsing.c setup/write_player.c\
 			display/debug.c display/update_map.c\
+			display/get_inputs.c display/check_screen_size.c\
+			display/exit_curses.c display/init_curses.c display/visu_curses.c\
+			display/print_instructions.c\
 			clear.c error.c tool.c op.c
 
 OBJ_PATH = obj
