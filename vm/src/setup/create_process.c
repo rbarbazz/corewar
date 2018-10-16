@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:31:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/16 16:46:27 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 18:46:39 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void		create_initial_process(t_global *info)
 {
 	t_player	*tmp_p;
 
-	tmp_p = info->player;
+	tmp_p = info->player_head;
 	while (tmp_p)
 	{
 		add_process(info, tmp_p);

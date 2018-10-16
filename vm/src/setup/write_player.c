@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 14:08:04 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 12:31:45 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 18:48:52 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void		write_player_in_map(t_global *info)
 	int				j;
 	int				position;
 
-	tmp = info->player;
+	tmp = info->player_head;
 	tmp_map = info->map;
 	position = (ft_sqrt(MEM_SIZE) / info->player_count) * ft_sqrt(MEM_SIZE);
 	j = 0;
