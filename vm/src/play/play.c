@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:00:00 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/16 18:46:09 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 19:13:37 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static void	get_winner(t_global *info)
 		}
 		tmp = tmp->prev;
 	}
+	if (!live)
+		winner = info->player_tail;
 	if (info->visual)
 		ft_exit_curses(winner);
 	else

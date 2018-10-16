@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:27:16 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/16 18:48:34 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 19:58:40 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ void			live(t_global *info, t_process *process)
 	if (!(player = get_player_from_nb(info, param0)))
 	{
 		if (!info->visual)
-			ft_dprintf(STDERR_FILENO, "un processus a essaye de faire un live \
-					pour un joueur inconnu\n");
+			ft_dprintf(STDERR_FILENO, "un processus a essaye de faire un live pour un joueur inconnu\n");
 		return ;
 	}
 	player->curr_live++;
