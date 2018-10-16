@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 10:48:58 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/15 00:33:18 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 13:00:51 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,7 @@ void		fork_vm(t_global *info, t_process *process)
 	if ((param0/IDX_MOD) % 2 == 0)
 		param0 = param0 + IDX_MOD + IDX_MOD + IDX_MOD;
 	new = dup_process(info, process);
-	ft_printf("fork:");
-	ft_printf("param 0 : %d\n", param0);
-	ft_printf("param 0 %% IDX_MOD %d\n", param0 );
+	ft_printf("	fork %d (%d)\n", process->curr_op.param[0], param0);
 	info->process_count++;
 	increase_position(new, param0);
 	new->visu_pos = new->curr_pos;

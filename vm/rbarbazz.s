@@ -9,11 +9,14 @@ aff r5
 live %-1
 ld :start, r8
 aff r8
-st r8, 987
+st r8, r12
+st r12, -98888500
 ld 982, r9 #load what st previously stored
 sti r8, 0, %50
 add r6, r6, r6 # carry 1
 zjmp %3
 lld 0, r9
-st r9, 987
+st r9, r12
+st r12, -98888500
 ldi 2, %0, r4
+fork %65
