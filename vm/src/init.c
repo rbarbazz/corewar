@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:23:46 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/10 17:24:29 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/13 19:09:29 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_global(t_global *info, char *prog_name)
 	info->clock.dump = 0;
 	info->visual = 0;
 	info->dump = 0;
+	info->sleep = SLEEP_DEF;
 }
 
 t_global	*get_global(void)

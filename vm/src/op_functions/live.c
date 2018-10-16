@@ -37,8 +37,9 @@ void			live(t_global *info, t_process *process)
 	ft_printf("	live %d\n", param0);
 	if (!(player = get_player_from_nb(info, param0)))
 	{
-		ft_dprintf(STDERR_FILENO, "un processus a essaye de faire un live pour \
-un joueur inconnu\n");
+		if (!info->visual)
+			ft_dprintf(STDERR_FILENO, "un processus a essaye de faire un live \
+					pour un joueur inconnu\n");
 		return ;
 	}
 	player->curr_live++;
