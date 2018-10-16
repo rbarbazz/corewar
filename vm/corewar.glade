@@ -39,7 +39,6 @@ xperrin (xperrin@student.42.fr)</property>
     </child>
   </object>
   <object class="GtkTextBuffer" id="buf_mem"/>
-  <object class="GtkTextBuffer" id="p1_name"/>
   <object class="GtkApplicationWindow" id="main_window">
     <property name="can_focus">False</property>
     <property name="is_focus">True</property>
@@ -255,45 +254,13 @@ xperrin (xperrin@student.42.fr)</property>
                             <property name="can_focus">False</property>
                             <property name="orientation">vertical</property>
                             <child>
-                              <object class="GtkExpander">
+                              <object class="GtkTextView" id="t_players">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <child>
-                                  <object class="GtkGrid">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Name:</property>
-                                      </object>
-                                      <packing>
-                                        <property name="left_attach">0</property>
-                                        <property name="top_attach">0</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkTextView">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="buffer">p1_name</property>
-                                      </object>
-                                      <packing>
-                                        <property name="left_attach">1</property>
-                                        <property name="top_attach">0</property>
-                                        <property name="width">2</property>
-                                      </packing>
-                                    </child>
-                                  </object>
-                                </child>
-                                <child type="label">
-                                  <object class="GtkLabel">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="label" translatable="yes">Player 1</property>
-                                  </object>
-                                </child>
+                                <property name="editable">False</property>
+                                <property name="wrap_mode">word</property>
+                                <property name="cursor_visible">False</property>
+                                <property name="overwrite">True</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -393,4 +360,5 @@ xperrin (xperrin@student.42.fr)</property>
       </object>
     </child>
   </object>
+  <object class="GtkTextBuffer" id="buf_play"/>
 </interface>

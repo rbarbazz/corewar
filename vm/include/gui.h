@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/14 17:54:03 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/16 16:22:22 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ typedef struct		s_gtkwin
 }					t_gtkwin;
 
 # define MEM_TXT_VIEW "t_mem"
+# define PLAY_TXT_VIEW "t_players"
 
 # define BUF_MEM_TXT "buf_mem"
-# define BUF_P1_TXT "p1_name"
+# define BUF_PLAY_TXT "buf_play"
 
 /*
 ** mem : The memory display buffer
@@ -54,7 +55,7 @@ typedef struct		s_gtkwin
 typedef struct		s_gtktext
 {
 	GtkTextBuffer	*mem;
-	GtkTextBuffer	*p1_n;
+	GtkTextBuffer	*play;
 }					t_gtktext;
 
 /*

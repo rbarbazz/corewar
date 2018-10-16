@@ -6,14 +6,28 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 16:31:52 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/14 18:07:52 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/16 18:17:59 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gui.h"
-#include "time.h"
+#include <time.h>
 
-void		*bg_loop(t_gtkinfo *i)
+static void		u_text_players(t_gtkinfo *i)
+{
+	int			len;
+	GtkTextIter	end;
+	t_player *p;
+
+	len = ft_strlen(i->vm->player->name);
+
+	gtk_text_buffer_set_text(i->t.play, "Player 1\nName: ", -1);
+	gtk_text_buffer_get_end_iter(i->t.play, &end);
+	gtk_text_buffer_insert(i->t.play, &end
+			, i->vm->player->name, -1);
+}
+
+void			*bg_loop(t_gtkinfo *i)
 {
 	while (1)
 	{
@@ -22,8 +36,12 @@ void		*bg_loop(t_gtkinfo *i)
 			ft_putendl("Yooo Im runnin!");
 			if (i->vm->player_count)
 			{
-				gtk_text_buffer_set_text(i->t.mem, i->vm->player->name, -1);
+				/*
+				** Not thread safe !!!!
+				** gtk_text_buffer_set_text(i->t.mem, i->vm->player->name, -1);
+				*/
 				write_player_in_map(i->vm);
+				gdk_threads_add_idle(u_text_players, i);
 				play(i->vm);
 				i->b.run = 0;
 			}
