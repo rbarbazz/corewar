@@ -6,11 +6,40 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:31:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/16 14:13:12 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 15:59:32 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+t_process	*dup_process(t_global *info, t_process *process)
+{
+	t_process *tmp;
+	t_process *new;
+
+	tmp = info->process_tail;
+	if (!(new = (t_process*)ft_memalloc(sizeof(t_process))))
+		exit_corewar(MALLOC_ERROR);
+	new->prev = tmp;
+	new->next = NULL;
+	new->curr_op = process->curr_op;
+	ft_memcpy(new->reg, process->reg, REG_NUMBER * sizeof(int));
+	new->carry = process->carry;
+	new->process_nb = info->process_count + 1;
+	new->start_pos = process->start_pos;
+	new->curr_pos = process->curr_pos;
+	new->visu_pos = process->visu_pos;
+	new->op_pos = process->op_pos;
+	new->op_pc = process->op_pc;
+	new->cycle_left = process->cycle_left;
+	ft_bzero(new->type_param, 3 * sizeof(int));
+	new->pc = process->pc;
+	new->has_live = process->has_live;
+	new->valid_ocp = process->valid_ocp;
+	info->process_tail = new;
+	tmp->next = new;
+	return (new);
+}
 
 /*
 ** *****************************************************************************

@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:47:32 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 11:50:11 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 15:46:31 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 int	check_reg(t_global *info, t_process *process, int param)
 {
-	if (process->curr_op.param[param] > 15)
+	if (process->curr_op.param[param] > 16 || !process->curr_op.param[param])
 	{
-		ft_dprintf(STDERR_FILENO, "Registre inexistant : %u\n",\
+		if (!info->visual)
+			ft_dprintf(STDERR_FILENO, "Registre inexistant : %u\n",\
 		process->curr_op.param[param]);
-		kill_process(info, process);
+		//kill_process(info, process);
 		return (1);
 	}
 	return (0);
