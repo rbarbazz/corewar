@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/15 14:00:23 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/15 00:35:04 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ typedef struct			s_process
 	unsigned int		curr_pos;
 	unsigned int		visu_pos;
 	unsigned int		op_pos;
+	unsigned int		op_pc;
 	int					cycle_left;
 	unsigned int		type_param[3];
 	unsigned short		pc;
@@ -297,6 +298,7 @@ void					ld(t_global *info, t_process *process);
 void					st(t_global *info, t_process *process);
 void					sti(t_global *info, t_process *process);
 void					ldi(t_global *info, t_process *process);
+void					fork_vm(t_global *info, t_process *process);
 
 /*
 ** *****************************************************************************

@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 15:39:18 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 11:41:18 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 20:38:42 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	aff(t_global *info, t_process *process)
 		process->carry = 1;
 	else
 		process->carry = 0;
+	ft_printf("	aff r%d (%d)\n", process->curr_op.param[0], process->reg[process->curr_op.param[0] - 1]);
 	if (!info->visual)
 		ft_printf("un process dit : %c\n", param0 % 256);
 }
