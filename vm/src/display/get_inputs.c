@@ -6,11 +6,20 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/13 18:03:33 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/15 14:04:42 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/16 16:18:49 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+static void	reset_display(t_global *info)
+{
+	if (!ft_check_screen_size())
+	{
+		ft_init_permanent_parts(info);
+		ft_curses_map(info);
+	}
+}
 
 static int	ft_interpret_input_switch_pause(t_global *info, int key)
 {
@@ -19,6 +28,8 @@ static int	ft_interpret_input_switch_pause(t_global *info, int key)
 		nodelay(stdscr, FALSE);
 		return (1);
 	}
+	else if (key == RESIZE_SIGNAL)
+		reset_display(info);
 	else if ((char)key == KEY_SLEEP_UP)
 	{
 		if (info->sleep + SLEEP_DELTA < SLEEP_LIM_SUP)
@@ -43,7 +54,8 @@ void		ft_get_input(t_global *info)
 		mvprintw(TOP_LINE, 4, "  PAUSE  ");
 		refresh();
 		while ((char)(key = getch()) != KEY_PAUSE && key != KEY_STEP)
-			;
+			if (key == RESIZE_SIGNAL)
+				reset_display(info);
 		if (key == KEY_PAUSE)
 		{
 			pause = 0;
