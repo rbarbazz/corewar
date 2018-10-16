@@ -97,6 +97,7 @@
 # define KEY_STEP					's'
 # define KEY_SLEEP_UP				'-'
 # define KEY_SLEEP_DOWN				'+'
+# define RESIZE_SIGNAL				410
 
 /*
 ** *****************************************************************************
@@ -335,10 +336,12 @@ void					update_map(t_global *info);
 
 int						ft_check_screen_size(void);
 int						ft_init_curses(t_global *info);
+void					ft_init_permanent_parts(t_global *info);
+void					ft_print_instructions(void);
 int						ft_visu_curses(t_global *info);
+void					ft_curses_map(t_global *info);
 void					ft_exit_curses(t_player *winner);
 void					ft_get_input(t_global *info);
-void					ft_print_instructions(void);
 int						get_p_id(t_global *info, int pnum);
 
 #endif
