@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 14:53:16 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 23:09:11 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 11:40:43 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,13 @@ void		zjmp(t_global *info, t_process *process)
 	param0 = 0;
 	if (get_param_value(info, process, 0, &param0))
 		return ;
-	param0 -= process->pc;
+	ft_printf("	zjmp %hd", param0);
 	if (process->carry)
+	{
+		ft_printf(" OK");
 		increase_position(process, param0 - 3);
+	}
 	else
 		return ;
+	ft_printf("\n");
 }

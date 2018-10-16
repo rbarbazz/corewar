@@ -6,23 +6,31 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 16:20:20 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/15 00:58:50 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 11:55:17 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+/*
+** *****************************************************************************
+** idx mod on the address parsed and not on the result !
+** *****************************************************************************
+*/
 
 void	ld(t_global *info, t_process *process)
 {
 	int	param0;
 
 	param0 = 0;
+	//if (process->type_param[0] == T_IND)
+//		process->curr_op.param[0] %= IDX_MOD;
 	if (get_param_value(info, process, 0, &param0))
 		return ;
 	if (check_reg(info, process, 1))
 		return ;
 	ft_printf("	ld %d -> r%d\n", param0, process->curr_op.param[1]);
-	process->reg[process->curr_op.param[1] - 1] = param0 % IDX_MOD;
+	process->reg[process->curr_op.param[1] - 1] = param0;
 	if (!(process->reg[process->curr_op.param[1] - 1]))
 		process->carry = 1;
 	else
