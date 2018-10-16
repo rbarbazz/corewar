@@ -21,3 +21,5 @@ st r9, r12
 st r12, -98888500
 #ldi 2, %0, r4
 lfork %-51654
+add r6, r6, r6 # carry 1
+zjmp %90072
