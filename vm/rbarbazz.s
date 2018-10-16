@@ -2,7 +2,7 @@
 .comment "I'M ALIIIIVE"    #yeeeet
 
 start:
-st r1, 5
+st r1, 6
 live %-1
 add r1, r2, r3
 aff r3
@@ -19,5 +19,5 @@ zjmp %3
 lld 0, r9
 st r9, r12
 st r12, -98888500
-ldi 2, %0, r4
-fork %65
+#ldi 2, %0, r4
+lfork %-51654
