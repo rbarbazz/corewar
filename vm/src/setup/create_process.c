@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:31:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/14 12:31:28 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 14:13:12 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void	add_process(t_global *info, t_player *tmp_p)
 	new->carry = 0;
 	new->start_pos = tmp_p->start;
 	new->cycle_left = -1;
+	new->process_nb = info->process_count + 1;
 	new->valid_ocp = 1;
 	new->has_live = 0;
 	new->curr_pos = tmp_p->start;
@@ -73,6 +74,7 @@ void		create_initial_process(t_global *info)
 	while (tmp_p)
 	{
 		add_process(info, tmp_p);
+		info->process_count++;
 		tmp_p = tmp_p->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:00:00 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/14 21:16:49 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 14:12:38 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static void	get_winner(t_global *info)
 
 int			play(t_global *info)
 {
-	info->process_count = info->player_count;
 	create_initial_process(info);
 	if (!info->visual)
 		display_intro(info);
@@ -62,9 +61,8 @@ int			play(t_global *info)
 		check_process(info);
 		update_map(info);
 		if (info->visual)
-			usleep(ft_visu_curses(info));
-		//Debug
-		//	usleep(500);
+			print_map(info);
+			//usleep(ft_visu_curses(info));
 	}
 	get_winner(info);
 	return (0);
