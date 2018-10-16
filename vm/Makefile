@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/14 20:15:21 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/10/16 14:35:40 by lcompagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC_NAME =	main.c init.c\
 			display/debug.c display/update_map.c\
 			display/get_inputs.c display/check_screen_size.c\
 			display/exit_curses.c display/init_curses.c display/visu_curses.c\
-			display/print_instructions.c\
+			display/print_instructions.c display/get_playerid.c\
 			clear.c error.c tool.c op.c
 
 OBJ_PATH = obj
