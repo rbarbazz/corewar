@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 11:37:54 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 13:56:16 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 11:53:34 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	lld(t_global *info, t_process *process)
 		return ;
 	if (process->type_param[0] == T_IND)
 		param0 = param0 >> 16;
+	ft_printf("	lld %d -> r%d\n", param0, process->curr_op.param[1]);
 	process->reg[process->curr_op.param[1] - 1] = param0;
 	if (!(process->reg[process->curr_op.param[1] - 1]))
 		process->carry = 1;

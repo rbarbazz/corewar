@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 16:11:37 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 11:20:06 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/14 21:44:44 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void		increase_position(t_process *process, unsigned int add)
 {
 	process->pc += add;
 	process->curr_pos = process->start_pos + process->pc;
-	process->curr_pos = process->curr_pos % MEM_SIZE;
+	process->curr_pos %= MEM_SIZE;
 }
 
 /*
@@ -75,6 +75,7 @@ void		get_op(t_global *info, t_process *process)
 	ocp = 0;
 	process->valid_ocp = 1;
 	process->op_pos = process->curr_pos;
+	process->op_pc = process->pc;
 	value = get_value_at_position(info->map, process->curr_pos, 1);
 	op = tab_to_int(value);
 	ft_strdel(&value);
