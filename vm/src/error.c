@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 15:01:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/12 21:25:00 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 14:29:32 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		exit_corewar(int error_code)
 	else if (error_code == WRONG_PNUMBER)
 	{
 		ft_printf("[ERROR] %d : player number",  error_code);
-		ft_printf(" has to be available, between MEM_SIZE and -MEM_SIZE\n");
+		ft_printf(" has to be available, not 0, between MEM_SIZE and -MEM_SIZE\n");
 	}
 	else if (error_code == USAGE_ERROR)
 		display_usage();

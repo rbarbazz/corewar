@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:23:46 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/13 19:09:29 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/16 14:33:02 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ void	init_global(t_global *info, char *prog_name)
 	info->clock.cycle_to_die = CYCLE_TO_DIE;
 	info->clock.current_cycle = 0;
 	info->clock.dump = 0;
+	info->clock.curr_live = 0;
 	info->visual = 0;
+	info->debug = 0;
 	info->dump = 0;
 	info->sleep = SLEEP_DEF;
 }
