@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/17 14:05:21 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/17 16:21:58 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,6 +307,9 @@ void					st(t_global *info, t_process *process);
 void					sti(t_global *info, t_process *process);
 void					ldi(t_global *info, t_process *process);
 void					fork_vm(t_global *info, t_process *process);
+void					and_vm(t_global *info, t_process *process);
+void					or_vm(t_global *info, t_process *process);
+void					xor_vm(t_global *info, t_process *process);
 
 /*
 ** *****************************************************************************
