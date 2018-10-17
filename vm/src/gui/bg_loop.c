@@ -6,43 +6,65 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 16:31:52 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/17 15:59:59 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/17 18:26:25 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gui.h"
 #include <time.h>
 
-int			play_gtk(t_gtkinfo *i)
-{
-	i->vm->process_count = i->vm->player_count;
-	create_initial_process(i->vm);
-	/* if (!i->vm->visual) */
-	/* 	display_intro(i->vm); */
-	while (!cycle(i->vm) && i->vm->process_count)
-	{
-		check_process(i->vm);
-		update_map(i->vm);
-		if (i->vm->visual)
-			print_map(i->vm);
-		//Debug
-		//	usleep(500);
-	}
-	/* get_winner(i->vm); */
-	return (0);
-}
-
 static void		u_text_players(t_gtkinfo *i)
 {
 	int			len;
 	GtkTextIter	end;
+	t_player	*p;
 
 	len = ft_strlen(i->vm->player_head->name);
 
-	gtk_text_buffer_set_text(i->t.play, "Player 1\nName: ", -1);
-	gtk_text_buffer_get_end_iter(i->t.play, &end);
-	gtk_text_buffer_insert(i->t.play, &end
-			, i->vm->player_head->name, -1);
+	p = i->vm->player_head;
+	gtk_text_buffer_set_text(i->t.play, "", -1);
+	while (p)
+	{
+		gtk_text_buffer_get_start_iter(i->t.play, &end);
+		gtk_text_buffer_insert(i->t.play, &end, "Player Name: ", -1);
+		gtk_text_buffer_insert(i->t.play, &end, p->name, -1);
+		gtk_text_buffer_insert(i->t.play, &end, "\nLast live:  \n\n", -1);
+		p = p->next;
+	}
+}
+
+int			play_gtk(t_gtkinfo *i)
+{
+	int finished = 0;
+	int target_cycles = 1000000;
+
+	create_initial_process(i->vm);
+	if (!i->vm->visual)
+		display_intro(i->vm);
+	while (!finished)
+	{
+		if (!i->b.pause)
+		{
+			if (!cycle(i->vm) && i->vm->process_count)
+			{
+				check_process(i->vm);
+				update_map(i->vm);
+				gdk_threads_add_idle(u_text_players, i);
+				if (i->vm->visual)
+					usleep(ft_visu_curses(i->vm));
+				ft_printf("cycles clock %d\n", i->vm->clock.cycle);
+			}
+			else
+				finished = 1;
+		}
+		else
+			sleep(1);
+	}
+	update_map(i->vm);
+	if (i->vm->visual)
+		usleep(ft_visu_curses(i->vm));
+	get_winner(i->vm);
+	return (0);
 }
 
 void			*bg_loop(t_gtkinfo *i)
@@ -58,11 +80,9 @@ void			*bg_loop(t_gtkinfo *i)
 				** Not thread safe !!!!
 				** gtk_text_buffer_set_text(i->t.mem, i->vm->player->name, -1);
 				*/
-				write_player_in_map(i->vm);
-				gdk_threads_add_idle(u_text_players, i);
-				play(i->vm);
-				/* play_gtk(i->vm); */
 				i->b.run = 0;
+				write_player_in_map(i->vm);
+				play_gtk(i);
 			}
 			else
 			{

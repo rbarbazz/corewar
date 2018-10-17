@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:43:57 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/17 14:47:07 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/17 16:45:58 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,6 @@
 /*
 ** Champion file chooser
 */
-
-/* static int		load_champ(t_global *info, char *filename) */
-/* { */
-/* 	char	*file; */
-/* 	int		fd; */
-
-/* 	fd = open_file(filename); */
-/* 	file = read_file(fd, filename); */
-/* 	ft_putendl("Loading player...\n"); */
-/* 	if (check_magic(file)) */
-/* 	{ */
-/* 		ft_strdel(&file); */
-/* 		close_file(fd); */
-/* 		exit_corewar(INVALID_MAGIC); */
-/* 	} */
-/* 	init_player(info, file, 0); */
-/* 	print_player(info); */
-/* 	close_file(fd); */
-/* 	return (0); */
-/* } */
 
 void			callback_player_load(GtkMenuItem *item, t_gtkinfo *i)
 {
