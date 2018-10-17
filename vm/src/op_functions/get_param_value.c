@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:47:32 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/16 18:24:27 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/17 14:51:50 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	get_param_value(t_global *info, t_process *process, int i, int *param)
 	}
 	else if (process->type_param[i] == T_IND)
 	{
+		//if ((short)process->curr_op.param[i] < 0)
+			//process->curr_op.param[i] += IDX_MOD;
 		tmp = get_value_at_position(info->map, process->op_pos +\
 		process->curr_op.param[i], 4);
 		*param = tab_to_int(tmp);
