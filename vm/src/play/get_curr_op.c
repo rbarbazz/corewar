@@ -6,11 +6,21 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 16:11:37 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 21:44:44 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/17 17:25:53 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+static int	get_op_pnumber(t_global *info, unsigned int curr_pos)
+{
+	t_map	*tmp;
+
+	tmp = info->map;
+	while (tmp && curr_pos--)
+		tmp = tmp->next;
+	return (tmp->pnumber);
+}
 
 /*
 ** *****************************************************************************
@@ -78,6 +88,7 @@ void		get_op(t_global *info, t_process *process)
 	process->op_pc = process->pc;
 	value = get_value_at_position(info->map, process->curr_pos, 1);
 	op = tab_to_int(value);
+	process->op_pnumber = get_op_pnumber(info, process->curr_pos);
 	ft_strdel(&value);
 	increase_position(process, 1);
 	if ((process->cycle_left = get_data_from_op(op, process)) == -1)
