@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 16:31:52 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/17 15:44:45 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/17 15:59:59 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void			*bg_loop(t_gtkinfo *i)
 				** Not thread safe !!!!
 				** gtk_text_buffer_set_text(i->t.mem, i->vm->player->name, -1);
 				*/
-				create_map(i->vm);
+				write_player_in_map(i->vm);
 				gdk_threads_add_idle(u_text_players, i);
 				play(i->vm);
 				/* play_gtk(i->vm); */
