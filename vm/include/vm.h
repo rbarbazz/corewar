@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/17 18:25:54 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/17 19:22:54 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@
 ** *****************************************************************************
 */
 
+# define HIGHLIGHT_TIME				50
 # define TOP_LINE					2
 # define SLEEP_LINE					(TOP_LINE + 2)
 # define CYCLE_LINE					(SLEEP_LINE + 2)

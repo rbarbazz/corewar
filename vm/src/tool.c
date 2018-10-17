@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:04:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/17 18:28:03 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/17 19:22:30 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ unsigned int position, unsigned int buff)
 	{
 		map->c = itoaed[i++];
 		map->pnumber = process->op_pnumber;
-		map->cycle_written = info->clock.cycle;
+		map->cycle_written = info->clock.cycle + HIGHLIGHT_TIME;
 		map = map->next;
 	}
 	ft_strdel(&itoaed);
