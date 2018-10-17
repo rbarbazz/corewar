@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 17:30:05 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/03 17:26:37 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/17 10:13:21 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	check_cmd_value(t_asm *champ, int max_length, char *cmd, char *value)
 	while (champ->sfile && champ->sfile[champ->i] &&\
 	champ->sfile[champ->i] != '\"')
 	{
-		if (i > max_length)
+		if (i >= max_length)
 			error_cmd_length(cmd, max_length);
 		value[i] = champ->sfile[champ->i];
 		i++;
