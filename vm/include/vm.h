@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/17 14:53:17 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/17 17:21:09 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ typedef struct			s_process
 	int					reg[REG_NUMBER];
 	int					carry;
 	int					process_nb;
+	int					op_pnumber;
 	unsigned int		start_pos;
 	unsigned int		curr_pos;
 	unsigned int		visu_pos;
@@ -310,6 +311,9 @@ void					st(t_global *info, t_process *process);
 void					sti(t_global *info, t_process *process);
 void					ldi(t_global *info, t_process *process);
 void					fork_vm(t_global *info, t_process *process);
+void					and_vm(t_global *info, t_process *process);
+void					or_vm(t_global *info, t_process *process);
+void					xor_vm(t_global *info, t_process *process);
 
 /*
 ** *****************************************************************************
