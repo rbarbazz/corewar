@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 14:08:04 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/17 18:26:10 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/17 19:21:16 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	write_one_player(t_map *map, t_player *player, unsigned int i)
 	{
 		map->c = player->instruction[i];
 		map->pnumber = player->pnumber;
-		map->cycle_written = 50;
+		map->cycle_written = 0;
 		i++;
 	}
 	return (i);
