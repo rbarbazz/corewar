@@ -6,13 +6,13 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 10:48:58 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/17 17:10:55 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/17 17:54:00 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void		fork_vm(t_global *info, t_process *process)
+void	fork_vm(t_global *info, t_process *process)
 {
 	t_process	*new;
 	int			param0;
@@ -25,7 +25,7 @@ void		fork_vm(t_global *info, t_process *process)
 	if (info->debug)
 		ft_printf("P	%d |	fork %hd (%d)\n", process->process_nb, process->curr_op.param[0], (param0 + process->op_pos) % IDX_MOD);
 	info->process_count++;
-	new->curr_pos = (param0 + process->op_pos) % IDX_MOD;
+	new->curr_pos = ((param0 + process->op_pos) % IDX_MOD) + process->start_pos;
 	new->pc = new->curr_pos - new->start_pos;
 	new->visu_pos = new->curr_pos;
 }
