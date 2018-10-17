@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 10:31:24 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/04 21:23:23 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/17 14:02:57 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@ static void	init_op(t_asm *champ)
 	champ->op->opcode = 0;
 	champ->op->has_ocp = 0;
 	champ->op->nb_or_address = 0;
+}
+
+static int	check_end_of_line(t_asm *champ)
+{
+	while (champ->sfile && champ->sfile[champ->i] && champ->sfile[champ->i] != '\n')
+	{
+		if (ft_isprint(champ->sfile[champ->i]))
+			return (1);
+		move_index();
+	}
+	return (0);
 }
 
 /*
@@ -41,5 +52,7 @@ void		look_for_op(t_asm *champ)
 	if (!champ->sfile || !champ->sfile[champ->i] || check_op_name(champ))
 		return ;
 	check_op_param(champ, champ->op);
+	if (check_end_of_line(champ))
+		error_parse();
 	skip_non_print();
 }
