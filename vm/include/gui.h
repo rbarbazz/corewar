@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/16 16:22:22 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/17 16:46:35 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct		s_gtktext
 typedef struct		s_vm_bgl
 {
 	int				run;
+	int				pause;
 }					t_vm_bg;
 
 /*

@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 17:49:09 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/14 17:00:38 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/17 18:06:11 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,14 @@ void		callback_logic_start(GtkWidget *widget, t_gtkinfo *i)
 	i->b.run = 1;
 }
 
+void		callback_pause(GtkWidget *widget, t_gtkinfo *i)
+{
+	i->b.pause = (i->b.pause) ? 0 : 1;
+	ft_putendl((i->b.run) ? "Paused" : "Unpaused");
+}
+
 void		callback_dbgvisu(GtkWidget *widget, t_gtkinfo *i)
 {
-	i->vm->visual = ~(i->vm->visual);
+	i->vm->visual = (i->vm->visual) ? 0 : 1;
 	ft_putendl((i->vm->visual) ? "Debug visual set." : "Debug visual unset.");
 }
