@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/17 17:21:09 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/17 18:25:54 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,7 @@ typedef struct			s_map
 	struct s_map		*prev;
 	struct s_map		*next;
 	int					pnumber;
+	int					cycle_written;
 	unsigned char		c;
 	char				current;
 }						t_map;

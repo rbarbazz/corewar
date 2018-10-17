@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:04:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/17 17:26:29 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/17 18:28:03 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@
 void			write_at_position(t_map *map, t_process *process, \
 unsigned int position, unsigned int buff)
 {
-	int		i;
-	char	*itoaed;
+	int			i;
+	char		*itoaed;
+	t_global	*info;
 
+	info = get_global();
 	if (!(itoaed = uitoa_d(buff)))
 		exit_corewar(MALLOC_ERROR);
 	position %= MEM_SIZE;
@@ -37,6 +39,7 @@ unsigned int position, unsigned int buff)
 	{
 		map->c = itoaed[i++];
 		map->pnumber = process->op_pnumber;
+		map->cycle_written = info->clock.cycle;
 		map = map->next;
 	}
 	ft_strdel(&itoaed);
