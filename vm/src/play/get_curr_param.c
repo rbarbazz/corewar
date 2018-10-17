@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:30:07 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/12 20:41:03 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/17 16:06:58 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ static void	with_ocp(t_global *info, t_process *process, unsigned char ocp)
 	i = 0;
 	size = 0;
 	increase_position(process, 1);
+	if ((ocp & 3) != 0)
+		process->valid_ocp = 0;
 	while (i < process->curr_op.nb_param)
 	{
 		type = parse_ocp(ocp, i);
