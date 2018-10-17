@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 16:20:20 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/16 14:03:43 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/17 11:19:57 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	ld(t_global *info, t_process *process)
 	int	param0;
 
 	param0 = 0;
-	//if (process->type_param[0] == T_IND)
-//		process->curr_op.param[0] %= IDX_MOD;
+	if (process->type_param[0] == T_IND)
+		process->curr_op.param[0] %= IDX_MOD;
 	if (get_param_value(info, process, 0, &param0))
 		return ;
 	if (check_reg(info, process, 1))
