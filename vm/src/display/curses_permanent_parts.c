@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 16:23:28 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/16 18:50:28 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/17 19:38:13 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	ft_curses_drawbox(void)
 	attroff(COLOR_PAIR(0 | (1 << 3)));
 }
 
-void	ft_init_permanent_parts(t_global *info)
+void		ft_init_permanent_parts(t_global *info)
 {
 	int		line;
 	t_cycle	clock;
