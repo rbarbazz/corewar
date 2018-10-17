@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:26 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/17 15:03:30 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/17 15:49:46 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			main(int argc, char **argv)
 	init_global(info, argv[0]);
 	check_args(info, argc, argv);
 	create_map(info);
-	/* write_player_in_map(info); */
+	write_player_in_map(info);
 	play(info);
 	exit_corewar(SUCCESS);
 	return (SUCCESS);
