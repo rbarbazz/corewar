@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 22:52:28 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/12 16:17:51 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 18:48:00 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	reset_live(t_global *info)
 	t_player	*tmp;
 	t_process	*tmp_proc;
 
-	tmp = info->player;
+	tmp = info->player_head;
 	tmp_proc = info->process_head;
 	while (tmp)
 	{
@@ -97,9 +97,21 @@ int			cycle(t_global *info)
 	{
 		check_live_process(info);
 		reset_live(info);
-		info->clock.cycle_to_die -= CYCLE_DELTA;
+		if (info->clock.curr_live >= NBR_LIVE)
+		{
+			info->clock.cycle_to_die -= CYCLE_DELTA;
+			info->clock.checks = 0;
+		}
+		else
+			info->clock.checks++;
+		if (info->clock.checks == MAX_CHECKS)
+		{
+			info->clock.cycle_to_die -= CYCLE_DELTA;
+			info->clock.checks = 0;
+		}
 		if (info->clock.cycle_to_die < 0)
 			info->clock.cycle_to_die = 0;
+		info->clock.curr_live = 0;
 		info->clock.current_cycle = 0;
 	}
 	if (info->clock.cycle_to_die <= 0)

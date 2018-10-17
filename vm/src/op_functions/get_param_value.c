@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:47:32 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 11:50:11 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/17 14:51:50 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 int	check_reg(t_global *info, t_process *process, int param)
 {
-	if (process->curr_op.param[param] > 15)
+	if (process->curr_op.param[param] > 16 || !process->curr_op.param[param])
 	{
-		ft_dprintf(STDERR_FILENO, "Registre inexistant : %u\n",\
+		if (!info->visual)
+			ft_dprintf(STDERR_FILENO, "Registre inexistant : %u\n",\
 		process->curr_op.param[param]);
-		kill_process(info, process);
+		//kill_process(info, process);
 		return (1);
 	}
 	return (0);
@@ -44,6 +45,8 @@ int	get_param_value(t_global *info, t_process *process, int i, int *param)
 	}
 	else if (process->type_param[i] == T_IND)
 	{
+		//if ((short)process->curr_op.param[i] < 0)
+			//process->curr_op.param[i] += IDX_MOD;
 		tmp = get_value_at_position(info->map, process->op_pos +\
 		process->curr_op.param[i], 4);
 		*param = tab_to_int(tmp);
