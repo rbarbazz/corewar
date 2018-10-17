@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:00:00 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/14 21:16:49 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 19:13:37 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	get_winner(t_global *info)
 	unsigned int	live;
 	t_player		*winner;
 
-	tmp = info->player;
+	tmp = info->player_tail;
 	live = 0;
 	winner = 0;
 	while (tmp)
@@ -36,9 +36,14 @@ static void	get_winner(t_global *info)
 			live = tmp->last_live;
 			winner = tmp;
 		}
-		tmp = tmp->next;
+		tmp = tmp->prev;
 	}
-	ft_printf("le joueur %d(%s) a gagne\n", winner->player, winner->name);
+	if (!live)
+		winner = info->player_tail;
+	if (info->visual)
+		ft_exit_curses(winner);
+	else
+		ft_printf("le joueur %d(%s) a gagne\n", winner->player, winner->name);
 }
 
 /*
@@ -50,7 +55,6 @@ static void	get_winner(t_global *info)
 
 int			play(t_global *info)
 {
-	info->process_count = info->player_count;
 	create_initial_process(info);
 	if (!info->visual)
 		display_intro(info);
@@ -59,10 +63,11 @@ int			play(t_global *info)
 		check_process(info);
 		update_map(info);
 		if (info->visual)
-			print_map(info);
-		//Debug
-		//	usleep(500);
+			usleep(ft_visu_curses(info));
 	}
+	update_map(info);
+	if (info->visual)
+		usleep(ft_visu_curses(info));
 	get_winner(info);
 	return (0);
 }

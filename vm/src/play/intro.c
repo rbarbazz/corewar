@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 17:36:34 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/09 18:45:56 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 18:48:18 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	display_intro(t_global *info)
 {
 	t_player	*tmp_p;
 
-	tmp_p = info->player;
+	tmp_p = info->player_head;
 	ft_printf("Introducing contestants...\n");
 	while (tmp_p)
 	{

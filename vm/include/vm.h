@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/15 00:35:04 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/17 14:53:17 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@
 
 # include "../libft/include/libft.h"
 # include "op.h"
+# include <curses.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include <curses.h>
+# include <time.h>
 
 /*
 ** *****************************************************************************
@@ -73,6 +74,33 @@
 
 /*
 ** *****************************************************************************
+** Curses
+** *****************************************************************************
+*/
+
+# define TOP_LINE					2
+# define SLEEP_LINE					(TOP_LINE + 2)
+# define CYCLE_LINE					(SLEEP_LINE + 2)
+# define PLAYER_LINE				(CYCLE_LINE + 4)
+# define SEP_COL					50
+# define ARENA_START_COL			(SEP_COL + 2)
+# define TOTAL_COLS					(ARENA_START_COL + (64 * 3) + 1)
+# define TOTAL_LINES				(64 + (2 * 2))
+# define LINES_LIM					(TOTAL_LINES + 3)
+# define INSTRUCTION_LINE			(TOTAL_LINES - 8)
+# define SLEEP_DEF					50000
+# define SLEEP_DELTA				5000
+# define SLEEP_LIM_INF				0
+# define SLEEP_LIM_SUP				1000000
+# define CYCLE_PER_SEC_UPDATE		50
+# define KEY_PAUSE					' '
+# define KEY_STEP					's'
+# define KEY_SLEEP_UP				'-'
+# define KEY_SLEEP_DOWN				'+'
+# define RESIZE_SIGNAL				410
+
+/*
+** *****************************************************************************
 ** Structure
 ** *****************************************************************************
 */
@@ -95,6 +123,7 @@ typedef struct			s_process
 	t_op				curr_op;
 	int					reg[REG_NUMBER];
 	int					carry;
+	int					process_nb;
 	unsigned int		start_pos;
 	unsigned int		curr_pos;
 	unsigned int		visu_pos;
@@ -110,6 +139,7 @@ typedef struct			s_process
 typedef struct			s_player
 {
 	struct s_player		*next;
+	struct s_player		*prev;
 	char				*name;
 	char				*comment;
 	char				*instruction;
@@ -136,13 +166,16 @@ typedef struct			s_cycle
 	int					cycle_to_die;
 	int					current_cycle;
 	unsigned int		dump;
+	int					curr_live;
+	char				checks;
 }						t_cycle;
 
 typedef struct			s_global
 {
 	t_process			*process_head;
 	t_process			*process_tail;
-	t_player			*player;
+	t_player			*player_head;
+	t_player			*player_tail;
 	t_map				*map;
 	t_cycle				clock;
 	char				*prog_name;
@@ -150,7 +183,10 @@ typedef struct			s_global
 	int					player_count;
 	int					next_pnumber;
 	char				visual;
+	char				debug;
 	char				dump;
+	int					sleep;
+	int					gtk;
 }						t_global;
 
 /*
@@ -203,6 +239,8 @@ void					close_file(int fd);
 ** *****************************************************************************
 */
 
+void					check_champ(t_global *info, char *filename,
+		char has_pnumber);
 int						check_args(t_global *info, int argc, char **argv);
 int						check_magic(char *file);
 
@@ -224,6 +262,7 @@ void					write_player_in_map(t_global *info);
 int						init_player(t_global *info, char *file,\
 char has_pnumber);
 void					create_initial_process(t_global *info);
+t_process				*dup_process(t_global *info, t_process *process);
 
 /*
 ** *****************************************************************************
@@ -293,5 +332,21 @@ unsigned int position, unsigned int buff);
 */
 
 void					update_map(t_global *info);
+
+/*
+** *****************************************************************************
+** Curses functions
+** *****************************************************************************
+*/
+
+int						ft_check_screen_size(void);
+int						ft_init_curses(t_global *info);
+void					ft_init_permanent_parts(t_global *info);
+void					ft_print_instructions(void);
+int						ft_visu_curses(t_global *info);
+void					ft_curses_map(t_global *info);
+void					ft_exit_curses(t_player *winner);
+void					ft_get_input(t_global *info);
+int						get_p_id(t_global *info, int pnum);
 
 #endif

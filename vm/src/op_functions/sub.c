@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 14:29:00 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 20:38:58 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/16 14:05:00 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void		sub(t_global *info, t_process *process)
 		return ;
 	if (check_reg(info, process, 2))
 		return ;
-	ft_printf("	sub r%d - r%d -> r%d\n", process->curr_op.param[0], process->curr_op.param[1], process->curr_op.param[2]);
+	if (info->debug)
+		ft_printf("P	%d |	sub r%d - r%d -> r%d\n", process->process_nb, process->curr_op.param[0], process->curr_op.param[1], process->curr_op.param[2]);
 	process->reg[process->curr_op.param[2] - 1] = param0 - param1;
 	if (!(process->reg[process->curr_op.param[2] - 1]))
 		process->carry = 1;

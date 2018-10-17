@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 16:31:52 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/17 15:07:20 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/17 15:44:45 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,14 @@ int			play_gtk(t_gtkinfo *i)
 static void		u_text_players(t_gtkinfo *i)
 {
 	int			len;
-	GtkTextIter	*end = NULL;
-	t_player *p;
+	GtkTextIter	end;
 
-	len = ft_strlen(i->vm->player->name);
+	len = ft_strlen(i->vm->player_head->name);
 
 	gtk_text_buffer_set_text(i->t.play, "Player 1\nName: ", -1);
-	gtk_text_buffer_get_end_iter(i->t.play, end);
-	gtk_text_buffer_insert(i->t.play, end
-			, i->vm->player->name, -1);
+	gtk_text_buffer_get_end_iter(i->t.play, &end);
+	gtk_text_buffer_insert(i->t.play, &end
+			, i->vm->player_head->name, -1);
 }
 
 void			*bg_loop(t_gtkinfo *i)
@@ -59,13 +58,16 @@ void			*bg_loop(t_gtkinfo *i)
 				** Not thread safe !!!!
 				** gtk_text_buffer_set_text(i->t.mem, i->vm->player->name, -1);
 				*/
-				write_player_in_map(i->vm);
+				create_map(i->vm);
 				gdk_threads_add_idle(u_text_players, i);
-				play_gtk(i->vm);
+				play(i->vm);
+				/* play_gtk(i->vm); */
 				i->b.run = 0;
 			}
 			else
+			{
 				ft_putendl("Not enough players");
+			}
 		}
 		sleep(1);
 	}

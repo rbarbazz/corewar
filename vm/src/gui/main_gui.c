@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/16 16:23:30 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/17 15:35:17 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int			main(int ac, char **av)
 		return (1);
 	i.vm = get_global();
 	init_global(i.vm, av[0]);
-	create_map(i.vm);
+	i.vm->gtk = 1;
 	thread_logic_init(&i);
 	gtk_main();
 	free_all();

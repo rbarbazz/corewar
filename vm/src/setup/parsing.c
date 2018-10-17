@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 18:43:40 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/14 00:54:37 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/17 15:04:23 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** *****************************************************************************
 */
 
-static void	check_champ(t_global *info, char *filename, char has_pnumber)
+void	check_champ(t_global *info, char *filename, char has_pnumber)
 {
 	char	*file;
 	int		fd;
@@ -33,7 +33,10 @@ static void	check_champ(t_global *info, char *filename, char has_pnumber)
 	}
 	init_player(info, file, has_pnumber);
 	close_file(fd);
-	ft_strdel(&file);
+	// debug
+		print_player(info);
+	if (!info->gtk)
+		ft_strdel(&file);
 }
 
 /*
@@ -75,7 +78,7 @@ static int	check_pnumber(t_global *info, int *i, char **argv)
 	{
 		if (!argv[*i + 1] || !is_number(argv[*i + 1]))
 			exit_corewar(USAGE_ERROR);
-		if ((nb = ft_atol(argv[*i + 1])) > MEM_SIZE || nb < -MEM_SIZE)
+		if ((nb = ft_atol(argv[*i + 1])) > MEM_SIZE || nb < -MEM_SIZE || !nb)
 			exit_corewar(WRONG_PNUMBER);
 		info->next_pnumber = nb;
 		(*i) += 2;
@@ -83,6 +86,23 @@ static int	check_pnumber(t_global *info, int *i, char **argv)
 	}
 	return (0);
 }
+
+/*
+** *****************************************************************************
+** look for the debug option
+** *****************************************************************************
+*/
+
+static int	check_debug(t_global *info, char *arg)
+{
+	if (ft_strequ(arg, "--debug"))
+	{
+		info->debug = 1;
+		return (1);
+	}
+	return (0);
+}
+
 
 /*
 ** *****************************************************************************
@@ -113,7 +133,7 @@ int			check_args(t_global *info, int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (!check_visual(info, argv[i]) && !check_dump(info, &i, argv))
+		if (!check_debug(info, argv[i]) && !check_visual(info, argv[i]) && !check_dump(info, &i, argv))
 		{
 			if (check_pnumber(info, &i, argv))
 				check_champ(info, argv[i], 1);

@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
+#    Updated: 2018/10/16 16:24:50 by lcompagn         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = corewar
 
 SRC_PATH = src
@@ -14,6 +26,10 @@ SRC_NAME =	init.c\
 			setup/open_read_functions.c setup/create_process.c\
 			setup/check_magic.c setup/parsing.c setup/write_player.c\
 			display/debug.c display/update_map.c\
+			display/get_inputs.c display/check_screen_size.c\
+			display/exit_curses.c display/init_curses.c display/visu_curses.c\
+			display/print_instructions.c display/get_playerid.c\
+			display/curses_permanent_parts.c display/curses_map.c\
 			clear.c error.c tool.c op.c
 
 
