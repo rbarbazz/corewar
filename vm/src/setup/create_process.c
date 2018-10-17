@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:31:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/16 18:46:39 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/17 17:22:18 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_process	*dup_process(t_global *info, t_process *process)
 	new->next = NULL;
 	new->curr_op = process->curr_op;
 	ft_memcpy(new->reg, process->reg, REG_NUMBER * sizeof(int));
+	new->op_pnumber = process->op_pnumber;
 	new->carry = process->carry;
 	new->process_nb = info->process_tail->process_nb + 1;
 	new->start_pos = process->start_pos;
@@ -78,6 +79,7 @@ static void	add_process(t_global *info, t_player *tmp_p)
 	init_tab(new, tmp_p);
 	new->pc = 0;
 	new->carry = 0;
+	new->op_pnumber = 0;
 	new->start_pos = tmp_p->start;
 	new->cycle_left = -1;
 	new->process_nb = info->process_count + 1;
