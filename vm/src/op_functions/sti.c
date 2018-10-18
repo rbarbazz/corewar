@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/13 22:37:46 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 11:36:50 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/18 15:37:48 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	sti(t_global *info, t_process *process)
 	int		param2;
 	short	param_sum;
 
+//	process->op_pnumber = get_op_pnumber(info, process->curr_pos);
 	param0 = 0;
 	param1 = 0;
 	param2 = 0;

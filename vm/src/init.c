@@ -6,13 +6,13 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:23:46 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 14:45:31 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 15:28:03 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void	init_global(t_global *info, char *prog_name)
+void		init_global(t_global *info, char *prog_name)
 {
 	ft_bzero(info->visu_pos, MEM_SIZE);
 	info->clock.cycle = 0;
