@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:31:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 14:12:19 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 16:32:15 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_process	*dup_process(t_global *info, t_process *process)
 	tmp = info->process_tail;
 	if (!(new = (t_process*)ft_memalloc(sizeof(t_process))))
 		exit_corewar(MALLOC_ERROR);
-	info->process_tail = new;
 	tmp->next = new;
 	new->prev = tmp;
 	new->next = NULL;
@@ -39,6 +38,7 @@ t_process	*dup_process(t_global *info, t_process *process)
 	new->pc = process->pc;
 	new->has_live = process->has_live;
 	new->valid_ocp = process->valid_ocp;
+	info->process_tail = new;
 	return (new);
 }
 
