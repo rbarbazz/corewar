@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/18 16:24:35 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/18 17:54:20 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,17 @@ typedef struct		s_gtktext
 }					t_gtktext;
 
 /*
+** controls
+*/
+
+# define STEPS_CTRL "s_steps"
+
+typedef struct		s_gtkctrl
+{
+	GtkSpinButton	*steps;
+}					t_gtkctrl;
+
+/*
 **  ___                 ___       __
 ** | _ \_ _ ___  __ _  |_ _|_ _  / _|___
 ** |  _/ '_/ _ \/ _` |  | || ' \|  _/ _ \
@@ -98,6 +109,7 @@ typedef struct	s_gtkinfo
 	t_vm_bg		b;
 	t_gtkwin	w;
 	t_gtktext	t;
+	t_gtkctrl	c;
 	GtkBuilder	*builder;
 	gchar		*gladefilename;
 	GError		*err;
