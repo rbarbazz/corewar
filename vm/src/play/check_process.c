@@ -6,11 +6,34 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:29:21 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/16 20:32:56 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/18 12:01:29 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+static void	get_op_value(t_global *info, t_process *process)
+{
+	unsigned int	op;
+	char			*value;
+	unsigned char	ocp;
+
+	ocp = 0;
+	process->valid_ocp = 1;
+	process->op_pos = process->curr_pos;
+	process->op_pc = process->pc;
+	value = get_value_at_position(info->map, process->curr_pos, 1);
+	op = tab_to_int(value);
+	process->op_pnumber = get_op_pnumber(info, process->curr_pos);
+	ft_strdel(&value);
+	increase_position(process, 1);
+	if ((process->cycle_left = get_data_from_op(op, process)) == -1)
+	{
+		process->visu_pos = process->curr_pos;
+		return ;
+	}
+	process->cycle_left--;
+}
 
 /*
 ** *****************************************************************************
@@ -18,7 +41,7 @@
 ** *****************************************************************************
 */
 
-void	check_process(t_global *info)
+void		check_process(t_global *info)
 {
 	t_process	*tmp_proc;
 
@@ -26,11 +49,14 @@ void	check_process(t_global *info)
 	while (tmp_proc)
 	{
 		if (tmp_proc->cycle_left < 0)
-			get_op(info, tmp_proc);
+			get_op_value(info, tmp_proc);
 		else if (tmp_proc->cycle_left - 1 > 0)
 			tmp_proc->cycle_left--;
 		else
 		{
+			tmp_proc->curr_pos = tmp_proc->op_pos;
+			tmp_proc->pc = tmp_proc->op_pc;
+			get_op(info, tmp_proc);
 			tmp_proc->cycle_left = -1;
 			if (tmp_proc->valid_ocp)
 				do_op(info, tmp_proc);
