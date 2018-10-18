@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/07 14:54:32 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/16 18:50:45 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/18 14:55:17 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ int			ft_visu_curses(t_global *info)
 	ft_some_usefull_info(info, ret);
 	ft_get_input(info);
 	refresh();
-	return (info->sleep);
+	usleep(info->sleep);
+	return (SUCCESS);
 }

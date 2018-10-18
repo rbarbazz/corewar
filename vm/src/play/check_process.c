@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:29:21 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 13:22:02 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 14:50:26 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void		check_process(t_global *info)
 			}
 			tmp_proc->visu_pos = tmp_proc->curr_pos;
 		}
+		info->visu_pos[tmp_proc->visu_pos % MEM_SIZE] = 1;
 		tmp_proc = tmp_proc->prev;
 	}
 }

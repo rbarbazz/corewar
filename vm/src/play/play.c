@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:00:00 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 13:22:42 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 14:55:42 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ int			play(t_global *info)
 		if (info->visual)
 		{
 			update_map(info);
-			usleep(ft_visu_curses(info));
+			ft_visu_curses(info);
 		}
 	}
 	if (info->visual)
 	{
 		update_map(info);
-		usleep(ft_visu_curses(info));
+		ft_visu_curses(info);
 	}
 	get_winner(info);
 	return (0);

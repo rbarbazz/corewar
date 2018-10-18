@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/18 12:01:19 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/18 14:45:38 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,20 +175,21 @@ typedef struct			s_cycle
 
 typedef struct			s_global
 {
+	char				visu_pos[MEM_SIZE];
+	t_cycle				clock;
 	t_process			*process_head;
 	t_process			*process_tail;
 	t_player			*player_head;
 	t_player			*player_tail;
 	t_map				*map;
-	t_cycle				clock;
 	char				*prog_name;
 	int					process_count;
 	int					player_count;
 	int					next_pnumber;
+	int					sleep;
 	char				visual;
 	char				debug;
 	char				dump;
-	int					sleep;
 }						t_global;
 
 /*
