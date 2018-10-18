@@ -6,13 +6,13 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 16:11:37 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/17 17:25:53 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 12:01:47 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static int	get_op_pnumber(t_global *info, unsigned int curr_pos)
+int	get_op_pnumber(t_global *info, unsigned int curr_pos)
 {
 	t_map	*tmp;
 
@@ -30,7 +30,7 @@ static int	get_op_pnumber(t_global *info, unsigned int curr_pos)
 ** *****************************************************************************
 */
 
-static int	get_data_from_op(int op, t_process *process)
+int	get_data_from_op(int op, t_process *process)
 {
 	int	i;
 

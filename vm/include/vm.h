@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/17 19:22:54 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/18 12:01:19 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -282,6 +282,8 @@ int						play(t_global *info);
 void					check_process(t_global *info);
 char					get_ocp(t_global *info, t_process *process);
 void					get_op(t_global *info, t_process *process);
+int						get_op_pnumber(t_global *info, unsigned int curr_pos);
+int						get_data_from_op(int op, t_process *process);
 char					*get_value_at_position(t_map *map,\
 unsigned int position, int size);
 void					get_op_param(t_global *info, t_process *process,\
