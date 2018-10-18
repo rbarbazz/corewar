@@ -6,29 +6,39 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:29:21 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 14:50:26 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 15:37:38 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+static void	action(t_global *info, t_process *tmp_proc)
+{
+	get_op(info, tmp_proc);
+	tmp_proc->cycle_left = -1;
+	if (tmp_proc->valid_ocp)
+		do_op(info, tmp_proc);
+	else
+	{
+		tmp_proc->curr_pos = tmp_proc->op_pos;
+		tmp_proc->pc = tmp_proc->op_pc;
+		increase_position(tmp_proc, 1);
+	}
+	tmp_proc->visu_pos = tmp_proc->curr_pos;
+}
+
 static void	get_op_value(t_global *info, t_process *process)
 {
 	unsigned int	op;
 	char			*value;
-	unsigned char	ocp;
 
-	ocp = 0;
-	process->valid_ocp = 1;
-	process->op_pos = process->curr_pos;
-	process->op_pc = process->pc;
 	value = get_value_at_position(info->map, process->curr_pos, 1);
 	op = tab_to_int(value);
 	process->op_pnumber = get_op_pnumber(info, process->curr_pos);
 	ft_strdel(&value);
-	increase_position(process, 1);
 	if ((process->cycle_left = get_data_from_op(op, process)) == -1)
 	{
+		increase_position(process, 1);
 		process->visu_pos = process->curr_pos;
 		return ;
 	}
@@ -53,21 +63,7 @@ void		check_process(t_global *info)
 		else if (tmp_proc->cycle_left - 1 > 0)
 			tmp_proc->cycle_left--;
 		else
-		{
-			tmp_proc->curr_pos = tmp_proc->op_pos;
-			tmp_proc->pc = tmp_proc->op_pc;
-			get_op(info, tmp_proc);
-			tmp_proc->cycle_left = -1;
-			if (tmp_proc->valid_ocp)
-				do_op(info, tmp_proc);
-			else
-			{
-				tmp_proc->curr_pos = tmp_proc->op_pos;
-				tmp_proc->pc = tmp_proc->op_pc;
-				increase_position(tmp_proc, 1);
-			}
-			tmp_proc->visu_pos = tmp_proc->curr_pos;
-		}
+			action(info, tmp_proc);
 		info->visu_pos[tmp_proc->visu_pos % MEM_SIZE] = 1;
 		tmp_proc = tmp_proc->prev;
 	}

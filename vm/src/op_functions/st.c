@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 16:32:33 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 11:25:41 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/18 15:37:44 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	st(t_global *info, t_process *process)
 	int		param0;
 	short	param1;
 
+	//process->op_pnumber = get_op_pnumber(info, process->curr_pos);
 	param0 = 0;
 	param1 = process->curr_op.param[1];
 	if (get_param_value(info, process, 0, &param0))

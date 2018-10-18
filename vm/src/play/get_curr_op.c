@@ -6,13 +6,19 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 16:11:37 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/18 13:39:33 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 15:28:31 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int	get_op_pnumber(t_global *info, unsigned int curr_pos)
+/*
+** *****************************************************************************
+** gets the pnumber of the opcode that wrote on the map to know what color
+** *****************************************************************************
+*/
+
+int		get_op_pnumber(t_global *info, unsigned int curr_pos)
 {
 	t_map	*tmp;
 
@@ -31,7 +37,7 @@ int	get_op_pnumber(t_global *info, unsigned int curr_pos)
 ** *****************************************************************************
 */
 
-int	get_data_from_op(int op, t_process *process)
+int		get_data_from_op(int op, t_process *process)
 {
 	int	i;
 
@@ -53,7 +59,7 @@ int	get_data_from_op(int op, t_process *process)
 	return (-1);
 }
 
-char		get_ocp(t_global *info, t_process *process)
+char	get_ocp(t_global *info, t_process *process)
 {
 	char			*value;
 	unsigned char	ocp;
@@ -64,7 +70,7 @@ char		get_ocp(t_global *info, t_process *process)
 	return (ocp);
 }
 
-void		increase_position(t_process *process, unsigned int add)
+void	increase_position(t_process *process, unsigned int add)
 {
 	process->pc += add;
 	process->curr_pos = process->start_pos + process->pc;
@@ -77,7 +83,7 @@ void		increase_position(t_process *process, unsigned int add)
 ** *****************************************************************************
 */
 
-void		get_op(t_global *info, t_process *process)
+void	get_op(t_global *info, t_process *process)
 {
 	unsigned char	ocp;
 
