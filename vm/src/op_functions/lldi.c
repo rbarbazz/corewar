@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 15:24:38 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/17 15:49:23 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 11:36:41 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	lldi(t_global *info, t_process *process)
 	ft_strdel(&value);
 	if (info->debug)
 	{
-		ft_printf("P	%d |	lldi %hd %hd r%d\n", process->process_nb, param0, param1, process->curr_op.param[2]);
-		ft_printf("	-> load from %hd + %hd = %hd", param0 , param1, param0 + param1);
+		ft_printf("P%5d | lldi %hd %hd r%d\n", process->process_nb, param0, param1, process->curr_op.param[2]);
+		ft_printf("       | -> load from %hd + %hd = %hd", param0 , param1, param0 + param1);
 		ft_printf(" (with pc and mod %hd)\n",(param_sum + process->op_pos));
 	}
 	if (!(process->reg[process->curr_op.param[2] - 1]))

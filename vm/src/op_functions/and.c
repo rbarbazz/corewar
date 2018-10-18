@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 16:09:47 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/17 16:17:40 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 11:23:50 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	and_vm(t_global *info, t_process *process)
 	process->reg[process->curr_op.param[2] - 1] = param0 & param1;
 	if (info->debug)
 	{
-		ft_printf("P	%d |	and %hd %hd r%d\n", process->process_nb, param0, param1, process->curr_op.param[2]);
+		ft_printf("P%5d | and %hd %hd r%d\n", process->process_nb, param0, param1, process->curr_op.param[2]);
 	}
 	if (!(process->reg[process->curr_op.param[2] - 1]))
 		process->carry = 1;

@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 16:32:33 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/16 14:04:29 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/18 11:25:41 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	st(t_global *info, t_process *process)
 	if (get_param_value(info, process, 0, &param0))
 		return ;
 	if (info->debug)
-		ft_printf("P	%d |	st r%d", process->process_nb, process->curr_op.param[0]);
+		ft_printf("P%5d | st r%d", process->process_nb, process->curr_op.param[0]);
 	if (process->type_param[1] == T_REG)
 	{
 		if (info->debug)
