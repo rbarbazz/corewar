@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 14:53:16 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/16 18:36:13 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/18 11:26:12 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		zjmp(t_global *info, t_process *process)
 		return ;
 	param0_s = (short)param0;
 	if (info->debug)
-		ft_printf("P	%d |	zjmp %d", process->process_nb, param0_s);
+		ft_printf("P%5d | zjmp %d", process->process_nb, param0_s);
 	//if (param0 % (2 * IDX_MOD) > IDX_MOD)
 		//param0 = param0 % IDX_MOD - IDX_MOD;
 	//else

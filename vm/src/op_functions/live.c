@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:27:16 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/17 17:01:25 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 11:25:05 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@ void			live(t_global *info, t_process *process)
 	if (get_param_value(info, process, 0, &param0))
 		return ;
 	if (info->debug)
-		ft_printf("P	%d |	live %d\n", process->process_nb, param0);
+		ft_printf("P%5d | live %d\n", process->process_nb, param0);
 	info->clock.curr_live++;
 	process->has_live = 1;
 	if (!(player = get_player_from_nb(info, param0)))
 	{
-		if (!info->visual)
+		if (!info->visual && !info->debug)
 			ft_dprintf(STDERR_FILENO, "un processus a essaye de faire un live pour un joueur inconnu\n");
 		return ;
 	}
 	player->curr_live++;
 	player->last_live = info->clock.cycle;
-	if (!info->visual)
+	if (!info->visual && !info->debug)
 		ft_printf("un processus dit que le joueur %d(%s) est en vie\n", player->player, player->name);
 }
