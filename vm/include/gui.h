@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/17 16:46:35 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/18 16:24:35 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct		s_gtkwin
 	GtkWidget		*a;
 }					t_gtkwin;
 
-# define MEM_TXT_VIEW "t_mem"
+# define MEM_TXT_VIEW "t_memory"
 # define PLAY_TXT_VIEW "t_players"
 
 # define BUF_MEM_TXT "buf_mem"
@@ -68,12 +68,17 @@ typedef struct		s_gtktext
 
 /*
 ** run: run or stop the VM;
+** steps: number of steps to run
 */
 
 typedef struct		s_vm_bgl
 {
 	int				run;
 	int				pause;
+	int				steps;
+
+	//debug
+	char			*mem;
 }					t_vm_bg;
 
 /*
@@ -109,6 +114,11 @@ typedef struct	s_gtkinfo
 ** bg_loop.c
 */
 void			*bg_loop(t_gtkinfo *i);
+/*
+** text.c
+*/
+void			u_text_players(t_gtkinfo *i);
+void			u_text_map(t_gtkinfo *i);
 /*
 ** gui_main.c
 */
