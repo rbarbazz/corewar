@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_check_magic.c                              :+:      :+:    :+:   */
+/*   check_magic.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 19:28:20 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/02 19:29:59 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/12 17:29:24 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static char	*uitoa_d(unsigned int dec)
+char	*uitoa_d(unsigned int dec)
 {
 	char			size[5];
 	unsigned int	len;
@@ -28,7 +28,7 @@ static char	*uitoa_d(unsigned int dec)
 	return (ft_strndup(size, 4));
 }
 
-int			check_magic(char *file)
+int		check_magic(char *file)
 {
 	char	*exec;
 	int		i;

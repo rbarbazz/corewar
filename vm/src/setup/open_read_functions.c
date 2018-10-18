@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 18:45:44 by msamak            #+#    #+#             */
-/*   Updated: 2018/09/27 18:55:14 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/05 13:44:53 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,13 @@ char	*read_file(int fd, char *filename)
 		exit_corewar(FILE_EMPTY);
 	}
 	return (file);
+}
+
+void	close_file(int fd)
+{
+	if (close(fd) == -1)
+	{
+		perror("close");
+		exit_corewar(INVALID_CLOSE_FD);
+	}
 }
