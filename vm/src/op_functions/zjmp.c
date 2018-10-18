@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 14:53:16 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/18 11:26:12 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/18 15:57:55 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** *****************************************************************************
 */
 
-void		zjmp(t_global *info, t_process *process)
+void	zjmp(t_global *info, t_process *process)
 {
 	int		param0;
 	short	param0_s;
@@ -30,10 +30,6 @@ void		zjmp(t_global *info, t_process *process)
 	param0_s = (short)param0;
 	if (info->debug)
 		ft_printf("P%5d | zjmp %d", process->process_nb, param0_s);
-	//if (param0 % (2 * IDX_MOD) > IDX_MOD)
-		//param0 = param0 % IDX_MOD - IDX_MOD;
-	//else
-	//if (param0_s > 0)
 	param0_s = param0_s % IDX_MOD;
 	if (param0_s < 0)
 		param0_s = MEM_SIZE + param0_s;
@@ -41,7 +37,8 @@ void		zjmp(t_global *info, t_process *process)
 	{
 		if (info->debug)
 			ft_printf(" OK\n");
-		increase_position(process, param0_s - process->curr_pos + process->op_pos );
+		increase_position(process, param0_s - process->curr_pos +\
+		process->op_pos);
 	}
 	else
 		if (info->debug)

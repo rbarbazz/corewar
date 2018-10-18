@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 11:37:54 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/18 11:25:18 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/18 15:48:52 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,9 @@ void	lld(t_global *info, t_process *process)
 		return ;
 	if (check_reg(info, process, 1))
 		return ;
-	/*
-	** On sais pas pourquoi on avais mis ca, mais ca peut servir...
-	** if (process->type_param[0] == T_IND)
-		**param0 = param0 >> 16;
-	*/
 	if (info->debug)
-		ft_printf("P%5d | lld %d r%d\n", process->process_nb, param0, process->curr_op.param[1]);
+		ft_printf("P%5d | lld %d r%d\n", process->process_nb, param0,\
+		process->curr_op.param[1]);
 	process->reg[process->curr_op.param[1] - 1] = param0;
 	if (!(process->reg[process->curr_op.param[1] - 1]))
 		process->carry = 1;

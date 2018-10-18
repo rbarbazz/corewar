@@ -6,20 +6,30 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/13 22:37:46 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 15:37:48 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 15:55:46 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void	sti(t_global *info, t_process *process)
+static void	debug_sti(t_process *process, int param1, int param2,\
+short param_sum)
+{
+	ft_printf("P%5d | sti r%d %d %d\n", process->process_nb,\
+	process->curr_op.param[0], param1, param2);
+	ft_printf("       | -> store to %hd + %hd = %d", param1, param2,\
+	param1 + param2);
+	ft_printf(" (with pc and mod %hd)\n", (param_sum + process->op_pos) %\
+	MEM_SIZE);
+}
+
+void		sti(t_global *info, t_process *process)
 {
 	int		param0;
 	int		param1;
 	int		param2;
 	short	param_sum;
 
-//	process->op_pnumber = get_op_pnumber(info, process->curr_pos);
 	param0 = 0;
 	param1 = 0;
 	param2 = 0;
@@ -33,14 +43,7 @@ void	sti(t_global *info, t_process *process)
 	if (param_sum < 0)
 		param_sum = MEM_SIZE + param_sum;
 	if (info->debug)
-	{
-		ft_printf("P%5d | sti r%d %d %d\n", process->process_nb, process->curr_op.param[0], param1, param2);
-		ft_printf("       | -> store to %hd + %hd = %d", param1, param2, param1 + param2);
-		ft_printf(" (with pc and mod %hd)\n", (param_sum + process->op_pos) % MEM_SIZE);
-	}
+		debug_sti(process, param1, param2, param_sum);
 	write_at_position(info->map, process, param_sum + process->op_pos, param0);
-	if (!param_sum)
-		process->carry = 1;
-	else
-		process->carry = 0;
+	ft_carry(process, param_sum);
 }
