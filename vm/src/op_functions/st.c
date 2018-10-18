@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 16:32:33 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 15:52:52 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 17:23:50 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	st(t_global *info, t_process *process)
 	if (process->type_param[1] == T_REG)
 	{
 		if (info->debug)
-			ft_printf(" r%d\n", process->curr_op.param[1]);
+			ft_printf(" %d\n", process->curr_op.param[1]);
 		process->reg[process->curr_op.param[1] - 1] = param0;
 	}
 	else
@@ -47,5 +47,5 @@ void	st(t_global *info, t_process *process)
 		write_at_position(info->map, process, process->op_pos + param1,\
 		param0);
 	}
-	ft_carry(process, param0);
+	//ft_carry(process, param0);
 }

@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 15:22:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 15:46:26 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 17:23:25 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ void	ldi(t_global *info, t_process *process)
 		ft_printf("       | -> load from %hd + %hd = %hd", param0 , param1, param0 + param1);
 		ft_printf(" (with pc and mod %hd)\n",((param_sum) % IDX_MOD + process->op_pos));
 	}
-	ft_carry(process, process->reg[process->curr_op.param[2] - 1]);
+	//ft_carry(process, process->reg[process->curr_op.param[2] - 1]);
 }

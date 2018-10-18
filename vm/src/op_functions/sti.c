@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/13 22:37:46 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 15:55:46 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 17:17:58 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void		sti(t_global *info, t_process *process)
 	if (info->debug)
 		debug_sti(process, param1, param2, param_sum);
 	write_at_position(info->map, process, param_sum + process->op_pos, param0);
-	ft_carry(process, param_sum);
+	//ft_carry(process, param_sum);
 }
