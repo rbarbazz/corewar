@@ -6,13 +6,13 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 10:48:58 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/18 11:22:43 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/18 15:43:05 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void		fork_vm(t_global *info, t_process *process)
+void	fork_vm(t_global *info, t_process *process)
 {
 	t_process	*new;
 	int			param0;

@@ -6,11 +6,19 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:04:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 13:32:40 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 15:42:01 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+void			ft_carry(t_process *process, int value)
+{
+	if (!value)
+		process->carry = 1;
+	else
+		process->carry = 0;
+}
 
 /*
 ** *****************************************************************************
