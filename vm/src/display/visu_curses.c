@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/07 14:54:32 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/18 14:55:17 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 18:06:26 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static int	ft_curses_player(t_global *info)
 	while (player)
 	{
 		mvprintw(PLAYER_LINE + ((i - 1) * 4) + 1, 2,
-		"\tLast live: %d     ", player->last_live);
+		" Last live:\t\t\t%d   ", player->last_live);
 		mvprintw(PLAYER_LINE + ((i - 1) * 4) + 2, 2,
-		"\tLives in current period: %d     ", player->curr_live);
+		" Lives in current period:\t%d    ", player->curr_live);
 		player = player->next;
 		i++;
 	}
@@ -53,7 +53,7 @@ static void	ft_some_usefull_info(t_global *info, int ret)
 	static clock_t	timing = 0;
 	double			res;
 
-	mvprintw(++ret, 2, "Processes = %d", info->process_count);
+	mvprintw(++ret, 2, "Processes = %d     ", info->process_count);
 	if (update)
 		update--;
 	else
