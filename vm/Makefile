@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/17 16:22:33 by msamak           ###   ########.fr        #
+#    Updated: 2018/10/18 11:25:17 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ NCURSE = -lncurses
 # GTK build specific variables
 GTK_SRC_NAME = gui/main_gui.c\
 		gui/bg_loop.c\
+		gui/text.c\
 		gui/call_filepicker.c\
 		gui/call_logic.c
 GTK_LIBS = gtk+-3.0 gmodule-2.0
