@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/18 17:53:54 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/19 17:17:01 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,18 @@ static int	gui_struct_init(t_gtkinfo *i)
 	i->w.m = GTK_WIDGET(gtk_builder_get_object(i->builder, MAIN_WIN));
 	i->w.a = GTK_WIDGET(gtk_builder_get_object(i->builder, ABOUT_WIN));
 
+	/* window widgets */
 	w_mem_txt = GTK_WIDGET(gtk_builder_get_object(i->builder, MEM_TXT_VIEW));
 	w_play_txt = GTK_WIDGET(gtk_builder_get_object(i->builder, PLAY_TXT_VIEW));
+
+	/* text buffers */
 	i->t.mem = gtk_text_view_get_buffer(GTK_TEXT_VIEW(w_mem_txt));
 	i->t.play = gtk_text_view_get_buffer(GTK_TEXT_VIEW(w_play_txt));
 
+	/* controls */
 	i->c.steps = GTK_WIDGET(gtk_builder_get_object(i->builder, STEPS_CTRL));
+	i->c.run = GTK_WIDGET(gtk_builder_get_object(i->builder, RUN_CTRL));
+	i->c.pause = GTK_WIDGET(gtk_builder_get_object(i->builder, PAUSE_CTRL));
 	gtk_widget_show_all(i->w.m);
 	return (1);
 }
