@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/19 11:54:29 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/10/19 12:55:24 by msamak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ LDLIBS = -lft
 
 LIB = ../libft/libft.a
 
-CFLAGS = -Wall -Wextra -Werror -O2 -flto
+CFLAGS = -Wall -Wextra -Werror -O2
 
 CC = clang
 
