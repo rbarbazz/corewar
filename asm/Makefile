@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/08 18:56:04 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/10/19 10:17:48 by rbarbazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,13 +24,13 @@ SRC_NAME =	main.c clear.c check_argument.c store_sfile.c op.c cursor_motion.c\
 
 OBJ_PATH = obj
 
-CPPFLAGS = -Iinclude -Ilibft/include
+CPPFLAGS = -Iinclude -I../libft/include
 
-LDFLAGS = -Llibft
+LDFLAGS = -L../libft
 
 LDLIBS = -lft
 
-LIB = libft/libft.a
+LIB = ../libft/libft.a
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -45,7 +45,7 @@ OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 all: $(NAME)
 
 $(LIB):
-	make -C libft
+	make -C ../libft
 
 $(NAME): $(LIB) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) $(LIB) -o $@
@@ -61,11 +61,11 @@ norme:
 	norminette libft/include
 
 clean:
-	make -C libft clean
+	make -C ../libft clean
 	rm -rf $(OBJ_PATH)
 
 fclean: clean
-	make -C libft fclean
+	make -C ../libft fclean
 	rm -f $(NAME)
 
 re:
