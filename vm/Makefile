@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/19 10:17:41 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/10/19 11:54:29 by rbarbazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC_NAME =	main.c init.c\
 			setup/create_player.c setup/create_map.c\
 			setup/open_read_functions.c setup/create_process.c\
 			setup/check_magic.c setup/parsing.c setup/write_player.c\
+			setup/duplicate_process.c\
 			display/update_map.c\
 			display/get_inputs.c display/check_screen_size.c\
 			display/exit_curses.c display/init_curses.c display/visu_curses.c\
