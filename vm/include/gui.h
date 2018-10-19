@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/18 17:54:20 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/19 17:31:31 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "vm.h"
 # include <gtk/gtk.h>
 
-# define DIAG_CHAMP "Pick a champion"
+# define DIAG_CHAMP "Select a champion"
 
 /*
 **   ___ _____ _  __  ___ _         __  __
@@ -36,11 +36,11 @@
 ** w_a:  ABOUT_WIN(about window)
 */
 
-typedef struct		s_gtkwin
+typedef struct			s_gtkwin
 {
-	GtkWidget		*m;
-	GtkWidget		*a;
-}					t_gtkwin;
+	GtkWidget			*m;
+	GtkWidget			*a;
+}						t_gtkwin;
 
 # define MEM_TXT_VIEW "t_memory"
 # define PLAY_TXT_VIEW "t_players"
@@ -64,8 +64,18 @@ typedef struct		s_gtktext
 
 # define STEPS_CTRL "s_steps"
 
+# define RUN_CTRL "b_run"
+# define RUN_STOPPED_MSG "Run"
+# define RUN_RUNNING_MSG "Stop"
+
+# define PAUSE_CTRL "b_pause"
+# define PAUSE_STOPPED_MSG "Unpause"
+# define PAUSE_RUNNING_MSG "Pause"
+
 typedef struct		s_gtkctrl
 {
+	GtkButton		*run;
+	GtkButton		*pause;
 	GtkSpinButton	*steps;
 }					t_gtkctrl;
 
@@ -87,9 +97,6 @@ typedef struct		s_vm_bgl
 	int				run;
 	int				pause;
 	int				steps;
-
-	//debug
-	char			*mem;
 }					t_vm_bg;
 
 /*
@@ -103,17 +110,17 @@ typedef struct		s_vm_bgl
 ** t: text buffers
 */
 
-typedef struct	s_gtkinfo
+typedef struct		s_gtkinfo
 {
-	t_global	*vm;
-	t_vm_bg		b;
-	t_gtkwin	w;
-	t_gtktext	t;
-	t_gtkctrl	c;
-	GtkBuilder	*builder;
-	gchar		*gladefilename;
-	GError		*err;
-}				t_gtkinfo;
+	t_global		*vm;
+	t_vm_bg			b;
+	t_gtkwin		w;
+	t_gtktext		t;
+	t_gtkctrl		c;
+	GtkBuilder		*builder;
+	gchar			*gladefilename;
+	GError			*err;
+}					t_gtkinfo;
 
 /*
 **   ___      _ _ _             _
@@ -125,21 +132,21 @@ typedef struct	s_gtkinfo
 /*
 ** bg_loop.c
 */
-void			*bg_loop(t_gtkinfo *i);
+void				*bg_loop(t_gtkinfo *i);
 /*
 ** text.c
 */
-void			u_text_players(t_gtkinfo *i);
-void			u_text_map(t_gtkinfo *i);
+void				u_text_players(t_gtkinfo *i);
+void				u_text_map(t_gtkinfo *i);
 /*
 ** gui_main.c
 */
-void			callback_test(GtkToggleButton *tbutton, t_gtkinfo *i);
-void			about_display(GtkToggleButton *tbutton, t_gtkinfo *i);
+void				callback_test(GtkToggleButton *tbutton, t_gtkinfo *i);
+void				about_display(GtkToggleButton *tbutton, t_gtkinfo *i);
 /*
 ** call_filepicker.c
 */
-void			callback_player_load(GtkMenuItem *item, t_gtkinfo *i);
+void				callback_player_load(GtkMenuItem *item, t_gtkinfo *i);
 /*
 ** call_logic.c
 */
