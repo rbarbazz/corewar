@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:31:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/19 11:58:36 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/19 13:50:39 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	init_tab(t_process *new, t_player *player)
 static void	assignate_value(t_process *new, t_player *tmp_p)
 {
 	new->carry = 0;
-	new->op_pnumber = 0;
+	new->op_pnumber = tmp_p->pnumber;
 	new->start_pos = tmp_p->start;
 	new->curr_pos = tmp_p->start;
 	new->visu_pos = tmp_p->start;

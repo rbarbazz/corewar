@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:29:21 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 15:37:38 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/19 13:51:22 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static void	get_op_value(t_global *info, t_process *process)
 
 	value = get_value_at_position(info->map, process->curr_pos, 1);
 	op = tab_to_int(value);
-	process->op_pnumber = get_op_pnumber(info, process->curr_pos);
 	ft_strdel(&value);
 	if ((process->cycle_left = get_data_from_op(op, process)) == -1)
 	{
