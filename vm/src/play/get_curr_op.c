@@ -6,28 +6,11 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 16:11:37 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/18 15:28:31 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/19 13:50:21 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
-
-/*
-** *****************************************************************************
-** gets the pnumber of the opcode that wrote on the map to know what color
-** *****************************************************************************
-*/
-
-int		get_op_pnumber(t_global *info, unsigned int curr_pos)
-{
-	t_map	*tmp;
-
-	tmp = info->map;
-	curr_pos %= MEM_SIZE;
-	while (curr_pos--)
-		tmp = tmp->next;
-	return (tmp->pnumber);
-}
 
 /*
 ** *****************************************************************************
