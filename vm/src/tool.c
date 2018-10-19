@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:04:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 17:59:01 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/19 11:49:05 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int size)
 		map = map->next;
 		position--;
 		if (i++ == MEM_SIZE)
-			break;
+			break ;
 	}
 	i = 3;
 	while (size)
@@ -116,7 +116,7 @@ char			*map_from_list(t_global *info)
 ** *****************************************************************************
 */
 
-int	tab_to_int(char *str)
+int				tab_to_int(char *str)
 {
 	int		res;
 

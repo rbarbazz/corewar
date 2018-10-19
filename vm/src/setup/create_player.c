@@ -6,11 +6,35 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 19:26:08 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/18 14:05:10 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/19 11:46:41 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+/*
+** *****************************************************************************
+** checks if the file exist and is provided with the right exec magic
+** *****************************************************************************
+*/
+
+void			check_champ(t_global *info, char *filename, char has_pnumber)
+{
+	char	*file;
+	int		fd;
+
+	fd = open_file(filename);
+	file = read_file(fd, filename);
+	if (check_magic(file))
+	{
+		ft_strdel(&file);
+		close_file(fd);
+		exit_corewar(INVALID_MAGIC);
+	}
+	init_player(info, file, has_pnumber);
+	close_file(fd);
+	ft_strdel(&file);
+}
 
 /*
 ** *****************************************************************************

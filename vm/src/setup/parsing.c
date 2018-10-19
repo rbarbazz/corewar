@@ -6,35 +6,11 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 18:43:40 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/16 14:28:17 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/19 11:46:23 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
-
-/*
-** *****************************************************************************
-** checks if the file exist and is provided with the right exec magic
-** *****************************************************************************
-*/
-
-static void	check_champ(t_global *info, char *filename, char has_pnumber)
-{
-	char	*file;
-	int		fd;
-
-	fd = open_file(filename);
-	file = read_file(fd, filename);
-	if (check_magic(file))
-	{
-		ft_strdel(&file);
-		close_file(fd);
-		exit_corewar(INVALID_MAGIC);
-	}
-	init_player(info, file, has_pnumber);
-	close_file(fd);
-	ft_strdel(&file);
-}
 
 /*
 ** *****************************************************************************
@@ -100,7 +76,6 @@ static int	check_debug(t_global *info, char *arg)
 	return (0);
 }
 
-
 /*
 ** *****************************************************************************
 ** look for the -v option
@@ -130,7 +105,8 @@ int			check_args(t_global *info, int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (!check_debug(info, argv[i]) && !check_visual(info, argv[i]) && !check_dump(info, &i, argv))
+		if (!check_debug(info, argv[i]) && !check_visual(info, argv[i])\
+		&& !check_dump(info, &i, argv))
 		{
 			if (check_pnumber(info, &i, argv))
 				check_champ(info, argv[i], 1);
