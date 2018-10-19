@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 13:28:53 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/18 17:22:53 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/19 10:29:28 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	add(t_global *info, t_process *process)
 	if (check_reg(info, process, 2))
 		return ;
 	if (info->debug)
-		ft_printf("P%5d | add r%d + r%d r%d\n", process->process_nb,  process->curr_op.param[0], process->curr_op.param[1], process->curr_op.param[2]);
+		ft_printf("P%5d | add r%d + r%d r%d\n", process->process_nb,\
+		process->curr_op.param[0], process->curr_op.param[1],\
+		process->curr_op.param[2]);
 	process->reg[process->curr_op.param[2] - 1] = param0 + param1;
 	ft_carry(process, process->reg[process->curr_op.param[2] - 1]);
 }

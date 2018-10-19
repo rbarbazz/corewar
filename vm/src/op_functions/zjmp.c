@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 14:53:16 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/18 17:16:12 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/19 10:31:13 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	zjmp(t_global *info, t_process *process)
 		process->op_pos);
 	}
 	else
+	{
 		if (info->debug)
 			ft_printf(" FAILED\n");
+	}
 }
