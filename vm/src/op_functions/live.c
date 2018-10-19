@@ -6,13 +6,13 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:27:16 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 17:24:02 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/19 10:30:23 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static t_player *get_player_from_nb(t_global *info, int param)
+static t_player	*get_player_from_nb(t_global *info, int param)
 {
 	t_player	*tmp;
 
@@ -20,7 +20,7 @@ static t_player *get_player_from_nb(t_global *info, int param)
 	while (tmp)
 	{
 		if (tmp->pnumber == param)
-			break;
+			break ;
 		tmp = tmp->next;
 	}
 	return (tmp);

@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/19 10:17:48 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/10/19 10:23:47 by rbarbazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,8 +57,6 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 norme:
 	norminette $(SRC)
 	norminette include/*.h
-	norminette libft/src
-	norminette libft/include
 
 clean:
 	make -C ../libft clean

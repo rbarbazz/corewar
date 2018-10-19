@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 10:31:24 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/17 14:02:57 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/19 10:27:35 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static void	init_op(t_asm *champ)
 
 static int	check_end_of_line(t_asm *champ)
 {
-	while (champ->sfile && champ->sfile[champ->i] && champ->sfile[champ->i] != '\n')
+	while (champ->sfile && champ->sfile[champ->i]\
+		&& champ->sfile[champ->i] != '\n')
 	{
 		if (ft_isprint(champ->sfile[champ->i]))
 			return (1);

@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 17:40:51 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/18 15:39:20 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/19 10:34:44 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ void	update_map(t_global *info)
 	while (map && i < MEM_SIZE)
 	{
 		if (info->visu_pos[i])
+		{
 			map->current = 1;
+			info->visu_pos[i] = 0;
+		}
 		else
 			map->current = 0;
 		map = map->next;
 		i++;
 	}
-	ft_bzero(info->visu_pos, MEM_SIZE);
 }
