@@ -6,21 +6,11 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 16:11:37 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/17 17:25:53 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/19 13:50:21 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
-
-static int	get_op_pnumber(t_global *info, unsigned int curr_pos)
-{
-	t_map	*tmp;
-
-	tmp = info->map;
-	while (tmp && curr_pos--)
-		tmp = tmp->next;
-	return (tmp->pnumber);
-}
 
 /*
 ** *****************************************************************************
@@ -30,7 +20,7 @@ static int	get_op_pnumber(t_global *info, unsigned int curr_pos)
 ** *****************************************************************************
 */
 
-static int	get_data_from_op(int op, t_process *process)
+int		get_data_from_op(int op, t_process *process)
 {
 	int	i;
 
@@ -52,7 +42,7 @@ static int	get_data_from_op(int op, t_process *process)
 	return (-1);
 }
 
-char		get_ocp(t_global *info, t_process *process)
+char	get_ocp(t_global *info, t_process *process)
 {
 	char			*value;
 	unsigned char	ocp;
@@ -63,7 +53,7 @@ char		get_ocp(t_global *info, t_process *process)
 	return (ocp);
 }
 
-void		increase_position(t_process *process, unsigned int add)
+void	increase_position(t_process *process, unsigned int add)
 {
 	process->pc += add;
 	process->curr_pos = process->start_pos + process->pc;
@@ -76,26 +66,15 @@ void		increase_position(t_process *process, unsigned int add)
 ** *****************************************************************************
 */
 
-void		get_op(t_global *info, t_process *process)
+void	get_op(t_global *info, t_process *process)
 {
-	unsigned int	op;
-	char			*value;
 	unsigned char	ocp;
 
 	ocp = 0;
 	process->valid_ocp = 1;
 	process->op_pos = process->curr_pos;
 	process->op_pc = process->pc;
-	value = get_value_at_position(info->map, process->curr_pos, 1);
-	op = tab_to_int(value);
-	process->op_pnumber = get_op_pnumber(info, process->curr_pos);
-	ft_strdel(&value);
 	increase_position(process, 1);
-	if ((process->cycle_left = get_data_from_op(op, process)) == -1)
-	{
-		process->visu_pos = process->curr_pos;
-		return ;
-	}
 	process->cycle_left--;
 	if (process->curr_op.has_ocp)
 		ocp = get_ocp(info, process);

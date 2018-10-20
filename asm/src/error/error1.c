@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 15:37:19 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/04 21:23:58 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/17 13:49:30 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,11 @@ void	error_reg(void)
 	ft_printf(" : wrong register number\n");
 	free_asm();
 	exit(WRONG_REG);
+}
+
+void	error_no_instr(void)
+{
+	ft_printf("No instructions provided\n");
+	free_asm();
+	exit(NO_INSTR);
 }

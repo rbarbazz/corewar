@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/18 17:22:20 by xperrin          ###   ########.fr        #
+#    Updated: 2018/10/20 18:23:47 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRC_NAME =	init.c\
 			setup/create_player.c setup/create_map.c\
 			setup/open_read_functions.c setup/create_process.c\
 			setup/check_magic.c setup/parsing.c setup/write_player.c\
-			display/debug.c display/update_map.c\
+			setup/duplicate_process.c\
+			display/update_map.c\
 			display/get_inputs.c display/check_screen_size.c\
 			display/exit_curses.c display/init_curses.c display/visu_curses.c\
 			display/print_instructions.c display/get_playerid.c\
@@ -36,13 +37,13 @@ SRC_NAME =	init.c\
 
 OBJ_PATH = obj
 
-CPPFLAGS = -Iinclude -Ilibft/include
+CPPFLAGS = -Iinclude -I../libft/include
 
-LDFLAGS = -Llibft
+LDFLAGS = -L../libft
 
 LDLIBS = -lft
 
-LIB = libft/libft.a
+LIB = ../libft/libft.a
 
 CFLAGS = -Wall -Wextra -g
 
@@ -77,7 +78,7 @@ OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 all: $(NAME)
 
 $(LIB):
-	make -C libft
+	make -C ../libft
 
 $(NAME): $(LIB) $(OBJ)
 	$(CC) $(NCURSE) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) $(LIB) -o $@
@@ -89,19 +90,17 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 norme:
 	norminette $(SRC)
 	norminette include/*.h
-	norminette libft/src
-	norminette libft/include
 
 clean:
-	make -C libft clean
+	make -C ../libft clean
 	rm -rf $(OBJ_PATH)
 
 fclean: clean
-	make -C libft fclean
+	make -C ../libft fclean
 	rm -f $(NAME)
 
 re:
 	$(MAKE) fclean
 	$(MAKE)
 
-.PHONY: all, clean, fclean, re
+.PHONY: all norme clean fclean re

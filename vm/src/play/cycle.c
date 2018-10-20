@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 22:52:28 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/17 16:57:48 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 14:29:51 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static void	check_live_process(t_global *info)
 			save = NULL;
 		if (!tmp_proc->has_live)
 			kill_process(info, tmp_proc);
+		else
+			tmp_proc->has_live = 0;
 		tmp_proc = save;
 	}
 }
@@ -62,20 +64,35 @@ static void	check_live_process(t_global *info)
 static void	reset_live(t_global *info)
 {
 	t_player	*tmp;
-	t_process	*tmp_proc;
 
 	tmp = info->player_head;
-	tmp_proc = info->process_head;
 	while (tmp)
 	{
 		tmp->curr_live = 0;
 		tmp = tmp->next;
 	}
-	while (tmp_proc)
+}
+
+static void	exec_cycle_to_die(t_global *info)
+{
+	check_live_process(info);
+	reset_live(info);
+	if (info->clock.curr_live >= NBR_LIVE)
 	{
-		tmp_proc->has_live = 0;
-		tmp_proc = tmp_proc->next;
+		info->clock.cycle_to_die -= CYCLE_DELTA;
+		info->clock.checks = 0;
 	}
+	else
+		info->clock.checks++;
+	if (info->clock.checks == MAX_CHECKS)
+	{
+		info->clock.cycle_to_die -= CYCLE_DELTA;
+		info->clock.checks = 0;
+	}
+	if (info->clock.cycle_to_die < 0)
+		info->clock.cycle_to_die = 0;
+	info->clock.curr_live = 0;
+	info->clock.current_cycle = 0;
 }
 
 /*
@@ -94,26 +111,7 @@ int			cycle(t_global *info)
 	info->clock.cycle++;
 	info->clock.current_cycle++;
 	if (info->clock.current_cycle == info->clock.cycle_to_die)
-	{
-		check_live_process(info);
-		reset_live(info);
-		if (info->clock.curr_live >= NBR_LIVE)
-		{
-			info->clock.cycle_to_die -= CYCLE_DELTA;
-			info->clock.checks = 0;
-		}
-		else
-			info->clock.checks++;
-		if (info->clock.checks == MAX_CHECKS)
-		{
-			info->clock.cycle_to_die -= CYCLE_DELTA;
-			info->clock.checks = 0;
-		}
-		if (info->clock.cycle_to_die < 0)
-			info->clock.cycle_to_die = 0;
-		info->clock.curr_live = 0;
-		info->clock.current_cycle = 0;
-	}
+		exec_cycle_to_die(info);
 	if (info->clock.cycle_to_die <= 0)
 		return (1);
 	return (0);
