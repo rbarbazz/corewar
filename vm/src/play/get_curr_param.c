@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:30:07 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/17 16:06:58 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/19 11:32:36 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ static void	with_ocp(t_global *info, t_process *process, unsigned char ocp)
 
 	i = 0;
 	size = 0;
-	increase_position(process, 1);
 	if ((ocp & 3) != 0)
 		process->valid_ocp = 0;
 	while (i < process->curr_op.nb_param)
@@ -121,17 +120,19 @@ static void	with_ocp(t_global *info, t_process *process, unsigned char ocp)
 		else if (type == DIR_CODE && !process->curr_op.nb_or_address)
 			size = 4;
 		value = get_value_at_position(info->map, process->curr_pos, size);
-		process->curr_op.param[i] = tab_to_int(value);
+		process->curr_op.param[i++] = tab_to_int(value);
 		ft_strdel(&value);
 		increase_position(process, size);
-		i++;
 	}
 }
 
 void		get_op_param(t_global *info, t_process *process, unsigned char ocp)
 {
 	if (process->curr_op.has_ocp)
+	{
+		increase_position(process, 1);
 		with_ocp(info, process, ocp);
+	}
 	else
 		without_ocp(info, process);
 }

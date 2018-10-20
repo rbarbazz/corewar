@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:32:26 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/16 18:50:06 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/19 11:47:16 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		free_map(void)
 	t_global	*info;
 	t_map		*tmp;
 	t_map		*save;
-	int		i;
+	int			i;
 
 	i = MEM_SIZE;
 	info = get_global();

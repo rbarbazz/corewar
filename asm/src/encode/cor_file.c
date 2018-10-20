@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/13 17:24:38 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/02 17:59:04 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/17 13:48:49 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void		write_to_cor(t_asm *champ)
 	char			*tmp;
 	unsigned int	i;
 
+	if (!champ->header->prog_size)
+		error_no_instr();
 	tmp = get_name(champ);
 	champ->fd = open_file(tmp);
 	ft_strdel(&tmp);

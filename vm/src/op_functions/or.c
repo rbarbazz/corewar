@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 16:09:47 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/17 16:22:03 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/18 17:23:38 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	or_vm(t_global *info, t_process *process)
 {
-	int		param0;
-	int		param1;
+	int	param0;
+	int	param1;
 
 	param0 = 0;
 	param1 = 0;
@@ -32,10 +32,8 @@ void	or_vm(t_global *info, t_process *process)
 	process->reg[process->curr_op.param[2] - 1] = param0 | param1;
 	if (info->debug)
 	{
-		ft_printf("P	%d |	or %hd %hd r%d\n", process->process_nb, param0, param1, process->curr_op.param[2]);
+		ft_printf("P%5d | or %hd %hd r%d\n", process->process_nb, param0,\
+		param1, process->curr_op.param[2]);
 	}
-	if (!(process->reg[process->curr_op.param[2] - 1]))
-		process->carry = 1;
-	else
-		process->carry = 0;
+	ft_carry(process, process->reg[process->curr_op.param[2] - 1]);
 }

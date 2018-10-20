@@ -6,7 +6,7 @@
 /*   By: zaz <zaz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/10/11 13:56:08 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/19 12:45:50 by msamak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef char	t_arg_type;
 # define T_DIR					2
 # define T_IND					4
 # define T_LAB					8
+# define T_ALL					T_REG | T_DIR | T_IND
 
 /*
 ** Commentaire
