@@ -6,14 +6,19 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 16:31:52 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/18 16:40:06 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/22 01:01:25 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gui.h"
 #include <time.h>
 
-int			play_gtk(t_gtkinfo *i)
+
+/*
+** VM thread execution loop
+*/
+
+void		play_gtk(t_gtkinfo *i)
 {
 	int		finished = 0;
 	int		delta_cycles = 0;
@@ -41,28 +46,22 @@ int			play_gtk(t_gtkinfo *i)
 			}
 			else if (i->b.steps && delta_cycles == i->b.steps)
 			{
-				gdk_threads_add_idle(u_text_map, i);
 				i->b.pause = 1;
 				delta_cycles = 0;
 			}
 			else
-			{
-				gdk_threads_add_idle(u_text_map, i);
 				finished = 1;
-			}
 		}
 		else
-		{
-			gdk_threads_add_idle(u_text_map, i);
 			sleep (1);
-		}
 	}
-	update_map(i->vm);
-	if (i->vm->visual)
-		usleep(ft_visu_curses(i->vm));
-	get_winner(i->vm);
-	return (0);
+	get_winner(i->vm); /* TODO: gtk version of that */
+	reset_vm(i->vm);
 }
+
+/*
+** VM thread wait loop
+*/
 
 void			*bg_loop(t_gtkinfo *i)
 {
