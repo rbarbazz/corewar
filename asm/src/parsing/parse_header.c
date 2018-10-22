@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 17:30:05 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/17 10:13:21 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/22 12:29:44 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	check_cmd(t_asm *champ, char *cmd)
 
 	i = 0;
 	skip_non_print();
-	while (champ->sfile && champ->sfile[champ->i] &&\
-	cmd[i] == champ->sfile[champ->i])
+	while (champ->sfile && champ->sfile[champ->i]\
+	&& cmd[i] == champ->sfile[champ->i])
 	{
 		i++;
 		move_index();
@@ -48,12 +48,12 @@ void	check_cmd_value(t_asm *champ, int max_length, char *cmd, char *value)
 
 	i = 0;
 	skip_space();
-	if (!champ->sfile || !champ->sfile[champ->i] ||\
-	champ->sfile[champ->i] != '\"')
+	if (!champ->sfile || !champ->sfile[champ->i]\
+	|| champ->sfile[champ->i] != '\"')
 		error_cmd_value(cmd);
 	move_index();
-	while (champ->sfile && champ->sfile[champ->i] &&\
-	champ->sfile[champ->i] != '\"')
+	while (champ->sfile && champ->sfile[champ->i]\
+	&& champ->sfile[champ->i] != '\"')
 	{
 		if (i >= max_length)
 			error_cmd_length(cmd, max_length);
