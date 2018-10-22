@@ -6,29 +6,18 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 00:57:27 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/22 01:00:42 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/22 20:06:43 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** Clean up structures prior to a new VM execution
+*/
+
 #include "gui.h"
 
-static void	clear_map(t_map *map)
-{
-	int		i;
 
-	i = 0;
-	while (i < MEM_SIZE)
-	{
-		map->pnumber = 0;
-		map->cycle_written = 0;
-		map->c = 0;
-		map->current = 0;
-		map = map->next;
-		i++;
-	}
-}
-
-static void	reset_info(t_global *info)
+void	reset_info(t_global *info)
 {
 	ft_bzero(info->visu_pos, MEM_SIZE);
 	info->process_head = NULL;
@@ -42,13 +31,18 @@ static void	reset_info(t_global *info)
 	info->process_count = 0;
 }
 
-/*
-** Clean up structures prior to a new VM execution
-*/
-
-void		reset_vm(t_global *info)
+void		clear_map(t_map *map)
 {
-	clear_map(info->map);
-	free_process();
-	reset_info(info);
+	int		i;
+
+	i = 0;
+	while (i < MEM_SIZE)
+	{
+		map->pnumber = 0;
+		map->cycle_written = 0;
+		map->c = 0;
+		map->current = 0;
+		map = map->next;
+		i++;
+	}
 }
