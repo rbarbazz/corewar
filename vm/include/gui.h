@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/22 16:55:13 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/22 20:08:18 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,8 @@ void				u_text(t_gtkinfo *i);
 /*
 ** reset.c
 */
-void				reset_vm(t_global *info);
+void				reset_info(t_global *info);
+void				clear_map(t_map *map);
 /*
 ** gui_main.c
 */

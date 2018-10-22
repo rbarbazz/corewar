@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 16:31:52 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/22 17:08:28 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/22 20:07:26 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		play_gtk(t_gtkinfo *i)
 	create_initial_process(i->vm);
 	if (!i->vm->visual)
 		display_intro(i->vm);
-	while (!finished)
+	while (!finished && i->b.run)
 	{
 		if (!i->b.pause)
 		{
@@ -63,7 +63,8 @@ void		play_gtk(t_gtkinfo *i)
 	}
 
 	get_winner(i->vm); /* TODO: gtk version of that */
-	reset_vm(i->vm);
+	free_process();
+	reset_info(i->vm);
 	i->b.run = 0;
 }
 
@@ -79,6 +80,7 @@ void			*bg_loop(t_gtkinfo *i)
 		{
 			if (i->vm->player_count)
 			{
+				clear_map(i->vm->map);
 				write_player_in_map(i->vm);
 				play_gtk(i);
 			}
