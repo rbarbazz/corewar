@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   text.c                                             :+:      :+:    :+:   */
+/*   update_info.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 11:22:30 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/18 16:07:56 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/22 14:24:54 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gui.h"
 
-void		u_text_players(t_gtkinfo *i)
+static void		u_text_players(t_gtkinfo *i)
 {
 	GtkTextIter	end;
 	t_player	*p;
@@ -29,48 +29,7 @@ void		u_text_players(t_gtkinfo *i)
 	}
 }
 
-/* static char	hex_value_to_char(char value) */
-/* { */
-/* 	if (value <= 9) */
-/* 		return (value + '0'); */
-/* 	else */
-/* 		return (value + 'A'); */
-/* } */
-
-/* char		*map_to_buffer(t_map *map) */
-/* { */
-/* 	char	*buffer; */
-/* 	int		size; */
-/* 	int		i; */
-/* 	int		n; */
-
-/* 	size = (MEM_SIZE * 3) - 1; */
-/* 	if (!(buffer = ft_strnew(size))) */
-/* 		return (NULL); */
-/* 	i = 0; */
-/* 	n = 0; */
-/* 	while (i < MEM_SIZE) */
-/* 	{ */
-/* 		buffer[n++] = hex_value_to_char((map->c & 0xF0) >> 4); */
-/* 		buffer[n++] = hex_value_to_char(map->c & 0x0F); */
-/* 		if (++i == MEM_SIZE) */
-/* 			buffer[n] = '\0'; */
-/* 		else if (i % 64 == 0) */
-/* 			buffer[n++] = '\n'; */
-/* 		else */
-/* 			buffer[n++] = ' '; */
-/* 		map = map->next; */
-/* 	} */
-/* 	return (buffer); */
-/* } */
-
-/* void		u_text_map(t_gtkinfo *i) */
-/* { */
-/* 	gtk_text_buffer_set_text(i->t.mem, i->b.mem, -1); */
-/* } */
-
-
-void		u_text_map(t_gtkinfo *i)
+static void		u_text_map(t_gtkinfo *i)
 {
 	GtkTextIter	end;
 	int			curmap;
@@ -95,4 +54,10 @@ void		u_text_map(t_gtkinfo *i)
 		free(hexa);
 		map = map->next;
 	}
+}
+
+void			u_text(t_gtkinfo *i)
+{
+	u_text_players(i);
+	u_text_map(i);
 }
