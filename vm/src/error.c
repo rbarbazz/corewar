@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 15:01:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/22 11:55:03 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/22 12:05:13 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,23 @@ static void	display_usage(void)
 	t_global	*info;
 
 	info = get_global();
-	ft_printf("Usage: %s", info->prog_name);
-	ft_printf(" [-dump nbr_cycles] [[-n number] <champion.cor>] [-v]");
-	ft_printf(" [--debug]\n\n");
-	ft_printf("-dump nbr_cycles	: ");
-	ft_printf("Dumps memory after nbr_cycles cycles then exits\n");
-	ft_printf("-n number		: ");
-	ft_printf("Sets the following <champion.cor> to the number provided\n");
-	ft_printf("-v			: Visualizer enabled\n");
-	ft_printf("--debug			: Verbose mode\n");
+	ft_dprintf(STDERR_FILENO, "Usage: %s [-dump nbr_cycles] ", info->prog_name);
+	ft_dprintf(STDERR_FILENO, "[[-n number] <champion.cor>] [-v]");
+	ft_dprintf(STDERR_FILENO, " [--debug]\n\n");
+	ft_dprintf(STDERR_FILENO, "-dump nbr_cycles	: ");
+	ft_dprintf(STDERR_FILENO, "Dumps memory after nbr_cycles cycles ");
+	ft_dprintf(STDERR_FILENO, "then exits\n-n number		: ");
+	ft_dprintf(STDERR_FILENO, "Sets the following <champion.cor>");
+	ft_dprintf(STDERR_FILENO, " to the number provided\n");
+	ft_dprintf(STDERR_FILENO, "-v			: Visualizer enabled\n");
+	ft_dprintf(STDERR_FILENO, "--debug			: Verbose mode\n");
+}
+
+static void	error_wrong_pnumber(int error_code)
+{
+	ft_dprintf(STDERR_FILENO, "[ERROR] %d : Player number", error_code);
+	ft_dprintf(STDERR_FILENO, " has to be available");
+	ft_dprintf(STDERR_FILENO, ", not 0, between MEM_SIZE and -MEM_SIZE\n");
 }
 
 /*
@@ -37,23 +45,23 @@ static void	display_usage(void)
 void		exit_corewar(int error_code)
 {
 	if (error_code == TOO_MANY_ARGS)
-		ft_printf("[ERROR] %d : Too many champions\n", error_code);
+		ft_dprintf(STDERR_FILENO, "[ERROR] %d : Too many champions\n",\
+		error_code);
 	else if (error_code == NO_CHAMP)
 		display_usage();
 	else if (error_code == FILE_EMPTY)
-		ft_printf("[ERROR] %d : Champion can't be empty\n", error_code);
+		ft_dprintf(STDERR_FILENO, "[ERROR] %d : Champion can't be empty\n",\
+		error_code);
 	else if (error_code == MALLOC_ERROR)
-		ft_printf("[ERROR] %d : Malloc : Error - [Protected]\n", error_code);
+		ft_dprintf(STDERR_FILENO, "[ERROR] %d : Malloc error\n", error_code);
 	else if (error_code == INVALID_MAGIC)
-		ft_printf("[ERROR] %d : Invalid COREWAR_EXEC_MAGIC\n", error_code);
+		ft_dprintf(STDERR_FILENO, "[ERROR] %d : Invalid COREWAR_EXEC_MAGIC\n",\
+		error_code);
 	else if (error_code == WRONG_COMMAND_LENGTH)
-		ft_printf("[ERROR] %d : champion is too long\n", error_code);
+		ft_dprintf(STDERR_FILENO, "[ERROR] %d : Champion is too long\n",\
+		error_code);
 	else if (error_code == WRONG_PNUMBER)
-	{
-		ft_printf("[ERROR] %d : player number", error_code);
-		ft_printf(" has to be available");
-		ft_printf(", not 0, between MEM_SIZE and -MEM_SIZE\n");
-	}
+		error_wrong_pnumber(error_code);
 	else if (error_code == USAGE_ERROR)
 		display_usage();
 	free_all();
