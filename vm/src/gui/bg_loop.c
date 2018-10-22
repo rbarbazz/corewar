@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 16:31:52 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/22 14:19:31 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/22 17:08:28 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void		play_gtk(t_gtkinfo *i)
 {
 	int		finished = 0;
 	int		delta_cycles = 0;
-	int		pause_already = 0;
 
 	create_initial_process(i->vm);
 	if (!i->vm->visual)
@@ -35,14 +34,15 @@ void		play_gtk(t_gtkinfo *i)
 					&& !cycle(i->vm) && i->vm->process_count)
 			{
 				check_process(i->vm);
-				update_map(i->vm);
-
-				/* if (!(i->b.mem = map_to_buffer(i->vm->map))) */
-				/* 	exit_corewar(MALLOC_ERROR); */
-				/* gdk_threads_add_idle(u_text_map, i); */
-
-				ft_printf("cycles clock %d delta; %d\n", i->vm->clock.cycle, delta_cycles);
 				delta_cycles++;
+
+				// debug
+				if (i->vm->visual)
+				{
+						update_map(i->vm);
+						ft_visu_curses(i->vm);
+				}
+				ft_printf("cycles clock %d delta; %d\n", i->vm->clock.cycle, delta_cycles);
 			}
 			else if (i->b.steps && delta_cycles == i->b.steps)
 			{
@@ -55,6 +55,13 @@ void		play_gtk(t_gtkinfo *i)
 		else
 			sleep (1);
 	}
+	// debug
+	if (i->vm->visual)
+	{
+		update_map(i->vm);
+		ft_visu_curses(i->vm);
+	}
+
 	get_winner(i->vm); /* TODO: gtk version of that */
 	reset_vm(i->vm);
 	i->b.run = 0;

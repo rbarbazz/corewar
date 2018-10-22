@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/22 14:25:04 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/22 16:55:13 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "vm.h"
 # include <gtk/gtk.h>
 
-# define DIAG_CHAMP "Select a champion"
+# define PL_FMT "Player %d: %s\nLast Live: %d\nLives in current period: %d\n\n"
 
 /*
 **   ___ _____ _  __  ___ _         __  __
@@ -24,6 +24,8 @@
 ** | (_ | | | | ' <  \__ \  _| || |  _|  _|
 **  \___| |_| |_|\_\ |___/\__|\_,_|_| |_|
 */
+
+# define DIAG_CHAMP "Select a champion"
 
 /*
 ** Glade window names
@@ -153,6 +155,6 @@ void				callback_player_load(GtkMenuItem *item, t_gtkinfo *i);
 /*
 ** call_logic.c
 */
-void			callback_logic_start(GtkWidget *widget, t_gtkinfo *i);
-void			callback_dbgvisu(GtkWidget *widget, t_gtkinfo *i);
+void				callback_logic_start(GtkWidget *widget, t_gtkinfo *i);
+void				callback_dbgvisu(GtkWidget *widget, t_gtkinfo *i);
 #endif

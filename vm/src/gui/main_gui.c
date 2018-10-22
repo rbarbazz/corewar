@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/22 14:26:08 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/22 17:20:19 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ static void	gui_struct_get_objs(t_gtkinfo *i)
 	i->t.play = gtk_text_view_get_buffer(GTK_TEXT_VIEW(w_play_txt));
 
 	/* controls */
-	i->c.steps = GTK_WIDGET(gtk_builder_get_object(i->builder, STEPS_CTRL));
-	i->c.run = GTK_WIDGET(gtk_builder_get_object(i->builder, RUN_CTRL));
-	i->c.pause = GTK_WIDGET(gtk_builder_get_object(i->builder, PAUSE_CTRL));
+	i->c.steps = GTK_SPIN_BUTTON(gtk_builder_get_object(i->builder,
+				STEPS_CTRL));
+	i->c.run = GTK_BUTTON(gtk_builder_get_object(i->builder, RUN_CTRL));
+	i->c.pause = GTK_BUTTON(gtk_builder_get_object(i->builder, PAUSE_CTRL));
 }
 
 static int	gui_struct_init(t_gtkinfo *i)
@@ -99,7 +100,7 @@ int			main(int ac, char **av)
 	init_global(i.vm, av[0]);
 	i.vm->gtk = 1;
 	create_map(i.vm);
-	gdk_threads_add_idle(u_text, &i);
+	gdk_threads_add_idle((GSourceFunc)u_text, &i);
 	thread_logic_init(&i);
 	gtk_main();
 	free_all();
