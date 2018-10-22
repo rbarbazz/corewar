@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/01 16:28:34 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/03 17:02:18 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/22 12:30:57 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static void	get_lab_pos_name(t_asm *champ, int size)
 
 	if (!(lab_name = ft_strnew(1)))
 		exit_fail();
-	while (champ->sfile && champ->sfile[champ->i] &&\
-	is_label_chars(champ->sfile[champ->i]))
+	while (champ->sfile && champ->sfile[champ->i]\
+	&& is_label_chars(champ->sfile[champ->i]))
 	{
 		if (!(lab_name = strjoinchar(lab_name, champ->sfile[champ->i])))
 		{
@@ -65,8 +65,8 @@ static void	get_lab_pos_name(t_asm *champ, int size)
 
 int			get_label_pos(t_asm *champ, int size)
 {
-	if (champ->sfile && champ->sfile[champ->i] &&\
-	champ->sfile[champ->i] == LABEL_CHAR)
+	if (champ->sfile && champ->sfile[champ->i]\
+	&& champ->sfile[champ->i] == LABEL_CHAR)
 	{
 		move_index();
 		get_lab_pos_name(champ, size);

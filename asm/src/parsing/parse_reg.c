@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:17:39 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/04 18:59:31 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/22 12:36:00 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	check_reg(t_asm *champ, t_op *op, int curr_param)
 	if (champ->sfile && champ->sfile[champ->i] && champ->sfile[champ->i] == 'r')
 	{
 		move_index();
-		while (champ->sfile && champ->sfile[champ->i] &&\
-		ft_isdigit(champ->sfile[champ->i]) && i < 2)
+		while (champ->sfile && champ->sfile[champ->i]\
+		&& ft_isdigit(champ->sfile[champ->i]) && i < 2)
 		{
 			nb[i++] = champ->sfile[champ->i];
 			move_index();
