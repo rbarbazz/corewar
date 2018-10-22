@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:04:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/19 13:53:17 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/22 14:11:25 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void			ft_carry(t_process *process, int value)
 ** *****************************************************************************
 */
 
-void			write_at_position(t_map *map, t_process *process, \
+void			write_at_position(t_map *map, t_process *process,\
 unsigned int position, unsigned int buff)
 {
 	int			i;

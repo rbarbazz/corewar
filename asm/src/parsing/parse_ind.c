@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/30 00:17:42 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/03 17:04:11 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/22 14:29:52 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ long	get_whole_value(t_asm *champ)
 
 	ft_bzero(nb, 21);
 	i = 0;
-	while (champ->sfile && champ->sfile[champ->i] &&\
-	(ft_isdigit(champ->sfile[champ->i]) ||\
-	(!i && champ->sfile[champ->i] == '-')))
+	while (champ->sfile && champ->sfile[champ->i]\
+	&& (ft_isdigit(champ->sfile[champ->i])\
+	|| (!i && champ->sfile[champ->i] == '-')))
 	{
 		if (i <= 20)
 			nb[i++] = champ->sfile[champ->i];
@@ -38,10 +38,10 @@ long	get_whole_value(t_asm *champ)
 	}
 	if (i < 1)
 		error_parse();
-	if (i > 20 || atol(nb) > LONG_MAX)
+	if (i > 20 || ft_atol(nb) > LONG_MAX)
 		res = LONG_MAX;
 	else
-		res = atol(nb);
+		res = ft_atol(nb);
 	return (res);
 }
 

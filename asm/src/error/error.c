@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 18:50:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/01 16:59:15 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/22 12:13:02 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	error_lab(t_lab_pos *lab_pos)
 {
-	ft_printf("Parsing error near line %d col %d : label not defined\n",\
+	ft_dprintf(STDERR_FILENO, "Parsing error near line %d col %d",\
 	lab_pos->line, lab_pos->col);
+	ft_dprintf(STDERR_FILENO, " : label not defined\n");
 	free_asm();
 	exit(LAB_NOT_DEFINED);
 }
@@ -25,28 +26,30 @@ void	error_parse(void)
 	t_asm	*champ;
 
 	champ = get_champ();
-	ft_printf("Parsing error near line %d col %d\n", champ->line, champ->col);
+	ft_dprintf(STDERR_FILENO, "Parsing error near line %d col %d\n",\
+	champ->line, champ->col);
 	free_asm();
 	exit(PARSE_ERR);
 }
 
 void	error_cmd(char *cmd)
 {
-	ft_printf("Parsing error near command : %s\n", cmd + 1);
+	ft_dprintf(STDERR_FILENO, "Parsing error near command : %s\n", cmd + 1);
 	free_asm();
 	exit(WRONG_CMD);
 }
 
 void	error_cmd_value(char *cmd)
 {
-	ft_printf("Parsing error for %s value\n", cmd + 1);
+	ft_dprintf(STDERR_FILENO, "Parsing error for %s value\n", cmd + 1);
 	free_asm();
 	exit(WRONG_CMD_VALUE);
 }
 
 void	error_cmd_length(char *cmd, int max_length)
 {
-	ft_printf("Champion %s too long (Max length %d)\n", cmd + 1, max_length);
+	ft_dprintf(STDERR_FILENO, "Champion %s too long (Max length %d)\n",\
+	cmd + 1, max_length);
 	free_asm();
 	exit(CMD_TOO_BIG);
 }

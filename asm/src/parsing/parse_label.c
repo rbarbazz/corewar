@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:34:47 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/04 21:22:48 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/22 12:31:48 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ static void	get_label(t_asm *champ, int pos)
 
 	i = 0;
 	ft_bzero(lab_name, pos - champ->i + 1);
-	while (champ->sfile && champ->sfile[champ->i] &&\
-	champ->sfile[champ->i] != LABEL_CHAR)
+	while (champ->sfile && champ->sfile[champ->i]\
+	&& champ->sfile[champ->i] != LABEL_CHAR)
 	{
 		lab_name[i++] = champ->sfile[champ->i];
 		move_index();
@@ -110,8 +110,8 @@ void		look_for_label(t_asm *champ)
 
 	skip_non_print();
 	pos = champ->i;
-	while (champ->sfile && champ->sfile[pos] &&\
-	is_label_chars(champ->sfile[pos]))
+	while (champ->sfile && champ->sfile[pos]\
+	&& is_label_chars(champ->sfile[pos]))
 		pos++;
 	if (champ->sfile && champ->sfile[pos] && champ->sfile[pos] == LABEL_CHAR)
 		get_label(champ, pos);

@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 18:45:44 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/05 13:44:53 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/22 14:20:52 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		open_file(char *filename)
 	if ((fd = open(filename, O_RDONLY)) == -1)
 	{
 		perror(filename);
-		exit(EXIT_FAILURE);
+		exit_corewar(INVALID_CLOSE_FD);
 	}
 	return (fd);
 }
