@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 17:49:09 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/19 17:17:56 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/22 17:10:39 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void		callback_logic_start(GtkWidget *widget, t_gtkinfo *i)
 {
+	(void)widget;
 	if (!i->b.run)
 	{
 		i->b.run = 1;
@@ -29,6 +30,7 @@ void		callback_logic_start(GtkWidget *widget, t_gtkinfo *i)
 
 void		callback_pause(GtkWidget *widget, t_gtkinfo *i)
 {
+	(void)widget;
 	if (!i->b.pause)
 	{
 		gtk_button_set_label(i->c.pause, PAUSE_RUNNING_MSG);
@@ -43,11 +45,13 @@ void		callback_pause(GtkWidget *widget, t_gtkinfo *i)
 
 void		callback_steps(GtkSpinButton *button, t_gtkinfo *i)
 {
+	(void)button;
 	i->b.steps = gtk_spin_button_get_value_as_int(i->c.steps);
 }
 
 void		callback_dbgvisu(GtkWidget *widget, t_gtkinfo *i)
 {
+	(void)widget;
 	i->vm->visual = (i->vm->visual) ? 0 : 1;
 	ft_putendl((i->vm->visual) ? "Debug visual set." : "Debug visual unset.");
 }
