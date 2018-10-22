@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/22 01:01:50 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/22 14:25:04 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,10 +134,9 @@ typedef struct		s_gtkinfo
 */
 void				*bg_loop(t_gtkinfo *i);
 /*
-** text.c
+** update_info.c
 */
-void				u_text_players(t_gtkinfo *i);
-void				u_text_map(t_gtkinfo *i);
+void				u_text(t_gtkinfo *i);
 /*
 ** reset.c
 */

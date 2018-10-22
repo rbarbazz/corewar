@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 16:31:52 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/22 01:01:25 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/22 14:19:31 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void		play_gtk(t_gtkinfo *i)
 	}
 	get_winner(i->vm); /* TODO: gtk version of that */
 	reset_vm(i->vm);
+	i->b.run = 0;
 }
 
 /*
@@ -71,11 +72,7 @@ void			*bg_loop(t_gtkinfo *i)
 		{
 			if (i->vm->player_count)
 			{
-				i->b.run = 0;
-				// debug
-					/* i->b.steps = 1; */
 				write_player_in_map(i->vm);
-				gdk_threads_add_idle(u_text_map, i);
 				play_gtk(i);
 			}
 			else
