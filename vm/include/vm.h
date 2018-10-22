@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/20 18:18:27 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/22 15:51:10 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -308,7 +308,7 @@ char					*uitoa_d(unsigned int dec);
 char					*map_from_list(t_global *info);
 void					set_current_null(t_map *map, int position);
 void					increase_position(t_process *process, unsigned int add);
-void					write_at_position(t_map *map, t_process *process, \
+void					write_at_position(t_map *map, t_process *process,\
 unsigned int position, unsigned int buff);
 void					ft_carry(t_process *process, int value);
 

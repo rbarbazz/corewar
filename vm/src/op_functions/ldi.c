@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 15:22:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/19 11:37:33 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/22 14:07:14 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	ldi(t_global *info, t_process *process)
 	|| check_reg(info, process, 2))
 		return ;
 	param_sum = (short)param0 + (short)param1;
-	value = get_value_at_position(info->map, param_sum % IDX_MOD +\
-	process->op_pos, 4);
+	value = get_value_at_position(info->map, param_sum % IDX_MOD\
+	+ process->op_pos, 4);
 	process->reg[process->curr_op.param[2] - 1] = tab_to_int(value);
 	ft_strdel(&value);
 	if (info->debug)
