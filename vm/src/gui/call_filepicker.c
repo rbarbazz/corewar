@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:43:57 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/17 16:45:58 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/23 09:46:55 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,24 @@ void			callback_player_load(GtkMenuItem *item, t_gtkinfo *i)
 		g_free(filename);
 	}
 	gtk_widget_destroy(dialog);
+}
+
+/*
+**Free up champions
+*/
+
+void			callback_player_unload(GtkMenuItem *item, t_gtkinfo *i)
+{
+	(void)item;
+	if (!i->b.run)
+	{
+		free_player();
+		i->vm->player_head = NULL;
+		i->vm->player_tail = NULL;
+		i->vm->player_count = 0;
+	}
+	else
+	{
+		ft_putendl("Stop the VM first!"); /* PLACEHOLDER */
+	}
 }
