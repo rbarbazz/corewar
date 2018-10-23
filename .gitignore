@@ -5,4 +5,5 @@ asm/asm
 asm/obj
 vm/obj
 vm/corewar
+vm/corewar_gui
 vm/corewar.dSYM

@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:43:57 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/23 09:46:55 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/23 18:33:45 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,24 @@ void			callback_player_load(GtkMenuItem *item, t_gtkinfo *i)
 	gint					res;
 
 	(void)item;
-	action = GTK_FILE_CHOOSER_ACTION_OPEN;
-	dialog = gtk_file_chooser_dialog_new(DIAG_CHAMP, NULL, action,
-			"Cancel", GTK_RESPONSE_CANCEL, "Open", GTK_RESPONSE_ACCEPT,
-			NULL);
-	res = gtk_dialog_run(GTK_DIALOG(dialog));
-	if (res == GTK_RESPONSE_ACCEPT)
+	if (!i->b.run)
 	{
-		chooser = GTK_FILE_CHOOSER(dialog);
-		filename = gtk_file_chooser_get_filename(chooser);
-		check_champ(i->vm, filename, 0);
-		g_free(filename);
+		action = GTK_FILE_CHOOSER_ACTION_OPEN;
+		dialog = gtk_file_chooser_dialog_new(DIAG_CHAMP, NULL, action,
+				"Cancel", GTK_RESPONSE_CANCEL, "Open", GTK_RESPONSE_ACCEPT,
+				NULL);
+		res = gtk_dialog_run(GTK_DIALOG(dialog));
+		if (res == GTK_RESPONSE_ACCEPT)
+		{
+			chooser = GTK_FILE_CHOOSER(dialog);
+			filename = gtk_file_chooser_get_filename(chooser);
+			check_champ(i->vm, filename, 0);
+			g_free(filename);
+		}
+		gtk_widget_destroy(dialog);
 	}
-	gtk_widget_destroy(dialog);
+	else
+		gdk_threads_add_idle((GSourceFunc)display_popup, MSG_VMSTP);
 }
 
 /*
@@ -55,7 +60,5 @@ void			callback_player_unload(GtkMenuItem *item, t_gtkinfo *i)
 		i->vm->player_count = 0;
 	}
 	else
-	{
-		ft_putendl("Stop the VM first!"); /* PLACEHOLDER */
-	}
+		gdk_threads_add_idle((GSourceFunc)display_popup, MSG_VMSTP);
 }

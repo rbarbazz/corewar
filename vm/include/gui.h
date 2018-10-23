@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/22 20:08:18 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/23 18:30:58 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <gtk/gtk.h>
 
 # define PL_FMT "Player %d: %s\nLast Live: %d\nLives in current period: %d\n\n"
+
+# define MSG_PMISS "Error: Load a player first"
+# define MSG_VMSTP "Error: Stop the VM first!"
 
 /*
 **   ___ _____ _  __  ___ _         __  __
@@ -144,6 +147,10 @@ void				u_text(t_gtkinfo *i);
 */
 void				reset_info(t_global *info);
 void				clear_map(t_map *map);
+/*
+** popup.c
+*/
+int					display_popup(char *s);
 /*
 ** gui_main.c
 */
