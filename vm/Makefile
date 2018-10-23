@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/22 14:14:48 by xperrin          ###   ########.fr        #
+#    Updated: 2018/10/23 18:12:23 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ NCURSE = -lncurses
 GTK_SRC_NAME = gui/main_gui.c\
 		gui/bg_loop.c\
 		gui/reset.c\
+		gui/popup.c\
 		gui/update_info.c\
 		gui/call_control.c\
 		gui/call_filepicker.c
