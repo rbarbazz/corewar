@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/22 17:20:19 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/24 17:30:24 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static void	gui_struct_get_objs(t_gtkinfo *i)
 	/* controls */
 	i->c.steps = GTK_SPIN_BUTTON(gtk_builder_get_object(i->builder,
 				STEPS_CTRL));
+	i->c.spin = GTK_SPINNER(gtk_builder_get_object(i->builder, SPINNER));
 	i->c.run = GTK_BUTTON(gtk_builder_get_object(i->builder, RUN_CTRL));
 	i->c.pause = GTK_BUTTON(gtk_builder_get_object(i->builder, PAUSE_CTRL));
 }
