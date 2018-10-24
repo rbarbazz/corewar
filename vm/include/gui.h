@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/24 21:25:56 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/24 22:57:27 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # define PL_FMT "Player %d: %s\nLast Live: %d\nLives in current period: %d\n\n"
 
+# define MSG_PTOOMANY "Error: Too many players"
 # define MSG_PMISS "Error: Load a player first"
 # define MSG_VMSTP "Error: Stop the VM first!"
 
@@ -153,18 +154,17 @@ void				clear_map(t_map *map);
 */
 int					display_popup(char *s);
 /*
-** gui_main.c
-*/
-void				callback_test(GtkToggleButton *tbutton, t_gtkinfo *i);
-void				about_display(GtkToggleButton *tbutton, t_gtkinfo *i);
-/*
 ** call_filepicker.c
 */
 void				callback_player_load(GtkMenuItem *item, t_gtkinfo *i);
+void				callback_player_unload(GtkMenuItem *item, t_gtkinfo *i);
 /*
 ** call_logic.c
 */
-void				callback_logic_start(GtkWidget *widget, t_gtkinfo *i);
+void				callback_logic_start(GtkButton *button, t_gtkinfo *i);
+void				callback_pause(GtkButton *button, t_gtkinfo *i);
+void				callback_steps(GtkAdjustment *adjustment, t_gtkinfo *i);
+void				callback_speed(GtkAdjustment *adjustment, t_gtkinfo *i);
 void				callback_dbgvisu(GtkWidget *widget, t_gtkinfo *i);
 
 #endif

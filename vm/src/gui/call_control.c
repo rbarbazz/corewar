@@ -11,33 +11,30 @@
 
 #include "gui.h"
 
-void		callback_logic_start(GtkWidget *widget, t_gtkinfo *i)
+void		callback_logic_start(GtkButton *button, t_gtkinfo *i)
 {
-	(void)widget;
 	if (!i->b.run)
 	{
 		i->b.run = 1;
-		gtk_button_set_label(i->c.run, RUN_RUNNING_MSG);
+		gtk_button_set_label(button, RUN_RUNNING_MSG);
 	}
 	else
 	{
-		/* TODO stop execution signal or is it done?*/
 		i->b.run = 0;
-		gtk_button_set_label(i->c.run, RUN_STOPPED_MSG);
+		gtk_button_set_label(button, RUN_STOPPED_MSG);
 	}
 }
 
-void		callback_pause(GtkWidget *widget, t_gtkinfo *i)
+void		callback_pause(GtkButton *button, t_gtkinfo *i)
 {
-	(void)widget;
 	if (!i->b.pause)
 	{
-		gtk_button_set_label(i->c.pause, PAUSE_STOPPED_MSG);
+		gtk_button_set_label(button, PAUSE_STOPPED_MSG);
 		i->b.pause = 1;
 	}
 	else
 	{
-		gtk_button_set_label(i->c.pause, PAUSE_RUNNING_MSG);
+		gtk_button_set_label(button, PAUSE_RUNNING_MSG);
 		i->b.pause = 0;
 	}
 }
@@ -57,7 +54,7 @@ void		callback_speed(GtkAdjustment *adjustment, t_gtkinfo *i)
 
 
 	value = gtk_adjustment_get_value(adjustment);
-	i->b.speed = (int)value * 1000;
+	i->b.speed = (int)value;
 }
 
 void		callback_dbgvisu(GtkWidget *widget, t_gtkinfo *i)
