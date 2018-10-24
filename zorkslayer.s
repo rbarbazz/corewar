@@ -51,6 +51,7 @@ live11:
 live12:
 	live %1
 
+djab: #offensive attack
 	ld %57673475, r7
 	st r7, 361
 	st r7, 292
