@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 16:31:52 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/23 18:30:35 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/24 20:16:55 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void		play_gtk(t_gtkinfo *i)
 			{
 				check_process(i->vm);
 				delta_cycles++;
+				usleep(i->b.speed);
 
 				// debug
 				if (i->vm->visual)

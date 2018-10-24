@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/24 17:30:11 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/24 21:25:56 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ typedef struct		s_gtktext
 ** controls
 */
 
-# define STEPS_CTRL "s_steps"
-
 # define RUN_CTRL "b_run"
 # define RUN_STOPPED_MSG "Run"
 # define RUN_RUNNING_MSG "Stop"
@@ -83,7 +81,6 @@ typedef struct		s_gtkctrl
 {
 	GtkButton		*run;
 	GtkButton		*pause;
-	GtkSpinButton	*steps;
 	GtkSpinner		*spin;
 }					t_gtkctrl;
 
@@ -105,6 +102,7 @@ typedef struct		s_vm_bgl
 	int				run;
 	int				pause;
 	int				steps;
+	int				speed;
 }					t_vm_bg;
 
 /*
@@ -168,4 +166,5 @@ void				callback_player_load(GtkMenuItem *item, t_gtkinfo *i);
 */
 void				callback_logic_start(GtkWidget *widget, t_gtkinfo *i);
 void				callback_dbgvisu(GtkWidget *widget, t_gtkinfo *i);
+
 #endif
