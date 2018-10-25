@@ -6,11 +6,17 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/19 12:55:24 by msamak           ###   ########.fr        #
+#    Updated: 2018/10/25 15:30:18 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = corewar
+
+INC_PATH = include/
+
+INC_FILES = op.h vm.h
+
+INC_FULL = $(addprefix $(INC_PATH)/, $(INC_FILES))
 
 SRC_PATH = src
 
@@ -64,7 +70,7 @@ $(LIB):
 $(NAME): $(LIB) $(OBJ)
 	$(CC) $(NCURSE) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) $(LIB) -o $@
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC_FULL)
 	@mkdir -p obj/play obj/setup obj/display obj/op_functions
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
@@ -84,4 +90,4 @@ re:
 	$(MAKE) fclean
 	$(MAKE)
 
-.PHONY: all, clean, fclean, re
+.PHONY: all norme clean fclean re
