@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 11:22:30 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/25 18:59:22 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/26 01:05:17 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void		u_text_map(t_gtkinfo *i)
 	}
 }
 
-void			u_text(t_gtkinfo *i)
+gboolean		u_text(t_gtkinfo *i)
 {
 	if (i->b.run && !i->b.pause)
 		gtk_spinner_start(i->c.spin);
@@ -84,4 +84,5 @@ void			u_text(t_gtkinfo *i)
 		gtk_spinner_stop(i->c.spin);
 	u_text_players(i);
 	u_text_map(i);
+	return (G_SOURCE_CONTINUE);
 }

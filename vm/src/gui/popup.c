@@ -6,13 +6,13 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/23 18:06:34 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/25 17:10:01 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/26 00:54:48 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gui.h"
 
-int			display_popup(char *s)
+gboolean	display_popup(char *s)
 {
 	GtkWidget	*dialog;
 
@@ -23,5 +23,5 @@ int			display_popup(char *s)
 			"%s", s);
 	gtk_dialog_run(GTK_DIALOG(dialog));
 	gtk_widget_destroy(dialog);
-	return (FALSE);
+	return (G_SOURCE_REMOVE);
 }

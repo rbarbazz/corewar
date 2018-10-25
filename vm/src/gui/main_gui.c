@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/25 20:16:20 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/26 00:51:07 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int				main(int ac, char **av)
 	init_global(i.vm, av[0]);
 	i.vm->gtk = 1;
 	create_map(i.vm);
-	gdk_threads_add_idle((GSourceFunc)u_text, &i);
+	gdk_threads_add_idle(G_SOURCE_FUNC(u_text), &i);
 	thread_logic_init(&i);
 	gtk_main();
 	free_all();
