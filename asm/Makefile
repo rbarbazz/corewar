@@ -6,11 +6,17 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/19 10:23:47 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/10/25 15:30:32 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = asm
+
+INC_PATH = include/
+
+INC_FILES = asm.h
+
+INC_FULL = $(addprefix $(INC_PATH)/, $(INC_FILES))
 
 SRC_PATH = src
 
@@ -50,7 +56,7 @@ $(LIB):
 $(NAME): $(LIB) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) $(LIB) -o $@
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC_FULL)
 	@mkdir -p obj/parsing obj/encode obj/error
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
@@ -70,4 +76,4 @@ re:
 	$(MAKE) fclean
 	$(MAKE)
 
-.PHONY: all, clean, fclean, re
+.PHONY: all norme clean fclean re
