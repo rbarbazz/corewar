@@ -6,13 +6,13 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 20:22:55 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/25 23:38:02 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/26 00:59:31 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gui.h"
 
-static int		winner_popup(t_player *winner)
+static gboolean		winner_popup(t_player *winner)
 {
 	GtkWidget	*dialog;
 
@@ -25,7 +25,7 @@ static int		winner_popup(t_player *winner)
 			winner->player);
 	gtk_dialog_run(GTK_DIALOG(dialog));
 	gtk_widget_destroy(dialog);
-	return (FALSE);
+	return (G_SOURCE_REMOVE);
 }
 
 static void			gui_get_winner(t_gtkinfo *i)
@@ -48,7 +48,7 @@ static void			gui_get_winner(t_gtkinfo *i)
 	}
 	if (!live)
 		winner = i->vm->player_tail;
-	gdk_threads_add_idle((GSourceFunc)winner_popup, winner);
+	gdk_threads_add_idle(G_SOURCE_FUNC(winner_popup), winner);
 }
 
 /*

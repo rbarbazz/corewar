@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/25 23:32:24 by xperrin          ###   ########.fr        #
+#    Updated: 2018/10/26 00:47:10 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,9 +51,7 @@ LDLIBS = -lft
 
 LIB = ../libft/libft.a
 
-CFLAGS = -Wall -Wextra -Werror
-
-CC = clang
+CFLAGS = -Wall -Wextra -Werror -O2
 
 NCURSE = -lncurses
 
@@ -78,7 +76,6 @@ ifeq ($(GTK), 1)
 	LDFLAGS += $(GTK_LDFLAGS)
 else
 	SRC_NAME += main.c
-	CFLAGS += -O2
 endif
 
 OBJ_NAME = $(SRC_NAME:.c=.o)

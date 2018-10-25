@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/25 23:34:18 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/26 01:04:40 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,11 +153,11 @@ void				*bg_loop(t_gtkinfo *i);
 /*
 ** update_info.c
 */
-void				u_text(t_gtkinfo *i);
+gboolean			u_text(t_gtkinfo *i);
 /*
 ** gui_win.c
 */
-void				vm_exec_end(int finished, t_gtkinfo *i)
+void				vm_exec_end(int finished, t_gtkinfo *i);
 /*
 ** reset.c
 */
@@ -166,7 +166,7 @@ void				clear_map(t_map *map);
 /*
 ** popup.c
 */
-int					display_popup(char *s);
+gboolean			display_popup(char *s);
 /*
 ** call_filepicker.c
 */

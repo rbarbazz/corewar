@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:43:57 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/24 22:57:14 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/26 00:57:55 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void		player_load(t_gtkinfo *i)
 		gtk_widget_destroy(dialog);
 	}
 	else
-		gdk_threads_add_idle((GSourceFunc)display_popup, MSG_PTOOMANY);
+		gdk_threads_add_idle(G_SOURCE_FUNC(display_popup), MSG_PTOOMANY);
 }
 
 void			callback_player_load(GtkMenuItem *item, t_gtkinfo *i)
@@ -50,7 +50,7 @@ void			callback_player_load(GtkMenuItem *item, t_gtkinfo *i)
 	if (!i->b.run)
 		player_load(i);
 	else
-		gdk_threads_add_idle((GSourceFunc)display_popup, MSG_VMSTP);
+		gdk_threads_add_idle(G_SOURCE_FUNC(display_popup), MSG_VMSTP);
 }
 
 /*
@@ -68,5 +68,5 @@ void			callback_player_unload(GtkMenuItem *item, t_gtkinfo *i)
 		i->vm->player_count = 0;
 	}
 	else
-		gdk_threads_add_idle((GSourceFunc)display_popup, MSG_VMSTP);
+		gdk_threads_add_idle(G_SOURCE_FUNC(display_popup), MSG_VMSTP);
 }
