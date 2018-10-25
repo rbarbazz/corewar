@@ -6,11 +6,17 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/23 18:12:23 by xperrin          ###   ########.fr        #
+#    Updated: 2018/10/25 16:41:21 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = corewar
+
+INC_PATH = include/
+
+INC_FILES = op.h vm.h
+
+INC_FULL = $(addprefix $(INC_PATH)/, $(INC_FILES))
 
 SRC_PATH = src
 
@@ -85,7 +91,7 @@ $(LIB):
 $(NAME): $(LIB) $(OBJ)
 	$(CC) $(NCURSE) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) $(LIB) -o $@
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC_FULL)
 	@mkdir -p obj/play obj/setup obj/display obj/op_functions obj/gui
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
@@ -105,4 +111,13 @@ re:
 	$(MAKE) fclean
 	$(MAKE)
 
-.PHONY: all norme clean fclean re
+GTK:
+	GTK=1 $(MAKE)
+
+GTK_fclean:
+	GTK=1 $(MAKE) fclean
+
+GTK_re:
+	GTK=1 $(MAKE) re
+
+.PHONY: all norme clean fclean re GTK GTK_fclean GTK_re
