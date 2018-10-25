@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 16:31:52 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/25 20:27:08 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/25 20:57:47 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	vm_exec_end(t_gtkinfo *i)
 		update_map(i->vm);
 		ft_visu_curses(i->vm);
 	}
-	gui_get_winner(i->vm);
+	gui_get_winner(i);
 	free_process();
 	reset_info(i->vm);
 	i->b.run = 0;
