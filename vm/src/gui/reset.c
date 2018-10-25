@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/22 00:57:27 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/22 20:06:43 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/25 17:10:52 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 */
 
 #include "gui.h"
-
 
 void	reset_info(t_global *info)
 {
@@ -31,7 +30,7 @@ void	reset_info(t_global *info)
 	info->process_count = 0;
 }
 
-void		clear_map(t_map *map)
+void	clear_map(t_map *map)
 {
 	int		i;
 

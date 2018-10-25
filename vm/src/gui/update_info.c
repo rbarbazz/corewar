@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 11:22:30 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/24 17:35:14 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/25 18:59:22 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,29 +37,41 @@ static void		u_text_players(t_gtkinfo *i)
 	}
 }
 
+static void		map_memtxt_insert(int *col, int mem, t_gtkinfo *i)
+{
+	char		*hexa;
+	GtkTextIter	end;
+
+	gtk_text_buffer_get_end_iter(i->t.mem, &end);
+	if (!(hexa = ft_itoa_u(mem, 16, 0)))
+		exit_corewar(MALLOC_ERROR);
+	if (ft_strlen(hexa) == 1)
+		gtk_text_buffer_insert(i->t.mem, &end, "0", -1);
+	gtk_text_buffer_insert(i->t.mem, &end, hexa, -1);
+	if (*col == 64)
+	{
+		*col = 0;
+		gtk_text_buffer_insert(i->t.mem, &end, "\n", -1);
+	}
+	else
+		gtk_text_buffer_insert(i->t.mem, &end, " ", -1);
+	free(hexa);
+}
+
 static void		u_text_map(t_gtkinfo *i)
 {
-	GtkTextIter	end;
 	int			curmap;
 	t_map		*map;
-	char		*hexa;
+	int			col;
 
 	gtk_text_buffer_set_text(i->t.mem, "", -1);
-	gtk_text_buffer_get_start_iter(i->t.mem, &end);
 	map = i->vm->map;
+	col = 1;
 	curmap = -1;
 	while (++curmap < MEM_SIZE)
 	{
-		if (!(hexa = ft_itoa_u(map->c, 16, 0)))
-			exit_corewar(MALLOC_ERROR);
-		if (ft_strlen(hexa) == 1)
-			gtk_text_buffer_insert(i->t.mem, &end, "0", -1);
-		gtk_text_buffer_insert(i->t.mem, &end, hexa, -1);
-		if (curmap && !(curmap % 63))
-			gtk_text_buffer_insert(i->t.mem, &end, "\n", -1);
-		else
-			gtk_text_buffer_insert(i->t.mem, &end, " ", -1);
-		free(hexa);
+		map_memtxt_insert(&col, map->c, i);
+		col++;
 		map = map->next;
 	}
 }

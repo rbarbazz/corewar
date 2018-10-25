@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/24 22:57:27 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/25 19:40:16 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@
 ** w_a:  ABOUT_WIN(about window)
 */
 
-typedef struct			s_gtkwin
+typedef struct		s_gtkwin
 {
-	GtkWidget			*m;
-	GtkWidget			*a;
-}						t_gtkwin;
+	GtkWidget		*m;
+	GtkWidget		*a;
+}					t_gtkwin;
 
 # define MEM_TXT_VIEW "t_memory"
 # define PLAY_TXT_VIEW "t_players"
@@ -136,6 +136,10 @@ typedef struct		s_gtkinfo
 **  \___\__,_|_|_|_.__/\__,_\__|_\_\/__/
 */
 
+/*
+** main_gui.c
+*/
+void				gui_exit_wrapper(GtkWidget *widget, t_gtkinfo *i);
 /*
 ** bg_loop.c
 */

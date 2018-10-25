@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 16:31:52 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/24 20:16:55 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/25 19:00:25 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void		play_gtk(t_gtkinfo *i)
 				finished = 1;
 		}
 		else
-			sleep (1);
+			sleep(1);
 	}
 	// debug
 	if (i->vm->visual)
