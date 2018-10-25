@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/25 20:42:37 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/25 23:34:18 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,9 +155,9 @@ void				*bg_loop(t_gtkinfo *i);
 */
 void				u_text(t_gtkinfo *i);
 /*
-** gui_winner.c
+** gui_win.c
 */
-void				gui_get_winner(t_gtkinfo *i);
+void				vm_exec_end(int finished, t_gtkinfo *i)
 /*
 ** reset.c
 */
