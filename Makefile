@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/22 12:17:43 by rbarbazz         ###   ########.fr        #
+#    Updated: 2018/10/25 15:21:10 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,4 +39,4 @@ norme:
 	make -C $(ASM) norme
 	make -C $(VM) norme
 
-.PHONY: all, clean, fclean, re
+.PHONY: all clean fclean re
