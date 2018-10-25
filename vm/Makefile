@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/25 16:41:21 by xperrin          ###   ########.fr        #
+#    Updated: 2018/10/25 20:28:47 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ LDLIBS = -lft
 
 LIB = ../libft/libft.a
 
-CFLAGS = -Wall -Wextra -g
+CFLAGS = -Wall -Wextra -Werror -O2
 
 CC = clang
 
@@ -62,15 +62,18 @@ GTK_SRC_NAME = gui/main_gui.c\
 		gui/bg_loop.c\
 		gui/reset.c\
 		gui/popup.c\
+		gui/gui_winner.c\
 		gui/update_info.c\
 		gui/call_control.c\
 		gui/call_filepicker.c
+GTK_INC_FILES = gui.h
 GTK_LIBS = gtk+-3.0 gmodule-2.0
 GTK_CPPFLAGS = $(shell pkg-config --cflags-only-I $(GTK_LIBS)) -pthread
 GTK_LDFLAGS = $(shell pkg-config --libs --cflags $(GTK_LIBS)) -rdynamic
 ifeq ($(GTK), 1)
 	NAME = corewar_gui
 	SRC_NAME += $(GTK_SRC_NAME)
+	INC_FILES += $(GTK_INC_FILES)
 	CPPFLAGS += $(GTK_CPPFLAGS)
 	LDFLAGS += $(GTK_LDFLAGS)
 else

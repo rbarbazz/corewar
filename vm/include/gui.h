@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/25 19:40:16 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/25 20:25:35 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,19 @@ typedef struct		s_gtkctrl
 
 /*
 ** run: run or stop the VM;
+** pause: is it paused?
 ** steps: number of steps to run
+** speed: microsecond sleep in VM thread
+** delta: current nbr of cycles since last pause
 */
 
-typedef struct		s_vm_bgl
+typedef struct		s_vm_bg
 {
 	int				run;
 	int				pause;
 	int				steps;
 	int				speed;
+	int				delta;
 }					t_vm_bg;
 
 /*
@@ -148,6 +152,10 @@ void				*bg_loop(t_gtkinfo *i);
 ** update_info.c
 */
 void				u_text(t_gtkinfo *i);
+/*
+** gui_winner.c
+*/
+void				gui_get_winner(t_global *info);
 /*
 ** reset.c
 */

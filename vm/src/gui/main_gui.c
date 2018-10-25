@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/25 19:33:10 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/25 20:16:20 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static int		gui_struct_init(t_gtkinfo *i)
 ** Add the idle GTK info update
 */
 
-int			main(int ac, char **av)
+int				main(int ac, char **av)
 {
 	t_gtkinfo	i;
 
