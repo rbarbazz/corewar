@@ -6,19 +6,35 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 20:22:55 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/25 20:26:04 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/25 20:57:58 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gui.h"
 
-void		gui_get_winner(t_global *info)
+static	int		winner_popup(t_player *winner)
+{
+	GtkWidget	*dialog;
+
+	dialog = gtk_message_dialog_new(NULL,
+			GTK_DIALOG_MODAL,
+			GTK_MESSAGE_INFO,
+			GTK_BUTTONS_CLOSE,
+			MSG_WINFMT,
+			winner->name,
+			winner->player);
+	gtk_dialog_run(GTK_DIALOG(dialog));
+	gtk_widget_destroy(dialog);
+	return (FALSE);
+}
+
+void			gui_get_winner(t_gtkinfo *i)
 {
 	t_player		*tmp;
 	unsigned int	live;
 	t_player		*winner;
 
-	tmp = info->player_tail;
+	tmp = i->vm->player_tail;
 	live = 0;
 	winner = 0;
 	while (tmp)
@@ -31,6 +47,6 @@ void		gui_get_winner(t_global *info)
 		tmp = tmp->prev;
 	}
 	if (!live)
-		winner = info->player_tail;
-	ft_printf("le joueur %d(%s) a gagne\n", winner->player, winner->name);
+		winner = i->vm->player_tail;
+	gdk_threads_add_idle((GSourceFunc)winner_popup, winner);
 }

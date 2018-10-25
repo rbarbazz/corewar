@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/25 20:25:35 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/25 20:42:37 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define MSG_PTOOMANY "Error: Too many players"
 # define MSG_PMISS "Error: Load a player first"
 # define MSG_VMSTP "Error: Stop the VM first!"
+
+# define MSG_WINFMT "And the Winner is %s (P%d)!"
 
 /*
 **   ___ _____ _  __  ___ _         __  __
@@ -155,7 +157,7 @@ void				u_text(t_gtkinfo *i);
 /*
 ** gui_winner.c
 */
-void				gui_get_winner(t_global *info);
+void				gui_get_winner(t_gtkinfo *i);
 /*
 ** reset.c
 */
