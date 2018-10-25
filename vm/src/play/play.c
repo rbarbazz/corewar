@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:00:00 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 14:55:42 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/25 20:23:11 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 ** *****************************************************************************
 */
 
-void	get_winner(t_global *info)
+static void	get_winner(t_global *info)
 {
 	t_player		*tmp;
 	unsigned int	live;
