@@ -6,29 +6,12 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 16:31:52 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/25 20:57:47 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/25 23:33:47 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gui.h"
 #include <time.h>
-
-/*
-** Executed after the main logic loop
-*/
-
-static void	vm_exec_end(t_gtkinfo *i)
-{
-	if (i->vm->visual)
-	{
-		update_map(i->vm);
-		ft_visu_curses(i->vm);
-	}
-	gui_get_winner(i);
-	free_process();
-	reset_info(i->vm);
-	i->b.run = 0;
-}
 
 /*
 ** Single VM cycle
@@ -77,7 +60,7 @@ void		play_gtk(int finished, t_gtkinfo *i)
 			sleep(1);
 		}
 	}
-	vm_exec_end(i);
+	vm_exec_end(finished, i);
 }
 
 /*

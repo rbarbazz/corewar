@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gui_winner.c                                       :+:      :+:    :+:   */
+/*   gui_win.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 20:22:55 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/25 20:57:58 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/25 23:38:02 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gui.h"
 
-static	int		winner_popup(t_player *winner)
+static int		winner_popup(t_player *winner)
 {
 	GtkWidget	*dialog;
 
@@ -28,7 +28,7 @@ static	int		winner_popup(t_player *winner)
 	return (FALSE);
 }
 
-void			gui_get_winner(t_gtkinfo *i)
+static void			gui_get_winner(t_gtkinfo *i)
 {
 	t_player		*tmp;
 	unsigned int	live;
@@ -50,3 +50,22 @@ void			gui_get_winner(t_gtkinfo *i)
 		winner = i->vm->player_tail;
 	gdk_threads_add_idle((GSourceFunc)winner_popup, winner);
 }
+
+/*
+** Executed after the main logic loop
+*/
+
+void				vm_exec_end(int finished, t_gtkinfo *i)
+{
+	if (i->vm->visual)
+	{
+		update_map(i->vm);
+		ft_visu_curses(i->vm);
+	}
+	if (finished)
+		gui_get_winner(i);
+	free_process();
+	reset_info(i->vm);
+	i->b.run = 0;
+}
+

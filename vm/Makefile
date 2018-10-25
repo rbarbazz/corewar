@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/25 20:28:47 by xperrin          ###   ########.fr        #
+#    Updated: 2018/10/25 23:32:24 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ LDLIBS = -lft
 
 LIB = ../libft/libft.a
 
-CFLAGS = -Wall -Wextra -Werror -O2
+CFLAGS = -Wall -Wextra -Werror
 
 CC = clang
 
@@ -62,7 +62,7 @@ GTK_SRC_NAME = gui/main_gui.c\
 		gui/bg_loop.c\
 		gui/reset.c\
 		gui/popup.c\
-		gui/gui_winner.c\
+		gui/gui_win.c\
 		gui/update_info.c\
 		gui/call_control.c\
 		gui/call_filepicker.c
@@ -78,6 +78,7 @@ ifeq ($(GTK), 1)
 	LDFLAGS += $(GTK_LDFLAGS)
 else
 	SRC_NAME += main.c
+	CFLAGS += -O2
 endif
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
