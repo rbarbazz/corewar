@@ -1,11 +1,12 @@
-/* ************************************************************************** */ /*                                                                            */
+/* ************************************************************************** */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   call_control.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 17:49:09 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/24 20:45:31 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/25 17:11:55 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +44,6 @@ void		callback_steps(GtkAdjustment *adjustment, t_gtkinfo *i)
 {
 	gdouble		value;
 
-
 	value = gtk_adjustment_get_value(adjustment);
 	i->b.steps = (int)value;
 }
@@ -51,7 +51,6 @@ void		callback_steps(GtkAdjustment *adjustment, t_gtkinfo *i)
 void		callback_speed(GtkAdjustment *adjustment, t_gtkinfo *i)
 {
 	gdouble		value;
-
 
 	value = gtk_adjustment_get_value(adjustment);
 	i->b.speed = (int)value;

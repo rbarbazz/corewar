@@ -43,7 +43,7 @@ xperrin (xperrin@student.42.fr)</property>
     <signal name="value-changed" handler="callback_speed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="adj_steps">
-    <property name="upper">100</property>
+    <property name="upper">10000</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
     <signal name="value-changed" handler="callback_steps" swapped="no"/>
@@ -63,7 +63,7 @@ xperrin (xperrin@student.42.fr)</property>
     <property name="default_width">1680</property>
     <property name="default_height">1050</property>
     <property name="deletable">False</property>
-    <signal name="destroy" handler="gtk_main_quit" swapped="no"/>
+    <signal name="destroy" handler="gui_exit_wrapper" swapped="no"/>
     <child>
       <placeholder/>
     </child>
@@ -124,7 +124,7 @@ xperrin (xperrin@student.42.fr)</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
                             <property name="use_stock">True</property>
-                            <signal name="button-press-event" handler="gtk_main_quit" swapped="no"/>
+                            <signal name="activate" handler="gui_exit_wrapper" swapped="no"/>
                           </object>
                         </child>
                       </object>

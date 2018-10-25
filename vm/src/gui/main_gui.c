@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/24 21:26:18 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/25 19:33:10 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,23 @@
 #include <pthread.h>
 
 /*
+** GTK quit callback
+*/
+
+void			gui_exit_wrapper(GtkWidget *widget, t_gtkinfo *i)
+{
+	(void)widget;
+	if (!i->b.run)
+		gtk_main_quit();
+	else
+		display_popup(MSG_VMSTP);
+}
+
+/*
 ** Initialize the background logic thread
 */
 
-static int	thread_logic_init(t_gtkinfo *i)
+static int		thread_logic_init(t_gtkinfo *i)
 {
 	pthread_t	thread;
 	int			tret;
@@ -27,7 +40,7 @@ static int	thread_logic_init(t_gtkinfo *i)
 	if (tret)
 	{
 		ft_putstr_fd("Error: couldn't create the bg thread\n", 2);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	return (1);
 }
@@ -36,29 +49,23 @@ static int	thread_logic_init(t_gtkinfo *i)
 ** Initialize the GTK info struct and load the glade file
 */
 
-static void	gui_struct_get_objs(t_gtkinfo *i)
+static void		gui_struct_get_objs(t_gtkinfo *i)
 {
-	/* signal handling & objects get */
 	GtkWidget		*w_mem_txt;
 	GtkWidget		*w_play_txt;
 
-	/* window widgets */
 	i->w.m = GTK_WIDGET(gtk_builder_get_object(i->builder, MAIN_WIN));
 	i->w.a = GTK_WIDGET(gtk_builder_get_object(i->builder, ABOUT_WIN));
-
-	/* text buffers */
 	w_mem_txt = GTK_WIDGET(gtk_builder_get_object(i->builder, MEM_TXT_VIEW));
 	w_play_txt = GTK_WIDGET(gtk_builder_get_object(i->builder, PLAY_TXT_VIEW));
 	i->t.mem = gtk_text_view_get_buffer(GTK_TEXT_VIEW(w_mem_txt));
 	i->t.play = gtk_text_view_get_buffer(GTK_TEXT_VIEW(w_play_txt));
-
-	/* controls */
 	i->c.spin = GTK_SPINNER(gtk_builder_get_object(i->builder, SPINNER));
 	i->c.run = GTK_BUTTON(gtk_builder_get_object(i->builder, RUN_CTRL));
 	i->c.pause = GTK_BUTTON(gtk_builder_get_object(i->builder, PAUSE_CTRL));
 }
 
-static int	gui_struct_init(t_gtkinfo *i)
+static int		gui_struct_init(t_gtkinfo *i)
 {
 	ft_bzero(i, sizeof(t_gtkinfo));
 	ft_bzero(&i->b, sizeof(t_gtkwin));
