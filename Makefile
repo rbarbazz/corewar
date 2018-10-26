@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/25 15:21:10 by xperrin          ###   ########.fr        #
+#    Updated: 2018/10/25 23:25:58 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,26 +17,29 @@ VM = vm
 LIB = libft
 
 all:
-	make -C $(ASM)
-	make -C $(VM)
+	$(MAKE) -C $(ASM)
+	$(MAKE) -C $(VM)
 
 clean:
-	make -C $(LIB) clean
-	make -C $(ASM) clean
-	make -C $(VM) clean
+	$(MAKE) -C $(LIB) clean
+	$(MAKE) -C $(ASM) clean
+	$(MAKE) -C $(VM) clean
 
 fclean:
-	make -C $(LIB) fclean
-	make -C $(ASM) fclean
-	make -C $(VM) fclean
+	$(MAKE) -C $(LIB) fclean
+	$(MAKE) -C $(ASM) fclean
+	$(MAKE) -C $(VM) fclean
 
 re:
 	$(MAKE) fclean
 	$(MAKE)
 
 norme:
-	make -C $(LIB) norme
-	make -C $(ASM) norme
-	make -C $(VM) norme
+	$(MAKE) -C $(LIB) norme
+	$(MAKE) -C $(ASM) norme
+	$(MAKE) -C $(VM) norme
 
-.PHONY: all clean fclean re
+GTK:
+	$(MAKE) -C $(VM) GTK
+
+.PHONY: all clean fclean re norme GTK
