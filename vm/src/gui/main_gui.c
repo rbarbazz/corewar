@@ -6,13 +6,14 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/26 00:51:07 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/26 14:32:19 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 #include "gui.h"
 #include <pthread.h>
+#include <time.h>
 
 /*
 ** GTK quit callback
@@ -24,7 +25,11 @@ void			gui_exit_wrapper(GtkWidget *widget, t_gtkinfo *i)
 	if (!i->b.run)
 		gtk_main_quit();
 	else
-		display_popup(MSG_VMSTP);
+	{
+		i->b.run = 0;
+		sleep(1);
+		gtk_main_quit();
+	}
 }
 
 /*
