@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/13 18:03:33 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/16 16:18:49 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/26 19:56:05 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ void		ft_get_input(t_global *info)
 		while ((char)(key = getch()) != KEY_PAUSE && key != KEY_STEP)
 			if (key == RESIZE_SIGNAL)
 				reset_display(info);
-		if (key == KEY_PAUSE)
+			else if (key == KEY_UP)
+				konami_code();
+		if ((char)key == KEY_PAUSE)
 		{
 			pause = 0;
 			cbreak();
