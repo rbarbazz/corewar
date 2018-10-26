@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 14:42:52 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/16 16:24:23 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/26 19:24:31 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ int			ft_init_curses(t_global *info)
 	noecho();
 	if (ft_check_screen_size())
 	{
-		mvprintw(LINES / 2, COLS / 3, \
+		mvprintw(LINES / 2, COLS / 3,
 				"Your terminal is too small to correctly");
-		mvprintw((LINES / 2) + 1, COLS / 3, \
+		mvprintw((LINES / 2) + 1, COLS / 3,
 				"output using Ncurses.");
-		mvprintw((LINES / 2) + 3, COLS / 3, \
+		mvprintw((LINES / 2) + 3, COLS / 3,
 				"Press any key to launch Corewar without Ncurses view.");
 		getch();
 		endwin();
@@ -47,6 +47,7 @@ int			ft_init_curses(t_global *info)
 		return (1);
 	}
 	curs_set(0);
+	keypad(stdscr, TRUE);
 	ft_init_colors();
 	ft_init_permanent_parts(info);
 	return (SUCCESS);
