@@ -197,21 +197,6 @@ xperrin (xperrin@student.42.fr)</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkProgressBar" id="b_progress">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="valign">start</property>
-                    <property name="fraction">1</property>
-                    <property name="pulse_step">1</property>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="pack_type">end</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkSpinner" id="b_spinner">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>

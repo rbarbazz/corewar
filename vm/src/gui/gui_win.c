@@ -6,11 +6,19 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 20:22:55 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/26 00:59:31 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/26 11:52:08 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gui.h"
+
+static gboolean		reset_buttons(t_gtkinfo *i)
+{
+	gtk_button_set_label(i->c.run, RUN_STOPPED_MSG);
+	gtk_button_set_label(i->c.pause, PAUSE_RUNNING_MSG);
+	i->b.pause = 0;
+	return (G_SOURCE_REMOVE);
+}
 
 static gboolean		winner_popup(t_player *winner)
 {
@@ -62,6 +70,7 @@ void				vm_exec_end(int finished, t_gtkinfo *i)
 		update_map(i->vm);
 		ft_visu_curses(i->vm);
 	}
+	gdk_threads_add_idle(G_SOURCE_FUNC(reset_buttons), i);
 	if (finished)
 		gui_get_winner(i);
 	free_process();
