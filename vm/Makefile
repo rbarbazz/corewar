@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/26 00:47:10 by xperrin          ###   ########.fr        #
+#    Updated: 2018/10/26 16:47:45 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ NCURSE = -lncurses
 GTK_SRC_NAME = gui/main_gui.c\
 		gui/bg_loop.c\
 		gui/reset.c\
+		gui/rice.c\
 		gui/popup.c\
 		gui/gui_win.c\
 		gui/update_info.c\

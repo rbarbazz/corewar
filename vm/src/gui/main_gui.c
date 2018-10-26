@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/26 14:32:19 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/26 16:46:48 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,12 @@ static int		thread_logic_init(t_gtkinfo *i)
 
 static void		gui_struct_get_objs(t_gtkinfo *i)
 {
-	GtkWidget		*w_mem_txt;
-	GtkWidget		*w_play_txt;
-
 	i->w.m = GTK_WIDGET(gtk_builder_get_object(i->builder, MAIN_WIN));
 	i->w.a = GTK_WIDGET(gtk_builder_get_object(i->builder, ABOUT_WIN));
-	w_mem_txt = GTK_WIDGET(gtk_builder_get_object(i->builder, MEM_TXT_VIEW));
-	w_play_txt = GTK_WIDGET(gtk_builder_get_object(i->builder, PLAY_TXT_VIEW));
-	i->t.mem = gtk_text_view_get_buffer(GTK_TEXT_VIEW(w_mem_txt));
-	i->t.play = gtk_text_view_get_buffer(GTK_TEXT_VIEW(w_play_txt));
+	i->t.v_mem = GTK_WIDGET(gtk_builder_get_object(i->builder, MEM_TXT_VIEW));
+	i->t.v_play = GTK_WIDGET(gtk_builder_get_object(i->builder, PLAY_TXT_VIEW));
+	i->t.mem = gtk_text_view_get_buffer(GTK_TEXT_VIEW(i->t.v_mem));
+	i->t.play = gtk_text_view_get_buffer(GTK_TEXT_VIEW(i->t.v_play));
 	i->c.spin = GTK_SPINNER(gtk_builder_get_object(i->builder, SPINNER));
 	i->c.run = GTK_BUTTON(gtk_builder_get_object(i->builder, RUN_CTRL));
 	i->c.pause = GTK_BUTTON(gtk_builder_get_object(i->builder, PAUSE_CTRL));
@@ -89,6 +86,7 @@ static int		gui_struct_init(t_gtkinfo *i)
 	}
 	gtk_builder_connect_signals(i->builder, i);
 	gui_struct_get_objs(i);
+	memory_widget_pimp(i);
 	gtk_widget_show_all(i->w.m);
 	return (1);
 }
