@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/22 14:05:55 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/22 15:51:10 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,7 @@ typedef struct			s_global
 	char				visual;
 	char				debug;
 	char				dump;
+	int					gtk;
 }						t_global;
 
 /*
@@ -218,6 +219,8 @@ void					close_file(int fd);
 ** *****************************************************************************
 */
 
+void					check_champ(t_global *info, char *filename,
+		char has_pnumber);
 int						check_args(t_global *info, int argc, char **argv);
 int						check_magic(char *file);
 void					check_champ(t_global *info, char *filename,\

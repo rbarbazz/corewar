@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/25 15:30:18 by xperrin          ###   ########.fr        #
+#    Updated: 2018/10/26 00:47:10 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ INC_FULL = $(addprefix $(INC_PATH)/, $(INC_FILES))
 
 SRC_PATH = src
 
-SRC_NAME =	main.c init.c\
+SRC_NAME =	init.c\
 			play/cycle.c play/check_process.c play/get_curr_op.c play/intro.c\
 			play/play.c play/get_curr_param.c play/do_op.c play/kill_process.c\
 			op_functions/live.c op_functions/add.c op_functions/sub.c\
@@ -40,6 +40,7 @@ SRC_NAME =	main.c init.c\
 			display/curses_permanent_parts.c display/curses_map.c\
 			clear.c error.c tool.c op.c
 
+
 OBJ_PATH = obj
 
 CPPFLAGS = -Iinclude -I../libft/include
@@ -52,9 +53,30 @@ LIB = ../libft/libft.a
 
 CFLAGS = -Wall -Wextra -Werror -O2
 
-CC = clang
-
 NCURSE = -lncurses
+
+# GTK build specific variables
+GTK_SRC_NAME = gui/main_gui.c\
+		gui/bg_loop.c\
+		gui/reset.c\
+		gui/popup.c\
+		gui/gui_win.c\
+		gui/update_info.c\
+		gui/call_control.c\
+		gui/call_filepicker.c
+GTK_INC_FILES = gui.h
+GTK_LIBS = gtk+-3.0 gmodule-2.0
+GTK_CPPFLAGS = $(shell pkg-config --cflags-only-I $(GTK_LIBS)) -pthread
+GTK_LDFLAGS = $(shell pkg-config --libs --cflags $(GTK_LIBS)) -rdynamic
+ifeq ($(GTK), 1)
+	NAME = corewar_gui
+	SRC_NAME += $(GTK_SRC_NAME)
+	INC_FILES += $(GTK_INC_FILES)
+	CPPFLAGS += $(GTK_CPPFLAGS)
+	LDFLAGS += $(GTK_LDFLAGS)
+else
+	SRC_NAME += main.c
+endif
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -71,7 +93,7 @@ $(NAME): $(LIB) $(OBJ)
 	$(CC) $(NCURSE) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LDLIBS) $(LIB) -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC_FULL)
-	@mkdir -p obj/play obj/setup obj/display obj/op_functions
+	@mkdir -p obj/play obj/setup obj/display obj/op_functions obj/gui
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 norme:
@@ -90,4 +112,13 @@ re:
 	$(MAKE) fclean
 	$(MAKE)
 
-.PHONY: all norme clean fclean re
+GTK:
+	GTK=1 $(MAKE)
+
+GTK_fclean:
+	GTK=1 $(MAKE) fclean
+
+GTK_re:
+	GTK=1 $(MAKE) re
+
+.PHONY: all norme clean fclean re GTK GTK_fclean GTK_re

@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 19:26:08 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/22 14:10:36 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/22 15:50:45 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void			check_champ(t_global *info, char *filename, char has_pnumber)
 	}
 	init_player(info, file, has_pnumber);
 	close_file(fd);
-	ft_strdel(&file);
+	if (!info->gtk)
+		ft_strdel(&file);
 }
 
 /*
