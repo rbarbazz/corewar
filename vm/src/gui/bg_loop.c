@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 16:31:52 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/26 00:58:31 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/26 18:34:47 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void		*bg_loop(t_gtkinfo *i)
 			}
 			else
 			{
-				gdk_threads_add_idle(G_SOURCE_FUNC(display_popup), MSG_VMSTP);
 				i->b.run = 0;
+				gdk_threads_add_idle(G_SOURCE_FUNC(display_popup), MSG_PMISS);
 			}
 		}
 		sleep(1);

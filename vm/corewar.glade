@@ -148,7 +148,7 @@ xperrin (xperrin@student.42.fr)</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
                             <property name="use_stock">True</property>
-                            <signal name="button-press-event" handler="gtk_widget_show" object="about_window" swapped="no"/>
+                            <signal name="activate" handler="callback_about" swapped="no"/>
                           </object>
                         </child>
                       </object>
