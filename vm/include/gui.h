@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/26 01:04:40 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/26 17:18:27 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,21 @@
 # include "vm.h"
 # include <gtk/gtk.h>
 
+/*
+** Messages
+*/
 # define PL_FMT "Player %d: %s\nLast Live: %d\nLives in current period: %d\n\n"
-
 # define MSG_PTOOMANY "Error: Too many players"
 # define MSG_PMISS "Error: Load a player first"
 # define MSG_VMSTP "Error: Stop the VM first!"
-
 # define MSG_WINFMT "And the Winner is %s (P%d)!"
+
+/*
+** CSS
+*/
+# define CSS_MEM_FONT " font: 10 mono;"
+# define CSS_MEM_TXTCOLOR  "color: black;"
+# define CSS_MEM_BGCOLOR  "background-color: #000000;"
 
 /*
 **   ___ _____ _  __  ___ _         __  __
@@ -57,13 +65,18 @@ typedef struct		s_gtkwin
 # define BUF_PLAY_TXT "buf_play"
 
 /*
-** mem : The memory display buffer
+** mem:  The memory display buffer
+** play: The player info buffer
+**
+** v_*: The matching widgets(GtkTextView)
 */
 
 typedef struct		s_gtktext
 {
 	GtkTextBuffer	*mem;
 	GtkTextBuffer	*play;
+	GtkWidget		*v_mem;
+	GtkWidget		*v_play;
 }					t_gtktext;
 
 /*
@@ -96,7 +109,7 @@ typedef struct		s_gtkctrl
 */
 
 /*
-** run: run or stop the VM;
+** run:   run or stop the VM
 ** pause: is it paused?
 ** steps: number of steps to run
 ** speed: microsecond sleep in VM thread
@@ -113,10 +126,10 @@ typedef struct		s_vm_bg
 }					t_vm_bg;
 
 /*
-** vm:				Corewar VM info
-** builder:			GtkBuilder object
-** gladefilename:	path to corewar.glad
-** err:				gtk error object
+** vm:              Corewar VM info
+** builder:         GtkBuilder object
+** gladefilename:   path to corewar.glad
+** err:             gtk error object
 **
 ** b: background process control
 ** w: windows widgets
@@ -168,6 +181,10 @@ void				clear_map(t_map *map);
 */
 gboolean			display_popup(char *s);
 /*
+** rice.c
+*/
+void				memory_widget_pimp(t_gtkinfo *i);
+/*
 ** call_filepicker.c
 */
 void				callback_player_load(GtkMenuItem *item, t_gtkinfo *i);
@@ -179,6 +196,6 @@ void				callback_logic_start(GtkButton *button, t_gtkinfo *i);
 void				callback_pause(GtkButton *button, t_gtkinfo *i);
 void				callback_steps(GtkAdjustment *adjustment, t_gtkinfo *i);
 void				callback_speed(GtkAdjustment *adjustment, t_gtkinfo *i);
-void				callback_dbgvisu(GtkWidget *widget, t_gtkinfo *i);
+void				callback_ncurses(GtkWidget *widget, t_gtkinfo *i);
 
 #endif

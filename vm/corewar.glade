@@ -60,8 +60,8 @@ xperrin (xperrin@student.42.fr)</property>
     <property name="height_request">-1</property>
     <property name="can_focus">False</property>
     <property name="is_focus">True</property>
-    <property name="default_width">1680</property>
-    <property name="default_height">1050</property>
+    <property name="default_width">1300</property>
+    <property name="default_height">768</property>
     <property name="deletable">False</property>
     <signal name="destroy" handler="gui_exit_wrapper" swapped="no"/>
     <child>
@@ -325,7 +325,7 @@ xperrin (xperrin@student.42.fr)</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="draw_indicator">True</property>
-                                <signal name="toggled" handler="callback_dbgvisu" swapped="no"/>
+                                <signal name="toggled" handler="callback_ncurses" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
