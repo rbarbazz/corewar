@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/26 17:18:27 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/26 18:23:15 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 /*
 ** CSS
 */
-# define CSS_MEM_FONT " font: 10 mono;"
+# define CSS_MEM_FONT " font: 10px mono;"
 # define CSS_MEM_TXTCOLOR  "color: black;"
 # define CSS_MEM_BGCOLOR  "background-color: #000000;"
 
@@ -48,8 +48,8 @@
 # define ABOUT_WIN "about_window"
 
 /*
-** w_m:  MAIN_WIN (main window)
-** w_a:  ABOUT_WIN(about window)
+** m:  MAIN_WIN (main window)
+** a:  ABOUT_WIN(about window)
 */
 
 typedef struct		s_gtkwin
@@ -184,6 +184,10 @@ gboolean			display_popup(char *s);
 ** rice.c
 */
 void				memory_widget_pimp(t_gtkinfo *i);
+/*
+** call_misc.c
+*/
+void				callback_about(GtkMenuItem *menuitem, t_gtkinfo *i);
 /*
 ** call_filepicker.c
 */
