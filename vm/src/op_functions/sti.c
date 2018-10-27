@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/13 22:37:46 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/22 14:08:00 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/27 13:33:54 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ static void	debug_sti(t_process *process, int param1, int param2,\
 short param_sum)
 {
 	ft_printf("P%5d | sti r%d %d %d\n", process->process_nb,\
-	process->curr_op.param[0], param1, param2);
+		process->curr_op.param[0], param1, param2);
 	ft_printf("       | -> store to %hd + %hd = %d", param1, param2,\
-	param1 + param2);
+		param1 + param2);
 	ft_printf(" (with pc and mod %hd)\n", (param_sum + process->op_pos)\
-	% MEM_SIZE);
+		% MEM_SIZE);
 }
 
 void		sti(t_global *info, t_process *process)

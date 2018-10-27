@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 11:24:59 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/22 12:27:46 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/27 13:21:44 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,14 +174,14 @@ char						*store_sfile(char *filename);
 int							parser(t_asm *champ);
 void						check_cmd(t_asm *champ, char *cmd);
 void						check_cmd_value(t_asm *champ, int max_length,\
-char *cmd, char *value);
+	char *cmd, char *value);
 void						look_for_label(t_asm *champ);
 int							is_label_chars(char c);
 void						look_for_op(t_asm *champ);
 int							check_op_name(t_asm *champ);
 void						check_op_param(t_asm *champ, t_op *op);
 void						check_param_type(t_arg_type type, t_op *op,\
-int curr_param);
+	int curr_param);
 int							check_reg(t_asm *champ, t_op *op, int curr_param);
 int							check_dir(t_asm *champ, t_op *op, int curr_param);
 int							check_ind(t_asm *champ, t_op *op, int curr_param);

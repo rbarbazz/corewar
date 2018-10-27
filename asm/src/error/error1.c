@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 15:37:19 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/22 12:14:25 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/27 13:22:33 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	error_size(void)
 
 	champ = get_champ();
 	ft_dprintf(STDERR_FILENO, "Champion is too big, the max is %u bytes\n",\
-	CHAMP_MAX_SIZE);
+		CHAMP_MAX_SIZE);
 	ft_dprintf(STDERR_FILENO, "Check near line %i col %i\n", champ->line,\
-	champ->col);
+		champ->col);
 	free_asm();
 	exit(CHAMP_TOO_BIG);
 }
@@ -31,7 +31,7 @@ void	error_separator(void)
 
 	champ = get_champ();
 	ft_dprintf(STDERR_FILENO, "Parsing error near line %d col %d",\
-	champ->line, champ->col);
+		champ->line, champ->col);
 	ft_dprintf(STDERR_FILENO, " : missing or wrong separator\n");
 	free_asm();
 	exit(ERR_SEP);
@@ -43,7 +43,7 @@ void	error_reg(void)
 
 	champ = get_champ();
 	ft_dprintf(STDERR_FILENO, "Parsing error near line %d col %d",\
-	champ->line, champ->col);
+		champ->line, champ->col);
 	ft_dprintf(STDERR_FILENO, " : wrong register number\n");
 	free_asm();
 	exit(WRONG_REG);

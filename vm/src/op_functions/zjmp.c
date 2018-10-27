@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 14:53:16 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/22 14:08:21 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/27 13:34:12 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	zjmp(t_global *info, t_process *process)
 		if (info->debug)
 			ft_printf(" OK\n");
 		increase_position(process, param0_s - process->curr_pos\
-		+ process->op_pos);
+			+ process->op_pos);
 	}
 	else
 	{

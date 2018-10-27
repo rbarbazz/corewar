@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 18:04:01 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/22 14:11:25 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/27 13:36:19 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void			ft_carry(t_process *process, int value)
 */
 
 void			write_at_position(t_map *map, t_process *process,\
-unsigned int position, unsigned int buff)
+	unsigned int position, unsigned int buff)
 {
 	int			i;
 	char		*itoaed;
@@ -60,7 +60,7 @@ unsigned int position, unsigned int buff)
 */
 
 char			*get_value_at_position(t_map *map, unsigned int position,\
-int size)
+	int size)
 {
 	char	*ret;
 	int		i;

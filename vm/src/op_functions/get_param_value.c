@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 16:47:32 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/22 14:06:59 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/27 13:32:42 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_reg(t_global *info, t_process *process, int param)
 	{
 		if (!info->visual && !info->debug)
 			ft_dprintf(STDERR_FILENO, "Registre inexistant : %u\n",\
-		process->curr_op.param[param]);
+				process->curr_op.param[param]);
 		return (1);
 	}
 	return (0);
@@ -45,7 +45,7 @@ int	get_param_value(t_global *info, t_process *process, int i, int *param)
 	else if (process->type_param[i] == T_IND)
 	{
 		tmp = get_value_at_position(info->map, process->op_pos\
-		+ process->curr_op.param[i], 4);
+			+ process->curr_op.param[i], 4);
 		*param = tab_to_int(tmp);
 		ft_strdel(&tmp);
 	}

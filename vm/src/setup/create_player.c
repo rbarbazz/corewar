@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 19:26:08 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/22 15:50:45 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/27 13:35:15 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ static t_player	*assignate_value(char *file)
 	new->prog_size = tab_to_int(command_size);
 	ft_strdel(&command_size);
 	if (!(new->comment = ft_strndup(file + 12 + PROG_NAME_LENGTH,\
-		COMMENT_LENGTH)))
+			COMMENT_LENGTH)))
 		exit_corewar(MALLOC_ERROR);
 	if (!(new->instruction = ft_strndup(file + 16 + PROG_NAME_LENGTH\
-		+ COMMENT_LENGTH, new->prog_size)))
+			+ COMMENT_LENGTH, new->prog_size)))
 		exit_corewar(MALLOC_ERROR);
 	if (check_end_file(new, file) == 1)
 		exit_corewar(WRONG_COMMAND_LENGTH);

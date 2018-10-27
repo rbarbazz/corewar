@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/11 16:42:45 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/22 12:38:36 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/27 13:25:48 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		skip_non_print(void)
 	ret = 0;
 	champ = get_champ();
 	while (champ->sfile && champ->sfile[champ->i]\
-	&& !ft_isprint(champ->sfile[champ->i]))
+		&& !ft_isprint(champ->sfile[champ->i]))
 	{
 		if (champ->sfile[champ->i] == '\n')
 		{
@@ -57,7 +57,7 @@ void	skip_space(void)
 
 	champ = get_champ();
 	while (champ->sfile && champ->sfile[champ->i]\
-	&& !ft_isprint(champ->sfile[champ->i]))
+		&& !ft_isprint(champ->sfile[champ->i]))
 	{
 		if (champ->sfile[champ->i] == '\n')
 			return ;
