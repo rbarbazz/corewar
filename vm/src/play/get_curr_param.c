@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:30:07 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/22 14:09:59 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/27 13:34:42 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ static void	with_ocp(t_global *info, t_process *process, unsigned char ocp)
 		if (type == REG_CODE)
 			size = 1;
 		else if ((type == DIR_CODE && process->curr_op.nb_or_address)\
-		|| type == IND_CODE)
+			|| type == IND_CODE)
 			size = 2;
 		else if (type == DIR_CODE && !process->curr_op.nb_or_address)
 			size = 4;

@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/22 15:51:10 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/27 13:29:47 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,7 +224,7 @@ void					check_champ(t_global *info, char *filename,
 int						check_args(t_global *info, int argc, char **argv);
 int						check_magic(char *file);
 void					check_champ(t_global *info, char *filename,\
-char has_pnumber);
+	char has_pnumber);
 
 /*
 ** *****************************************************************************
@@ -242,7 +242,7 @@ void					write_player_in_map(t_global *info);
 */
 
 int						init_player(t_global *info, char *file,\
-char has_pnumber);
+	char has_pnumber);
 void					create_initial_process(t_global *info);
 t_process				*duplicate_process(t_global *info, t_process *process);
 
@@ -266,9 +266,9 @@ char					get_ocp(t_global *info, t_process *process);
 void					get_op(t_global *info, t_process *process);
 int						get_data_from_op(int op, t_process *process);
 char					*get_value_at_position(t_map *map,\
-unsigned int position, int size);
+	unsigned int position, int size);
 void					get_op_param(t_global *info, t_process *process,\
-unsigned char ocp);
+	unsigned char ocp);
 void					do_op(t_global *info, t_process *process);
 
 /*
@@ -278,7 +278,7 @@ void					do_op(t_global *info, t_process *process);
 */
 
 int						get_param_value(t_global *info, t_process *process,\
-int i, int *param);
+	int i, int *param);
 int						check_reg(t_global *info, t_process *process, int i);
 void					live(t_global *info, t_process *process);
 void					add(t_global *info, t_process *process);
@@ -309,7 +309,7 @@ char					*map_from_list(t_global *info);
 void					set_current_null(t_map *map, int position);
 void					increase_position(t_process *process, unsigned int add);
 void					write_at_position(t_map *map, t_process *process,\
-unsigned int position, unsigned int buff);
+	unsigned int position, unsigned int buff);
 void					ft_carry(t_process *process, int value);
 
 /*

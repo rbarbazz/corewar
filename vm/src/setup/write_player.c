@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 14:08:04 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/22 14:11:05 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/27 13:35:42 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ void		write_player_in_map(t_global *info)
 		}
 		tmp = tmp->next;
 		position = position + (ft_sqrt(MEM_SIZE) / info->player_count)\
-		* ft_sqrt(MEM_SIZE);
+			* ft_sqrt(MEM_SIZE);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 10:48:58 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/19 11:41:35 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/27 13:32:31 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	fork_vm(t_global *info, t_process *process)
 	new = duplicate_process(info, process);
 	if (info->debug)
 		ft_printf("P%5d | fork %hd (%d)\n", process->process_nb,\
-		process->curr_op.param[0], (param0 + process->op_pos) % IDX_MOD);
+			process->curr_op.param[0], (param0 + process->op_pos) % IDX_MOD);
 	param0_s = param0_s % IDX_MOD;
 	if (param0_s < 0)
 		param0_s = MEM_SIZE + param0_s;

@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 15:01:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/22 12:05:13 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/27 13:36:02 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,20 @@ void		exit_corewar(int error_code)
 {
 	if (error_code == TOO_MANY_ARGS)
 		ft_dprintf(STDERR_FILENO, "[ERROR] %d : Too many champions\n",\
-		error_code);
+			error_code);
 	else if (error_code == NO_CHAMP)
 		display_usage();
 	else if (error_code == FILE_EMPTY)
 		ft_dprintf(STDERR_FILENO, "[ERROR] %d : Champion can't be empty\n",\
-		error_code);
+			error_code);
 	else if (error_code == MALLOC_ERROR)
 		ft_dprintf(STDERR_FILENO, "[ERROR] %d : Malloc error\n", error_code);
 	else if (error_code == INVALID_MAGIC)
 		ft_dprintf(STDERR_FILENO, "[ERROR] %d : Invalid COREWAR_EXEC_MAGIC\n",\
-		error_code);
+			error_code);
 	else if (error_code == WRONG_COMMAND_LENGTH)
 		ft_dprintf(STDERR_FILENO, "[ERROR] %d : Champion is too long\n",\
-		error_code);
+			error_code);
 	else if (error_code == WRONG_PNUMBER)
 		error_wrong_pnumber(error_code);
 	else if (error_code == USAGE_ERROR)

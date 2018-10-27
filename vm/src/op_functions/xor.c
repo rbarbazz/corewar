@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/17 16:09:47 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/18 17:24:07 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/27 13:34:08 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	xor_vm(t_global *info, t_process *process)
 	if (info->debug)
 	{
 		ft_printf("P%5d | xor %hd %hd r%d\n", process->process_nb, param0,\
-		param1, process->curr_op.param[2]);
+			param1, process->curr_op.param[2]);
 	}
 	ft_carry(process, process->reg[process->curr_op.param[2] - 1]);
 }

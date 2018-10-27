@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 10:27:16 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/19 10:30:23 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/27 13:33:15 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ void			live(t_global *info, t_process *process)
 	player->last_live = info->clock.cycle;
 	if (!info->visual && !info->debug)
 		ft_printf("un processus dit que le joueur %d(%s) est en vie\n",\
-		player->player, player->name);
+			player->player, player->name);
 }

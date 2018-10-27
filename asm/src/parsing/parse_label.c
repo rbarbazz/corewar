@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:34:47 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/22 12:31:48 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/27 13:23:48 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ static void	add_label(t_asm *champ, char *lab_name)
 }
 
 /*
+** *****************************************************************************
 ** returns 1 if the label already exists
+** *****************************************************************************
 */
 
 t_lab		*check_lab_exist(t_asm *champ, char *lab_name)
@@ -86,7 +88,7 @@ static void	get_label(t_asm *champ, int pos)
 	i = 0;
 	ft_bzero(lab_name, pos - champ->i + 1);
 	while (champ->sfile && champ->sfile[champ->i]\
-	&& champ->sfile[champ->i] != LABEL_CHAR)
+		&& champ->sfile[champ->i] != LABEL_CHAR)
 	{
 		lab_name[i++] = champ->sfile[champ->i];
 		move_index();
@@ -111,7 +113,7 @@ void		look_for_label(t_asm *champ)
 	skip_non_print();
 	pos = champ->i;
 	while (champ->sfile && champ->sfile[pos]\
-	&& is_label_chars(champ->sfile[pos]))
+		&& is_label_chars(champ->sfile[pos]))
 		pos++;
 	if (champ->sfile && champ->sfile[pos] && champ->sfile[pos] == LABEL_CHAR)
 		get_label(champ, pos);

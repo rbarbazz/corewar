@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 16:20:20 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/18 17:22:28 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/27 13:32:51 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ld(t_global *info, t_process *process)
 		return ;
 	if (info->debug)
 		ft_printf("P%5d | ld %d r%d\n", process->process_nb, param0,\
-		process->curr_op.param[1]);
+			process->curr_op.param[1]);
 	process->reg[process->curr_op.param[1] - 1] = param0;
 	ft_carry(process, process->reg[process->curr_op.param[1] - 1]);
 }

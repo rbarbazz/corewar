@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 16:09:57 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/22 12:32:12 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/27 13:24:07 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	check_separator_char(t_asm *champ)
 {
 	skip_space();
 	if (champ->sfile && champ->sfile[champ->i]\
-	&& champ->sfile[champ->i] != SEPARATOR_CHAR)
+		&& champ->sfile[champ->i] != SEPARATOR_CHAR)
 		error_separator();
 	move_index();
 }

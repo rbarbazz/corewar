@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 19:13:17 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/22 12:28:22 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/27 13:22:52 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int			check_dir(t_asm *champ, t_op *op, int curr_param)
 	if (op->nb_or_address == 1)
 		size = 2;
 	if (champ->sfile && champ->sfile[champ->i]\
-	&& champ->sfile[champ->i] == DIRECT_CHAR)
+		&& champ->sfile[champ->i] == DIRECT_CHAR)
 	{
 		move_index();
 		if (!get_label_pos(champ, size))
