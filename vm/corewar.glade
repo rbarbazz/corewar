@@ -319,8 +319,8 @@ xperrin (xperrin@student.42.fr)</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <child>
-                              <object class="GtkCheckButton" id="o_dbgvisu">
-                                <property name="label" translatable="yes">Curses Visu (Debug)</property>
+                              <object class="GtkCheckButton" id="o_cursesvisu">
+                                <property name="label" translatable="yes">Ncurses visualisator</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
@@ -350,7 +350,7 @@ xperrin (xperrin@student.42.fr)</property>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
-                                <property name="top_attach">3</property>
+                                <property name="top_attach">5</property>
                               </packing>
                             </child>
                             <child>
@@ -378,21 +378,21 @@ xperrin (xperrin@student.42.fr)</property>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
-                                <property name="top_attach">2</property>
+                                <property name="top_attach">4</property>
                               </packing>
                             </child>
                             <child>
                               <object class="GtkLabel" id="l_speed">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="label" translatable="yes">Speed:</property>
+                                <property name="label" translatable="yes">Sleep:</property>
                                 <attributes>
                                   <attribute name="underline" value="True"/>
                                 </attributes>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
-                                <property name="top_attach">4</property>
+                                <property name="top_attach">6</property>
                               </packing>
                             </child>
                             <child>
@@ -405,7 +405,35 @@ xperrin (xperrin@student.42.fr)</property>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
-                                <property name="top_attach">5</property>
+                                <property name="top_attach">7</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkCheckButton" id="o_vmdebug">
+                                <property name="label" translatable="yes">Virtual Machine dbg info</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="draw_indicator">True</property>
+                                <signal name="toggled" handler="callback_debug_vm" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkCheckButton" id="o_guidbg">
+                                <property name="label" translatable="yes">GUI debug</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="draw_indicator">True</property>
+                                <signal name="toggled" handler="callback_debug_gui" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">3</property>
                               </packing>
                             </child>
                           </object>
