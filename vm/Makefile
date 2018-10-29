@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/26 18:13:22 by xperrin          ###   ########.fr        #
+#    Updated: 2018/10/29 11:43:31 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ GTK_SRC_NAME = gui/main_gui.c\
 		gui/gui_win.c\
 		gui/update_info.c\
 		gui/call_control.c\
+		gui/call_debug.c\
 		gui/call_filepicker.c\
 		gui/call_misc.c
 GTK_INC_FILES = gui.h
