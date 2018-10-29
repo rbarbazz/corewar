@@ -15,7 +15,7 @@
 msamak (msamak@student.42.fr)
 rbarbazz (rbarbazz@student.42.fr)
 xperrin (xperrin@student.42.fr)</property>
-    <property name="logo_icon_name">face-crying</property>
+    <property name="logo_icon_name">applications-games</property>
     <child>
       <placeholder/>
     </child>
@@ -450,6 +450,43 @@ xperrin (xperrin@student.42.fr)</property>
                                 <property name="left_attach">0</property>
                                 <property name="top_attach">3</property>
                               </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="l_colors">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="label" translatable="yes">Player Colors:</property>
+                                <attributes>
+                                  <attribute name="underline" value="True"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">8</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="o_p1color">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="title" translatable="yes">P1 color</property>
+                                <property name="rgba">rgb(115,210,22)</property>
+                                <signal name="color-set" handler="callback_colorset_p1" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">9</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
                             </child>
                           </object>
                         </child>

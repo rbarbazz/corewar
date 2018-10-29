@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/29 18:22:49 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/29 22:36:27 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ static int		gui_struct_init(t_gtkinfo *i)
 	gtk_builder_connect_signals(i->builder, i);
 	gui_struct_get_objs(i);
 	memory_widget_pimp(i);
+	create_tags(i);
 	gtk_widget_show_all(i->w.m);
 	return (1);
 }

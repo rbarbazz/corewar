@@ -1,12 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
+/* ************************************************************************** */ /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   gui.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/29 16:11:50 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/29 22:35:40 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +109,26 @@ typedef struct		s_gtkctrl
 }					t_gtkctrl;
 
 /*
+** P1: Green?
+** P2: Blue?
+** P3: yellow?
+** P4: purple?
+*/
+
+typedef	enum		s_pnum
+{
+	p1,
+	p2,
+	p3,
+	p4
+}					t_pnum;
+
+typedef struct		s_gtktags
+{
+	GtkTextTag		*p[4];
+}					t_gtktags;
+
+/*
 **  ___                 ___       __
 ** | _ \_ _ ___  __ _  |_ _|_ _  / _|___
 ** |  _/ '_/ _ \/ _` |  | || ' \|  _/ _ \
@@ -152,6 +171,7 @@ typedef struct		s_gtkinfo
 	t_gtkwin		w;
 	t_gtktext		t;
 	t_gtkctrl		c;
+	t_gtktags		tag;
 	GtkBuilder		*builder;
 	gchar			*gladefilename;
 	GError			*err;
@@ -194,6 +214,7 @@ gboolean			display_popup(char *s);
 ** rice.c
 */
 void				memory_widget_pimp(t_gtkinfo *i);
+void				create_tags(t_gtkinfo *i);
 /*
 ** call_misc.c
 */
@@ -216,5 +237,9 @@ void				callback_speed(GtkAdjustment *adjustment, t_gtkinfo *i);
 void				callback_ncurses(GtkToggleButton *button, t_gtkinfo *i);
 void				callback_debug_vm(GtkToggleButton *button, t_gtkinfo *i);
 void				callback_debug_gui(GtkToggleButton *button, t_gtkinfo *i);
+/*
+** call_colors.c
+*/
+void				callback_colorset_p1(GtkColorButton *widget, t_gtkinfo *i);
 
 #endif
