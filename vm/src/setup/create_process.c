@@ -6,7 +6,7 @@
 /*   By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/05 16:31:35 by rbarbazz          #+#    #+#             */
-/*   Updated: 2018/10/19 13:50:39 by msamak           ###   ########.fr       */
+/*   Updated: 2018/10/29 20:01:01 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ static void	add_process(t_global *info, t_player *tmp_p)
 		tmp->next = new;
 	init_tab(new, tmp_p);
 	assignate_value(new, tmp_p);
+	new->next = NULL;
 	new->process_nb = info->process_count + 1;
 }
 
