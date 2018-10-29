@@ -62,11 +62,14 @@ NCURSE = -lncurses
 GTK_SRC_NAME = gui/main_gui.c\
 		gui/bg_loop.c\
 		gui/reset.c\
+		gui/rice.c\
 		gui/popup.c\
 		gui/gui_win.c\
 		gui/update_info.c\
 		gui/call_control.c\
-		gui/call_filepicker.c
+		gui/call_debug.c\
+		gui/call_filepicker.c\
+		gui/call_misc.c
 GTK_INC_FILES = gui.h
 GTK_LIBS = gtk+-3.0 gmodule-2.0
 GTK_CPPFLAGS = $(shell pkg-config --cflags-only-I $(GTK_LIBS)) -pthread

@@ -5,14 +5,17 @@
   <object class="GtkAboutDialog" id="about_window">
     <property name="can_focus">False</property>
     <property name="type_hint">dialog</property>
+    <property name="gravity">center</property>
     <property name="program_name">Corewar</property>
     <property name="version">nightly</property>
-    <property name="comments" translatable="yes">Une VM corewar with a GTK gui</property>
+    <property name="comments" translatable="yes">A GTK UI for a Corewar virtual machine</property>
+    <property name="website">https://github.com/rbarbazz/corewar</property>
+    <property name="website_label" translatable="yes">Source</property>
     <property name="authors">lcompagn (lcompagn@student.42.fr)
 msamak (msamak@student.42.fr)
 rbarbazz (rbarbazz@student.42.fr)
 xperrin (xperrin@student.42.fr)</property>
-    <property name="logo_icon_name">application-x-executable</property>
+    <property name="logo_icon_name">face-crying</property>
     <child>
       <placeholder/>
     </child>
@@ -60,8 +63,8 @@ xperrin (xperrin@student.42.fr)</property>
     <property name="height_request">-1</property>
     <property name="can_focus">False</property>
     <property name="is_focus">True</property>
-    <property name="default_width">1680</property>
-    <property name="default_height">1050</property>
+    <property name="default_width">1320</property>
+    <property name="default_height">872</property>
     <property name="deletable">False</property>
     <signal name="destroy" handler="gui_exit_wrapper" swapped="no"/>
     <child>
@@ -148,7 +151,7 @@ xperrin (xperrin@student.42.fr)</property>
                             <property name="can_focus">False</property>
                             <property name="use_underline">True</property>
                             <property name="use_stock">True</property>
-                            <signal name="button-press-event" handler="gtk_widget_show" object="about_window" swapped="no"/>
+                            <signal name="activate" handler="callback_about" swapped="no"/>
                           </object>
                         </child>
                       </object>
@@ -213,6 +216,18 @@ xperrin (xperrin@student.42.fr)</property>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
                 <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="b_cycle">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Cycles: 0</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </object>
@@ -319,13 +334,13 @@ xperrin (xperrin@student.42.fr)</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <child>
-                              <object class="GtkCheckButton" id="o_dbgvisu">
-                                <property name="label" translatable="yes">Curses Visu (Debug)</property>
+                              <object class="GtkCheckButton" id="o_cursesvisu">
+                                <property name="label" translatable="yes">Ncurses visualisator</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="draw_indicator">True</property>
-                                <signal name="toggled" handler="callback_dbgvisu" swapped="no"/>
+                                <signal name="toggled" handler="callback_ncurses" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
@@ -350,7 +365,7 @@ xperrin (xperrin@student.42.fr)</property>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
-                                <property name="top_attach">3</property>
+                                <property name="top_attach">5</property>
                               </packing>
                             </child>
                             <child>
@@ -378,21 +393,21 @@ xperrin (xperrin@student.42.fr)</property>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
-                                <property name="top_attach">2</property>
+                                <property name="top_attach">4</property>
                               </packing>
                             </child>
                             <child>
                               <object class="GtkLabel" id="l_speed">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="label" translatable="yes">Speed:</property>
+                                <property name="label" translatable="yes">Sleep:</property>
                                 <attributes>
                                   <attribute name="underline" value="True"/>
                                 </attributes>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
-                                <property name="top_attach">4</property>
+                                <property name="top_attach">6</property>
                               </packing>
                             </child>
                             <child>
@@ -405,7 +420,35 @@ xperrin (xperrin@student.42.fr)</property>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
-                                <property name="top_attach">5</property>
+                                <property name="top_attach">7</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkCheckButton" id="o_vmdebug">
+                                <property name="label" translatable="yes">Virtual Machine dbg info</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="draw_indicator">True</property>
+                                <signal name="toggled" handler="callback_debug_vm" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkCheckButton" id="o_guidbg">
+                                <property name="label" translatable="yes">GUI debug</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="draw_indicator">True</property>
+                                <signal name="toggled" handler="callback_debug_gui" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">3</property>
                               </packing>
                             </child>
                           </object>

@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 20:22:55 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/26 14:11:21 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/29 16:45:19 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,5 @@ void				vm_exec_end(int finished, t_gtkinfo *i)
 	free_process();
 	reset_info(i->vm);
 	i->b.run = 0;
+	i->b.delta = 0;
 }

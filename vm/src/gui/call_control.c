@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/12 17:49:09 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/25 17:11:55 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/29 11:47:25 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,4 @@ void		callback_speed(GtkAdjustment *adjustment, t_gtkinfo *i)
 
 	value = gtk_adjustment_get_value(adjustment);
 	i->b.speed = (int)value;
-}
-
-void		callback_dbgvisu(GtkWidget *widget, t_gtkinfo *i)
-{
-	(void)widget;
-	i->vm->visual = (i->vm->visual) ? 0 : 1;
-	ft_putendl((i->vm->visual) ? "Debug visual set." : "Debug visual unset.");
 }
