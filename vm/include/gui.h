@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/26 18:23:15 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/29 12:36:57 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@
 # define MSG_PMISS "Error: Load a player first"
 # define MSG_VMSTP "Error: Stop the VM first!"
 # define MSG_WINFMT "And the Winner is %s (P%d)!"
+
+# define DBG_NCURSE_SET "Ncurses visual set"
+# define DBG_NCURSE_UNSET "Ncurses visual unset"
+# define DBG_VM_SET "VM debug visual set"
+# define DBG_VM_UNSET "VM debug visual unset"
+# define DBG_GUI_SET "VM debug visual set"
+# define DBG_GUI_UNSET "VM debug visual unset"
 
 /*
 ** CSS
@@ -146,6 +153,7 @@ typedef struct		s_gtkinfo
 	GtkBuilder		*builder;
 	gchar			*gladefilename;
 	GError			*err;
+	int				debug;
 }					t_gtkinfo;
 
 /*
@@ -200,6 +208,11 @@ void				callback_logic_start(GtkButton *button, t_gtkinfo *i);
 void				callback_pause(GtkButton *button, t_gtkinfo *i);
 void				callback_steps(GtkAdjustment *adjustment, t_gtkinfo *i);
 void				callback_speed(GtkAdjustment *adjustment, t_gtkinfo *i);
-void				callback_ncurses(GtkWidget *widget, t_gtkinfo *i);
+/*
+** call_debug.c
+*/
+void				callback_ncurses(GtkToggleButton *button, t_gtkinfo *i);
+void				callback_debug_vm(GtkToggleButton *button, t_gtkinfo *i);
+void				callback_debug_gui(GtkToggleButton *button, t_gtkinfo *i);
 
 #endif
