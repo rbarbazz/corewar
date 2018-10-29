@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 19:26:08 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/28 14:37:42 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/29 13:24:20 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,9 @@ static t_player	*assignate_value(char *file)
 	t_player	*new;
 	char		*command_size;
 
-	if (!(new = (t_player*)ft_memalloc(sizeof(t_player))) || !(new->name\
-		= ft_strndup(file + 4, PROG_NAME_LENGTH)))
+	if (!(new = (t_player*)ft_memalloc(sizeof(t_player))))
+		exit_corewar(MALLOC_ERROR);
+	if (!(new->name = ft_strndup(file + 4, PROG_NAME_LENGTH)))
 		exit_corewar(MALLOC_ERROR);
 	if (!(command_size = ft_strndup(file + 8 + PROG_NAME_LENGTH, 4)))
 		exit_corewar(MALLOC_ERROR);
@@ -107,8 +108,6 @@ static t_player	*assignate_value(char *file)
 		ft_strdel(&file);
 		exit_corewar(WRONG_COMMAND_LENGTH);
 	}
-	new->last_live = 0;
-	new->curr_live = 0;
 	return (new);
 }
 
@@ -127,6 +126,8 @@ int				init_player(t_global *info, char *file, char has_pnumber)
 	while (tmp && tmp->next)
 		tmp = tmp->next;
 	new = assignate_value(file);
+	new->last_live = 0;
+	new->curr_live = 0;
 	if (!tmp)
 		info->player_head = new;
 	else

@@ -6,13 +6,13 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 11:45:37 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/29 12:31:57 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/29 14:14:25 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gui.h"
 
-void	callback_ncurses(GtkToggleButton *button, t_gtkinfo *i)
+void				callback_ncurses(GtkToggleButton *button, t_gtkinfo *i)
 {
 	(void)button;
 	i->vm->sleep = 0;
