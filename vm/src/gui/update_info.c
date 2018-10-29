@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 11:22:30 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/29 12:43:06 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/29 14:05:49 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,12 @@ gboolean		u_text(t_gtkinfo *i)
 	{
 		if (i->b.run)
 			gtk_spinner_start(i->c.spin);
-		/* else */
-		/* { */
-		/* 	gtk_spinner_stop(i->c.spin); */
-		/* 	gtk_button_set_label(i->c.run, RUN_STOPPED_MSG); */
-		/* 	gtk_button_set_label(i->c.pause, PAUSE_RUNNING_MSG); */
-		/* } */
+		else
+		{
+			gtk_spinner_stop(i->c.spin);
+			gtk_button_set_label(i->c.run, RUN_STOPPED_MSG);
+			gtk_button_set_label(i->c.pause, PAUSE_RUNNING_MSG);
+		}
 	}
 	else
 		gtk_spinner_stop(i->c.spin);

@@ -60,8 +60,8 @@ xperrin (xperrin@student.42.fr)</property>
     <property name="height_request">-1</property>
     <property name="can_focus">False</property>
     <property name="is_focus">True</property>
-    <property name="default_width">1300</property>
-    <property name="default_height">768</property>
+    <property name="default_width">1320</property>
+    <property name="default_height">872</property>
     <property name="deletable">False</property>
     <signal name="destroy" handler="gui_exit_wrapper" swapped="no"/>
     <child>
