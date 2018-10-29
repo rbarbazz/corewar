@@ -57,7 +57,7 @@ void		ft_get_input(t_global *info)
 			if (key == RESIZE_SIGNAL)
 				reset_display(info);
 			else if (key == KEY_UP)
-				konami_code();
+				fun_code();
 		if ((char)key == KEY_PAUSE)
 		{
 			pause = 0;

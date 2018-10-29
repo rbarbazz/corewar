@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/26 19:55:45 by lcompagn         ###   ########.fr        #
+#    Updated: 2018/10/29 14:02:39 by lcompagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRC_NAME =	main.c init.c\
 			display/exit_curses.c display/init_curses.c display/visu_curses.c\
 			display/print_instructions.c display/get_playerid.c\
 			display/curses_permanent_parts.c display/curses_map.c\
-			display/konami_code.c\
+			display/fun_code.c\
 			clear.c error.c tool.c op.c
 
 OBJ_PATH = obj
