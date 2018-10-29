@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/28 14:36:10 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/29 16:04:44 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@
 # define KEY_STEP					's'
 # define KEY_SLEEP_UP				'-'
 # define KEY_SLEEP_DOWN				'+'
+# define KEY_B						'b'
+# define KEY_A						'a'
 # define RESIZE_SIGNAL				410
 
 /*
@@ -336,5 +338,6 @@ void					ft_curses_map(t_global *info);
 void					ft_exit_curses(t_player *winner);
 void					ft_get_input(t_global *info);
 int						get_p_id(t_global *info, int pnum);
+void					fun_code(void);
 
 #endif
