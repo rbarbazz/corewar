@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   konami_code.c                                      :+:      :+:    :+:   */
+/*   fun_code.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 19:56:11 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/26 19:56:30 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/29 14:49:20 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,48 +34,34 @@ static void	clear_arena(void)
 	attroff(COLOR_PAIR(5));
 }
 
-static void	print_easter(void)
+static void	print_pic(void)
 {
+	int		fd;
 	int		line;
-	int		col;
-	int		i;
-	int		len;
-	char	*pic;
+	char	*pic_line;
 
-	clear_arena();
-	if (!(pic = ft_strdup(NOTRE_IMAGE_EN_DUR)))
+	if ((fd = open("pic", O_RDONLY)) == -1)
 		return ;
-	len = ft_strlen(pic);
-	i = -1;
+	clear_arena();
 	line = TOP_LINE;
-	col = ARENA_START_COL;
-	while (++i < len)
-		if (pic[i] && pic[i] == '\n')
-		{
-			i++;
-			line++;
-			col = ARENA_START_COL;
-		}
-		else
-			mvprintw(line, col++, "%c", pic[i]);
-	ft_strdel(&pic);
+	ARENA_START_COL;
+	while (get_next_line(fd, &pic_line))
+	{
+		mvprintw(line, ARENA_START_COL, "%s", pic_line);
+		ft_strdel(&pic_line);
+		line++;
+	}
+	ft_strdel(&pic_line);
+	close(fd);
+	refresh();
 	getch();
 	clear_arena();
 }
 
-void		konami_code(void)
+void		fun_code(void)
 {
-	int		key;
-
-	if ((key = getch()) == KEY_UP)
-		if ((key = getch()) == KEY_DOWN)
-			if ((key = getch()) == KEY_DOWN)
-				if ((key = getch()) == KEY_LEFT)
-					if ((key = getch()) == KEY_RIGHT)
-						if ((key = getch()) == KEY_LEFT)
-							if ((key = getch()) == KEY_RIGHT)
-								if ((key = getch()) == KEY_B)
-									if ((key = getch()) == KEY_A)
-										if ((key = getch()) == KEY_PAUSE)
-											print_easter();
+	if (getch() == KEY_DOWN)
+		if (getch() == KEY_LEFT)
+			if (getch() == KEY_RIGHT)
+				print_pic();
 }
