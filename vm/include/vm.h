@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/29 13:57:47 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/29 15:12:46 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 
 # include "libft.h"
 # include "op.h"
-# include "pic.h"
 # include <curses.h>
 # include <sys/types.h>
 # include <sys/stat.h>

@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 14:42:52 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/26 19:24:31 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/29 15:21:13 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,7 @@ static void	ft_init_colors(void)
 	init_pair(2, COLOR_CYAN, COLOR_BLACK);
 	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
 	init_pair(4, COLOR_MAGENTA, COLOR_BLACK);
-	init_pair(5, COLOR_WHITE, COLOR_BLACK);
-	init_pair(1 | (1 << 3), COLOR_BLACK, COLOR_GREEN);
-	init_pair(2 | (1 << 3), COLOR_BLACK, COLOR_CYAN);
-	init_pair(3 | (1 << 3), COLOR_BLACK, COLOR_YELLOW);
-	init_pair(4 | (1 << 3), COLOR_BLACK, COLOR_MAGENTA);
-	init_pair(0 | (1 << 3), COLOR_BLACK, COLOR_WHITE);
+	init_pair(5, COLOR_BLACK, COLOR_WHITE);
 }
 
 int			ft_init_curses(t_global *info)

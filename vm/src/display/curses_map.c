@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 16:23:00 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/17 19:36:11 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/29 15:14:18 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_choose_color(t_map *map, t_global *info, int cycle)
 {
 	int		color;
 
-	color = COLOR_PAIR(get_p_id(info, map->pnumber) | (map->current << 3));
+	color = COLOR_PAIR(get_p_id(info, map->pnumber)) | (map->current << 16);
 	if (map->cycle_written > cycle)
 		return (A_BOLD | color);
 	else
