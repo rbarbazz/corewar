@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/13 18:03:33 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/26 19:56:05 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/29 15:27:22 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void		ft_get_input(t_global *info)
 
 	if (pause == 1)
 	{
-		attron(COLOR_PAIR(0 | (1 << 3)));
+		attron(COLOR_PAIR(5));
 		mvprintw(TOP_LINE, 4, "  PAUSE  ");
 		refresh();
 		while ((char)(key = getch()) != KEY_PAUSE && key != KEY_STEP)
@@ -65,7 +65,7 @@ void		ft_get_input(t_global *info)
 			nodelay(stdscr, TRUE);
 			mvprintw(TOP_LINE, 4, " RUNNING ");
 		}
-		attroff(COLOR_PAIR(0 | (1 << 3)));
+		attroff(COLOR_PAIR(5));
 	}
 	else
 		pause = ft_interpret_input_switch_pause(info, getch());

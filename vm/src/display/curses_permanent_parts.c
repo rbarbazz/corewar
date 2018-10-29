@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 16:23:28 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/17 19:38:13 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/29 15:40:35 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,17 @@ static void	ft_perma_player(t_global *info)
 	i = 1;
 	while (player)
 	{
-		mvprintw(PLAYER_LINE + ((i - 1) * 4), 2, \
+		mvprintw(PLAYER_LINE + ((i - 1) * 4), 2,
 		"Player -%d: ", i);
 		attron(COLOR_PAIR(player->player));
-		printw("%s", player->name);
+		if (ft_strlen(player->name) > 34)
+			printw("%.32s...", player->name);
+		else
+			printw("%s", player->name);
 		attroff(COLOR_PAIR(player->player));
-		mvprintw(PLAYER_LINE + ((i - 1) * 4) + 1, 2, \
+		mvprintw(PLAYER_LINE + ((i - 1) * 4) + 1, 2,
 		"\tLast live: %d", player->last_live);
-		mvprintw(PLAYER_LINE + ((i - 1) * 4) + 2, 2, \
+		mvprintw(PLAYER_LINE + ((i - 1) * 4) + 2, 2,
 		"\tLives in current period: %d", player->curr_live);
 		player = player->next;
 		i++;
@@ -39,7 +42,7 @@ static void	ft_curses_drawbox(void)
 {
 	int	i;
 
-	attron(COLOR_PAIR(0 | (1 << 3)));
+	attron(COLOR_PAIR(5));
 	i = -1;
 	while (++i < TOTAL_COLS)
 	{
@@ -54,7 +57,7 @@ static void	ft_curses_drawbox(void)
 		if (i != 0 && i != TOTAL_LINES - 1)
 			mvprintw(i, SEP_COL, "|");
 	}
-	attroff(COLOR_PAIR(0 | (1 << 3)));
+	attroff(COLOR_PAIR(5));
 }
 
 void		ft_init_permanent_parts(t_global *info)
