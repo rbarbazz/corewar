@@ -53,6 +53,8 @@ LIB = ../libft/libft.a
 
 CFLAGS = -Wall -Wextra -Werror -O2
 
+CC = clang
+
 NCURSE = -lncurses
 
 # GTK build specific variables
