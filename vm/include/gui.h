@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/29 12:36:57 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/29 13:11:00 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 /*
 ** CSS
 */
-# define CSS_MEM_FONT " font: 10px mono;"
+# define CSS_MEM_FONT " font: 10px monaco;"
 # define CSS_MEM_TXTCOLOR  "color: black;"
 # define CSS_MEM_BGCOLOR  "background-color: #000000;"
 
