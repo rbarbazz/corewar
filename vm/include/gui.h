@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/29 13:11:00 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/29 16:11:50 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,14 @@ typedef struct		s_gtktext
 # define PAUSE_RUNNING_MSG "Pause"
 
 # define SPINNER "b_spinner"
+# define CYCLES "b_cycle"
 
 typedef struct		s_gtkctrl
 {
 	GtkButton		*run;
 	GtkButton		*pause;
 	GtkSpinner		*spin;
+	GtkLabel		*cycles;
 }					t_gtkctrl;
 
 /*
