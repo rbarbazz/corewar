@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/26 17:37:40 by xperrin          ###   ########.fr        #
+#    Updated: 2018/10/29 17:33:37 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,5 +44,6 @@ GTK:
 
 GTK_deps:
 	brew install gtk+3
+	./ressources/adwaita_install.sh
 
 .PHONY: all clean fclean re norme GTK GTK_deps
