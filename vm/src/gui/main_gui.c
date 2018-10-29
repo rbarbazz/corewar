@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/29 16:12:08 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/29 18:22:49 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,6 @@ int				main(int ac, char **av)
 	thread_logic_init(&i);
 	gtk_main();
 	free_all();
+	endwin();
 	return (0);
 }
