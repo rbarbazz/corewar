@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/13 18:03:33 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/16 16:18:49 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/29 15:52:19 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,15 @@ static int	ft_interpret_input_switch_pause(t_global *info, int key)
 	return (0);
 }
 
+static void	ft_unpause(void)
+{
+	cbreak();
+	nodelay(stdscr, TRUE);
+	attron(COLOR_PAIR(5));
+	mvprintw(TOP_LINE, 4, " RUNNING ");
+	attroff(COLOR_PAIR(5));
+}
+
 void		ft_get_input(t_global *info)
 {
 	static int	pause = 1;
@@ -50,20 +59,20 @@ void		ft_get_input(t_global *info)
 
 	if (pause == 1)
 	{
-		attron(COLOR_PAIR(0 | (1 << 3)));
+		attron(COLOR_PAIR(5));
 		mvprintw(TOP_LINE, 4, "  PAUSE  ");
+		attroff(COLOR_PAIR(5));
 		refresh();
 		while ((char)(key = getch()) != KEY_PAUSE && key != KEY_STEP)
 			if (key == RESIZE_SIGNAL)
 				reset_display(info);
-		if (key == KEY_PAUSE)
+			else if (key == KEY_UP)
+				fun_code();
+		if ((char)key == KEY_PAUSE)
 		{
 			pause = 0;
-			cbreak();
-			nodelay(stdscr, TRUE);
-			mvprintw(TOP_LINE, 4, " RUNNING ");
+			ft_unpause();
 		}
-		attroff(COLOR_PAIR(0 | (1 << 3)));
 	}
 	else
 		pause = ft_interpret_input_switch_pause(info, getch());
