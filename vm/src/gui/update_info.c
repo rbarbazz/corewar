@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 11:22:30 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/29 16:20:58 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/29 16:52:33 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,18 +89,11 @@ static void		u_cycle_label(t_gtkinfo *i)
 gboolean		u_text(t_gtkinfo *i)
 {
 	if (!i->b.pause && i->b.run)
-	{
-		if (i->b.run)
-			gtk_spinner_start(i->c.spin);
-		else
-		{
-			gtk_spinner_stop(i->c.spin);
-			gtk_button_set_label(i->c.run, RUN_STOPPED_MSG);
-			gtk_button_set_label(i->c.pause, PAUSE_RUNNING_MSG);
-		}
-	}
+		gtk_spinner_start(i->c.spin);
 	else
 		gtk_spinner_stop(i->c.spin);
+	if (i->b.pause)
+		gtk_button_set_label(i->c.pause, PAUSE_STOPPED_MSG);
 	u_cycle_label(i);
 	u_text_players(i);
 	u_text_map(i);
