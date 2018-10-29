@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 18:43:40 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/20 18:21:58 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/28 13:55:03 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	check_pnumber(t_global *info, int *i, char **argv)
 
 	if (ft_strequ(argv[*i], "-n"))
 	{
-		if (!argv[*i + 1] || !is_number(argv[*i + 1]))
+		if (!argv[*i + 1] || !argv[*i + 2] || !is_number(argv[*i + 1]))
 			exit_corewar(USAGE_ERROR);
 		if ((nb = ft_atol(argv[*i + 1])) > MEM_SIZE || nb < -MEM_SIZE || !nb)
 			exit_corewar(WRONG_PNUMBER);

@@ -6,11 +6,22 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:32:26 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/19 11:47:16 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/28 14:35:31 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+void		free_one_player(t_player *player)
+{
+	if (player)
+	{
+		ft_strdel(&player->name);
+		ft_strdel(&player->comment);
+		ft_strdel(&player->instruction);
+		ft_memdel((void **)&player);
+	}
+}
 
 void		free_player(void)
 {

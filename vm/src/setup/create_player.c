@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 19:26:08 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/27 13:35:15 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/28 14:37:42 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,8 @@ static t_player	*assignate_value(char *file)
 	t_player	*new;
 	char		*command_size;
 
-	if (!(new = (t_player*)ft_memalloc(sizeof(t_player))))
-		exit_corewar(MALLOC_ERROR);
-	if (!(new->name = ft_strndup(file + 4, PROG_NAME_LENGTH)))
+	if (!(new = (t_player*)ft_memalloc(sizeof(t_player))) || !(new->name\
+		= ft_strndup(file + 4, PROG_NAME_LENGTH)))
 		exit_corewar(MALLOC_ERROR);
 	if (!(command_size = ft_strndup(file + 8 + PROG_NAME_LENGTH, 4)))
 		exit_corewar(MALLOC_ERROR);
@@ -102,8 +101,12 @@ static t_player	*assignate_value(char *file)
 	if (!(new->instruction = ft_strndup(file + 16 + PROG_NAME_LENGTH\
 			+ COMMENT_LENGTH, new->prog_size)))
 		exit_corewar(MALLOC_ERROR);
-	if (check_end_file(new, file) == 1)
+	if (check_end_file(new, file) || new->prog_size > CHAMP_MAX_SIZE)
+	{
+		free_one_player(new);
+		ft_strdel(&file);
 		exit_corewar(WRONG_COMMAND_LENGTH);
+	}
 	new->last_live = 0;
 	new->curr_live = 0;
 	return (new);

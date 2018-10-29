@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 18:45:44 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/22 14:20:52 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/28 15:20:45 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ char	*read_file(int fd, char *filename)
 	char	*file;
 	int		ret;
 
-	if (!(file = (char *)ft_memalloc(sizeof(char) * FILE_LEN_MAX)))
+	if (!(file = (char*)ft_memalloc(sizeof(char)\
+		* FILE_LEN_MAX + 1)))
 		exit_corewar(MALLOC_ERROR);
 	ft_bzero(file, FILE_LEN_MAX);
-	ret = read(fd, file, FILE_LEN_MAX);
-	if (ret < 0)
+	if ((ret = read(fd, file, FILE_LEN_MAX + 1)) < 0)
 	{
 		ft_strdel(&file);
 		perror(filename);
@@ -43,6 +43,11 @@ char	*read_file(int fd, char *filename)
 	{
 		ft_strdel(&file);
 		exit_corewar(FILE_EMPTY);
+	}
+	if (ret > FILE_LEN_MAX)
+	{
+		ft_strdel(&file);
+		exit_corewar(WRONG_COMMAND_LENGTH);
 	}
 	return (file);
 }

@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:22:30 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/27 13:29:47 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/28 14:36:10 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,7 @@ void					exit_corewar(int error_code);
 void					free_process(void);
 void					free_all(void);
 void					free_player(void);
+void					free_one_player(t_player *player);
 void					free_map(void);
 void					kill_process(t_global *info, t_process *process);
 
