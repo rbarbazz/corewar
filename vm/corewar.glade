@@ -5,14 +5,17 @@
   <object class="GtkAboutDialog" id="about_window">
     <property name="can_focus">False</property>
     <property name="type_hint">dialog</property>
+    <property name="gravity">center</property>
     <property name="program_name">Corewar</property>
     <property name="version">nightly</property>
-    <property name="comments" translatable="yes">Une VM corewar with a GTK gui</property>
+    <property name="comments" translatable="yes">A GTK UI for a Corewar virtual machine</property>
+    <property name="website">https://github.com/rbarbazz/corewar</property>
+    <property name="website_label" translatable="yes">Source</property>
     <property name="authors">lcompagn (lcompagn@student.42.fr)
 msamak (msamak@student.42.fr)
 rbarbazz (rbarbazz@student.42.fr)
 xperrin (xperrin@student.42.fr)</property>
-    <property name="logo_icon_name">application-x-executable</property>
+    <property name="logo_icon_name">face-crying</property>
     <child>
       <placeholder/>
     </child>
@@ -213,6 +216,18 @@ xperrin (xperrin@student.42.fr)</property>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
                 <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="b_cycle">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Cycles: 0</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </object>

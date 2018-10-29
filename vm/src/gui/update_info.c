@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 11:22:30 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/29 14:05:49 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/29 16:20:58 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,16 @@ static void		u_text_map(t_gtkinfo *i)
 	}
 }
 
+static void		u_cycle_label(t_gtkinfo *i)
+{
+	gchar		*buf;
+
+	if (!(buf = g_strdup_printf("Cycles: %d", i->vm->clock.cycle)))
+		exit_corewar(MALLOC_ERROR);
+	gtk_label_set_text(i->c.cycles, buf);
+	g_free(buf);
+}
+
 gboolean		u_text(t_gtkinfo *i)
 {
 	if (!i->b.pause && i->b.run)
@@ -91,6 +101,7 @@ gboolean		u_text(t_gtkinfo *i)
 	}
 	else
 		gtk_spinner_stop(i->c.spin);
+	u_cycle_label(i);
 	u_text_players(i);
 	u_text_map(i);
 	return (G_SOURCE_CONTINUE);
