@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/30 11:35:17 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/30 14:43:59 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static void		gui_struct_get_objs(t_gtkinfo *i)
 	i->t.v_mem = GTK_WIDGET(gtk_builder_get_object(i->builder, MEM_TXT_VIEW));
 	i->t.v_play = GTK_WIDGET(gtk_builder_get_object(i->builder, PLAY_TXT_VIEW));
 	i->t.mem = gtk_text_view_get_buffer(GTK_TEXT_VIEW(i->t.v_mem));
+	i->t.t_mem = gtk_text_buffer_get_tag_table(i->t.mem);
 	i->t.play = gtk_text_view_get_buffer(GTK_TEXT_VIEW(i->t.v_play));
 	i->c.spin = GTK_SPINNER(gtk_builder_get_object(i->builder, SPINNER));
 	i->c.cycles = GTK_LABEL(gtk_builder_get_object(i->builder, CYCLES));

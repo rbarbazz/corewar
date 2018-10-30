@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 16:11:33 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/30 11:41:42 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/30 14:46:04 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void		create_tags(t_gtkinfo *i)
 		g_object_set(i->tag.p[pnum],
 			TAG_TXTCOL_PROP, &color,
 			NULL);
+		gtk_text_tag_table_add(i->t.t_mem, i->tag.p[pnum]);
 		pnum++;
 	}
 }
