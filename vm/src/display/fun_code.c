@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 19:56:11 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/29 15:29:19 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/30 15:18:41 by lcompagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	print_pic(void)
 		return ;
 	clear_arena();
 	line = TOP_LINE;
-	attron(COLOR_PAIR(5) | A_STANDOUT);
+	attron(COLOR_PAIR(5));
 	while (get_next_line(fd, &pic_line))
 	{
 		mvprintw(line, ARENA_START_COL, "%s", pic_line);
@@ -52,7 +52,7 @@ static void	print_pic(void)
 		line++;
 	}
 	ft_strdel(&pic_line);
-	attroff(COLOR_PAIR(5) | A_STANDOUT);
+	attroff(COLOR_PAIR(5));
 	close(fd);
 	refresh();
 	getch();
@@ -61,8 +61,14 @@ static void	print_pic(void)
 
 void		fun_code(void)
 {
-	if (getch() == KEY_DOWN)
-		if (getch() == KEY_LEFT)
-			if (getch() == KEY_RIGHT)
-				print_pic();
+	if (getch() == KEY_UP)
+		if (getch() == KEY_DOWN)
+			if (getch() == KEY_DOWN)
+				if (getch() == KEY_LEFT)
+					if (getch() == KEY_RIGHT)
+						if (getch() == KEY_LEFT)
+							if (getch() == KEY_RIGHT)
+								if ((char)getch() == 'b')
+									if ((char)getch() == 'a')
+										print_pic();
 }
