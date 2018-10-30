@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/30 11:50:04 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/30 15:08:01 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ typedef struct		s_gtkwin
 ** play: The player info buffer
 **
 ** v_*: The matching widgets(GtkTextView)
+**
+** t_*: The matching buffer's  tag table
 */
 
 typedef struct		s_gtktext
@@ -84,6 +86,7 @@ typedef struct		s_gtktext
 	GtkTextBuffer	*play;
 	GtkWidget		*v_mem;
 	GtkWidget		*v_play;
+	GtkTextTagTable	*t_mem;
 }					t_gtktext;
 
 /*
@@ -207,6 +210,10 @@ gboolean			u_text(t_gtkinfo *i);
 ** gui_win.c
 */
 void				vm_exec_end(int finished, t_gtkinfo *i);
+/*
+** gui_helpers.c
+*/
+int					get_map_pnum(t_map *map);
 /*
 ** reset.c
 */

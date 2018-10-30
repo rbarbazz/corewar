@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/30 00:02:43 by xperrin          ###   ########.fr        #
+#    Updated: 2018/10/30 15:07:41 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ GTK_SRC_NAME = gui/main_gui.c\
 		gui/rice.c\
 		gui/popup.c\
 		gui/gui_win.c\
+		gui/gui_helpers.c\
 		gui/update_info.c\
 		gui/call_control.c\
 		gui/call_debug.c\
