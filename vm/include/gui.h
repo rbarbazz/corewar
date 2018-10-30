@@ -100,12 +100,21 @@ typedef struct		s_gtktext
 # define SPINNER "b_spinner"
 # define CYCLES "b_cycle"
 
+# define COLOR_P1 "o_color_p1"
+# define COLOR_P2 "o_color_p2"
+# define COLOR_P3 "o_color_p3"
+# define COLOR_P4 "o_color_p4"
+
 typedef struct		s_gtkctrl
 {
 	GtkButton		*run;
 	GtkButton		*pause;
 	GtkSpinner		*spin;
 	GtkLabel		*cycles;
+	GtkColorButton	*color_p1;
+	GtkColorButton	*color_p2;
+	GtkColorButton	*color_p3;
+	GtkColorButton	*color_p4;
 }					t_gtkctrl;
 
 /*

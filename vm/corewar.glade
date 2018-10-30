@@ -466,13 +466,13 @@ xperrin (xperrin@student.42.fr)</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkColorButton" id="o_p1color">
+                              <object class="GtkColorButton" id="o_color_p1">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
                                 <property name="title" translatable="yes">P1 color</property>
                                 <property name="rgba">rgb(115,210,22)</property>
-                                <signal name="color-set" handler="callback_colorset_p1" swapped="no"/>
+                                <signal name="color-set" handler="callback_colorset" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
@@ -480,13 +480,46 @@ xperrin (xperrin@student.42.fr)</property>
                               </packing>
                             </child>
                             <child>
-                              <placeholder/>
+                              <object class="GtkColorButton" id="o_color_p2">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="title" translatable="yes">P2 color</property>
+                                <property name="rgba">rgb(204,0,0)</property>
+                                <signal name="color-set" handler="callback_colorset" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">10</property>
+                              </packing>
                             </child>
                             <child>
-                              <placeholder/>
+                              <object class="GtkColorButton" id="o_color_p3">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="title" translatable="yes">P3 color</property>
+                                <property name="rgba">rgb(52,101,164)</property>
+                                <signal name="color-set" handler="callback_colorset" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">11</property>
+                              </packing>
                             </child>
                             <child>
-                              <placeholder/>
+                              <object class="GtkColorButton" id="o_color_p4">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="title" translatable="yes">P4 color</property>
+                                <property name="rgba">rgb(117,80,123)</property>
+                                <signal name="color-set" handler="callback_colorset" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">12</property>
+                              </packing>
                             </child>
                           </object>
                         </child>
