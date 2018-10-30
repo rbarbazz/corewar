@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/30 14:43:59 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/30 16:12:38 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ static void		gui_struct_get_objs(t_gtkinfo *i)
 				COLOR_P3));
 	i->c.color[p4] = GTK_COLOR_BUTTON(gtk_builder_get_object(i->builder,
 				COLOR_P4));
+	i->c.color_proc = GTK_COLOR_BUTTON(gtk_builder_get_object(i->builder,
+				COLOR_PROC));
 }
 
 static int		gui_struct_init(t_gtkinfo *i)

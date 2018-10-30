@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/30 15:08:01 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/30 16:32:42 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define DBG_VM_UNSET "VM debug visual unset"
 # define DBG_GUI_SET "VM debug visual set"
 # define DBG_GUI_UNSET "VM debug visual unset"
+# define DBG_FMT_COL "Changing color tag prop for p%u\n"
+# define DBG_PROC_COL "Changing process color tag prop"
 
 /*
 ** CSS
@@ -108,6 +110,7 @@ typedef struct		s_gtktext
 # define COLOR_P2 "o_color_p2"
 # define COLOR_P3 "o_color_p3"
 # define COLOR_P4 "o_color_p4"
+# define COLOR_PROC "o_color_proc"
 
 typedef struct		s_gtkctrl
 {
@@ -116,6 +119,7 @@ typedef struct		s_gtkctrl
 	GtkSpinner		*spin;
 	GtkLabel		*cycles;
 	GtkColorButton	*color[4];
+	GtkColorButton	*color_proc;
 }					t_gtkctrl;
 
 /*
@@ -123,6 +127,7 @@ typedef struct		s_gtkctrl
 */
 
 # define TAG_TXTCOL_PROP "foreground-rgba"
+# define TAG_PROC_PROP "background-rgba"
 
 typedef	enum		e_pnum
 {
@@ -135,6 +140,7 @@ typedef	enum		e_pnum
 typedef struct		s_gtktags
 {
 	GtkTextTag		*p[4];
+	GtkTextTag		*proc;
 }					t_gtktags;
 
 /*
@@ -254,5 +260,6 @@ void				callback_debug_gui(GtkToggleButton *button, t_gtkinfo *i);
 ** call_colors.c
 */
 void				callback_colorset_p1(GtkColorButton *widget, t_gtkinfo *i);
+void				callback_colorset_proc(GtkColorButton *widget, t_gtkinfo *i);
 
 #endif
