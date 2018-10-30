@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 16:31:52 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/29 12:34:05 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/30 16:34:06 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,11 @@
 static void	vm_cycle(t_gtkinfo *i)
 {
 	check_process(i->vm);
+	update_map(i->vm);
 	i->b.delta++;
 	usleep(i->b.speed);
 	if (i->vm->visual)
-	{
-		update_map(i->vm);
 		ft_visu_curses(i->vm);
-	}
 	if (i->debug)
 		ft_printf("cycles clock %d delta; %d\n",
 				i->vm->clock.cycle, i->b.delta);
