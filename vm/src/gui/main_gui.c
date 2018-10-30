@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/29 18:22:49 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/30 14:43:59 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,20 @@ static void		gui_struct_get_objs(t_gtkinfo *i)
 	i->t.v_mem = GTK_WIDGET(gtk_builder_get_object(i->builder, MEM_TXT_VIEW));
 	i->t.v_play = GTK_WIDGET(gtk_builder_get_object(i->builder, PLAY_TXT_VIEW));
 	i->t.mem = gtk_text_view_get_buffer(GTK_TEXT_VIEW(i->t.v_mem));
+	i->t.t_mem = gtk_text_buffer_get_tag_table(i->t.mem);
 	i->t.play = gtk_text_view_get_buffer(GTK_TEXT_VIEW(i->t.v_play));
 	i->c.spin = GTK_SPINNER(gtk_builder_get_object(i->builder, SPINNER));
 	i->c.cycles = GTK_LABEL(gtk_builder_get_object(i->builder, CYCLES));
 	i->c.run = GTK_BUTTON(gtk_builder_get_object(i->builder, RUN_CTRL));
 	i->c.pause = GTK_BUTTON(gtk_builder_get_object(i->builder, PAUSE_CTRL));
+	i->c.color[p1] = GTK_COLOR_BUTTON(gtk_builder_get_object(i->builder,
+				COLOR_P1));
+	i->c.color[p2] = GTK_COLOR_BUTTON(gtk_builder_get_object(i->builder,
+				COLOR_P2));
+	i->c.color[p3] = GTK_COLOR_BUTTON(gtk_builder_get_object(i->builder,
+				COLOR_P3));
+	i->c.color[p4] = GTK_COLOR_BUTTON(gtk_builder_get_object(i->builder,
+				COLOR_P4));
 }
 
 static int		gui_struct_init(t_gtkinfo *i)
@@ -88,6 +97,7 @@ static int		gui_struct_init(t_gtkinfo *i)
 	gtk_builder_connect_signals(i->builder, i);
 	gui_struct_get_objs(i);
 	memory_widget_pimp(i);
+	create_tags(i);
 	gtk_widget_show_all(i->w.m);
 	return (1);
 }

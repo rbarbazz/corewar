@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/29 16:11:50 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/30 15:08:01 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ typedef struct		s_gtkwin
 ** play: The player info buffer
 **
 ** v_*: The matching widgets(GtkTextView)
+**
+** t_*: The matching buffer's  tag table
 */
 
 typedef struct		s_gtktext
@@ -84,6 +86,7 @@ typedef struct		s_gtktext
 	GtkTextBuffer	*play;
 	GtkWidget		*v_mem;
 	GtkWidget		*v_play;
+	GtkTextTagTable	*t_mem;
 }					t_gtktext;
 
 /*
@@ -101,13 +104,38 @@ typedef struct		s_gtktext
 # define SPINNER "b_spinner"
 # define CYCLES "b_cycle"
 
+# define COLOR_P1 "o_color_p1"
+# define COLOR_P2 "o_color_p2"
+# define COLOR_P3 "o_color_p3"
+# define COLOR_P4 "o_color_p4"
+
 typedef struct		s_gtkctrl
 {
 	GtkButton		*run;
 	GtkButton		*pause;
 	GtkSpinner		*spin;
 	GtkLabel		*cycles;
+	GtkColorButton	*color[4];
 }					t_gtkctrl;
+
+/*
+** Text tag color shit
+*/
+
+# define TAG_TXTCOL_PROP "foreground-rgba"
+
+typedef	enum		e_pnum
+{
+	p1,
+	p2,
+	p3,
+	p4
+}					t_pnum;
+
+typedef struct		s_gtktags
+{
+	GtkTextTag		*p[4];
+}					t_gtktags;
 
 /*
 **  ___                 ___       __
@@ -152,6 +180,7 @@ typedef struct		s_gtkinfo
 	t_gtkwin		w;
 	t_gtktext		t;
 	t_gtkctrl		c;
+	t_gtktags		tag;
 	GtkBuilder		*builder;
 	gchar			*gladefilename;
 	GError			*err;
@@ -182,6 +211,10 @@ gboolean			u_text(t_gtkinfo *i);
 */
 void				vm_exec_end(int finished, t_gtkinfo *i);
 /*
+** gui_helpers.c
+*/
+int					get_map_pnum(t_map *map);
+/*
 ** reset.c
 */
 void				reset_info(t_global *info);
@@ -194,6 +227,7 @@ gboolean			display_popup(char *s);
 ** rice.c
 */
 void				memory_widget_pimp(t_gtkinfo *i);
+void				create_tags(t_gtkinfo *i);
 /*
 ** call_misc.c
 */
@@ -216,5 +250,9 @@ void				callback_speed(GtkAdjustment *adjustment, t_gtkinfo *i);
 void				callback_ncurses(GtkToggleButton *button, t_gtkinfo *i);
 void				callback_debug_vm(GtkToggleButton *button, t_gtkinfo *i);
 void				callback_debug_gui(GtkToggleButton *button, t_gtkinfo *i);
+/*
+** call_colors.c
+*/
+void				callback_colorset_p1(GtkColorButton *widget, t_gtkinfo *i);
 
 #endif
