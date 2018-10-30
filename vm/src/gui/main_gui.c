@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/30 00:39:27 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/30 11:35:17 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ static void		gui_struct_get_objs(t_gtkinfo *i)
 	i->c.cycles = GTK_LABEL(gtk_builder_get_object(i->builder, CYCLES));
 	i->c.run = GTK_BUTTON(gtk_builder_get_object(i->builder, RUN_CTRL));
 	i->c.pause = GTK_BUTTON(gtk_builder_get_object(i->builder, PAUSE_CTRL));
-	i->c.color_p1 = GTK_COLOR_BUTTON(gtk_builder_get_object(i->builder,
+	i->c.color[p1] = GTK_COLOR_BUTTON(gtk_builder_get_object(i->builder,
 				COLOR_P1));
-	i->c.color_p2 = GTK_COLOR_BUTTON(gtk_builder_get_object(i->builder,
+	i->c.color[p2] = GTK_COLOR_BUTTON(gtk_builder_get_object(i->builder,
 				COLOR_P2));
-	i->c.color_p3 = GTK_COLOR_BUTTON(gtk_builder_get_object(i->builder,
+	i->c.color[p3] = GTK_COLOR_BUTTON(gtk_builder_get_object(i->builder,
 				COLOR_P3));
-	i->c.color_p4 = GTK_COLOR_BUTTON(gtk_builder_get_object(i->builder,
+	i->c.color[p4] = GTK_COLOR_BUTTON(gtk_builder_get_object(i->builder,
 				COLOR_P4));
 }
 
