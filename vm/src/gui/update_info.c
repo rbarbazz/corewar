@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 11:22:30 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/30 15:05:06 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/30 17:30:08 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,18 @@ static void		u_text_players(t_gtkinfo *i)
 	}
 }
 
-static void		map_memtxt_insert(int pnum, int *col, int mem, t_gtkinfo *i)
+static void		map_memtxt_insert(int pnum, int *col, t_map *map, t_gtkinfo *i)
 {
 	char		*hexa;
 	GtkTextIter	end;
 
 	gtk_text_buffer_get_end_iter(i->t.mem, &end);
-	if (!(hexa = ft_itoa_u(mem, 16, 0)))
+	if (!(hexa = ft_itoa_u(map->c, 16, 0)))
 		exit_corewar(MALLOC_ERROR);
 	if (ft_strlen(hexa) == 1)
-		gtk_text_buffer_insert_with_tags(i->t.mem, &end, "0", -1,
-				(pnum == -1) ? NULL : i->tag.p[pnum],
-				NULL);
-	gtk_text_buffer_insert_with_tags(i->t.mem, &end, hexa, -1,
-				(pnum == -1) ? NULL : i->tag.p[pnum],
-				NULL);
+		append_in_mem_buf("0", pnum, map, i);
+	append_in_mem_buf(hexa, pnum, map, i);
+	gtk_text_buffer_get_end_iter(i->t.mem, &end);
 	if (*col == 64)
 	{
 		*col = 0;
@@ -76,7 +73,7 @@ static void		u_text_map(t_gtkinfo *i)
 	while (++curmap < MEM_SIZE)
 	{
 		pnum = get_map_pnum(map);
-		map_memtxt_insert(pnum, &col, map->c, i);
+		map_memtxt_insert(pnum, &col, map, i);
 		col++;
 		map = map->next;
 	}
