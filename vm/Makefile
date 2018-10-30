@@ -6,7 +6,7 @@
 #    By: rbarbazz <rbarbazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 16:41:38 by rbarbazz          #+#    #+#              #
-#    Updated: 2018/10/29 16:05:14 by lcompagn         ###   ########.fr        #
+#    Updated: 2018/10/30 15:07:41 by xperrin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ LDLIBS = -lft
 
 LIB = ../libft/libft.a
 
-CFLAGS = -Wall -Wextra -Werror -O2
+CFLAGS = -Wall -Wextra -Werror -O2 -g
 
 CC = clang
 
@@ -65,10 +65,12 @@ GTK_SRC_NAME = gui/main_gui.c\
 		gui/rice.c\
 		gui/popup.c\
 		gui/gui_win.c\
+		gui/gui_helpers.c\
 		gui/update_info.c\
 		gui/call_control.c\
 		gui/call_debug.c\
 		gui/call_filepicker.c\
+		gui/call_colors.c\
 		gui/call_misc.c
 GTK_INC_FILES = gui.h
 GTK_LIBS = gtk+-3.0 gmodule-2.0

@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 16:11:33 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/26 16:48:22 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/30 14:46:04 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,22 @@ void		memory_widget_pimp(t_gtkinfo *i)
 	gtk_style_context_add_provider(context,
 			GTK_STYLE_PROVIDER(provider),
 			GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+}
+
+void		create_tags(t_gtkinfo *i)
+{
+	t_pnum		pnum;
+	GdkRGBA		color;
+
+	pnum = p1;
+	while (pnum <= p4)
+	{
+		i->tag.p[pnum] = gtk_text_tag_new(NULL);
+		gtk_color_chooser_get_rgba((GtkColorChooser*)i->c.color[pnum], &color);
+		g_object_set(i->tag.p[pnum],
+			TAG_TXTCOL_PROP, &color,
+			NULL);
+		gtk_text_tag_table_add(i->t.t_mem, i->tag.p[pnum]);
+		pnum++;
+	}
 }

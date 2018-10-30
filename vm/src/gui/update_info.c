@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 11:22:30 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/29 16:52:33 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/30 15:05:06 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void		u_text_players(t_gtkinfo *i)
 	}
 }
 
-static void		map_memtxt_insert(int *col, int mem, t_gtkinfo *i)
+static void		map_memtxt_insert(int pnum, int *col, int mem, t_gtkinfo *i)
 {
 	char		*hexa;
 	GtkTextIter	end;
@@ -46,8 +46,12 @@ static void		map_memtxt_insert(int *col, int mem, t_gtkinfo *i)
 	if (!(hexa = ft_itoa_u(mem, 16, 0)))
 		exit_corewar(MALLOC_ERROR);
 	if (ft_strlen(hexa) == 1)
-		gtk_text_buffer_insert(i->t.mem, &end, "0", -1);
-	gtk_text_buffer_insert(i->t.mem, &end, hexa, -1);
+		gtk_text_buffer_insert_with_tags(i->t.mem, &end, "0", -1,
+				(pnum == -1) ? NULL : i->tag.p[pnum],
+				NULL);
+	gtk_text_buffer_insert_with_tags(i->t.mem, &end, hexa, -1,
+				(pnum == -1) ? NULL : i->tag.p[pnum],
+				NULL);
 	if (*col == 64)
 	{
 		*col = 0;
@@ -61,8 +65,9 @@ static void		map_memtxt_insert(int *col, int mem, t_gtkinfo *i)
 static void		u_text_map(t_gtkinfo *i)
 {
 	int			curmap;
-	t_map		*map;
 	int			col;
+	t_map		*map;
+	t_pnum		pnum;
 
 	gtk_text_buffer_set_text(i->t.mem, "", -1);
 	map = i->vm->map;
@@ -70,7 +75,8 @@ static void		u_text_map(t_gtkinfo *i)
 	curmap = -1;
 	while (++curmap < MEM_SIZE)
 	{
-		map_memtxt_insert(&col, map->c, i);
+		pnum = get_map_pnum(map);
+		map_memtxt_insert(pnum, &col, map->c, i);
 		col++;
 		map = map->next;
 	}
