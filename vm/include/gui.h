@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/30 16:32:42 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/30 17:30:59 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,8 @@ void				vm_exec_end(int finished, t_gtkinfo *i);
 ** gui_helpers.c
 */
 int					get_map_pnum(t_map *map);
+void				append_in_mem_buf(char *str, int pnum, t_map *map,
+									t_gtkinfo *i);
 /*
 ** reset.c
 */
@@ -260,6 +262,7 @@ void				callback_debug_gui(GtkToggleButton *button, t_gtkinfo *i);
 ** call_colors.c
 */
 void				callback_colorset_p1(GtkColorButton *widget, t_gtkinfo *i);
-void				callback_colorset_proc(GtkColorButton *widget, t_gtkinfo *i);
+void				callback_colorset_proc(GtkColorButton *widget,
+										t_gtkinfo *i);
 
 #endif

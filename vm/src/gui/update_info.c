@@ -6,9 +6,10 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 11:22:30 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/30 16:33:47 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/30 17:30:08 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "gui.h"
 
 /*
@@ -45,14 +46,9 @@ static void		map_memtxt_insert(int pnum, int *col, t_map *map, t_gtkinfo *i)
 	if (!(hexa = ft_itoa_u(map->c, 16, 0)))
 		exit_corewar(MALLOC_ERROR);
 	if (ft_strlen(hexa) == 1)
-		gtk_text_buffer_insert_with_tags(i->t.mem, &end, "0", -1,
-				(pnum == -1) ? NULL : i->tag.p[pnum],
-				(!map->current) ? NULL : i->tag.proc,
-				NULL);
-	gtk_text_buffer_insert_with_tags(i->t.mem, &end, hexa, -1,
-				(pnum == -1) ? NULL : i->tag.p[pnum],
-				(!map->current) ? NULL : i->tag.proc,
-				NULL);
+		append_in_mem_buf("0", pnum, map, i);
+	append_in_mem_buf(hexa, pnum, map, i);
+	gtk_text_buffer_get_end_iter(i->t.mem, &end);
 	if (*col == 64)
 	{
 		*col = 0;
