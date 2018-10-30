@@ -1,11 +1,12 @@
-/* ************************************************************************** */ /*                                                                            */
+/* ************************************************************************** */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   gui.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 17:29:46 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/29 22:35:40 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/30 11:50:04 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,20 +112,16 @@ typedef struct		s_gtkctrl
 	GtkButton		*pause;
 	GtkSpinner		*spin;
 	GtkLabel		*cycles;
-	GtkColorButton	*color_p1;
-	GtkColorButton	*color_p2;
-	GtkColorButton	*color_p3;
-	GtkColorButton	*color_p4;
+	GtkColorButton	*color[4];
 }					t_gtkctrl;
 
 /*
-** P1: Green?
-** P2: Blue?
-** P3: yellow?
-** P4: purple?
+** Text tag color shit
 */
 
-typedef	enum		s_pnum
+# define TAG_TXTCOL_PROP "foreground-rgba"
+
+typedef	enum		e_pnum
 {
 	p1,
 	p2,
