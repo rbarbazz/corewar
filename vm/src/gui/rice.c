@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 16:11:33 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/30 14:46:04 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/30 16:28:05 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,10 @@ void		create_tags(t_gtkinfo *i)
 		gtk_text_tag_table_add(i->t.t_mem, i->tag.p[pnum]);
 		pnum++;
 	}
+	i->tag.proc = gtk_text_tag_new(NULL);
+	gtk_color_chooser_get_rgba((GtkColorChooser*)i->c.color_proc, &color);
+	g_object_set(i->tag.proc,
+		TAG_PROC_PROP, &color,
+		NULL);
+	gtk_text_tag_table_add(i->t.t_mem, i->tag.proc);
 }

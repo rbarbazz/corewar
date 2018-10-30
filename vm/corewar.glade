@@ -301,9 +301,6 @@ xperrin (xperrin@student.42.fr)</property>
                                 <property name="position">0</property>
                               </packing>
                             </child>
-                            <child>
-                              <placeholder/>
-                            </child>
                           </object>
                         </child>
                       </object>
@@ -471,7 +468,7 @@ xperrin (xperrin@student.42.fr)</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
                                 <property name="title" translatable="yes">P1 color</property>
-                                <property name="rgba">rgb(115,210,22)</property>
+                                <property name="rgba">rgb(114,159,207)</property>
                                 <signal name="color-set" handler="callback_colorset" swapped="no"/>
                               </object>
                               <packing>
@@ -485,7 +482,7 @@ xperrin (xperrin@student.42.fr)</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
                                 <property name="title" translatable="yes">P2 color</property>
-                                <property name="rgba">rgb(204,0,0)</property>
+                                <property name="rgba">rgb(173,127,168)</property>
                                 <signal name="color-set" handler="callback_colorset" swapped="no"/>
                               </object>
                               <packing>
@@ -499,7 +496,7 @@ xperrin (xperrin@student.42.fr)</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
                                 <property name="title" translatable="yes">P3 color</property>
-                                <property name="rgba">rgb(52,101,164)</property>
+                                <property name="rgba">rgb(138,226,52)</property>
                                 <signal name="color-set" handler="callback_colorset" swapped="no"/>
                               </object>
                               <packing>
@@ -513,12 +510,40 @@ xperrin (xperrin@student.42.fr)</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
                                 <property name="title" translatable="yes">P4 color</property>
-                                <property name="rgba">rgb(117,80,123)</property>
+                                <property name="rgba">rgb(252,233,79)</property>
                                 <signal name="color-set" handler="callback_colorset" swapped="no"/>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
                                 <property name="top_attach">12</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="l_colors1">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="label" translatable="yes">Process colors:</property>
+                                <attributes>
+                                  <attribute name="underline" value="True"/>
+                                </attributes>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">13</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="o_color_proc">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="title" translatable="yes">Process color</property>
+                                <property name="rgba">rgb(204,0,0)</property>
+                                <signal name="color-set" handler="callback_colorset_proc" swapped="no"/>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">14</property>
                               </packing>
                             </child>
                           </object>
