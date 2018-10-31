@@ -6,7 +6,7 @@
 /*   By: xperrin <xperrin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 16:07:02 by xperrin           #+#    #+#             */
-/*   Updated: 2018/10/30 16:12:38 by xperrin          ###   ########.fr       */
+/*   Updated: 2018/10/31 02:02:52 by xperrin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,6 @@ static void		gui_struct_get_objs(t_gtkinfo *i)
 static int		gui_struct_init(t_gtkinfo *i)
 {
 	ft_bzero(i, sizeof(t_gtkinfo));
-	ft_bzero(&i->b, sizeof(t_gtkwin));
-	ft_bzero(&i->w, sizeof(t_gtkwin));
-	ft_bzero(&i->t, sizeof(t_gtkwin));
 	i->builder = gtk_builder_new();
 	i->gladefilename = g_build_filename("corewar.glade", NULL);
 	gtk_builder_add_from_file(i->builder,
