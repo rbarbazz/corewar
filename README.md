@@ -1,11 +1,10 @@
 # Corewar
 
-In this project, we created a virtual “arena” in which programs fight
+In this project, we created a virtual arena in which programs fight
 against one another (the “Champions”). We also created an assembler to compile
-those Champions as well as a Champion to show the world that you we create life from
-coffee.
+those Champions. Finally we wrote our Champion, "Zorkslayer".
 
-As a bonus we also created a ncurses and a GTK interface, yup, we're just like that.
+As a bonus we also created a Ncurses and a GTK interface.
 
 ![gtk](ressources/pictures/gtk.png)
 ![ncurses](ressources/pictures/ncurses.png)
@@ -32,6 +31,6 @@ make GTK -j4
 ```
 ## Authors
 - __[Mikael Samak](https://github.com/mickaelsamak)__ - VM and ASM
-- __[Raphael Barbazza](https://github.com/rbarbazz/)__ - VM and ASM
+- __[Raphael Barbazza](https://github.com/rbarbazz/)__ - VM, ASM and champion
 - __[Leo Compagnon](https://github.com/compalele)__ - VM and ncurses
 - __[Xavier Perrin](https://github.com/selfsigned)__ - GTK and README.md
