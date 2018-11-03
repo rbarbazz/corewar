@@ -31,7 +31,7 @@ Just run `make GTK_deps` if you're on MacOS.
 make GTK -j4
 ```
 ## Authors
-- __Mikael Samak__ - VM and ASM
+- __[Mikael Samak](https://github.com/mickaelsamak)__ - VM and ASM
 - __[Raphael Barbazza](https://github.com/rbarbazz/)__ - VM and ASM
 - __[Leo Compagnon](https://github.com/compalele)__ - VM and ncurses
 - __[Xavier Perrin](https://github.com/selfsigned)__ - GTK and README.md
