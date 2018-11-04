@@ -6,7 +6,7 @@
 /*   By: msamak <msamak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 18:43:40 by msamak            #+#    #+#             */
-/*   Updated: 2018/10/28 13:55:03 by rbarbazz         ###   ########.fr       */
+/*   Updated: 2018/10/31 08:37:14 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,7 @@ int			check_args(t_global *info, int argc, char **argv)
 		exit_corewar(TOO_MANY_ARGS);
 	else if (info->player_count < 1)
 		exit_corewar(NO_CHAMP);
+	if (info->debug && info->visual)
+		exit_corewar(USAGE_ERROR);
 	return (0);
 }

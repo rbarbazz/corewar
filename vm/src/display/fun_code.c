@@ -6,7 +6,7 @@
 /*   By: lcompagn <lcompagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 19:56:11 by lcompagn          #+#    #+#             */
-/*   Updated: 2018/10/30 15:18:41 by lcompagn         ###   ########.fr       */
+/*   Updated: 2018/10/31 08:08:25 by rbarbazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	print_pic(void)
 	int		line;
 	char	*pic_line;
 
-	if ((fd = open("pic", O_RDONLY)) == -1)
+	if ((fd = open(".pic", O_RDONLY)) == -1)
 		return ;
 	clear_arena();
 	line = TOP_LINE;
